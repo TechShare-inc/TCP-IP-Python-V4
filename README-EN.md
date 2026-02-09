@@ -6,24 +6,23 @@
 
 ### Major Changes:
 
-1. **Modular Package Structure**: Code refactored into `dobot_api` Python package with V3 architecture pattern
-2. **Separated Movement API**: Restored `DobotApiMove` class (V3-style) for movement commands
+1. **Modular Package Structure**: Code refactored into `dobot_api` Python package
+2. **Single API Class**: All control and movement commands unified in `DobotApiDashboard` (original V4 monolithic design)
 3. **Import Path Changes**:
    ```python
    # New import method
-   from dobot_api import DobotApiDashboard, DobotApiMove, DobotApiFeedBack
+   from dobot_api import DobotApiDashboard, DobotApiFeedBack
    
-   # Create instances (V3 pattern: separated dashboard and move instances)
+   # Create instances (Monolithic pattern: all commands use one dashboard instance)
    dashboard = DobotApiDashboard(ip, 29999)
-   move = DobotApiMove(ip, 29999)  # Same port, independent API
    feed = DobotApiFeedBack(ip, 30004)
    
-   # Control commands through dashboard
+   # Control commands
    dashboard.EnableRobot()
    dashboard.VelL(50)
    
-   # Movement commands through move instance
-   move.MovJ(300, 0, 200, 0, 90, 0, coordinateMode=0)  # coordinateMode: 0=pose, 1=joint
+   # Movement commands (same instance)
+   dashboard.MovJ(300, 0, 200, 0, 90, 0, coordinateMode=0)  # coordinateMode: 0=pose, 1=joint
    ```
 
 4. **Package Installation**: Now supports `pip install -e .` development mode
@@ -31,7 +30,7 @@
 
 ### Quick Migration:
 - All V4 method signatures and features remain unchanged
-- Movement commands now go through `move` instance instead of `dashboard`
+- Movement commands now called directly through `dashboard`
 - Examples updated to new architecture, see `examples/` directory
 
 ---
@@ -92,22 +91,17 @@ pip install numpy
 - Type hints and improved error handling
 
 #### dobot_api/dashboard.py  
-- **DobotApiDashboard**: Robot control and configuration commands
+- **DobotApiDashboard**: Robot control and configuration commands (includes movement commands)
   - Enable/Disable: `EnableRobot()`, `DisableRobot()`
   - Speed control: `VelJ()`, `VelL()`, `AccJ()`, `AccL()`
   - Coordinate systems: `User()`, `Tool()`, `SetUser()`, `SetTool()`
   - IO operations: `DO()`, `GetDO()`, `AO()`, `GetAO()`
   - Alarm handling: `ClearError()`, `GetError(language)`
-  - V4 new features: Kinematics, force control settings, collision detection, SafeSkin
-  
-#### dobot_api/move.py
-- **DobotApiMove**: Movement commands (V3-style separated class, V4 signatures)
-  - Basic movements: `MovJ()`, `MovL()`, `Arc()`, `Circle()`
-  - Servo control: `ServoJ()`, `ServoP()`
-  - Relative movements: `RelMovJUser()`, `RelMovLUser()`, `RelJointMovJ()`
+  - **Movement commands**: `MovJ()`, `MovL()`, `Arc()`, `Circle()`, `ServoJ()`, `ServoP()`
+  - **Relative movements**: `RelMovJUser()`, `RelMovLUser()`, `RelJointMovJ()`
   - V4 new features: `RunTo()`, `MovS()`, conveyor tracking, welding, force control movements
   - **Note**: All movement commands require `coordinateMode` parameter (0=pose, 1=joint)
-
+  
 #### dobot_api/feedback.py
 - **DobotApiFeedBack**: Real-time status feedback
   - Get robot status (1440-byte data packet)
@@ -120,7 +114,7 @@ pip install numpy
 
 #### examples/basic_demo.py
 - Basic robot control example (updated to V4.0.0)
-- Demonstrates separated dashboard and move instances
+- Demonstrates single dashboard instance usage
 - Includes motion loops and feedback monitoring
 
 #### examples/error_handling.py  
@@ -236,7 +230,58 @@ move.close()
 feed.close()
 ```
 
-### 4. Run Example Programs
+### 4. Logging Configuration
+
+V4.0.0 uses [loguru](https://github.com/Delgan/loguru) for structured logging.
+
+**Default Configuration**:
+- Log level: INFO
+- Output: stderr (console)
+- Includes colored output, timestamps, and function locations
+
+**Customize Log Level**:
+
+```python
+import os
+
+# Method 1: Use environment variable (before importing dobot_api)
+os.environ["DOBOT_LOG_LEVEL"] = "DEBUG"  # Options: DEBUG, INFO, WARNING, ERROR
+from dobot_api import DobotApiDashboard
+
+# Method 2: Configure logger directly
+from dobot_api import DobotApiDashboard, logger
+
+logger.remove()  # Remove default handler
+logger.add(sys.stderr, level="WARNING")  # Add custom handler
+logger.add("robot_logs.log", rotation="10 MB")  # Log to file
+```
+
+**Log Levels**:
+- **ERROR**: Connection failures, parameter validation errors
+- **WARNING**: Socket cleanup issues, reconnection attempts
+- **INFO**: Successful connections, reconnections (default)
+- **DEBUG**: Detailed operation information
+
+**Parameter Validation Error Handling**:
+
+V4.0.0 improves error handling - invalid parameters now raise `ValueError` exceptions instead of silently failing:
+
+```python
+from dobot_api import DobotApiMove
+
+move = DobotApiMove("192.168.1.6", 29999)
+
+try:
+    # coordinateMode must be 0 or 1
+    move.MovJ(100, 0, 200, 0, 90, 0, coordinateMode=2)  # Invalid parameter
+except ValueError as e:
+    print(f"Parameter error: {e}")
+    # ValueError: Invalid coordinateMode parameter: 2. Expected 0 (pose) or 1 (joint)
+```
+
+For detailed error handling and breaking changes, see [MIGRATION_V3_TO_V4.md](MIGRATION_V3_TO_V4.md).
+
+### 5. Run Example Programs
 
 ```bash
 # Run basic example

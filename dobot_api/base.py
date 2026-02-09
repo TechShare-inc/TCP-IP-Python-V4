@@ -9,6 +9,7 @@ import numpy as np
 import threading
 from time import sleep
 from typing import Any, Optional
+from loguru import logger
 
 # Port Feedback Structure for V4
 MyType = np.dtype(
@@ -301,9 +302,9 @@ class DobotApi:
             ) from e
 
     def log(self, text: str) -> None:
-        """Log a message to the text widget or print to console."""
+        """Log a message to the text widget or console."""
         if self.text_log:
-            print(text)
+            logger.debug(text)
 
     def send_data(self, string: str) -> None:
         """
@@ -316,7 +317,7 @@ class DobotApi:
             if self.socket_dobot:
                 self.socket_dobot.send(str.encode(string, "utf-8"))
         except Exception as e:
-            print(f"Send error: {e}. Attempting reconnection...")
+            logger.error(f"Send error: {e}. Attempting reconnection...")
             while True:
                 try:
                     self.socket_dobot = self.reConnect(self.ip, self.port)
@@ -338,7 +339,7 @@ class DobotApi:
             if self.socket_dobot:
                 data = self.socket_dobot.recv(1024)
         except Exception as e:
-            print(f"Receive error: {e}. Attempting reconnection...")
+            logger.error(f"Receive error: {e}. Attempting reconnection...")
             self.socket_dobot = self.reConnect(self.ip, self.port)
         finally:
             data_str = str(data, encoding="utf-8") if data else ""
@@ -351,7 +352,7 @@ class DobotApi:
                 self.socket_dobot.shutdown(socket.SHUT_RDWR)
                 self.socket_dobot.close()
             except socket.error as e:
-                print(f"Error while closing socket: {e}")
+                logger.warning(f"Error while closing socket: {e}")
 
     def sendRecvMsg(self, string: str) -> str:
         """
@@ -387,7 +388,7 @@ class DobotApi:
             try:
                 socket_dobot = socket.socket()
                 socket_dobot.connect((ip, port))
-                print(f"Reconnected to {ip}:{port}")
+                logger.info(f"Reconnected to {ip}:{port}")
                 return socket_dobot
             except Exception:
                 sleep(1)

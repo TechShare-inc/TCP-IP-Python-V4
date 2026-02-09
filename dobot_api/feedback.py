@@ -7,6 +7,7 @@ This module provides real-time robot status feedback.
 import numpy as np
 import time
 from .base import DobotApi, MyType
+from loguru import logger
 from typing import Optional
 
 

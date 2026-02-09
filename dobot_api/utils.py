@@ -4,6 +4,7 @@ Utility functions for Dobot API V4
 
 import os
 import json
+from loguru import logger
 
 alarmControllerFile = "files/alarmController.json"
 alarmServoFile = "files/alarmServo.json"

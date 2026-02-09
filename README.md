@@ -6,24 +6,23 @@
 
 ### 主要变化：
 
-1. **模块化包结构**：代码重构为 `dobot_api` Python 包，采用 V3 架构模式
-2. **分离的运动 API**：恢复了 `DobotApiMove` 类（V3 风格），用于运动命令
+1. **模块化包结构**：代码重构为 `dobot_api` Python 包
+2. **单一 API 类**：所有控制和运动命令合并到 `DobotApiDashboard`（原始 V4 单体设计）
 3. **导入路径变更**：
    ```python
    # 新的导入方式
-   from dobot_api import DobotApiDashboard, DobotApiMove, DobotApiFeedBack
+   from dobot_api import DobotApiDashboard, DobotApiFeedBack
    
-   # 创建实例（V3 模式：分离的 dashboard 和 move 实例）
+   # 创建实例（单体模式：所有命令使用一个 dashboard 实例）
    dashboard = DobotApiDashboard(ip, 29999)
-   move = DobotApiMove(ip, 29999)  # 同端口，独立 API
    feed = DobotApiFeedBack(ip, 30004)
    
-   # 控制命令通过 dashboard
+   # 控制命令
    dashboard.EnableRobot()
    dashboard.VelL(50)
    
-   # 运动命令通过 move 实例
-   move.MovJ(300, 0, 200, 0, 90, 0, coordinateMode=0)  # coordinateMode: 0=位姿, 1=关节
+   # 运动命令（同一实例）
+   dashboard.MovJ(300, 0, 200, 0, 90, 0, coordinateMode=0)  # coordinateMode: 0=位姿, 1=关节
    ```
 
 4. **包安装**：现在支持 `pip install -e .` 开发模式安装
@@ -31,7 +30,7 @@
 
 ### 快速迁移：
 - 所有 V4 方法签名和功能保持不变
-- 运动命令现在通过 `move` 实例而非 `dashboard`
+- 运动命令现在直接通过 `dashboard` 调用
 - 示例已更新至新架构，请参考 `examples/` 目录
 
 ---
@@ -92,21 +91,17 @@ pip install numpy
 - 类型提示和改进的错误处理
 
 #### dobot_api/dashboard.py  
-- **DobotApiDashboard**: 机器人控制和配置命令
+- **DobotApiDashboard**: 机器人控制和配置命令（包含运动命令）
   - 使能/下使能：`EnableRobot()`, `DisableRobot()`
   - 速度控制：`VelJ()`, `VelL()`, `AccJ()`, `AccL()`
   - 坐标系：`User()`, `Tool()`, `SetUser()`, `SetTool()`
   - IO 操作：`DO()`, `GetDO()`, `AO()`, `GetAO()`
   - 报警处理：`ClearError()`, `GetError(language)`
-  - V4 新功能：运动学、力控设置、碰撞检测、SafeSkin
-  
-#### dobot_api/move.py
-- **DobotApiMove**: 运动命令（V3 风格的分离类，V4 签名）
-  - 基础运动：`MovJ()`, `MovL()`, `Arc()`, `Circle()`
-  - 伺服控制：`ServoJ()`, `ServoP()`
-  - 相对运动：`RelMovJUser()`, `RelMovLUser()`, `RelJointMovJ()`
-  - V4 新功能：`RunTo()`, `MovS()`, 传送带跟踪、焊接、力控运动
+  - **运动命令**：`MovJ()`, `MovL()`, `Arc()`, `Circle()`, `ServoJ()`, `ServoP()`
+  - **相对运动**：`RelMovJUser()`, `RelMovLUser()`, `RelJointMovJ()`
+  - V4 新功能：`RunTo()`, `MovS()`, 传送带跟踪、焕接、力控运动
   - **注意**：所有运动命令需要 `coordinateMode` 参数（0=位姿，1=关节）
+  
 
 #### dobot_api/feedback.py
 - **DobotApiFeedBack**: 实时状态反馈
@@ -120,7 +115,7 @@ pip install numpy
 
 #### examples/basic_demo.py
 - 基础机器人控制示例（更新至 V4.0.0）
-- 演示分离的 dashboard 和 move 实例
+- 演示单一 dashboard 实例的使用
 - 包含运动循环和反馈监控
 
 #### examples/error_handling.py  
@@ -236,7 +231,58 @@ move.close()
 feed.close()
 ```
 
-### 4. 运行示例程序
+### 4. 日志配置
+
+V4.0.0 使用 [loguru](https://github.com/Delgan/loguru) 进行结构化日志记录。
+
+**默认配置**：
+- 日志级别：INFO
+- 输出位置：stderr（控制台）
+- 包含彩色输出、时间戳和函数位置
+
+**自定义日志级别**：
+
+```python
+import os
+
+# 方法 1：使用环境变量（在导入 dobot_api 之前）
+os.environ["DOBOT_LOG_LEVEL"] = "DEBUG"  # 选项: DEBUG, INFO, WARNING, ERROR
+from dobot_api import DobotApiDashboard
+
+# 方法 2：直接配置 logger
+from dobot_api import DobotApiDashboard, logger
+
+logger.remove()  # 移除默认处理器
+logger.add(sys.stderr, level="WARNING")  # 添加自定义处理器
+logger.add("robot_logs.log", rotation="10 MB")  # 日志记录到文件
+```
+
+**日志级别说明**：
+- **ERROR**: 连接失败、参数验证错误
+- **WARNING**: Socket 清理问题、重连尝试
+- **INFO**: 成功连接、重连信息（默认）
+- **DEBUG**: 详细操作信息
+
+**参数验证错误处理**：
+
+V4.0.0 改进了错误处理，无效参数现在会抛出 `ValueError` 异常而非静默失败：
+
+```python
+from dobot_api import DobotApiMove
+
+move = DobotApiMove("192.168.1.6", 29999)
+
+try:
+    # coordinateMode 只能是 0 或 1
+    move.MovJ(100, 0, 200, 0, 90, 0, coordinateMode=2)  # 无效参数
+except ValueError as e:
+    print(f"参数错误: {e}")
+    # ValueError: Invalid coordinateMode parameter: 2. Expected 0 (pose) or 1 (joint)
+```
+
+详细的错误处理和破坏性变更请参考 [MIGRATION_V3_TO_V4.md](MIGRATION_V3_TO_V4.md)。
+
+### 5. 运行示例程序
 
 ```bash
 # 运行基础示例

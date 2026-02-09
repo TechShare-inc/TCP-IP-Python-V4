@@ -1,6 +1,6 @@
-# Updated for V4.0.0: Movement commands now use separate DobotApiMove class
+# Updated for V4.0.0: Monolithic architecture with all commands in DobotApiDashboard
 
-from dobot_api import DobotApiFeedBack, DobotApiDashboard, DobotApiMove
+from dobot_api import DobotApiFeedBack, DobotApiDashboard
 import threading
 from time import sleep
 import re
@@ -12,7 +12,6 @@ class DobotDemo:
         self.dashboardPort = 29999
         self.feedPortFour = 30004
         self.dashboard = None
-        self.move = None  # V4: Separate movement API
         self.feedInfo = []
         self.__globalLockValue = threading.Lock()
 
@@ -29,9 +28,6 @@ class DobotDemo:
 
     def start(self):
         self.dashboard = DobotApiDashboard(self.ip, self.dashboardPort)
-        self.move = DobotApiMove(
-            self.ip, self.dashboardPort
-        )  # V4: Separate movement API
         self.feedFour = DobotApiFeedBack(self.ip, self.feedPortFour)
         if self.parseResultId(self.dashboard.EnableRobot())[0] != 0:
             print("Enable failed: Check if port 29999 is occupied")
@@ -85,9 +81,9 @@ class DobotDemo:
                         """
 
     def RunPoint(self, point_list):
-        recvmovemess = self.move.MovJ(
+        recvmovemess = self.dashboard.MovJ(
             *point_list, coordinateMode=0
-        )  # V4: Use separate move instance
+        )  # V4: All commands in dashboard
         print("MovJ:", recvmovemess)
         print(self.parseResultId(recvmovemess))
         currentCommandID = self.parseResultId(recvmovemess)[1]
@@ -112,5 +108,4 @@ class DobotDemo:
 
     def __del__(self):
         del self.dashboard
-        del self.move
         del self.feedFour

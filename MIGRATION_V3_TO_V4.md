@@ -26,15 +26,22 @@ dashboard = DobotApiDashboard(ip, 29999)  # Control commands
 move = DobotApiMove(ip, 29999)            # Movement commands (separate class)
 ```
 
-**V4 (Refactored):** Maintains V3's separation pattern
+**V4 (Monolithic):** Single unified API class
 ```python
-from dobot_api import DobotApiDashboard, DobotApiMove
+from dobot_api import DobotApiDashboard
 
-dashboard = DobotApiDashboard(ip, 29999)  # Control commands
-move = DobotApiMove(ip, 29999)            # Movement commands (restored in V4 refactor)
+dashboard = DobotApiDashboard(ip, 29999)  # All commands in one class
+# Movement commands now called directly on dashboard:
+dashboard.MovJ(300, 0, 200, 0, 90, 0, coordinateMode=0)
 ```
 
-**Note:** The original V4 monolithic structure combined everything into `DobotApiDashboard`. This refactoring restores V3's architectural pattern while keeping all V4 method signatures.
+**Note:** V4 simplifies the architecture by combining control and movement commands into a single `DobotApiDashboard` class. This is the original V4 monolithic design (commit 65a19c9e), providing a simpler, more straightforward API surface.
+
+**Key Benefits:**
+- Single connection instance for all operations
+- Simplified initialization (no need to create separate move instance)
+- Consistent interface for all robot commands
+- Reduced complexity in application code
 
 ---
 
@@ -157,7 +164,7 @@ GetPose(user=-1, tool=-1)  # Optional coordinate system selection
 MovJ(x, y, z, rx, ry, rz, *dynParams)
 # Dynamic params as strings: "SpeedL=80", "AccL=50"
 
-# V4 (DobotApiMove class)
+# V4 (DobotApiDashboard class - monolithic)
 MovJ(a1, b1, c1, d1, e1, f1, coordinateMode, 
      user=-1, tool=-1, a=-1, v=-1, cp=-1)
 ```
@@ -172,10 +179,10 @@ MovJ(a1, b1, c1, d1, e1, f1, coordinateMode,
 **Usage:**
 ```python
 # Cartesian mode
-move.MovJ(300, 0, 200, 0, 90, 0, coordinateMode=0)
+dashboard.MovJ(300, 0, 200, 0, 90, 0, coordinateMode=0)
 
 # Joint mode
-move.MovJ(0, 0, 90, 0, 90, 0, coordinateMode=1)
+dashboard.MovJ(0, 0, 90, 0, 90, 0, coordinateMode=1)
 ```
 
 ---
@@ -323,17 +330,17 @@ move.CnvMovC(...)                        # Track on conveyor (arc)
 
 ### Welding Features (V4 Only)
 ```python
-move.WeaveStart()                        # Start weaving
-move.WeaveParams(...)                    # Configure weave pattern
-move.ArcTrackStart()                     # Start arc tracking
-move.WeldArcSpeed(speed)                 # Set welding speed
+dashboard.WeaveStart()                   # Start weaving
+dashboard.WeaveParams(...)               # Configure weave pattern
+dashboard.ArcTrackStart()                # Start arc tracking
+dashboard.WeldArcSpeed(speed)            # Set welding speed
 ```
 
 ### Advanced Motion
 ```python
-move.RunTo(pose, moveType, ...)          # Single motion command
-move.MovS(file, ...)                     # Spline motion
-move.CheckMovJ(...)                      # Validate motion before execution
+dashboard.RunTo(pose, moveType, ...)     # Single motion command
+dashboard.MovS(file, ...)                # Spline motion
+dashboard.CheckMovJ(...)                 # Validate motion before execution
 ```
 
 ### Tool Configuration
@@ -423,14 +430,14 @@ move.RelMovJ(10, 0, 0, 0, 0, 0)
 **V4 Code:**
 ```python
 # Cartesian movement (coordinateMode=0)
-move.MovJ(300, 0, 200, 0, 90, 0, coordinateMode=0, user=0, tool=0)
+dashboard.MovJ(300, 0, 200, 0, 90, 0, coordinateMode=0, user=0, tool=0)
 
 # Joint movement (coordinateMode=1)
-move.MovJ(0, 0, 90, 0, 90, 0, coordinateMode=1)
+dashboard.MovJ(0, 0, 90, 0, 90, 0, coordinateMode=1)
 
 # Relative movement (use specific methods)
-move.RelJointMovJ(10, 0, 0, 0, 0, 0)  # Joint space
-move.RelMovJUser(10, 0, 0, 0, 0, 0)   # User frame
+dashboard.RelJointMovJ(10, 0, 0, 0, 0, 0)  # Joint space
+dashboard.RelMovJUser(10, 0, 0, 0, 0, 0)   # User frame
 ```
 
 ---
@@ -480,7 +487,7 @@ move.ServoJ(0, 0, 90, 0, 90, 0, lookahead_time=50, gain=500)
 
 **V4 Code:**
 ```python
-move.ServoJ(0, 0, 90, 0, 90, 0, aheadtime=50.0, gain=500.0)  # Parameter renamed
+dashboard.ServoJ(0, 0, 90, 0, 90, 0, aheadtime=50.0, gain=500.0)  # Parameter renamed
 ```
 
 ---
@@ -489,7 +496,7 @@ move.ServoJ(0, 0, 90, 0, 90, 0, aheadtime=50.0, gain=500.0)  # Parameter renamed
 
 | Category | Breaking Change |
 |----------|----------------|
-| **Architecture** | Monolithic class split → DobotApiMove restored (V4 refactor) |
+| **Architecture** | Monolithic class structure (all commands in DobotApiDashboard) |
 | **Ports** | 30003 removed → use 30004/30005 |
 | **Feedback Fields** | snake_case → PascalCase |
 | **Movement** | Added required `coordinateMode` parameter (0=pose, 1=joint) |
@@ -502,6 +509,75 @@ move.ServoJ(0, 0, 90, 0, 90, 0, aheadtime=50.0, gain=500.0)  # Parameter renamed
 | **Relative Motion** | `RelMovJ/Rel MovL` → `RelJointMovJ/RelMovJUser/RelMovLUser` |
 | **Stop Motion** | `ResetRobot()` for stop → `Stop()` |
 | **Circle** | `Circle3()` → `Circle()` |
+| **Error Handling** | Parameter validation now raises `ValueError` instead of returning empty string |
+| **Logging** | Print statements replaced with structured logging (loguru) |
+
+---
+
+## Logging and Error Handling
+
+### Structured Logging with Loguru
+
+**V4** now uses [loguru](https://github.com/Delgan/loguru) for structured logging instead of print statements.
+
+**Benefits:**
+- Structured, timestamped log messages
+- Configurable log levels (DEBUG, INFO, WARNING, ERROR)
+- Colored output for better readability
+- Easy filtering and formatting
+
+**Configuration:**
+
+```python
+from dobot_api import DobotApiDashboard, logger
+
+# Default log level is INFO
+dashboard = DobotApiDashboard("192.168.1.6", 29999)
+
+# Configure log level via environment variable
+# Set before importing dobot_api:
+import os
+os.environ["DOBOT_LOG_LEVEL"] = "DEBUG"  # Options: DEBUG, INFO, WARNING, ERROR
+
+# Or customize logger directly:
+logger.remove()  # Remove default handler
+logger.add(sys.stderr, level="WARNING")  # Add custom handler
+logger.add("robot_logs.log", rotation="10 MB")  # Log to file
+```
+
+**Log Levels:**
+- **ERROR**: Connection failures, parameter validation errors
+- **WARNING**: Socket cleanup issues, reconnection attempts
+- **INFO**: Successful connections, reconnections (default)
+- **DEBUG**: Detailed operation information
+
+### Parameter Validation Changes
+
+**BREAKING CHANGE:** Invalid parameters now raise `ValueError` exceptions instead of silently failing.
+
+**Previous behavior (silent failure):**
+```python
+# Would print "coordinateMode param is wrong" and return empty string
+result = dashboard.MovJ(100, 0, 200, 0, 90, 0, coordinateMode=2)  # Invalid
+# result == ""
+```
+
+**New behavior (raises exception):**
+```python
+try:
+    result = dashboard.MovJ(100, 0, 200, 0, 90, 0, coordinateMode=2)  # Invalid
+except ValueError as e:
+    # ValueError: Invalid coordinateMode parameter: 2. Expected 0 (pose) or 1 (joint)
+    print(f"Error: {e}")
+```
+
+**Affected methods:**
+- `MovJ`, `MovL`, `MovLIO`, `MovJIO` - invalid `coordinateMode`
+- `Arc`, `Circle`, `ArcIO` - invalid `coordinateMode`
+- `MovS` - invalid parameters (must provide either `file` or both `points` and `coordinateMode`)
+- `RunTo` - invalid `moveType`
+
+**Migration action:** Add try-except blocks around movement commands if your code previously relied on empty string returns.
 
 ---
 
@@ -537,6 +613,8 @@ move.ServoJ(0, 0, 90, 0, 90, 0, aheadtime=50.0, gain=500.0)  # Parameter renamed
 - [ ] Change `lookahead_time` to `aheadtime` in ServoJ calls
 - [ ] Replace `ResetRobot()` with `Stop()` for stopping motion
 - [ ] Update relative motion methods to new variants
+- [ ] **Add try-except blocks for movement commands** (parameter validation now raises `ValueError`)
+- [ ] **Configure logging level** if needed (default INFO, use `DOBOT_LOG_LEVEL` env var)
 - [ ] Test all force control, kinematics, and V4-specific features if used
 
 ---
