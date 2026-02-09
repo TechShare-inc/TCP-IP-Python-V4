@@ -1,461 +1,555 @@
-# TCP-IP-Python-V4 项目说明文档
+# Dobot TCP-IP Python API V4
 
-## 🆕 V4.1.0 更新 / NEW FEATURES
+**Modern Python API for Dobot CR-series robots with comprehensive i18n support**
 
-**版本 4.1.0 引入了国际化 (i18n) 支持！**
+[![Python Version](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
+[![Version](https://img.shields.io/badge/version-4.1.0-green.svg)](https://github.com/TechShare-inc/TCP-IP-Python-V4)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-### 新增功能：
+> **Note**: This repository is a clone from [Dobot-Arm/TCP-IP-Python-V4](https://github.com/Dobot-Arm/TCP-IP-Python-V4) and is modified and maintained by TechShare Corp.
 
-1. **AlarmI18n 类**：专业的多语言报警信息管理系统
-   - 支持 10 种语言：英语、中文（简/繁）、日语、德语、韩语、越南语、西班牙语、俄语、法语
-   - 自动语言代码标准化（例如：`zh_cn` → `zh_CN`，`kr` → `ko`）
-   - 本地翻译，无需 HTTP 请求
+## Features
 
-2. **YAML 格式翻译文件**：
-   - 将 22,000+ 行硬编码翻译文件缩减至 ~2,000 行 YAML
-   - 翻译文件位于 `dobot_api/locales/` 目录
-   - 易于维护和更新
+- 🌐 **Multi-language Support**: 10 languages for alarm messages (English, Chinese, Japanese, German, Korean, Vietnamese, Spanish, Russian, French)
+- 🔌 **Modern Architecture**: Clean, modular package design with full type hints
+- 🤖 **Complete Robot Control**: Motion, I/O, error handling, and real-time feedback
+- 📦 **Easy Installation**: Standard pip package with minimal dependencies
+- 🔍 **Advanced Error Monitoring**: HTTP-based alarm retrieval with local i18n translations
+- 📝 **Comprehensive Logging**: Structured logging with loguru
 
-3. **增强的报警监控**：
-   - `RobotErrorMonitor` 现在使用本地 i18n 翻译
-   - 减少网络请求（不再需要 HTTP POST 设置语言）
-   - 支持离线使用
+---
 
-### 快速使用：
+## Quick Start
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/TechShare-inc/TCP-IP-Python-V4.git
+cd TCP-IP-Python-V4
+
+# Install in development mode
+pip install -e .
+```
+
+### Basic Example
+
+```python
+from dobot_api import DobotApiDashboard, DobotApiFeedBack
+
+# Connect to robot
+dashboard = DobotApiDashboard("192.168.1.6", 29999)
+feed = DobotApiFeedBack("192.168.1.6", 30004)
+
+# Enable and configure robot
+dashboard.EnableRobot()
+dashboard.ClearError()
+dashboard.VelL(50)  # Set linear velocity to 50%
+
+# Move to position (Cartesian coordinates)
+dashboard.MovJ(300, 0, 200, 0, 90, 0, coordinateMode=0)
+
+# Read feedback
+data = feed.feedBackData()
+if data:
+    print(f"Joint positions: {data['QActual']}")
+    print(f"Robot mode: {data['RobotMode']}")
+
+# Cleanup
+dashboard.DisableRobot()
+dashboard.close()
+feed.close()
+```
+
+---
+
+## Core Components
+
+### 1. DobotApiDashboard
+Main control interface for robot operations.
+
+**Connection & Control**
+```python
+dashboard = DobotApiDashboard("192.168.1.6", 29999)
+dashboard.EnableRobot()        # Enable robot
+dashboard.DisableRobot()       # Disable robot
+dashboard.ClearError()         # Clear error messages
+dashboard.ResetRobot()         # Reset robot state
+```
+
+**Motion Commands**
+```python
+# Linear/Joint movements
+dashboard.MovJ(x, y, z, rx, ry, rz, coordinateMode=0)  # Joint space
+dashboard.MovL(x, y, z, rx, ry, rz, coordinateMode=0)  # Linear space
+dashboard.Arc(x1, y1, z1, rx1, ry1, rz1, x2, y2, z2, rx2, ry2, rz2)
+
+# Relative movements
+dashboard.RelMovJUser(offsetX, offsetY, offsetZ, offsetRx, offsetRy, offsetRz)
+dashboard.RelMovLUser(offsetX, offsetY, offsetZ, offsetRx, offsetRy, offsetRz)
+
+# Servo control
+dashboard.ServoJ(j1, j2, j3, j4, j5, j6)
+dashboard.ServoP(x, y, z, rx, ry, rz)
+```
+
+**Speed & Acceleration**
+```python
+dashboard.VelL(velocity)       # Linear velocity (0-100%)
+dashboard.VelJ(velocity)       # Joint velocity (0-100%)
+dashboard.AccL(acceleration)   # Linear acceleration (0-100%)
+dashboard.AccJ(acceleration)   # Joint acceleration (0-100%)
+```
+
+**I/O Operations**
+```python
+dashboard.DO(index, status)    # Digital output
+dashboard.GetDO(index)         # Read digital output
+dashboard.AO(index, value)     # Analog output
+dashboard.GetAO(index)         # Read analog output
+```
+
+**Coordinate Systems**
+```python
+dashboard.User(index)          # Switch user coordinate system
+dashboard.Tool(index)          # Switch tool coordinate system
+dashboard.SetUser(x, y, z, rx, ry, rz)  # Define user coordinate
+dashboard.SetTool(x, y, z, rx, ry, rz)  # Define tool coordinate
+```
+
+### 2. DobotApiFeedBack
+Real-time robot status feedback. The robot provides **three feedback ports**:
+
+- **Port 30004**: Real-time feedback every **8ms** (highest frequency, recommended for real-time control)
+- **Port 30005**: Feedback every **200ms** (lower frequency, suitable for monitoring)
+- **Port 30006**: Configurable feedback port, default **50ms** (adjustable rate)
+
+```python
+# Use port 30004 for real-time control (8ms updates)
+feed = DobotApiFeedBack("192.168.1.6", 30004)
+
+# Or use port 30005 for monitoring (200ms updates)
+# feed = DobotApiFeedBack("192.168.1.6", 30005)
+
+# Or use port 30006 for configurable rate (default 50ms)
+# feed = DobotApiFeedBack("192.168.1.6", 30006)
+
+data = feed.feedBackData()
+if data:
+    # Joint positions (radians)
+    joint_positions = data['QActual']
+    
+    # Cartesian position
+    tool_position = data['ToolVectorActual']
+    
+    # Robot state
+    robot_mode = data['RobotMode']
+    
+    # I/O states
+    digital_inputs = data['DigitalInputs']
+    digital_outputs = data['DigitalOutputs']
+    
+    # Safety information
+    safety_status = data['SafetyStatusBits']
+```
+
+**Data Packet Format**: Each feedback returns a 1440-byte data packet containing comprehensive robot state information.
+
+### 3. RobotErrorMonitor
+HTTP-based error monitoring with multi-language support.
+
+```python
+from dobot_api import RobotErrorMonitor
+
+monitor = RobotErrorMonitor("192.168.1.6", dashboard_port=29999)
+
+# Check for errors in specific language
+has_errors = monitor.check_errors(language="en")
+
+# Get raw error data
+error_info = monitor.get_error_info(language="zh_CN")
+if error_info and error_info.get("errMsg"):
+    for error in error_info["errMsg"]:
+        print(f"ID: {error['id']}")
+        print(f"Description: {error['description']}")
+        print(f"Solution: {error['solution']}")
+
+# Save error log to file
+monitor.save_error_log(filename="robot_errors.log")
+
+# Continuous monitoring
+monitor.monitor_errors(interval=10, language="en")  # Check every 10 seconds
+```
+
+**GetError Interface** (Dashboard method)
+```python
+# Get error information directly from dashboard
+error_info = dashboard.GetError(language="en")
+
+# Supported languages: zh_cn, zh_hant, en, ja, de, vi, es, fr, ko, ru
+```
+
+**Error Response Format**
+```json
+{
+    "errMsg": [
+        {
+            "id": 1537,
+            "level": 1,
+            "description": "E-Stop button pressed",
+            "solution": "Release the E-Stop button and clear the error",
+            "mode": "Safety controller error",
+            "date": "2025-01-09",
+            "time": "10:30:15"
+        }
+    ]
+}
+```
+
+### 4. AlarmI18n
+Local internationalization for alarm messages (NEW in v4.1.0).
 
 ```python
 from dobot_api import AlarmI18n
 
-# 初始化（支持任意语言）
-i18n = AlarmI18n('zh_CN')  # 或 'en', 'ja', 'de', 等
+# Initialize with preferred language
+i18n = AlarmI18n(default_language="en")
 
-# 获取报警信息
+# Get controller alarm
+alarm = i18n.get_controller_alarm(16)
+print(f"Description: {alarm['description']}")
+print(f"Solution: {alarm['solution']}")
+
+# Get servo alarm
+alarm = i18n.get_servo_alarm(8752)
+print(f"Description: {alarm['description']}")
+
+# Auto-detect alarm type by ID
+alarm = i18n.get_alarm(16)  # Automatically determines if controller/servo
+
+# Switch language dynamically
+i18n.set_language("zh_CN")
 alarm = i18n.get_controller_alarm(16)
 print(f"描述: {alarm['description']}")
-print(f"解决方案: {alarm['solution']}")
 
-# 切换语言
-i18n.set_language('en')
-alarm_en = i18n.get_controller_alarm(16)
-print(f"Description: {alarm_en['description']}")
+# Format alarm for display
+formatted = i18n.format_alarm(16)
+print(formatted)
 
-# 支持的语言
-languages = AlarmI18n.get_supported_languages()
-# ['en', 'zh_CN', 'zh_Hant', 'ja', 'de', 'ko', 'vi', 'es', 'ru', 'fr']
+# Enrich error data with translations
+error_data = {"id": 16, "type": "controller"}
+enriched = i18n.enrich_alarm(error_data)
+print(enriched['description'])
 ```
 
-### 兼容性：
-
-- ✅ **完全向后兼容**：旧的 `alarmAlarmJsonFile()` 仍然可用（已弃用）
-- 📝 **迁移指南**：参见 [MIGRATION_V4.0_TO_V4.1.md](MIGRATION_V4.0_TO_V4.1.md) 了解详细信息
-- 🕒 **弃用时间表**：
-  - v4.1.0: 添加弃用警告
-  - v5.0.0: 移除旧的翻译文件
+**Supported Languages**
+- `en` - English
+- `zh_CN` - Simplified Chinese (简体中文)
+- `zh_Hant` - Traditional Chinese (繁體中文)
+- `ja` - Japanese (日本語)
+- `de` - German (Deutsch)
+- `ko` - Korean (한국어)
+- `vi` - Vietnamese (Tiếng Việt)
+- `es` - Spanish (Español)
+- `ru` - Russian (Русский)
+- `fr` - French (Français)
 
 ---
 
-## ⚠️ V4.0.0 重大更新 / BREAKING CHANGES
+## Configuration
 
-**版本 4.0.0 引入了架构重构，包含破坏性变更！**
+### Logging
 
-### 主要变化：
+The API uses [loguru](https://github.com/Delgan/loguru) for structured logging.
 
-1. **模块化包结构**：代码重构为 `dobot_api` Python 包
-2. **单一 API 类**：所有控制和运动命令合并到 `DobotApiDashboard`（原始 V4 单体设计）
-3. **导入路径变更**：
-   ```python
-   # 新的导入方式
-   from dobot_api import DobotApiDashboard, DobotApiFeedBack
-   
-   # 创建实例（单体模式：所有命令使用一个 dashboard 实例）
-   dashboard = DobotApiDashboard(ip, 29999)
-   feed = DobotApiFeedBack(ip, 30004)
-   
-   # 控制命令
-   dashboard.EnableRobot()
-   dashboard.VelL(50)
-   
-   # 运动命令（同一实例）
-   dashboard.MovJ(300, 0, 200, 0, 90, 0, coordinateMode=0)  # coordinateMode: 0=位姿, 1=关节
-   ```
-
-4. **包安装**：现在支持 `pip install -e .` 开发模式安装
-5. **详细的迁移指南**：查看 [MIGRATION_V3_TO_V4.md](MIGRATION_V3_TO_V4.md) 了解 V3 与 V4 API 差异
-
-### 快速迁移：
-- 所有 V4 方法签名和功能保持不变
-- 运动命令现在直接通过 `dashboard` 调用
-- 示例已更新至新架构，请参考 `examples/` 目录
-
----
-
-## 项目概述
-
-本项目是越疆机器人TCP-IP-CR-Python-V4二次开发API程序，用于通过TCP/IP协议控制越疆机器人。项目提供了完整的机器人控制接口，包括运动控制、状态监控、报警处理等功能。
-
-**V4.0.0 采用模块化架构**，将代码组织为专业的 Python 包，提高可维护性和代码清晰度。
-
-## 环境要求
-
-### Python版本
-
-- Python 3.9 或更高版本
-
-### 安装方法
-
-#### 开发模式（推荐）
-
-```bash
-# 克隆项目
-git clone https://github.com/Dobot-Arm/TCP-IP-Python-V4.git
-cd TCP-IP-Python-V4
-
-# 安装为可编辑包（开发模式）
-pip install -e .
-```
-
-#### 手动安装依赖
-
-```bash
-# 仅安装 numpy 依赖
-pip install numpy
-```
-
-### 必需的库
-
-- `numpy>=1.20.0` - 数值计算和数据结构
-- Python 内置库：`socket`, `threading`, `time`, `json`, `re`
-- 可选：`tkinter` (通常 Python 自带，用于 GUI 示例)
-
-### 网络配置要求
-
-- 本机IP地址需设置为192.168.X.X网段
-- 机器人需切换至TCP/IP模式
-- 确保29999和30004端口未被占用
-
-## 主要程序文件及功能
-
-### 1. dobot_api/ 包（核心 API）
-
-**V4.0.0 模块化架构**：代码重构为专业的 Python 包
-
-#### dobot_api/base.py
-- **DobotApi**: 基础 TCP 通信类
-- **MyType**: V4 反馈数据结构定义（PascalCase 字段）
-- 类型提示和改进的错误处理
-
-#### dobot_api/dashboard.py  
-- **DobotApiDashboard**: 机器人控制和配置命令（包含运动命令）
-  - 使能/下使能：`EnableRobot()`, `DisableRobot()`
-  - 速度控制：`VelJ()`, `VelL()`, `AccJ()`, `AccL()`
-  - 坐标系：`User()`, `Tool()`, `SetUser()`, `SetTool()`
-  - IO 操作：`DO()`, `GetDO()`, `AO()`, `GetAO()`
-  - 报警处理：`ClearError()`, `GetError(language)`
-  - **运动命令**：`MovJ()`, `MovL()`, `Arc()`, `Circle()`, `ServoJ()`, `ServoP()`
-  - **相对运动**：`RelMovJUser()`, `RelMovLUser()`, `RelJointMovJ()`
-  - V4 新功能：`RunTo()`, `MovS()`, 传送带跟踪、焕接、力控运动
-  - **注意**：所有运动命令需要 `coordinateMode` 参数（0=位姿，1=关节）
-  
-
-#### dobot_api/feedback.py
-- **DobotApiFeedBack**: 实时状态反馈
-  - 获取机器人状态（1440 字节数据包）
-  - V4 字段使用 PascalCase：`QActual`, `DigitalInputs`, `RobotMode` 等
-
-#### dobot_api/i18n_manager.py （V4.1.0 新增）
-- **AlarmI18n**: 国际化报警信息管理器
-  - 支持 10 种语言的报警翻译
-  - 方法：
-    - `set_language(language)`: 切换语言
-    - `get_controller_alarm(id)`: 获取控制器报警
-    - `get_servo_alarm(id)`: 获取伺服报警
-    - `get_alarm(id)`: 自动检测报警类型
-    - `format_alarm(id)`: 格式化输出报警信息
-    - `enrich_alarm_data(robot_data)`: 为机器人数据添加翻译
-    - `get_supported_languages()`: 获取支持的语言列表
-  - 使用 YAML 翻译文件（`dobot_api/locales/alarms.*.yml`）
-  - 自动语言代码标准化
-
-#### dobot_api/error_monitor.py （V4.1.0 更新）
-- **RobotErrorMonitor**: HTTP 报警监控（已集成 i18n）
-  - 通过 HTTP 获取机器人报警信息
-  - 自动使用 AlarmI18n 添加本地翻译
-  - 减少网络请求（不再需要 POST 设置语言）
-  - 支持离线翻译
-
-#### dobot_api/utils.py
-- 报警文件读取：`alarmAlarmJsonFile()` （v4.1.0 已弃用，请使用 AlarmI18n）
-
-### 2. examples/ 目录
-
-#### examples/basic_demo.py
-- 基础机器人控制示例（更新至 V4.0.0）
-- 演示单一 dashboard 实例的使用
-- 包含运动循环和反馈监控
-
-#### examples/error_handling.py  
-- GetError 接口使用示例
-- 多语言报警信息获取
-- 报警监控类实现
-
-#### examples/i18n_demo.py （V4.1.0 新增）
-- AlarmI18n 类使用示例
-- 演示多语言切换
-- 自动类型检测
-- 报警信息格式化
-- 数据丰富化（添加翻译）
-
-#### examples/main.py
-- 项目主入口示例
-
-#### examples/ui_demo/
-- **main_UI.py**: GUI 主程序
-- **ui.py**: 图形用户界面（更新至 V4.0.0）
-  - 可视化机器人控制
-  - 实时状态显示
-  - 支持拖拽示教和点动
-
-### 3. 文档文件
-
-#### MIGRATION_V3_TO_V4.md（新增）
-- **V3 与 V4 API 详细对比**
-- 方法签名变更说明
-- 迁移检查清单
-- 代码示例对照
-
-#### MIGRATION_V4.0_TO_V4.1.md（V4.1.0 新增）
-- **V4.0 到 V4.1 迁移指南**
-- i18n 系统使用说明
-- AlarmI18n API 参考
-- 代码迁移示例
-
-#### GetError_README.md / GetError_README_EN.md
-- GetError 接口详细说明（中/英文）
-
-## 项目目录结构
-
-```
-TCP-IP-Python-V4/
-├── dobot_api/                 # 核心 API 包（V4.0.0 新架构）
-│   ├── __init__.py           # 包导出
-│   ├── base.py               # 基础通信类
-│   ├── dashboard.py          # 控制命令
-│   ├── move.py               # 运动命令（V3 风格分离）
-│   ├── feedback.py           # 状态反馈
-│   ├── error_monitor.py      # HTTP 报警监控（V4.1.0 已集成 i18n）
-│   ├── i18n_manager.py       # 国际化管理器（V4.1.0 新增）
-│   ├── utils.py              # 工具函数
-│   ├── locales/              # i18n 翻译文件（V4.1.0 新增）
-│   │   ├── alarms.en.yml     # 英语
-│   │   ├── alarms.zh_CN.yml  # 简体中文
-│   │   ├── alarms.zh_Hant.yml # 繁体中文
-│   │   ├── alarms.ja.yml     # 日语
-│   │   ├── alarms.de.yml     # 德语
-│   │   ├── alarms.ko.yml     # 韩语
-│   │   ├── alarms.vi.yml     # 越南语
-│   │   ├── alarms.es.yml     # 西班牙语
-│   │   ├── alarms.ru.yml     # 俄语
-│   │   └── alarms.fr.yml     # 法语
-│   └── files/                # 报警配置文件（已弃用）
-│       ├── alarmController.json
-│       ├── alarmController.py （v4.1.0 已弃用）
-│       ├── alarmServo.json
-│       └── alarmServo.py     （v4.1.0 已弃用）
-├── examples/                  # 示例程序（V4.0.0 更新）
-│   ├── basic_demo.py         # 基础示例
-│   ├── error_handling.py     # 报警处理示例
-│   ├── i18n_demo.py          # i18n 使用示例（V4.1.0 新增）
-│   ├── main.py               # 主程序入口
-│   └── ui_demo/              # GUI 示例
-│       ├── main_UI.py
-│       └── ui.py
-├── pyproject.toml            # 包配置文件（新增）
-├── MIGRATION_V3_TO_V4.md     # V3→V4 迁移指南
-├── MIGRATION_V4.0_TO_V4.1.md # V4.0→V4.1 迁移指南（V4.1.0 新增）
-├── README.md                 # 中文说明文档
-├── README-EN.md              # 英文说明文档
-├── GetError_README.md        # GetError 中文文档
-├── GetError_README_EN.md     # GetError 英文文档
-├── LICENSE
-└── picture/                  # 图片资源
-```
-
-## 快速开始
-
-### 1. 环境准备
-
-```bash
-# 克隆项目
-git clone https://github.com/Dobot-Arm/TCP-IP-Python-V4.git
-cd TCP-IP-Python-V4
-
-# 安装包（开发模式）
-pip install -e .
-```
-
-### 2. 网络配置
-
-- 设置本机IP为192.168.X.X网段
-- 确保机器人处于TCP/IP模式
-- 确保 29999 和 30004/30005 端口未被占用
-
-### 3. 基础使用示例
-
-```python
-from dobot_api import DobotApiDashboard, DobotApiMove, DobotApiFeedBack
-
-# 连接机器人（V4.0.0 架构：分离的 dashboard 和 move）
-ip = "192.168.1.6"
-dashboard = DobotApiDashboard(ip, 29999)
-move = DobotApiMove(ip, 29999)        # 同端口，独立运动 API
-feed = DobotApiFeedBack(ip, 30004)
-
-# 使能机器人
-dashboard.EnableRobot()
-dashboard.ClearError()
-
-# 设置速度
-dashboard.VelL(50)  # V4 使用 VelL（V3 是 SpeedL）
-
-# 运动命令（通过 move 实例）
-# coordinateMode: 0=笛卡尔位姿, 1=关节角度
-move.MovJ(300, 0, 200, 0, 90, 0, coordinateMode=0)
-
-# 读取反馈（V4 使用 PascalCase 字段）
-data = feed.feedBackData()
-if data is not None:
-    joint_pos = data['QActual'][0]  # 关节位置
-    robot_mode = data['RobotMode'][0]  # 机器人模式
-    
-# 清理
-dashboard.DisableRobot()
-dashboard.close()
-move.close()
-feed.close()
-```
-
-### 4. 日志配置
-
-V4.0.0 使用 [loguru](https://github.com/Delgan/loguru) 进行结构化日志记录。
-
-**默认配置**：
-- 日志级别：INFO
-- 输出位置：stderr（控制台）
-- 包含彩色输出、时间戳和函数位置
-
-**自定义日志级别**：
-
+**Configure Log Level**
 ```python
 import os
 
-# 方法 1：使用环境变量（在导入 dobot_api 之前）
-os.environ["DOBOT_LOG_LEVEL"] = "DEBUG"  # 选项: DEBUG, INFO, WARNING, ERROR
+# Method 1: Environment variable (before import)
+os.environ["DOBOT_LOG_LEVEL"] = "DEBUG"  # DEBUG, INFO, WARNING, ERROR
 from dobot_api import DobotApiDashboard
 
-# 方法 2：直接配置 logger
-from dobot_api import DobotApiDashboard, logger
+# Method 2: Configure logger directly
+from dobot_api import logger
+import sys
 
-logger.remove()  # 移除默认处理器
-logger.add(sys.stderr, level="WARNING")  # 添加自定义处理器
-logger.add("robot_logs.log", rotation="10 MB")  # 日志记录到文件
+logger.remove()  # Remove default handler
+logger.add(sys.stderr, level="WARNING")
+logger.add("robot.log", rotation="10 MB")  # Log to file with rotation
 ```
 
-**日志级别说明**：
-- **ERROR**: 连接失败、参数验证错误
-- **WARNING**: Socket 清理问题、重连尝试
-- **INFO**: 成功连接、重连信息（默认）
-- **DEBUG**: 详细操作信息
+**Log Levels**
+- `ERROR`: Connection failures, critical errors
+- `WARNING`: Connection issues, retries
+- `INFO`: Successful operations (default)
+- `DEBUG`: Detailed operation data
 
-**参数验证错误处理**：
+### Error Handling
 
-V4.0.0 改进了错误处理，无效参数现在会抛出 `ValueError` 异常而非静默失败：
+The API raises `ValueError` for invalid parameters:
 
 ```python
-from dobot_api import DobotApiMove
-
-move = DobotApiMove("192.168.1.6", 29999)
-
 try:
-    # coordinateMode 只能是 0 或 1
-    move.MovJ(100, 0, 200, 0, 90, 0, coordinateMode=2)  # 无效参数
+    dashboard.MovJ(100, 0, 200, 0, 90, 0, coordinateMode=2)  # Invalid
 except ValueError as e:
-    print(f"参数错误: {e}")
+    print(f"Error: {e}")
     # ValueError: Invalid coordinateMode parameter: 2. Expected 0 (pose) or 1 (joint)
 ```
 
-详细的错误处理和破坏性变更请参考 [MIGRATION_V3_TO_V4.md](MIGRATION_V3_TO_V4.md)。
+---
 
-### 5. 运行示例程序
+## Project Structure
 
-```bash
-# 运行基础示例
-python examples/main.py
-
-# 运行 GUI 界面
-python examples/ui_demo/main_UI.py
-
-# 运行报警处理示例
-python examples/error_handling.py
+```
+TCP-IP-Python-V4/
+├── dobot_api/                  # Core API package
+│   ├── __init__.py            # Package exports
+│   ├── base.py                # Base communication class
+│   ├── dashboard.py           # Robot control commands
+│   ├── feedback.py            # Real-time feedback
+│   ├── error_monitor.py       # HTTP error monitoring
+│   ├── i18n_manager.py        # Multi-language support (NEW)
+│   ├── utils.py               # Utility functions
+│   └── locales/               # Translation files (NEW)
+│       ├── alarms.en.yml
+│       ├── alarms.zh_CN.yml
+│       ├── alarms.ja.yml
+│       └── ...
+├── examples/                   # Example programs
+│   ├── basic_demo.py          # Basic usage
+│   ├── error_handling.py      # Error monitoring demo
+│   ├── i18n_demo.py           # I18n features demo (NEW)
+│   └── main.py                # Main entry point
+├── pyproject.toml             # Package configuration
+├── README.md                  # This file
+└── LICENSE                    # MIT License
 ```
 
+---
 
-## 常见问题解决
+## Examples
 
-### 1. ModuleNotFoundError: No module named 'numpy'
+### Complete Robot Control Flow
 
-**解决方法**: 安装numpy库
+```python
+from dobot_api import DobotApiDashboard, DobotApiFeedBack, AlarmI18n
+import threading
 
+# Initialize
+dashboard = DobotApiDashboard("192.168.1.6", 29999)
+feed = DobotApiFeedBack("192.168.1.6", 30004)
+i18n = AlarmI18n("en")
+
+# Enable robot
+if "0" not in dashboard.EnableRobot():
+    print("Failed to enable robot")
+    exit(1)
+
+dashboard.ClearError()
+
+# Configure motion parameters
+dashboard.VelL(50)
+dashboard.AccL(50)
+
+# Define positions
+home = [300, 0, 200, 0, 90, 0]
+pick = [400, 100, 150, 0, 90, 0]
+place = [400, -100, 150, 0, 90, 0]
+
+# Execute motion sequence
+try:
+    dashboard.MovJ(*home, coordinateMode=0)
+    dashboard.MovL(*pick, coordinateMode=0)
+    dashboard.DO(1, 1)  # Activate gripper
+    dashboard.MovL(*place, coordinateMode=0)
+    dashboard.DO(1, 0)  # Release gripper
+    dashboard.MovJ(*home, coordinateMode=0)
+    
+except Exception as e:
+    print(f"Motion error: {e}")
+    
+    # Check for alarms
+    error_info = dashboard.GetError("en")
+    if error_info and error_info.get("errMsg"):
+        for error in error_info["errMsg"]:
+            # Get detailed translation
+            alarm = i18n.get_alarm(error["id"])
+            print(f"Alarm: {alarm['description']}")
+            print(f"Solution: {alarm['solution']}")
+
+finally:
+    dashboard.DisableRobot()
+    dashboard.close()
+    feed.close()
+```
+
+### Real-time Feedback Monitoring
+
+```python
+from dobot_api import DobotApiFeedBack
+import threading
+
+feed = DobotApiFeedBack("192.168.1.6", 30004)
+
+def monitor_feedback():
+    while True:
+        data = feed.feedBackData()
+        if data:
+            # Validate data integrity
+            if hex(data["TestValue"][0]) == "0x123456789abcdef":
+                mode = data["RobotMode"][0]
+                joints = data["QActual"]
+                di = data["DigitalInputs"][0]
+                
+                print(f"Mode: {mode}, Joints: {joints[:3]}, DI: {bin(di)}")
+
+# Run in background thread
+thread = threading.Thread(target=monitor_feedback, daemon=True)
+thread.start()
+```
+
+### Multi-language Error Display
+
+```python
+from dobot_api import AlarmI18n
+
+i18n = AlarmI18n("en")
+
+# Display same alarm in multiple languages
+languages = ["en", "zh_CN", "ja", "de", "ko"]
+
+print("Emergency Stop Alarm in Multiple Languages:\\n")
+for lang in languages:
+    i18n.set_language(lang)
+    alarm = i18n.get_controller_alarm(16)
+    print(f"[{lang}] {alarm['description']}")
+```
+
+---
+
+## Requirements
+
+| Requirement | Details |
+|---|---|
+| **Python** | 3.9 or higher |
+| **Network** | Robot IP in 192.168.x.x range |
+| **Ports** | 29999 (Dashboard), 30004 (Real-time 8ms), 30005 (200ms), 30006 (Configurable 50ms), 22000 (HTTP monitoring) |
+| **Communication** | TCP/IP protocol |
+| **Operating System** | Windows, Linux, macOS |
+| **Dashboard Port** | 29999 |
+| **Feedback Port (Real-time)** | 30004 (8ms updates) |
+| **Feedback Port (Standard)** | 30005 (200ms updates) |
+| **Feedback Port (Configurable)** | 30006 (default 50ms) |
+| **HTTP Monitoring Port** | 22000 |
+| **Robot Mode** | TCP/IP control mode enabled |
+
+### Dependencies
+
+```toml
+numpy>=1.20.0
+loguru>=0.7.0
+python-i18n>=0.3.9
+pyyaml>=6.0
+```
+
+---
+
+## Troubleshooting
+
+### Common Issues
+
+**1. Connection Refused**
+- Check if port 29999 is already in use
+- Verify robot IP address is correct
+- Ensure robot is in TCP/IP mode
+
+**2. Import Error: No module named 'numpy'**
 ```bash
 pip install numpy
 ```
 
-### 2. Connection refused, IP:Port has been occupied
+**3. Robot Not Responding**
+- Check network connectivity: `ping 192.168.x.x`
+- Verify firewall settings
+- Confirm robot is powered on and initialized
 
-**解决方法**: 检查29999端口是否被占用，关闭占用该端口的程序
+**4. Command Execution Failed**
+- Clear robot errors: `dashboard.ClearError()`
+- Check robot mode: Should be in normal operating mode
+- Release emergency stop if pressed
 
-### 3. Control Mode Is Not Tcp
+**5. GetError Returns None**
+- Verify port 22000 is accessible
+- Check HTTP interface is enabled on robot
+- Try different language code
 
-**解决方法**: 在DobotStudio Pro中将机器人模式切换至TCP/IP模式
+### Error States
 
-### 4. 机器人状态异常
-
-| 输出信息                             | 机器状态     | 解决方法                 |
-| ------------------------------------ | ------------ | ------------------------ |
-| Command execution failed             | 指令执行失败 | 检查指令参数和机器人状态 |
-| The robot is in an error state       | 机器错误状态 | 清除报警后重试           |
-| The robot is in emergency stop state | 急停状态     | 释放急停按钮             |
-| The robot is in power down state     | 下电状态     | 给机器人上电             |
-
-## 注意事项
-
-1. **安全第一**: 运行示例前请确保机器人处于安全位置，防止发生碰撞
-2. **网络配置**: 确保网络配置正确，IP地址在同一网段
-3. **端口占用**: 确保29999和30004/30005端口未被其他程序占用
-4. **机器人模式**: 确保机器人处于TCP/IP控制模式
-5. **V4.0.0 变更**: 注意新架构的导入和使用模式，运动命令通过 `move` 实例
-6. **coordinateMode 参数**: 所有运动命令需要明确指定 coordinateMode（0=位姿，1=关节）
-
-## V4.0.0 架构优势
-
-- ✅ **模块化设计**：代码组织清晰，易于维护
-- ✅ **分离关注点**：控制和运动命令分离（V3 风格）
-- ✅ **类型提示**：完整的类型注解，IDE 支持更好
-- ✅ **改进错误处理**：明确的异常和错误信息
-- ✅ **V4 功能完整**：保留所有 V4 高级功能（力控、运动学、焊接等）
-- ✅ **包管理**：支持标准 pip 安装
-
-## 技术支持
-
-如遇到问题，请参考：
-
-- **API 迁移指南**: [MIGRATION_V3_TO_V4.md](MIGRATION_V3_TO_V4.md)
-- **示例代码**: `examples/` 目录
-- **GetError 文档**: GetError_README.md
-- **越疆官方支持**: https://www.dobot.cc/
+| Message | State | Solution |
+|---------|-------|----------|
+| "Control Mode Is Not Tcp" | Wrong control mode | Switch to TCP/IP mode in DobotStudio |
+| "The robot is in an error state" | Robot error | Call `ClearError()` |
+| "The robot is in emergency stop state" | E-stop active | Release emergency stop button |
+| "The robot is in power down state" | Not powered | Power on the robot |
 
 ---
 
-**版本**: V4.0.0  
-**更新日期**: 2026-02-09  
-**维护**: Dobot  
-**重大变更**: 模块化架构重构，V3 风格分离的运动 API
+## API Reference
+
+### coordinateMode Parameter
+
+All movement commands require explicit `coordinateMode`:
+- `0` = Cartesian pose coordinates (x, y, z, rx, ry, rz)
+- `1` = Joint angle coordinates (j1, j2, j3, j4, j5, j6)
+
+### Response Parsing
+
+Dashboard commands return string responses:
+```python
+response = dashboard.EnableRobot()
+# "0,{},EnableRobot();"  -> Success (code 0)
+# "-1,{},EnableRobot();" -> Failure (code -1)
+
+# Parse response
+import re
+match = re.search(r"(-?\d+)", response)
+if match and int(match.group(1)) == 0:
+    print("Success")
+```
+
+---
+
+## Version History
+
+### v4.1.0 (Current)
+- ✨ Added `AlarmI18n` class for local multi-language alarm translation
+- ✨ YAML-based translation files (10 languages)
+- ✨ Enhanced `RobotErrorMonitor` with local i18n
+- 🗑️ Removed deprecated `alarmAlarmJsonFile()` function
+- 📦 Updated dependencies (python-i18n, pyyaml)
+- 🐛 Improved error handling and logging
+
+### v4.0.0
+- 🏗️ Modular package architecture
+- 📦 Pip installable package
+- 🔧 Type hints and improved error handling
+- 📝 Comprehensive logging with loguru
+- 🌐 HTTP-based error monitoring
+
+---
+
+## License
+
+MIT License - See [LICENSE](LICENSE) file for details.
+
+## Support
+
+- **GitHub**: [TechShare-inc/TCP-IP-Python-V4](https://github.com/TechShare-inc/TCP-IP-Python-V4)
+- **Issues**: [Report bugs](https://github.com/TechShare-inc/TCP-IP-Python-V4/issues)
+- **Original Repository**: [Dobot-Arm/TCP-IP-Python-V4](https://github.com/Dobot-Arm/TCP-IP-Python-V4)
+- **Documentation**: [Official Dobot Documentation](https://www.dobot.cc/)
+
+---
+
+**Modified and maintained by TechShare Corp.** | Version 4.1.0 | Last Updated: February 2026
