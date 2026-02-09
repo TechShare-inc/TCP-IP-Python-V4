@@ -1,39 +1,78 @@
 # TCP-IP-Python-V4 项目说明文档
 
+## ⚠️ V4.0.0 重大更新 / BREAKING CHANGES
+
+**版本 4.0.0 引入了架构重构，包含破坏性变更！**
+
+### 主要变化：
+
+1. **模块化包结构**：代码重构为 `dobot_api` Python 包，采用 V3 架构模式
+2. **分离的运动 API**：恢复了 `DobotApiMove` 类（V3 风格），用于运动命令
+3. **导入路径变更**：
+   ```python
+   # 新的导入方式
+   from dobot_api import DobotApiDashboard, DobotApiMove, DobotApiFeedBack
+   
+   # 创建实例（V3 模式：分离的 dashboard 和 move 实例）
+   dashboard = DobotApiDashboard(ip, 29999)
+   move = DobotApiMove(ip, 29999)  # 同端口，独立 API
+   feed = DobotApiFeedBack(ip, 30004)
+   
+   # 控制命令通过 dashboard
+   dashboard.EnableRobot()
+   dashboard.VelL(50)
+   
+   # 运动命令通过 move 实例
+   move.MovJ(300, 0, 200, 0, 90, 0, coordinateMode=0)  # coordinateMode: 0=位姿, 1=关节
+   ```
+
+4. **包安装**：现在支持 `pip install -e .` 开发模式安装
+5. **详细的迁移指南**：查看 [MIGRATION_V3_TO_V4.md](MIGRATION_V3_TO_V4.md) 了解 V3 与 V4 API 差异
+
+### 快速迁移：
+- 所有 V4 方法签名和功能保持不变
+- 运动命令现在通过 `move` 实例而非 `dashboard`
+- 示例已更新至新架构，请参考 `examples/` 目录
+
+---
+
 ## 项目概述
 
 本项目是越疆机器人TCP-IP-CR-Python-V4二次开发API程序，用于通过TCP/IP协议控制越疆机器人。项目提供了完整的机器人控制接口，包括运动控制、状态监控、报警处理等功能。
+
+**V4.0.0 采用模块化架构**，将代码组织为专业的 Python 包，提高可维护性和代码清晰度。
 
 ## 环境要求
 
 ### Python版本
 
-- Python 3.6 或更高版本
+- Python 3.9 或更高版本
 
-### 必需安装的库
+### 安装方法
+
+#### 开发模式（推荐）
 
 ```bash
-# 基础数值计算库
-pip install numpy
+# 克隆项目
+git clone https://github.com/Dobot-Arm/TCP-IP-Python-V4.git
+cd TCP-IP-Python-V4
 
-# JSON数据处理（Python内置，无需安装）
-# import json
-
-# 网络通信（Python内置，无需安装）
-# import socket
-
-# 多线程支持（Python内置，无需安装）
-# import threading
-
-# 时间处理（Python内置，无需安装）
-# import time
-
-# 正则表达式（Python内置，无需安装）
-# import re
-
-# GUI界面库（如果使用ui.py）
-pip install tkinter  # 通常Python自带
+# 安装为可编辑包（开发模式）
+pip install -e .
 ```
+
+#### 手动安装依赖
+
+```bash
+# 仅安装 numpy 依赖
+pip install numpy
+```
+
+### 必需的库
+
+- `numpy>=1.20.0` - 数值计算和数据结构
+- Python 内置库：`socket`, `threading`, `time`, `json`, `re`
+- 可选：`tkinter` (通常 Python 自带，用于 GUI 示例)
 
 ### 网络配置要求
 
@@ -43,81 +82,105 @@ pip install tkinter  # 通常Python自带
 
 ## 主要程序文件及功能
 
-### 1. main.py
+### 1. dobot_api/ 包（核心 API）
 
-**功能**: 项目主入口文件
+**V4.0.0 模块化架构**：代码重构为专业的 Python 包
 
-- 演示基本的机器人连接和控制流程
-- 包含完整的机器人操作示例
-- 适合初学者了解项目结构
+#### dobot_api/base.py
+- **DobotApi**: 基础 TCP 通信类
+- **MyType**: V4 反馈数据结构定义（PascalCase 字段）
+- 类型提示和改进的错误处理
 
-### 2. dobot_api.py
+#### dobot_api/dashboard.py  
+- **DobotApiDashboard**: 机器人控制和配置命令
+  - 使能/下使能：`EnableRobot()`, `DisableRobot()`
+  - 速度控制：`VelJ()`, `VelL()`, `AccJ()`, `AccL()`
+  - 坐标系：`User()`, `Tool()`, `SetUser()`, `SetTool()`
+  - IO 操作：`DO()`, `GetDO()`, `AO()`, `GetAO()`
+  - 报警处理：`ClearError()`, `GetError(language)`
+  - V4 新功能：运动学、力控设置、碰撞检测、SafeSkin
+  
+#### dobot_api/move.py
+- **DobotApiMove**: 运动命令（V3 风格的分离类，V4 签名）
+  - 基础运动：`MovJ()`, `MovL()`, `Arc()`, `Circle()`
+  - 伺服控制：`ServoJ()`, `ServoP()`
+  - 相对运动：`RelMovJUser()`, `RelMovLUser()`, `RelJointMovJ()`
+  - V4 新功能：`RunTo()`, `MovS()`, 传送带跟踪、焊接、力控运动
+  - **注意**：所有运动命令需要 `coordinateMode` 参数（0=位姿，1=关节）
 
-**功能**: 核心API接口文件
+#### dobot_api/feedback.py
+- **DobotApiFeedBack**: 实时状态反馈
+  - 获取机器人状态（1440 字节数据包）
+  - V4 字段使用 PascalCase：`QActual`, `DigitalInputs`, `RobotMode` 等
 
-- **DobotApi**: 基础通信类，处理TCP连接
-- **DobotApiDashboard**: 机器人控制接口类
-  - 机器人使能/下使能
-  - 运动控制指令（MovJ, MovL, Arc等）
-  - 状态查询和设置
-  - 报警信息获取（包含新增的GetError接口）
-- **DobotApiFeedBack**: 状态反馈类
-  - 实时获取机器人状态信息
-  - 监控机器人运行模式
-  - 获取当前指令ID
-- **MyType**: 数据类型定义
-- **alarm_controller**: 控制器报警处理
-- **alarm_servo**: 伺服报警处理
+#### dobot_api/utils.py
+- 报警文件读取：`alarmAlarmJsonFile()`
 
-### 3. ui.py
+### 2. examples/ 目录
 
-**功能**: 图形用户界面程序
+#### examples/basic_demo.py
+- 基础机器人控制示例（更新至 V4.0.0）
+- 演示分离的 dashboard 和 move 实例
+- 包含运动循环和反馈监控
 
-- 提供可视化的机器人控制界面
-- 集成了机器人连接、运动控制、状态显示等功能
-- 支持实时显示机器人状态和报警信息
-- 优先使用GetError接口获取报警信息，失败时回退到原有方式
+#### examples/error_handling.py  
+- GetError 接口使用示例
+- 多语言报警信息获取
+- 报警监控类实现
 
-### 4. 测试和示例文件
+#### examples/main.py
+- 项目主入口示例
 
-#### get_error_example.py
+#### examples/ui_demo/
+- **main_UI.py**: GUI 主程序
+- **ui.py**: 图形用户界面（更新至 V4.0.0）
+  - 可视化机器人控制
+  - 实时状态显示
+  - 支持拖拽示教和点动
 
-**功能**: GetError接口使用示例
+### 3. 文档文件
 
-- 提供RobotErrorMonitor类，用于报警监控
-- 演示如何获取和处理多语言报警信息
-- 包含报警信息保存到文件的功能
-- 注释采用中英文对照
+#### MIGRATION_V3_TO_V4.md（新增）
+- **V3 与 V4 API 详细对比**
+- 方法签名变更说明
+- 迁移检查清单
+- 代码示例对照
 
-### 5. 文档文件
-
-#### GetError_README.md
-
-**功能**: GetError接口中文说明文档
-
-- 详细说明GetError接口的使用方法
-- 包含接口参数、返回值、示例代码等
-- 提供故障排除和注意事项
-
-#### GetError_README_EN.md
-
-**功能**: GetError接口英文说明文档
-
-- GetError_README.md的英文版本
-- 便于国际用户理解和使用
+#### GetError_README.md / GetError_README_EN.md
+- GetError 接口详细说明（中/英文）
 
 ## 项目目录结构
 
+```
 TCP-IP-Python-V4/
-├── main.py                    # 主程序入口
-├── dobot_api.py               # 核心API接口
-├── ui.py                      # 图形界面程序
-├── PythonExample.py           # Python示例
-├── get_error_example.py       # GetError使用示例
-├── GetError_README.md         # GetError中文文档
-├── GetError_README_EN.md      # GetError英文文档
-├── README.md                  # 项目说明文档
-└── files/                     # 其他支持文件
+├── dobot_api/                 # 核心 API 包（V4.0.0 新架构）
+│   ├── __init__.py           # 包导出
+│   ├── base.py               # 基础通信类
+│   ├── dashboard.py          # 控制命令
+│   ├── move.py               # 运动命令（V3 风格分离）
+│   ├── feedback.py           # 状态反馈
+│   ├── utils.py              # 工具函数
+│   └── files/                # 报警配置文件
+│       ├── alarmController.json
+│       ├── alarmController.py
+│       ├── alarmServo.json
+│       └── alarmServo.py
+├── examples/                  # 示例程序（V4.0.0 更新）
+│   ├── basic_demo.py         # 基础示例
+│   ├── error_handling.py     # 报警处理示例
+│   ├── main.py               # 主程序入口
+│   └── ui_demo/              # GUI 示例
+│       ├── main_UI.py
+│       └── ui.py
+├── pyproject.toml            # 包配置文件（新增）
+├── MIGRATION_V3_TO_V4.md     # API 迁移指南（新增）
+├── README.md                 # 中文说明文档
+├── README-EN.md              # 英文说明文档
+├── GetError_README.md        # GetError 中文文档
+├── GetError_README_EN.md     # GetError 英文文档
+├── LICENSE
+└── picture/                  # 图片资源
+```
 
 ## 快速开始
 
@@ -125,24 +188,66 @@ TCP-IP-Python-V4/
 
 ```bash
 # 克隆项目
-git clone https://github.com/Dobot-Arm/TCP-IP-CR-Python-V4.git
+git clone https://github.com/Dobot-Arm/TCP-IP-Python-V4.git
+cd TCP-IP-Python-V4
 
-# 安装依赖
-pip install numpy
+# 安装包（开发模式）
+pip install -e .
 ```
 
 ### 2. 网络配置
 
 - 设置本机IP为192.168.X.X网段
 - 确保机器人处于TCP/IP模式
+- 确保 29999 和 30004/30005 端口未被占用
 
-### 3. 运行程序
+### 3. 基础使用示例
 
-# 运行主程序
-python main.py
+```python
+from dobot_api import DobotApiDashboard, DobotApiMove, DobotApiFeedBack
 
-# 或运行图形界面
-python main_UI.py
+# 连接机器人（V4.0.0 架构：分离的 dashboard 和 move）
+ip = "192.168.1.6"
+dashboard = DobotApiDashboard(ip, 29999)
+move = DobotApiMove(ip, 29999)        # 同端口，独立运动 API
+feed = DobotApiFeedBack(ip, 30004)
+
+# 使能机器人
+dashboard.EnableRobot()
+dashboard.ClearError()
+
+# 设置速度
+dashboard.VelL(50)  # V4 使用 VelL（V3 是 SpeedL）
+
+# 运动命令（通过 move 实例）
+# coordinateMode: 0=笛卡尔位姿, 1=关节角度
+move.MovJ(300, 0, 200, 0, 90, 0, coordinateMode=0)
+
+# 读取反馈（V4 使用 PascalCase 字段）
+data = feed.feedBackData()
+if data is not None:
+    joint_pos = data['QActual'][0]  # 关节位置
+    robot_mode = data['RobotMode'][0]  # 机器人模式
+    
+# 清理
+dashboard.DisableRobot()
+dashboard.close()
+move.close()
+feed.close()
+```
+
+### 4. 运行示例程序
+
+```bash
+# 运行基础示例
+python examples/main.py
+
+# 运行 GUI 界面
+python examples/ui_demo/main_UI.py
+
+# 运行报警处理示例
+python examples/error_handling.py
+```
 
 
 ## 常见问题解决
@@ -176,20 +281,32 @@ pip install numpy
 
 1. **安全第一**: 运行示例前请确保机器人处于安全位置，防止发生碰撞
 2. **网络配置**: 确保网络配置正确，IP地址在同一网段
-3. **端口占用**: 确保29999和30004端口未被其他程序占用
+3. **端口占用**: 确保29999和30004/30005端口未被其他程序占用
 4. **机器人模式**: 确保机器人处于TCP/IP控制模式
-5. **权限问题**: 某些操作可能需要管理员权限
+5. **V4.0.0 变更**: 注意新架构的导入和使用模式，运动命令通过 `move` 实例
+6. **coordinateMode 参数**: 所有运动命令需要明确指定 coordinateMode（0=位姿，1=关节）
+
+## V4.0.0 架构优势
+
+- ✅ **模块化设计**：代码组织清晰，易于维护
+- ✅ **分离关注点**：控制和运动命令分离（V3 风格）
+- ✅ **类型提示**：完整的类型注解，IDE 支持更好
+- ✅ **改进错误处理**：明确的异常和错误信息
+- ✅ **V4 功能完整**：保留所有 V4 高级功能（力控、运动学、焊接等）
+- ✅ **包管理**：支持标准 pip 安装
 
 ## 技术支持
 
-如遇到问题，请参考：项目README.md文档
+如遇到问题，请参考：
 
-- GetError相关文档
-- 示例代码和测试程序
-- 越疆官方技术支持
+- **API 迁移指南**: [MIGRATION_V3_TO_V4.md](MIGRATION_V3_TO_V4.md)
+- **示例代码**: `examples/` 目录
+- **GetError 文档**: GetError_README.md
+- **越疆官方支持**: https://www.dobot.cc/
 
 ---
 
-**版本**: V4
-**更新日期**: 2025-9-5
-**维护**: dobot_futingxing
+**版本**: V4.0.0  
+**更新日期**: 2026-02-09  
+**维护**: Dobot  
+**重大变更**: 模块化架构重构，V3 风格分离的运动 API

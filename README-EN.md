@@ -1,39 +1,78 @@
 # TCP-IP-Python-V4 Project Documentation
 
+## ⚠️ V4.0.0 BREAKING CHANGES
+
+**Version 4.0.0 introduces architectural refactoring with breaking changes!**
+
+### Major Changes:
+
+1. **Modular Package Structure**: Code refactored into `dobot_api` Python package with V3 architecture pattern
+2. **Separated Movement API**: Restored `DobotApiMove` class (V3-style) for movement commands
+3. **Import Path Changes**:
+   ```python
+   # New import method
+   from dobot_api import DobotApiDashboard, DobotApiMove, DobotApiFeedBack
+   
+   # Create instances (V3 pattern: separated dashboard and move instances)
+   dashboard = DobotApiDashboard(ip, 29999)
+   move = DobotApiMove(ip, 29999)  # Same port, independent API
+   feed = DobotApiFeedBack(ip, 30004)
+   
+   # Control commands through dashboard
+   dashboard.EnableRobot()
+   dashboard.VelL(50)
+   
+   # Movement commands through move instance
+   move.MovJ(300, 0, 200, 0, 90, 0, coordinateMode=0)  # coordinateMode: 0=pose, 1=joint
+   ```
+
+4. **Package Installation**: Now supports `pip install -e .` development mode
+5. **Detailed Migration Guide**: See [MIGRATION_V3_TO_V4.md](MIGRATION_V3_TO_V4.md) for V3 vs V4 API differences
+
+### Quick Migration:
+- All V4 method signatures and features remain unchanged
+- Movement commands now go through `move` instance instead of `dashboard`
+- Examples updated to new architecture, see `examples/` directory
+
+---
+
 ## Project Overview
 
 This project is the Dobot Robot TCP-IP-CR-Python-V4 secondary development API program, used to control Dobot robots through TCP/IP protocol. The project provides complete robot control interfaces, including motion control, status monitoring, alarm handling, and other functions.
+
+**V4.0.0 adopts modular architecture**, organizing code into a professional Python package for improved maintainability and code clarity.
 
 ## Environment Requirements
 
 ### Python Version
 
-- Python 3.6 or higher
+- Python 3.9 or higher
+
+### Installation Method
+
+#### Development Mode (Recommended)
+
+```bash
+# Clone the project
+git clone https://github.com/Dobot-Arm/TCP-IP-Python-V4.git
+cd TCP-IP-Python-V4
+
+# Install as editable package (development mode)
+pip install -e .
+```
+
+#### Manual Dependency Installation
+
+```bash
+# Install only numpy dependency
+pip install numpy
+```
 
 ### Required Libraries
 
-```bash
-# Basic numerical computation library
-pip install numpy
-
-# JSON data processing (Python built-in, no installation required)
-# import json
-
-# Network communication (Python built-in, no installation required)
-# import socket
-
-# Multi-threading support (Python built-in, no installation required)
-# import threading
-
-# Time processing (Python built-in, no installation required)
-# import time
-
-# Regular expressions (Python built-in, no installation required)
-# import re
-
-# GUI interface library (if using ui.py)
-pip install tkinter  # Usually comes with Python
-```
+- `numpy>=1.20.0` - Numerical computation and data structures
+- Python built-in libraries: `socket`, `threading`, `time`, `json`, `re`
+- Optional: `tkinter` (usually comes with Python, for GUI examples)
 
 ### Network Configuration Requirements
 
@@ -43,81 +82,105 @@ pip install tkinter  # Usually comes with Python
 
 ## Main Program Files and Functions
 
-### 1. main.py
+### 1. dobot_api/ Package (Core API)
 
-**Function**: Project main entry file
+**V4.0.0 Modular Architecture**: Code refactored into professional Python package
 
-- Demonstrates basic robot connection and control flow
-- Contains complete robot operation examples
-- Suitable for beginners to understand project structure
+#### dobot_api/base.py
+- **DobotApi**: Base TCP communication class
+- **MyType**: V4 feedback data structure definitions (PascalCase fields)
+- Type hints and improved error handling
 
-### 2. dobot_api.py
+#### dobot_api/dashboard.py  
+- **DobotApiDashboard**: Robot control and configuration commands
+  - Enable/Disable: `EnableRobot()`, `DisableRobot()`
+  - Speed control: `VelJ()`, `VelL()`, `AccJ()`, `AccL()`
+  - Coordinate systems: `User()`, `Tool()`, `SetUser()`, `SetTool()`
+  - IO operations: `DO()`, `GetDO()`, `AO()`, `GetAO()`
+  - Alarm handling: `ClearError()`, `GetError(language)`
+  - V4 new features: Kinematics, force control settings, collision detection, SafeSkin
+  
+#### dobot_api/move.py
+- **DobotApiMove**: Movement commands (V3-style separated class, V4 signatures)
+  - Basic movements: `MovJ()`, `MovL()`, `Arc()`, `Circle()`
+  - Servo control: `ServoJ()`, `ServoP()`
+  - Relative movements: `RelMovJUser()`, `RelMovLUser()`, `RelJointMovJ()`
+  - V4 new features: `RunTo()`, `MovS()`, conveyor tracking, welding, force control movements
+  - **Note**: All movement commands require `coordinateMode` parameter (0=pose, 1=joint)
 
-**Function**: Core API interface file
+#### dobot_api/feedback.py
+- **DobotApiFeedBack**: Real-time status feedback
+  - Get robot status (1440-byte data packet)
+  - V4 fields use PascalCase: `QActual`, `DigitalInputs`, `RobotMode`, etc.
 
-- **DobotApi**: Basic communication class, handles TCP connections
-- **DobotApiDashboard**: Robot control interface class
-  - Robot enable/disable
-  - Motion control commands (MovJ, MovL, Arc, etc.)
-  - Status query and setting
-  - Alarm information acquisition (including newly added GetError interface)
-- **DobotApiFeedBack**: Status feedback class
-  - Real-time acquisition of robot status information
-  - Monitor robot operation mode
-  - Get current command ID
-- **MyType**: Data type definitions
-- **alarm_controller**: Controller alarm handling
-- **alarm_servo**: Servo alarm handling
+#### dobot_api/utils.py
+- Alarm file reading: `alarmAlarmJsonFile()`
 
-### 3. ui.py
+### 2. examples/ Directory
 
-**Function**: Graphical user interface program
+#### examples/basic_demo.py
+- Basic robot control example (updated to V4.0.0)
+- Demonstrates separated dashboard and move instances
+- Includes motion loops and feedback monitoring
 
-- Provides visual robot control interface
-- Integrates robot connection, motion control, status display and other functions
-- Supports real-time display of robot status and alarm information
-- Prioritizes using GetError interface to get alarm information, falls back to original method if failed
+#### examples/error_handling.py  
+- GetError interface usage example
+- Multi-language alarm information retrieval
+- Alarm monitoring class implementation
 
-### 4. Test and Example Files
+#### examples/main.py
+- Project main entry example
 
-#### get_error_example.py
+#### examples/ui_demo/
+- **main_UI.py**: GUI main program
+- **ui.py**: Graphical user interface (updated to V4.0.0)
+  - Visual robot control
+  - Real-time status display
+  - Supports drag teaching and jogging
 
-**Function**: GetError interface usage example
+### 3. Documentation Files
 
-- Provides RobotErrorMonitor class for alarm monitoring
-- Demonstrates how to get and process multi-language alarm information
-- Contains functionality to save alarm information to files
-- Comments in both Chinese and English
+#### MIGRATION_V3_TO_V4.md (New)
+- **Detailed V3 vs V4 API comparison**
+- Method signature changes
+- Migration checklist
+- Code example comparisons
 
-### 5. Documentation Files
-
-#### GetError_README.md
-
-**Function**: GetError interface Chinese documentation
-
-- Detailed explanation of GetError interface usage
-- Contains interface parameters, return values, example code, etc.
-- Provides troubleshooting and precautions
-
-#### GetError_README_EN.md
-
-**Function**: GetError interface English documentation
-
-- English version of GetError_README.md
-- Convenient for international users to understand and use
+#### GetError_README.md / GetError_README_EN.md
+- Detailed GetError interface documentation (Chinese/English)
 
 ## Project Directory Structure
 
+```
 TCP-IP-Python-V4/
-├── main.py                    # Main program entry
-├── dobot_api.py               # Core API interface
-├── ui.py                      # Graphical interface program
-├── PythonExample.py           # Python examples
-├── get_error_example.py       # GetError usage example
-├── GetError_README.md         # GetError Chinese documentation
-├── GetError_README_EN.md      # GetError English documentation
-├── README.md                  # Project documentation
-└── files/                     # Other support files
+├── dobot_api/                 # Core API package (V4.0.0 new architecture)
+│   ├── __init__.py           # Package exports
+│   ├── base.py               # Base communication class
+│   ├── dashboard.py          # Control commands
+│   ├── move.py               # Movement commands (V3-style separation)
+│   ├── feedback.py           # Status feedback
+│   ├── utils.py              # Utility functions
+│   └── files/                # Alarm configuration files
+│       ├── alarmController.json
+│       ├── alarmController.py
+│       ├── alarmServo.json
+│       └── alarmServo.py
+├── examples/                  # Example programs (V4.0.0 updated)
+│   ├── basic_demo.py         # Basic example
+│   ├── error_handling.py     # Alarm handling example
+│   ├── main.py               # Main program entry
+│   └── ui_demo/              # GUI examples
+│       ├── main_UI.py
+│       └── ui.py
+├── pyproject.toml            # Package configuration file (new)
+├── MIGRATION_V3_TO_V4.md     # API migration guide (new)
+├── README.md                 # Chinese documentation
+├── README-EN.md              # English documentation
+├── GetError_README.md        # GetError Chinese documentation
+├── GetError_README_EN.md     # GetError English documentation
+├── LICENSE
+└── picture/                  # Image resources
+```
 
 ## Quick Start
 
@@ -126,23 +189,65 @@ TCP-IP-Python-V4/
 ```bash
 # Clone the project
 git clone https://github.com/Dobot-Arm/TCP-IP-CR-Python-V4.git
+cd TCP-IP-Python-V4
 
-# Install dependencies
-pip install numpy
+# Install package (development mode)
+pip install -e .
 ```
 
 ### 2. Network Configuration
 
 - Set local machine IP to 192.168.X.X network segment
 - Ensure robot is in TCP/IP mode
+- Ensure ports 29999 and 30004/30005 are not occupied
 
-### 3. Run Programs
+### 3. Basic Usage Example
 
-# Run main program
-python main.py
+```python
+from dobot_api import DobotApiDashboard, DobotApiMove, DobotApiFeedBack
 
-# Or run graphical interface
-python main_UI.py
+# Connect to robot (V4.0.0 architecture: separated dashboard and move)
+ip = "192.168.1.6"
+dashboard = DobotApiDashboard(ip, 29999)
+move = DobotApiMove(ip, 29999)        # Same port, independent movement API
+feed = DobotApiFeedBack(ip, 30004)
+
+# Enable robot
+dashboard.EnableRobot()
+dashboard.ClearError()
+
+# Set speed
+dashboard.VelL(50)  # V4 uses VelL (V3 was SpeedL)
+
+# Movement commands (through move instance)
+# coordinateMode: 0=Cartesian pose, 1=joint angles
+move.MovJ(300, 0, 200, 0, 90, 0, coordinateMode=0)
+
+# Read feedback (V4 uses PascalCase fields)
+data = feed.feedBackData()
+if data is not None:
+    joint_pos = data['QActual'][0]  # Joint position
+    robot_mode = data['RobotMode'][0]  # Robot mode
+    
+# Cleanup
+dashboard.DisableRobot()
+dashboard.close()
+move.close()
+feed.close()
+```
+
+### 4. Run Example Programs
+
+```bash
+# Run basic example
+python examples/main.py
+
+# Run GUI interface
+python examples/ui_demo/main_UI.py
+
+# Run alarm handling example
+python examples/error_handling.py
+```
 
 
 ## Common Problem Solutions
@@ -176,20 +281,32 @@ pip install numpy
 
 1. **Safety First**: Ensure the robot is in a safe position before running examples to prevent collisions
 2. **Network Configuration**: Ensure correct network configuration with IP addresses in the same network segment
-3. **Port Occupation**: Ensure ports 29999 and 30004 are not occupied by other programs
+3. **Port Occupation**: Ensure ports 29999 and 30004/30005 are not occupied by other programs
 4. **Robot Mode**: Ensure the robot is in TCP/IP control mode
-5. **Permission Issues**: Some operations may require administrator privileges
+5. **V4.0.0 Changes**: Note the new architecture's import and usage patterns, movement commands go through `move` instance
+6. **coordinateMode Parameter**: All movement commands require explicit coordinateMode specification (0=pose, 1=joint)
+
+## V4.0.0 Architecture Advantages
+
+- ✅ **Modular Design**: Clear code organization, easy to maintain
+- ✅ **Separation of Concerns**: Control and movement commands separated (V3-style)
+- ✅ **Type Hints**: Complete type annotations, better IDE support
+- ✅ **Improved Error Handling**: Clear exceptions and error messages
+- ✅ **Complete V4 Features**: Retains all V4 advanced features (force control, kinematics, welding, etc.)
+- ✅ **Package Management**: Supports standard pip installation
 
 ## Technical Support
 
-If you encounter problems, please refer to: Project README.md documentation
+If you encounter problems, please refer to:
 
-- GetError related documentation
-- Example code and test programs
-- Dobot official technical support
+- **API Migration Guide**: [MIGRATION_V3_TO_V4.md](MIGRATION_V3_TO_V4.md)
+- **Example Code**: `examples/` directory
+- **GetError Documentation**: GetError_README_EN.md
+- **Dobot Official Support**: https://www.dobot.cc/
 
 ---
 
-**Version**: V4
-**Update Date**: 2025-9-5
-**Maintainer**: dobot_futingxing
+**Version**: V4.0.0  
+**Update Date**: 2026-02-09  
+**Maintainer**: Dobot  
+**Major Changes**: Modular architecture refactoring, V3-style separated movement API
