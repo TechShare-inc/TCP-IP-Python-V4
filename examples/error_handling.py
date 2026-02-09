@@ -10,7 +10,7 @@ Note: RobotErrorMonitor uses logger for all output. Configure DOBOT_LOG_LEVEL
 environment variable to control verbosity (DEBUG, INFO, WARNING, ERROR).
 """
 
-from dobot_api import RobotErrorMonitor
+from dobot_api_v4 import RobotErrorMonitor
 import json
 
 

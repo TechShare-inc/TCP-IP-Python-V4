@@ -4,7 +4,7 @@ Dobot API V4.0.0 - Python TCP/IP Interface
 ⚠️ BREAKING CHANGES FROM PREVIOUS VERSIONS:
 - Refactored into modular package structure
 - All V4 method signatures and features preserved
-- Import paths changed: `from dobot_api import DobotApiDashboard, DobotApiFeedBack, RobotErrorMonitor`
+- Import paths changed: `from dobot_api_v4 import DobotApiDashboard, DobotApiFeedBack, RobotErrorMonitor`
 
 V4 Monolithic Architecture (Original Design):
 - DobotApiDashboard: Contains both control AND movement commands (TCP port 29999)
@@ -14,7 +14,7 @@ V4 Monolithic Architecture (Original Design):
 
 Usage Example:
     ```python
-    from dobot_api import DobotApiDashboard, DobotApiFeedBack, RobotErrorMonitor
+    from dobot_api_v4 import DobotApiDashboard, DobotApiFeedBack, RobotErrorMonitor
 
     # Connect (Monolithic pattern: one dashboard instance)
     dashboard = DobotApiDashboard("192.168.1.6", 29999)

@@ -35,7 +35,7 @@ pip install -e .
 ### Basic Example
 
 ```python
-from dobot_api import DobotApiDashboard, DobotApiFeedBack
+from dobot_api_v4 import DobotApiDashboard, DobotApiFeedBack
 
 # Connect to robot
 dashboard = DobotApiDashboard("192.168.1.6", 29999)
@@ -159,7 +159,7 @@ if data:
 HTTP-based error monitoring with multi-language support.
 
 ```python
-from dobot_api import RobotErrorMonitor
+from dobot_api_v4 import RobotErrorMonitor
 
 monitor = RobotErrorMonitor("192.168.1.6", dashboard_port=29999)
 
@@ -210,7 +210,7 @@ error_info = dashboard.GetError(language="en")
 Local internationalization for alarm messages (NEW in v4.1.0).
 
 ```python
-from dobot_api import AlarmI18n
+from dobot_api_v4 import AlarmI18n
 
 # Initialize with preferred language
 i18n = AlarmI18n(default_language="en")
@@ -268,10 +268,10 @@ import os
 
 # Method 1: Environment variable (before import)
 os.environ["DOBOT_LOG_LEVEL"] = "DEBUG"  # DEBUG, INFO, WARNING, ERROR
-from dobot_api import DobotApiDashboard
+from dobot_api_v4 import DobotApiDashboard
 
 # Method 2: Configure logger directly
-from dobot_api import logger
+from dobot_api_v4 import logger
 import sys
 
 logger.remove()  # Remove default handler
@@ -333,7 +333,7 @@ TCP-IP-Python-V4/
 ### Complete Robot Control Flow
 
 ```python
-from dobot_api import DobotApiDashboard, DobotApiFeedBack, AlarmI18n
+from dobot_api_v4 import DobotApiDashboard, DobotApiFeedBack, AlarmI18n
 import threading
 
 # Initialize
@@ -387,7 +387,7 @@ finally:
 ### Real-time Feedback Monitoring
 
 ```python
-from dobot_api import DobotApiFeedBack
+from dobot_api_v4 import DobotApiFeedBack
 import threading
 
 feed = DobotApiFeedBack("192.168.1.6", 30004)
@@ -412,7 +412,7 @@ thread.start()
 ### Multi-language Error Display
 
 ```python
-from dobot_api import AlarmI18n
+from dobot_api_v4 import AlarmI18n
 
 i18n = AlarmI18n("en")
 

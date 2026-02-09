@@ -7,7 +7,7 @@ Demonstrates the new AlarmI18n class for multi-language alarm translation.
 This replaces the old hardcoded JSON approach with a flexible i18n system.
 """
 
-from dobot_api import AlarmI18n
+from dobot_api_v4 import AlarmI18n
 
 
 def demo_basic_usage():

@@ -1,6 +1,6 @@
 # Updated for V4.0.0: Monolithic architecture with all commands in DobotApiDashboard
 
-from dobot_api import DobotApiFeedBack, DobotApiDashboard
+from dobot_api_v4 import DobotApiFeedBack, DobotApiDashboard
 import threading
 from time import sleep
 import re

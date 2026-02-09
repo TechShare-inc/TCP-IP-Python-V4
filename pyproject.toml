@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "dobot_api"
+name = "dobot_api_v4"
 version = "4.1.0"
 description = "Dobot Robot API V4 for TCP/IP communication with modular architecture and i18n support"
 readme = "README.md"
@@ -44,7 +44,7 @@ Repository = "https://github.com/Dobot-Arm/TCP-IP-Python-V4"
 Issues = "https://github.com/Dobot-Arm/TCP-IP-Python-V4/issues"
 
 [tool.setuptools.packages.find]
-include = ["dobot_api*"]
+include = ["dobot_api_v4*"]
 
 [tool.setuptools.package-data]
-dobot_api = ["locales/*.yml"]
+dobot_api_v4 = ["locales/*.yml"]
