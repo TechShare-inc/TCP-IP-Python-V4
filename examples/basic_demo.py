@@ -1,5 +1,3 @@
-# Updated for V4.0.0: Monolithic architecture with all commands in DobotApiDashboard
-
 from dobot_api_v4 import DobotApiFeedBack, DobotApiDashboard
 import threading
 from time import sleep
@@ -17,7 +15,7 @@ class DobotDemo:
 
         class item:
             def __init__(self):
-                self.robotMode = -1  #
+                self.robotMode = -1
                 self.robotCurrentCommandID = 0
                 self.MessageSize = -1
                 self.DigitalInputs = -1
@@ -83,12 +81,11 @@ class DobotDemo:
     def RunPoint(self, point_list):
         recvmovemess = self.dashboard.MovJ(
             *point_list, coordinateMode=0
-        )  # V4: All commands in dashboard
+        )
         print("MovJ:", recvmovemess)
         print(self.parseResultId(recvmovemess))
         currentCommandID = self.parseResultId(recvmovemess)[1]
         print("Command ID:", currentCommandID)
-        # sleep(0.02)
         while True:
 
             print(self.feedData.robotMode)

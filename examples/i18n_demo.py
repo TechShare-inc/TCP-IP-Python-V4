@@ -16,10 +16,8 @@ def demo_basic_usage():
     print("DEMO 1: Basic Usage")
     print("=" * 70)
 
-    # Initialize with English
     i18n = AlarmI18n(default_language="en")
 
-    # Get a controller alarm
     print("\n📋 Controller Alarm #16 (English):")
     alarm = i18n.get_controller_alarm(16)
     print(f"   ID: {alarm['id']}")
@@ -27,7 +25,6 @@ def demo_basic_usage():
     print(f"   Description: {alarm['description']}")
     print(f"   Solution: {alarm['solution']}")
 
-    # Get a servo alarm
     print("\n⚙️  Servo Alarm #8752 (English):")
     alarm = i18n.get_servo_alarm(8752)
     print(f"   ID: {alarm['id']}")
@@ -43,7 +40,6 @@ def demo_language_switching():
 
     i18n = AlarmI18n("en")
 
-    # Display same alarm in multiple languages
     languages = [
         ("en", "English"),
         ("zh_CN", "简体中文"),
@@ -68,12 +64,11 @@ def demo_auto_detection():
 
     i18n = AlarmI18n("en")
 
-    # Auto-detect based on ID range (no need to specify type)
     test_ids = [16, 100, 8752, 12816, 30080]
 
     print("\n🔍 Auto-detecting alarm types:\n")
     for alarm_id in test_ids:
-        alarm = i18n.get_alarm(alarm_id)  # No type specified
+        alarm = i18n.get_alarm(alarm_id)
         print(
             f"   ID {alarm_id:5d} → {alarm['type']:10s} | {alarm['description'][:50]}..."
         )
@@ -89,7 +84,6 @@ def demo_formatted_output():
 
     print("\n📄 Formatted Alarms:\n")
 
-    # Format a few alarms
     for alarm_id in [16, 17, 8752]:
         formatted = i18n.format_alarm(alarm_id)
         print(formatted)
@@ -104,13 +98,11 @@ def demo_enrichment():
 
     i18n = AlarmI18n("zh_CN")
 
-    # Simulate data received from robot (only has ID and metadata)
     robot_data = {"id": 16, "mode": "warning", "date": "2026-02-09", "time": "14:30:00"}
 
     print("\n📡 Data from Robot:")
     print(f"   {robot_data}")
 
-    # Enrich with translations
     enriched = i18n.enrich_alarm_data(robot_data)
 
     print("\n✨ Enriched with Translations (Chinese):")

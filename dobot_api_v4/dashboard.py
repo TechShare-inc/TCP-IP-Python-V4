@@ -154,8 +154,6 @@ class DobotApiDashboard(DobotApi):
         string = "BrakeControl({:d},{:d})".format(axisID, value)
         return self.sendRecvMsg(string)
 
-    #####################################################################
-
     def SpeedFactor(self, speed):
         """
            6°/s
@@ -413,8 +411,6 @@ class DobotApiDashboard(DobotApi):
         string = "SetWorkZoneEnable({:d},{:d})".format(index, value)
         return self.sendRecvMsg(string)
 
-    #########################################################################
-
     def RobotMode(self):
         """
         9 ROBOT_MODE_ERROR
@@ -549,8 +545,6 @@ class DobotApiDashboard(DobotApi):
         """
         string = "GetErrorID()"
         return self.sendRecvMsg(string)
-
-    #################################################################
 
     def DO(self, index, status, time=-1):
         """
@@ -884,8 +878,6 @@ class DobotApiDashboard(DobotApi):
         string = string + ")"
         return self.sendRecvMsg(string)
 
-    ##################################################################
-
     def ModbusCreate(self, ip, port, slave_id, isRTU=-1):
         """
         Create Modbus master, and establish connection with the slave. (support connecting to at most 5 devices).
@@ -1074,8 +1066,6 @@ class DobotApiDashboard(DobotApi):
         string = string + ")"
         return self.sendRecvMsg(string)
 
-    ########################################################################
-
     def GetInputBool(self, address):
         """
         Get the value in bool type from the specified address of input register.
@@ -1168,10 +1158,6 @@ class DobotApiDashboard(DobotApi):
         """
         string = "SetOutputFloat({:d},{:d})".format(address, value)
         return self.sendRecvMsg(string)
-
-    #######################################################################
-    # Movement Commands (merged from move.py to restore V4 monolithic structure)
-    #######################################################################
 
     def MovJ(
         self,
@@ -2897,7 +2883,6 @@ class DobotApiDashboard(DobotApi):
         if file is not None:
             string += "file={:s}".format(file)
         elif points is not None and coordinateMode != -1:
-            # points should be a list of tuples/lists
             pts_str = []
             for pt in points:
                 if coordinateMode == 0:
@@ -3155,5 +3140,3 @@ class DobotApiDashboard(DobotApi):
             radian,
         )
         return self.sendRecvMsg(string)
-
-    #######################################################################

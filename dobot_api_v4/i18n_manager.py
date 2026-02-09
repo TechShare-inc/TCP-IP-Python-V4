@@ -30,7 +30,6 @@ class AlarmI18n:
         '规划位置接近肩奇异点'
     """
 
-    # Supported languages
     SUPPORTED_LANGUAGES = [
         "en",
         "zh_CN",
@@ -44,15 +43,13 @@ class AlarmI18n:
         "fr",
     ]
 
-    # Language aliases for backward compatibility
     LANGUAGE_ALIASES = {
         "zh_cn": "zh_CN",  # Case normalization
         "zh_hant": "zh_Hant",  # Case normalization
-        "kr": "ko",  # Korean code fix
+        "kr": "ko",
     }
 
-    # Alarm ID ranges for automatic type detection
-    SERVO_ID_MIN = 8000  # Servo alarms start from 8000+
+    SERVO_ID_MIN = 8000
 
     def __init__(self, default_language: str = "en"):
         """
@@ -106,7 +103,6 @@ class AlarmI18n:
             >>> i18n_manager.set_language('zh_cn')  # Auto-normalized to zh_CN
             >>> i18n_manager.set_language('kr')     # Auto-converted to ko
         """
-        # Normalize language code
         original_language = language
         language = self.LANGUAGE_ALIASES.get(language.lower(), language)
 
@@ -160,7 +156,6 @@ class AlarmI18n:
             >>> alarm = i18n_manager.get_alarm(8752, alarm_type='servo')
             >>> desc = i18n_manager.get_alarm(16, field='description')
         """
-        # Auto-detect alarm type if not specified
         if alarm_type is None:
             alarm_type = "servo" if alarm_id >= self.SERVO_ID_MIN else "controller"
 
@@ -171,12 +166,10 @@ class AlarmI18n:
             value = i18n.t(key, default="")
             return {field: value}
 
-        # Return all fields
         description = i18n.t(f"{base_key}.description", default="Unknown error")
         cause = i18n.t(f"{base_key}.cause", default="")
         solution = i18n.t(f"{base_key}.solution", default="Contact technical support")
 
-        # Level is an integer, handle it specially
         try:
             level_val = i18n.t(f"{base_key}.level")
             level = (
@@ -300,10 +293,8 @@ class AlarmI18n:
             logger.warning("Alarm data missing 'id' field, cannot enrich")
             return alarm_data
 
-        # Get translation
         translation = self.get_alarm(alarm_id)
 
-        # Merge: original data + translations
         enriched = {**alarm_data, **translation}
 
         return enriched

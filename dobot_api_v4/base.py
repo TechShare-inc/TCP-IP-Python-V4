@@ -11,7 +11,6 @@ from time import sleep
 from typing import Any, Optional
 from loguru import logger
 
-# Port Feedback Structure for V4
 MyType = np.dtype(
     [
         (
@@ -283,14 +282,12 @@ class DobotApi:
         self.__globalLock: threading.Lock = threading.Lock()
         self.text_log: Optional[Any] = args[0] if args else None
 
-        # Validate port
         if self.port not in [29999, 30004, 30005]:
             raise ValueError(
                 f"Invalid port {self.port}. Must be 29999 (dashboard/movement), "
                 f"30004 (feedback), or 30005 (feedback V4-specific)."
             )
 
-        # Establish connection
         try:
             self.socket_dobot = socket.socket()
             self.socket_dobot.connect((self.ip, self.port))

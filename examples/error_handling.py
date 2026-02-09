@@ -20,10 +20,8 @@ def main():
     print("=== RobotErrorMonitor Usage Example ===")
     print("Note: Error information is logged. Check console for logger output.\\n")
 
-    # Create monitor instance
     monitor = RobotErrorMonitor(robot_ip="192.168.200.1", dashboard_port=29999)
 
-    # Connect to robot (optional - only needed if you want to use TCP commands)
     print("1. Connecting to robot...")
     if not monitor.connect():
         print(
@@ -31,12 +29,10 @@ def main():
         )
 
     try:
-        # 2. Basic usage - Check current errors
         print("2. Checking current error information...")
         has_errors = monitor.check_errors("zh_cn")
         print(f"   Check completed. Errors found: {has_errors}\\n")
 
-        # 3. Multi-language support
         print("3. Multi-language support demonstration:")
         languages = {
             "zh_cn": "Simplified Chinese",
@@ -50,12 +46,10 @@ def main():
 
         print()
 
-        # 4. Save error log
         print("4. Saving error log to file...")
         monitor.save_error_log()
         print()
 
-        # 5. Get raw data
         print("5. Getting raw JSON data:")
         raw_data = monitor.get_error_info("zh_cn")
         if raw_data:
@@ -65,13 +59,11 @@ def main():
             print("   No data retrieved or connection failed.")
         print()
 
-        # 6. Optional: Start continuous monitoring (uncomment to enable)
         print("6. Continuous monitoring available (commented out by default)")
         print("   Uncomment the following lines to enable:")
         print("   # monitor.monitor_errors(interval=10, language='zh_cn')")
 
     finally:
-        # Disconnect (if connected)
         print("\\nDisconnecting from robot...")
         monitor.disconnect()
         print("Example completed.")

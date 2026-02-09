@@ -16,28 +16,22 @@ Usage Example:
     ```python
     from dobot_api_v4 import DobotApiDashboard, DobotApiFeedBack, RobotErrorMonitor
 
-    # Connect (Monolithic pattern: one dashboard instance)
     dashboard = DobotApiDashboard("192.168.1.6", 29999)
     feed = DobotApiFeedBack("192.168.1.6", 30004)
 
-    # Error monitoring (HTTP-based, separate from TCP commands)
     monitor = RobotErrorMonitor("192.168.1.6")
 
-    # Control commands
     dashboard.EnableRobot()
     dashboard.VelL(50)
 
-    # Movement commands (same instance)
-    dashboard.MovJ(300, 0, 200, 0, 90, 0, coordinateMode=0)  # coordinateMode: 0=pose, 1=joint
+    dashboard.MovJ(300, 0, 200, 0, 90, 0, coordinateMode=0)
 
-    # Monitor errors
     error_info = monitor.get_error_info("en")
     if error_info and error_info.get("errMsg"):
         print(f"Found {len(error_info['errMsg'])} errors")
 
-    # Read feedback
     data = feed.feedBackData()
-    print(data['QActual'])  # V4 uses PascalCase
+    print(data['QActual'])
     ```
 
 See MIGRATION_V3_TO_V4.md for detailed API differences.
@@ -49,18 +43,14 @@ from .feedback import DobotApiFeedBack
 from .error_monitor import RobotErrorMonitor
 from .i18n_manager import AlarmI18n
 
-# Configure loguru logger
 import os
 import sys
 from loguru import logger
 
-# Remove default logger
 logger.remove()
 
-# Get log level from environment variable or default to INFO
 log_level = os.environ.get("DOBOT_LOG_LEVEL", "INFO").upper()
 
-# Add configured logger with custom format
 logger.add(
     sys.stderr,
     format="<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>",

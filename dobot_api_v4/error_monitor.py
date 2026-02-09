@@ -109,10 +109,8 @@ class RobotErrorMonitor:
                     print(f"ID: {error['id']}, Description: {error['description']}")
         """
         try:
-            # Set i18n language for local translations
             self.i18n.set_language(language)
 
-            # Retrieve alarm information via GET request (no language POST needed)
             alarm_url = f"http://{self.robot_ip}:22000/protocol/getAlarm"
             alarm_req = urllib.request.Request(alarm_url, method="GET")
 
@@ -120,7 +118,6 @@ class RobotErrorMonitor:
                 alarm_data = response.read().decode("utf-8")
                 robot_response = json.loads(alarm_data)
 
-            # Enrich alarm data with localized translations
             if robot_response and "errMsg" in robot_response:
                 enriched_alarms = []
                 for alarm in robot_response["errMsg"]:
