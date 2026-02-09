@@ -92,19 +92,6 @@ class DobotApiMove(DobotApi):
         cp=-1,
     ):
         """
-        描述
-        从当前位置以关节运动⽅式运动⾄⽬标点。
-        必选参数
-        参数名 类型 说明
-        P string ⽬标点，⽀持关节变量或位姿变量
-        coordinateMode int  目标点的坐标值模式    0为pose方式  1为joint
-        可选参数
-        参数名 类型 说明
-        user int ⽤⼾坐标系
-        tool int ⼯具坐标系
-        a int 执⾏该条指令时的机械臂运动加速度⽐例。取值范围：(0,100]
-        v int 执⾏该条指令时的机械臂运动速度⽐例。取值范围：(0,100]
-        cp int 平滑过渡⽐例。取值范围：[0,100]
         Description
         Move from the current position to the target position through joint motion.
         Required parameter:
@@ -165,22 +152,6 @@ class DobotApiMove(DobotApi):
         r=-1,
     ):
         """
-        描述
-        从当前位置以直线运动⽅式运动⾄⽬标点。
-        必选参数
-        参数名 类型 说明
-        P string ⽬标点，⽀持关节变量或位姿变量
-        coordinateMode int  目标点的坐标值模式    0为pose方式  1为joint
-        可选参数
-        参数名 类型  说明
-        user int ⽤⼾坐标系
-        tool int ⼯具坐标系
-        a    int 执⾏该条指令时的机械臂运动加速度⽐例。取值范围：(0,100]
-        v    int 执⾏该条指令时的机械臂运动速度⽐例，与speed互斥。取值范围：(0,100]
-        speed int 执⾏该条指令时的机械臂运动⽬标速度，与v互斥，若同时存在以speed为
-        准。取值范围：[1, 最⼤运动速度]，单位：mm/s
-        cp  int 平滑过渡⽐例，与r互斥。取值范围：[0,100]
-        r   int 平滑过渡半径，与cp互斥，若同时存在以r为准。单位：mm
         Description
         Move from the current position to the target position in a linear mode.
         Required parameter:
@@ -235,17 +206,6 @@ class DobotApiMove(DobotApi):
 
     def ServoJ(self, J1, J2, J3, J4, J5, J6, t=-1.0, aheadtime=-1.0, gain=-1.0):
         """
-        参数名 类型 含义
-        参数范围
-        J1 double 点J1 轴位置，单位：度 是
-        J2 double 点J2 轴位置，单位：度 是
-        J3 double 点J3 轴位置，单位：度 是
-        J4 double 点J4 轴位置，单位：度 是
-        J5 double 点J5 轴位置，单位：度 是
-        J6 double 点J6 轴位置，单位：度 是
-        t float 该点位的运行时间，默认0.1,单位：s 否 [0.004,3600.0]
-        aheadtime float 作用类似于PID的D项，默认50，标量，无单位 否 [20.0,100.0]
-        gain float 目标位置的比例放大器，作用类似于PID的P项，默认500，标量，无单位 否 [200.0,1000.0]
         Joint string Target point joint variables
         t float Optional parameter.Running time of the point, unit: s, value range: [0.02,3600.0], default value:0.1
         aheadtime float Optional parameter.Advanced time, similar to the D in PID control. Scalar, no unit, valuerange: [20.0,100.0], default value: 50.
@@ -267,16 +227,6 @@ class DobotApiMove(DobotApi):
 
     def ServoP(self, X, Y, Z, RX, RY, RZ, t=-1.0, aheadtime=-1.0, gain=-1.0):
         """
-        参数名 类型 含义 是否必填 参数范围
-        X double X 轴位置，单位：毫米 是
-        Y double Y 轴位置，单位：毫米 是
-        Z double Z 轴位置，单位：毫米 是
-        Rx double Rx 轴位置，单位：度 是
-        Ry double Ry 轴位置，单位：度 是
-        Rz double Rz 轴位置，单位：度 是
-        t float 该点位的运行时间，默认0.1,单位：s 否 [0.004,3600.0]
-        aheadtime float 作用类似于PID的D项，默认50，标量，无单位 否 [20.0,100.0]
-        gain float 目标位置的比例放大器，作用类似于PID的P项，默认500，标量，无单位 否 [200.0,1000.0]
         Pose string  Target point posture variables. The reference coordinate system is the global user and tool coordinate system, see the User and Tool command descriptions in Settings command (the default values are both 0
         t float Optional parameter.Running time of the point, unit: s, value range: [0.02,3600.0], default value:0.1
         aheadtime float Optional parameter.Advanced time, similar to the D in PID control. Scalar, no unit, valuerange: [20.0,100.0], default value: 50.
@@ -318,33 +268,6 @@ class DobotApiMove(DobotApi):
         r=-1,
     ):
         """
-        描述
-        从当前位置以直线运动⽅式运动⾄⽬标点，运动时并⾏设置数字输出端⼝状态。
-        必选参数
-        参数名 类型 说明
-        P string ⽬标点，⽀持关节变量或位姿变量
-        coordinateMode int  目标点的坐标值模式    0为pose方式  1为joint
-        {Mode,Distance,Index,Status}为并⾏数字输出参数，⽤于设置当机械臂运动到指定距离或百分⽐
-        时，触发指定DO。可设置多组，参数具体含义如下：
-        参数名 类型 说明
-        Mode int 触发模式。0表⽰距离百分⽐，1表⽰距离数值
-        Distance int 指定距离。
-        Distance为正数时，表⽰离起点的距离；
-        Distance为负数时，表⽰离⽬标点的距离；
-        Mode为0时，Distance表⽰和总距离的百分⽐；取值范围：(0,100]；
-        Mode为1时，Distance表⽰距离的值。单位：mm
-        Index int DO端⼦的编号
-        Status int 要设置的DO状态，0表⽰⽆信号，1表⽰有信号
-        可选参数
-        参数名  类型  说明
-        user int ⽤⼾坐标系
-        tool int ⼯具坐标系
-        a int 执⾏该条指令时的机械臂运动加速度⽐例。取值范围：(0,100]
-        v int 执⾏该条指令时的机械臂运动速度⽐例，与speed互斥。取值范围：(0,100]
-        speed int 执⾏该条指令时的机械臂运动⽬标速度，与v互斥，若同时存在以speed为
-        准。取值范围：[1, 最⼤运动速度]，单位：mm/s
-        cp int 平滑过渡⽐例，与r互斥。取值范围：[0,100]
-        r int 平滑过渡半径，与cp互斥，若同时存在以r为准。单位：mm
         Description
         Move from the current position to the target position in a linear mode, and set the status of digital output port when the robot is moving.
         Required parameter:
@@ -427,31 +350,6 @@ class DobotApiMove(DobotApi):
         cp=-1,
     ):
         """
-        描述
-        从当前位置以关节运动⽅式运动⾄⽬标点，运动时并⾏设置数字输出端⼝状态。
-        必选参数
-        参数名 类型 说明
-        P string ⽬标点，⽀持关节变量或位姿变量
-        coordinateMode int  目标点的坐标值模式    0为pose方式  1为joint
-        {Mode,Distance,Index,Status}为并⾏数字输出参数，⽤于设置当机械臂运动到指定距离或百分⽐
-        时，触发指定DO。可设置多组，参数具体含义如下：
-        参数名   类型  说明
-        Mode int 触发模式。0表⽰距离百分⽐，1表⽰距离数值。系统会将各关节⻆合成
-        ⼀个⻆度向量，并计算终点和起点的⻆度差作为运动的总距离。
-        Distance int 指定距离。
-        Distance为正数时，表⽰离起点的距离；
-        Distance为负数时，表⽰离⽬标点的距离；
-        Mode为0时，Distance表⽰和总距离的百分⽐；取值范围：(0,100]；
-        Mode为1时，Distance表⽰距离的⻆度。单位：°
-        Index int DO端⼦的编号
-        Status int 要设置的DO状态，0表⽰⽆信号，1表⽰有信号
-        可选参数
-        参数名 类型 说明
-        user int ⽤⼾坐标系
-        tool int ⼯具坐标系
-        a int 执⾏该条指令时的机械臂运动加速度⽐例。取值范围：(0,100]
-        v int 执⾏该条指令时的机械臂运动速度⽐例。取值范围：(0,100]
-        cp int 平滑过渡⽐例。取值范围：[0,100]
         Description
         Move from the current position to the target position through joint motion, and set the status of digital output port when the robot is moving.
         Required parameter:
@@ -529,25 +427,6 @@ class DobotApiMove(DobotApi):
         r=-1,
     ):
         """
-        描述
-        从当前位置以圆弧插补⽅式运动⾄⽬标点。
-        需要通过当前位置，圆弧中间点，运动⽬标点三个点确定⼀个圆弧，因此当前位置不能在P1和P2
-        确定的直线上。
-        必选参数
-        参数名 类型 说明
-        P1 string 圆弧中间点，⽀持关节变量或位姿变量
-        P2 string 运动⽬标点，⽀持关节变量或位姿变量
-        coordinateMode int  目标点的坐标值模式    0为pose方式  1为joint
-        可选参数
-        参数名  类型  说明
-        user int ⽤⼾坐标系
-        tool int ⼯具坐标系
-        a int  执⾏该条指令时的机械臂运动加速度⽐例。取值范围：(0,100]
-        v int 执⾏该条指令时的机械臂运动速度⽐例，与speed互斥。取值范围：(0,100]
-        speed int执⾏该条指令时的机械臂运动⽬标速度，与v互斥，若同时存在以speed为
-        准。取值范围：[1, 最⼤运动速度]，单位：mm/s
-        cp int 平滑过渡⽐例，与r互斥。取值范围：[0,100]
-        r int 平滑过渡半径，与cp互斥，若同时存在以r为准。单位：mm
         Description
         Move from the current position to the target position in an arc interpolated mode.
         As the arc needs to be determined through the current position, through point and target point, the current position should not be in a straight line determined by P1 and P2.
@@ -627,26 +506,6 @@ class DobotApiMove(DobotApi):
         r=-1,
     ):
         """
-        描述
-        从当前位置进⾏整圆插补运动，运动指定圈数后重新回到当前位置。
-        需要通过当前位置，P1，P2三个点确定⼀个整圆，因此当前位置不能在P1和P2确定的直线上，且
-        三个点确定的整圆不能超出机械臂的运动范围。
-        必选参数
-        参数名 类型 说明
-        P1 string 整圆中间点，⽀持关节变量或位姿变量
-        P2 string 整圆结束点点，⽀持关节变量或位姿变量
-        coordinateMode int  目标点的坐标值模式    0为pose方式  1为joint
-        count int 进⾏整圆运动的圈数，取值范围：[1,999]。
-        可选参数
-        参数名  类型  说明
-        user int ⽤⼾坐标系
-        tool int ⼯具坐标系
-        a int 执⾏该条指令时的机械臂运动加速度⽐例。取值范围：(0,100]
-        v int 执⾏该条指令时的机械臂运动速度⽐例，与speed互斥。取值范围：(0,100]
-        speed int执⾏该条指令时的机械臂运动⽬标速度，与v互斥，若同时存在以speed为
-        准。取值范围：[1, 最⼤运动速度]，单位：mm/s
-        cp int 平滑过渡⽐例，与r互斥。取值范围：[0,100]
-        r int 平滑过渡半径，与cp互斥，若同时存在以r为准。单位：mm
         Description
         Move from the current position in a circle interpolated mode, and return to the current position after moving specified circles.
         As the circle needs to be determined through the current position, P1 and P2, the current position should not be in a straight line determined by P1 and P2, and the circle determined by the three points cannot exceed the motion range of the robot arm.
@@ -730,14 +589,6 @@ class DobotApiMove(DobotApi):
 
     def GetStartPose(self, trace_name):
         """
-        描述
-        获取指定轨迹的第⼀个点位。
-        必选参数
-        参数名 类型 说明
-        traceName string  轨迹⽂件名（含后缀）
-        轨迹⽂件存放在/dobot/userdata/project/process/trajectory/
-        如果名称包含中⽂，必须将发送端的编码⽅式设置为UTF-8，否则
-        会导致中⽂接收异常
         Description
         Get the start point of the trajectory.
         Required parameter:
@@ -752,25 +603,7 @@ class DobotApiMove(DobotApi):
 
     def StartPath(self, trace_name, isConst=-1, multi=-1.0, user=-1, tool=-1):
         """
-        描述
-        根据指定的轨迹⽂件中的记录点位进⾏运动，复现录制的运动轨迹。
-        下发轨迹复现指令成功后，⽤⼾可以通过RobotMode指令查询机械臂运⾏状态，
-        ROBOT_MODE_RUNNING表⽰机器⼈在轨迹复现运⾏中，变成ROBOT_MODE_IDLE表⽰轨迹复现
-        运⾏完成，ROBOT_MODE_ERROR表⽰报警。
-        必选参数
-        参数名 类型 说明
         traceName string
-        轨迹⽂件名（含后缀）轨迹⽂件存放在/dobot/userdata/project/process/trajectory/
-        如果名称包含中⽂，必须将发送端的编码⽅式设置为UTF-8，否则会导致中⽂接收异常
-        可选参数
-        参数名 类型 说明
-        isConst int是否匀速复现。
-           1表⽰匀速复现，机械臂会按照全局速率匀速复现轨迹；
-           0表⽰按照轨迹录制时的原速复现，并可以使⽤multi参数等⽐缩放运
-           动速度，此时机械臂的运动速度不受全局速率的影响。
-        multi double 复现时的速度倍数，仅当isConst=0时有效；取值范围：[0.25, 2]，默认值为1
-        user int  指定轨迹点位对应的⽤⼾坐标系索引，不指定时使⽤轨迹⽂件中记录的⽤⼾坐标系索引
-        tool int 指定轨迹点位对应的⼯具坐标系索引，不指定时使⽤轨迹⽂件中记录的⼯具坐标系索引
         Description
         Move according to the recorded points in the specified trajectory file to play back the recorded trajectory.
         After the trajectory playback command is successfully delivered, you can check the robot status via RobotMode command.
@@ -820,23 +653,6 @@ class DobotApiMove(DobotApi):
         cp=-1,
     ):
         """
-        描述
-        沿⼯具坐标系进⾏相对运动，末端运动⽅式为关节运动。
-        必选参数
-        参数名 类型 说明
-        offsetX double X轴⽅向偏移量，单位：mm
-        offsetY double Y轴⽅向偏移量，单位：mm
-        offsetZ double Z轴⽅向偏移量，单位：mm
-        offsetRx double Rx轴⽅向偏移量，单位：度
-        offsetRy double Ry轴⽅向偏移量，单位：度
-        offsetRz double Rz轴⽅向偏移量，单位：度
-        可选参数
-        参数名 类型 说明
-        user int ⽤⼾坐标系
-        tool int ⼯具坐标系
-        a int 执⾏该条指令时的机械臂运动加速度⽐例。取值范围：(0,100]
-        v int 执⾏该条指令时的机械臂运动速度⽐例。取值范围：(0,100]
-        cp int 平滑过渡⽐例。取值范围：[0,100]
         Description
         Perform relative motion along the tool coordinate system, and the end motion is joint motion.
         Required parameter:
@@ -891,27 +707,6 @@ class DobotApiMove(DobotApi):
         r=-1,
     ):
         """
-        描述
-        沿⼯具坐标系进⾏相对运动，末端运动⽅式为直线运动。
-        此条指令为六轴机械臂特有。
-        必选参数
-        参数名 类型 说明
-        offsetX double X轴⽅向偏移量，单位：mm
-        offsetY double Y轴⽅向偏移量，单位：mm
-        offsetZ double Z轴⽅向偏移量，单位：mm
-        offsetRx double Rx轴⽅向偏移量，单位：度
-        offsetRy double Ry轴⽅向偏移量，单位：度
-        offsetRz double Rz轴⽅向偏移量，单位：度
-        可选参数
-        参数名  类型  说明
-        user int ⽤⼾坐标系
-        tool int ⼯具坐标系
-        a int 执⾏该条指令时的机械臂运动加速度⽐例。取值范围：(0,100]
-        v int 执⾏该条指令时的机械臂运动速度⽐例。取值范围：(0,100]
-        speed int  执⾏该条指令时的机械臂运动⽬标速度，与v互斥，若同时存在以speed为
-        准。取值范围：[1, 最⼤运动速度]，单位：mm/s
-        cp int 平滑过渡⽐例，与r互斥。取值范围：[0,100]
-        r int 平滑过渡半径，与cp互斥，若同时存在以r为准。单位：mm
         Description
         Perform relative motion along the tool coordinate system, and the end motion is linear motion.
         This command is for 6-axis robots.
@@ -975,23 +770,6 @@ class DobotApiMove(DobotApi):
         cp=-1,
     ):
         """
-        描述
-        沿⽤⼾坐标系进⾏相对运动，末端运动⽅式为关节运动。
-        必选参数
-        参数名 类型 说明
-        offsetX double X轴⽅向偏移量，单位：mm
-        offsetY double Y轴⽅向偏移量，单位：mm
-        offsetZ double Z轴⽅向偏移量，单位：mm
-        offsetRx double Rx轴偏移量，单位：度
-        offsetRy double Ry轴偏移量，单位：度
-        offsetRz double Rz轴偏移量，单位：度
-        可选参数
-        参数名 类型 说明
-        user int ⽤⼾坐标系
-        tool int ⼯具坐标系
-        a int 执⾏该条指令时的机械臂运动加速度⽐例。取值范围：(0,100]
-        v int 执⾏该条指令时的机械臂运动速度⽐例。取值范围：(0,100]
-        cp int 平滑过渡⽐例。取值范围：[0,100]
         Description
         Perform relative motion along the user coordinate system, and the end motion is joint motion.
         Required parameter:
@@ -1046,26 +824,6 @@ class DobotApiMove(DobotApi):
         r=-1,
     ):
         """
-        描述
-        沿⽤⼾坐标系进⾏相对运动，末端运动⽅式为直线运动。
-        必选参数
-        参数名 类型 说明
-        offsetX double X轴⽅向偏移量，单位：mm
-        offsetY double Y轴⽅向偏移量，单位：mm
-        offsetZ double Z轴⽅向偏移量，单位：mm
-        offsetRx double Rx轴偏移量，单位：度
-        offsetRy double Ry轴偏移量，单位：度
-        offsetRz double Rz轴偏移量，单位：度
-        可选参数
-        参数名  类型说明
-        user int ⽤⼾坐标系
-        tool int ⼯具坐标系
-        a int 执⾏该条指令时的机械臂运动加速度⽐例。取值范围：(0,100]
-        v int 执⾏该条指令时的机械臂运动速度⽐例。取值范围：(0,100]
-        speed int 执⾏该条指令时的机械臂运动⽬标速度，与v互斥，若同时存在以speed为
-        准。取值范围：[1, 最⼤运动速度]，单位：mm/s
-        cp int 平滑过渡⽐例，与r互斥。取值范围：[0,100]
-        r int 平滑过渡半径，与cp互斥，若同时存在以r为准。单位：mm
         Description
         Perform relative motion along the user coordinate system, and the end motion is linear motion.
         Required parameter:
@@ -1126,21 +884,6 @@ class DobotApiMove(DobotApi):
         cp=-1,
     ):
         """
-        描述
-        沿关节坐标系进⾏相对运动，末端运动⽅式为关节运动。
-        必选参数
-        参数名 类型 说明
-        offset1 double J1轴偏移量，单位：度
-        offset2 double J2轴偏移量，单位：度
-        offset3 double J3轴偏移量，单位：度
-        offset4 double J4轴偏移量，单位：度
-        offset5 double J5轴偏移量，单位：度
-        offset6 double J6轴偏移量，单位：度
-        可选参数
-        参数名 类型 说明
-        a int 执⾏该条指令时的机械臂运动加速度⽐例。取值范围：(0,100]
-        v int 执⾏该条指令时的机械臂运动速度⽐例。取值范围：(0,100]
-        cp int 平滑过渡⽐例。取值范围：[0,100]
         Description
         Perform relative motion along the joint coordinate system, and the end motion is joint motion.
         Required parameter:
@@ -1174,89 +917,62 @@ class DobotApiMove(DobotApi):
 
     def GetCurrentCommandID(self):
         """
-        获取当前执⾏指令的算法队列ID，可以⽤于判断当前机器⼈执⾏到了哪⼀条指令。
         Get the algorithm queue ID of the currently executed command, which can be used to judge which command is currently being executed by the robot.
         """
         string = "GetCurrentCommandID()"
         return self.sendRecvMsg(string)
 
-    ###################################460新增#############################
 
-    ##轨迹恢复指令
     def SetResumeOffset(self, distance):
         """
-        该指令仅用于焊接工艺。设置轨迹恢复的目标点位相对暂停时的点位沿焊缝回退的距离
         """
         string = "SetResumeOffset({:f})".format(distance)
         return self.sendRecvMsg(string)
 
     def PathRecovery(self):
         """
-        开始轨迹恢复：工程暂停后，控制机器人回到暂停时的位姿。
         """
         string = "PathRecovery()"
         return self.sendRecvMsg(string)
 
     def PathRecoveryStop(self):
         """
-        轨迹恢复的过程中停止机器人。
         """
         string = "PathRecoveryStop()"
         return self.sendRecvMsg(string)
 
     def PathRecoveryStatus(self):
         """
-        查询轨迹恢复的状态。
         """
         string = "PathRecoveryStatus()"
         return self.sendRecvMsg(string)
 
-    ##日志导出指令
     def LogExportUSB(self, range):
         """
-        将机器人日志导出至插在机器人控制柜USB接口的U盘根目录。
-        导出范围。
-         0   导出logs/all 和logs/user文件夹的内容。
-         1   导出logs文件夹所有内容。
         """
         string = "LogExportUSB({:d})".format(range)
         return self.sendRecvMsg(string)
 
     def GetExportStatus(self):
         """
-        获取日志导出的状态。
-        其中status表示日志导出状态。
-        0：未开始导出
-        1：导出中
-        2：导出完成
-        3：导出失败，找不到U盘
-        4：导出失败，U盘空间不足
-        5：导出失败，导出过程中U盘被拔出
-        导出完成和导出失败的状态会保持到下次用户使用导出功能
         """
         string = "GetExportStatus()"
         return self.sendRecvMsg(string)
 
-    ##力控指令
     def EnableFTSensor(self, status):
         """
-        开启/关闭力传感器。
         """
         string = "EnableFTSensor({:d})".format(status)
         return self.sendRecvMsg(string)
 
     def SixForceHome(self):
         """
-        将力传感器当前数值置0，即以传感器当前受力状态作为零点。
         """
         string = "SixForceHome()"
         return self.sendRecvMsg(string)
 
     def GetForce(self, tool=-1):
         """
-        获取力传感器当前数值。
-        tool int 用于指定获取数值时参考的工具坐标系，取值范围：[0,50]。
-        不指定时使用全局工具坐标系
         """
         if tool == -1:
             string = "GetForce()"
@@ -1266,14 +982,7 @@ class DobotApiMove(DobotApi):
 
     def ForceDriveMode(self, x, y, z, rx, ry, rz, user=-1):
         """
-        指定可拖拽的方向并进入力控拖拽模式。
         {x,y,z,rx,ry,rz} string
-        用于指定可拖拽的方向。
-        0代表该方向不能拖拽，1代表该方向可以拖拽。
-        例：
-        {1,1,1,1,1,1}表示机械臂可在各轴方向上自由拖动
-        {1,1,1,0,0,0}表示机械臂仅可在XYZ轴方向上拖动
-        {0,0,0,1,1,1}表示机械臂仅可在RxRyRz轴方向上旋转
         """
         string = ""
         string = (
@@ -1289,8 +998,6 @@ class DobotApiMove(DobotApi):
 
     def ForceDriveSpeed(self, speed):
         """
-        设置力控拖拽速度比例。
-        speed int 力控拖拽速度比例，取值范围：[1,100]。
         """
         string = "ForceDriveSpeed({:d})".format(speed)
         return self.sendRecvMsg(string)
@@ -1314,24 +1021,11 @@ class DobotApiMove(DobotApi):
         tool=-1,
     ):
         """
-        以用户指定的配置参数开启力控。
         {x,y,z,rx,ry,rz}
-            开启/关闭笛卡尔空间某个方向的力控调节。
-            0表示关闭该方向的力控。
-            1表示开启该方向的力控。
         {fx,fy,fz,frx,fry,frz}
-            目标力：是工具末端与作用对象之间接触力的目标值，是一种模拟力，可以由用户自行设定；目标力方向分别对应笛卡尔空间的{x,y,z,rx,ry,rz}方向。
-            位移方向的目标力范围[-200,200]，单位N；姿态方向的目标力范围[-12,12]，单位N/m。
-            目标力为0时处于柔顺模式，柔顺模式与力控拖动类似。
-        如果某个方向未开启力控调节，则该方向的目标力也不会生效。
         reference
-            格式为"reference=value"。value表示参考坐标系，默认参考工具坐标系。
-            reference=0表示参考工具坐标系，即沿工具坐标系进行力控调节。
-            reference=1表示参考用户坐标系，即沿用户坐标系进行力控调节。
         user
-            格式为"user=index"，index为已标定的用户坐标系索引。取值范围：[0,50]。
         tool
-            格式为"tool=index"，index为已标定的工具坐标系索引。取值范围：[0,50]。
         """
         string = ""
         string = (
@@ -1357,15 +1051,9 @@ class DobotApiMove(DobotApi):
 
     def FCSetDeviation(self, x, y, z, rx, ry, rz, controltype=-1):
         """
-        设置力控模式下的位移和姿态偏差，若力控过程中恒力偏移了较大的距离，机器人进会行相应处理。
         x、y、z
-        代表力控模式下的位移偏差，单位为mm。取值范围：(0,1000]，默认值100mm。
         rx、ry、rz
-        代表力控模式下的姿态偏差，单位为度。取值范围：(0,360]，默认值36度。
         controltype
-        表示力控过程中超过规定阈值时，机械臂的处理方式。
-        0：超过阈值时，机械臂报警（默认值）。
-        1：超过阈值时，机械臂停止搜寻而在原有轨迹上继续运动。
         """
         string = ""
         string = (
@@ -1381,7 +1069,6 @@ class DobotApiMove(DobotApi):
 
     def FCSetForceLimit(self, x, y, z, rx, ry, rz):
         """
-        设置各方向的最大力限制（该设置对所有方向均生效，包含未启用力控的方向）。
         """
         string = ""
         string = "FCSetForceLimit(" + "{:d},{:d},{:d},{:d},{:d},{:d}".format(
@@ -1392,7 +1079,6 @@ class DobotApiMove(DobotApi):
 
     def FCSetMass(self, x, y, z, rx, ry, rz):
         """
-        设置力控模式下各方向的惯性系数。
         """
         string = ""
         string = "FCSetMass(" + "{:d},{:d},{:d},{:d},{:d},{:d}".format(
@@ -1403,7 +1089,6 @@ class DobotApiMove(DobotApi):
 
     def FCSetStiffness(self, x, y, z, rx, ry, rz):
         """
-        设置力控模式下各方向的弹性系数。
         """
         string = ""
         string = "FCSetStiffness(" + "{:d},{:d},{:d},{:d},{:d},{:d}".format(
@@ -1414,7 +1099,6 @@ class DobotApiMove(DobotApi):
 
     def FCSetDamping(self, x, y, z, rx, ry, rz):
         """
-        设置力控模式下各方向的阻尼系数。
         """
         string = ""
         string = "FCSetDamping(" + "{:d},{:d},{:d},{:d},{:d},{:d}".format(
@@ -1425,15 +1109,12 @@ class DobotApiMove(DobotApi):
 
     def FCOff(self):
         """
-        退出力控模式，与FCForceMode配合使用，两者之间的运动指令都会进行力的柔顺控制。
         """
         string = "FCOff()"
         return self.sendRecvMsg(string)
 
     def FCSetForceSpeedLimit(self, x, y, z, rx, ry, rz):
         """
-        设置各方向的力控调节速度。力控速度上限较小时，力控调节速度较慢，适合低速平缓的接触面。
-        力控速度上限较大时，力控调节速度快，适合高速力控应用。需要根据具体的应用场景进行调整。
         """
         string = ""
         string = "FCSetForceSpeedLimit(" + "{:d},{:d},{:d},{:d},{:d},{:d}".format(
@@ -1444,7 +1125,6 @@ class DobotApiMove(DobotApi):
 
     def FCSetForce(self, x, y, z, rx, ry, rz):
         """
-        实时调整各方向的恒力设置。
         """
         string = ""
         string = "FCSetForce(" + "{:d},{:d},{:d},{:d},{:d},{:d}".format(
@@ -1461,11 +1141,9 @@ class DobotApiMove(DobotApi):
         string = "RequestControl()"
         return self.sendRecvMsg(string)
 
-    ## 新增运动指令
 
     def RelPointTool(self, coordinateMode, a1, b1, c1, d1, e1, f1, x, y, z, rx, ry, rz):
         """
-        沿工具坐标系笛卡尔点偏移。
         """
         string = ""
         if coordinateMode == 0:
@@ -1487,7 +1165,6 @@ class DobotApiMove(DobotApi):
 
     def RelPointUser(self, coordinateMode, a1, b1, c1, d1, e1, f1, x, y, z, rx, ry, rz):
         """
-        沿用户坐标系笛卡尔点偏移。
         """
         string = ""
         string = ""
@@ -1557,7 +1234,6 @@ class DobotApiMove(DobotApi):
         mode=-1,
     ):
         """
-        圆弧运动过程中并行设置数字输出端口的状态，可设置多组。
         """
         string = ""
         if coordinateMode == 0:

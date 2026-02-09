@@ -63,7 +63,7 @@ class DobotApiFeedBack(DobotApi):
                 i += 1
             if i >= 5:
                 raise Exception(
-                    "接收数据包缺失，请检查网络环境 / Missing data packets, please check network"
+                    "Missing data packets, please check network"
                 )
 
         interval = (
