@@ -47,7 +47,7 @@ from .base import DobotApi, MyType
 from .dashboard import DobotApiDashboard
 from .feedback import DobotApiFeedBack
 from .error_monitor import RobotErrorMonitor
-from .utils import alarmAlarmJsonFile
+from .i18n_manager import AlarmI18n
 
 # Configure loguru logger
 import os
@@ -75,6 +75,6 @@ __all__ = [
     "DobotApiFeedBack",
     "RobotErrorMonitor",
     "MyType",
-    "alarmAlarmJsonFile",
+    "AlarmI18n",
     "logger",
 ]

@@ -1,0 +1,2155 @@
+controller:
+  '16':
+    description: Geplante Position in der Nähe von der Schultersingularität
+    cause: ''
+    solution: Neuauswahl von Bewegungspunkten oder Befehlen zur Gelenkinterpolation in der Nähe von Singularität
+    level: 5
+  '17':
+    description: Inverse Lösung ohne Lösung
+    cause: ''
+    solution: Neuwahl der Zielbewegungspunkte, Vermeidung von Singularitäten und unzugänglichen Punkten
+    level: 5
+  '18':
+    description: Grenzen des inversen Lösungsergebnisses
+    cause: ''
+    solution: Neuwahl der Zielbewegungspunkte
+    level: 5
+  '19':
+    description: Befehlspunktwiederholung von JUMP oder ARC oder Circles
+    cause: ''
+    solution: Neuauswahl der Bewegungspunkte entsprechend den entsprechenden Befehlsanweisungen
+    level: 5
+  '26':
+    description: Geplante Position in der Nähe der Singularität des Handgelenks
+    cause: ''
+    solution: Neuauswahl von Bewegungspunkten oder Befehlen zur Gelenkinterpolation in der Nähe von Singularität
+    level: 5
+  '27':
+    description: Geplante Position in der Nähe der Ellenbogensingularität
+    cause: ''
+    solution: Neuauswahl von Bewegungspunkten oder Befehlen zur Gelenkinterpolation in der Nähe von Singularität
+    level: 5
+  '29':
+    description: Falsche Eingabeparameter der Geschwindigkeit
+    cause: ''
+    solution: Geschwindigkeitsparameter prüfen
+    level: 5
+  '30':
+    description: Vollparametrische inversen Lösung fehlgeschlagen
+    cause: ''
+    solution: Neustarten. Wenn das Problem immer noch nicht gelöst werden können, wenden Sie sich bitte
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 5
+  '48':
+    description: Gelenk 1 Geschwindigkeitsüberschreitung
+    cause: ''
+    solution: Verringern Sie die Gelenksgeschwindigkeit oder die kartesische Geschwindigkeit, oder wählen
+      Sie den Bewegungspunkt fern von  der Singularität neu aus.
+    level: 5
+  '49':
+    description: Gelenk 2 Geschwindigkeitsüberschreitungen
+    cause: ''
+    solution: Verringern Sie die Gelenksgeschwindigkeit oder die kartesische Geschwindigkeit, oder wählen
+      Sie den Bewegungspunkt fern von  der Singularität neu aus.
+    level: 5
+  '50':
+    description: Gelenk 3 Geschwindigkeitsüberschreitung
+    cause: ''
+    solution: Verringern Sie die Gelenksgeschwindigkeit oder die kartesische Geschwindigkeit, oder wählen
+      Sie den Bewegungspunkt fern von  der Singularität neu aus.
+    level: 5
+  '51':
+    description: Gelenk 4 Geschwindigkeitsüberschreitung
+    cause: ''
+    solution: Verringern Sie die Gelenksgeschwindigkeit oder die kartesische Geschwindigkeit, oder wählen
+      Sie den Bewegungspunkt fern von  der Singularität neu aus.
+    level: 5
+  '52':
+    description: Gelenk 5 Geschwindigkeitsüberschreitung
+    cause: ''
+    solution: Verringern Sie die Gelenksgeschwindigkeit oder die kartesische Geschwindigkeit, oder wählen
+      Sie den Bewegungspunkt fern von  der Singularität neu aus.
+    level: 5
+  '53':
+    description: Gelenk 6 Geschwindigkeitsüberschreitung
+    cause: ''
+    solution: Verringern Sie die Gelenksgeschwindigkeit oder die kartesische Geschwindigkeit, oder wählen
+      Sie den Bewegungspunkt fern von  der Singularität neu aus.
+    level: 5
+  '54':
+    description: Gelenk 1 Positionsdifferenz überschritten
+    cause: ''
+    solution: Neustarten. Wenn das Problem immer noch nicht gelöst werden können, wenden Sie sich bitte
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 5
+  '55':
+    description: Gelenk 2 Positionsdifferenz überschritten
+    cause: ''
+    solution: Neustarten. Wenn das Problem immer noch nicht gelöst werden können, wenden Sie sich bitte
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 5
+  '56':
+    description: Gelenk 3 Positionsdifferenz überschritten
+    cause: ''
+    solution: Neustarten. Wenn das Problem immer noch nicht gelöst werden können, wenden Sie sich bitte
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 5
+  '57':
+    description: Gelenk 4 Positionsdifferenz überschritten
+    cause: ''
+    solution: Neustarten. Wenn das Problem immer noch nicht gelöst werden können, wenden Sie sich bitte
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 5
+  '58':
+    description: Gelenk 5 Positionsdifferenz überschritten
+    cause: ''
+    solution: Neustarten. Wenn das Problem immer noch nicht gelöst werden können, wenden Sie sich bitte
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 5
+  '59':
+    description: Gelenk 6 Positionsdifferenz überschritten
+    cause: ''
+    solution: Neustarten. Wenn das Problem immer noch nicht gelöst werden können, wenden Sie sich bitte
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 5
+  '64':
+    description: Gelenk 1 positive Begrenzung
+    cause: ''
+    solution: Bestätigen Sie den aktuellen Gelenkwinkel und die Weichbegrenzungseinstellungen, heben Sie
+      die Begrenzungen auf oder ändern Sie die Weichbegrenzungseinstellungen
+    level: 5
+  '65':
+    description: Gelenk 1 negative Begrenzung
+    cause: ''
+    solution: Bestätigen Sie den aktuellen Gelenkwinkel und die Weichbegrenzungseinstellungen, heben Sie
+      die Begrenzungen auf oder ändern Sie die Weichbegrenzungseinstellungen
+    level: 5
+  '66':
+    description: Gelenk 2 positive Begrenzung
+    cause: ''
+    solution: Bestätigen Sie den aktuellen Gelenkwinkel und die Weichbegrenzungseinstellungen, heben Sie
+      die Begrenzungen auf oder ändern Sie die Weichbegrenzungseinstellungen
+    level: 5
+  '67':
+    description: Gelenk 2 negative Begrenzung
+    cause: ''
+    solution: Bestätigen Sie den aktuellen Gelenkwinkel und die Weichbegrenzungseinstellungen, heben Sie
+      die Begrenzungen auf oder ändern Sie die Weichbegrenzungseinstellungen
+    level: 5
+  '68':
+    description: Gelenk 3 positive Begrenzung
+    cause: ''
+    solution: Bestätigen Sie den aktuellen Gelenkwinkel und die Weichbegrenzungseinstellungen, heben Sie
+      die Begrenzungen auf oder ändern Sie die Weichbegrenzungseinstellungen
+    level: 5
+  '69':
+    description: Gelenk 3 negative Begrenzung
+    cause: ''
+    solution: Bestätigen Sie den aktuellen Gelenkwinkel und die Weichbegrenzungseinstellungen, heben Sie
+      die Begrenzungen auf oder ändern Sie die Weichbegrenzungseinstellungen
+    level: 5
+  '70':
+    description: Gelenk 4 positive Begrenzung
+    cause: ''
+    solution: Bestätigen Sie den aktuellen Gelenkwinkel und die Weichbegrenzungseinstellungen, heben Sie
+      die Begrenzungen auf oder ändern Sie die Weichbegrenzungseinstellungen
+    level: 5
+  '71':
+    description: Gelenk 4 negative Begrenzung
+    cause: ''
+    solution: Bestätigen Sie den aktuellen Gelenkwinkel und die Weichbegrenzungseinstellungen, heben Sie
+      die Begrenzungen auf oder ändern Sie die Weichbegrenzungseinstellungen
+    level: 5
+  '72':
+    description: Gelenk 5 positive Begrenzung
+    cause: ''
+    solution: Bestätigen Sie den aktuellen Gelenkwinkel und die Weichbegrenzungseinstellungen, heben Sie
+      die Begrenzungen auf oder ändern Sie die Weichbegrenzungseinstellungen
+    level: 5
+  '73':
+    description: Gelenk 5 negative Begrenzung
+    cause: ''
+    solution: Bestätigen Sie den aktuellen Gelenkwinkel und die Weichbegrenzungseinstellungen, heben Sie
+      die Begrenzungen auf oder ändern Sie die Weichbegrenzungseinstellungen
+    level: 5
+  '74':
+    description: Gelenk 6 positive Begrenzung
+    cause: ''
+    solution: Bestätigen Sie den aktuellen Gelenkwinkel und die Weichbegrenzungseinstellungen, heben Sie
+      die Begrenzungen auf oder ändern Sie die Weichbegrenzungseinstellungen
+    level: 5
+  '75':
+    description: Gelenk 6 negative Begrenzung
+    cause: ''
+    solution: Bestätigen Sie den aktuellen Gelenkwinkel und die Weichbegrenzungseinstellungen, heben Sie
+      die Begrenzungen auf oder ändern Sie die Weichbegrenzungseinstellungen
+    level: 5
+  '76':
+    description: Selbstbeeinflussung zwischen dem Endknopf und dem Robotergrundkörper
+    cause: ''
+    solution: Überprüfen des Endstatus des Roboters und erneute Auswahl der Bewegungspunkte
+    level: 5
+  '77':
+    description: Selbstinterferenz des Endflansches mit dem Robotergrundkörper
+    cause: ''
+    solution: Überprüfen des Endstatus des Roboters und erneute Auswahl der Bewegungspunkte
+    level: 5
+  '114':
+    description: Nullpunktkalibrierung des Roboters fehlgeschlagen
+    cause: ''
+    solution: Starten Sie den Roboter neu und kalibrieren Sie ihn erneut. Wenn das Problem immer noch
+      nicht gelöst werden können, wenden Sie sich bitte an einen Ingenieur des technischen Kundendienstes.
+    level: 5
+  '115':
+    description: Ausfall der Roboteraktivierung
+    cause: ''
+    solution: Starten Sie den Roboter neu und aktivieren Sie ihn erneut. Wenn das Problem immer noch nicht
+      gelöst werden können, wenden Sie sich bitte an einen Ingenieur des technischen Kundendienstes.
+    level: 5
+  '116':
+    description: Not-Aus-Taste der Hardware gedrückt
+    cause: ''
+    solution: Der Normalbetrieb kann nach dem Loslassen der Not-Aus-Taste programmgemäß wieder aufgenommen
+      werden
+    level: 1
+  '132':
+    description: Not-Aus-Signal der Software ausgelöst
+    cause: ''
+    solution: Der Normalbetrieb kann nach dem Rücksetzen des Not-Aus-Signals der Software programmgemäß
+      wieder aufgenommen werden
+    level: 1
+  '133':
+    description: Not-Aus-Signal des Benutzers ausgelöst
+    cause: ''
+    solution: Durch das Zurücksetzen des Not-Aus-Signals des Benutzers wird der Normalbetrieb programmgemäß
+      wieder aufgenommen
+    level: 1
+  '134':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '146':
+    description: Planung des Tipp-/Inchbetriebs fehlgeschlagen
+    cause: ''
+    solution: Neustarten. Wenn das Problem immer noch nicht gelöst werden können, wenden Sie sich bitte
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 5
+  '147':
+    description: Wiederholung der Flugbahn oder kleine Liniensegmente mit weniger als 4 Punkten
+    cause: ''
+    solution: Überprüfen Sie die Spurdatei, um sicherzustellen, dass die Anzahl der internen Punkte ausreichend
+      ist.
+    level: 5
+  '148':
+    description: Die Spurwiedergabe konnte nicht mit der gegebenen Einschränkung durchgeführt werden
+    cause: ''
+    solution: Überprüfen Sie, ob die Spurdatei korrekt ist oder ob die Parameter angemessen sind.
+    level: 5
+  '160':
+    description: Der aktuelle Befehl unterstützt keine Pause, der Roboter wurde schon angehalten
+    cause: ''
+    solution: Programm neustarten
+    level: 5
+  '224':
+    description: Roboter nähert sich dem sicheren Arbeitsbereich
+    cause: ''
+    solution: Alarm zurücksetzen und Roboter vorsichtig in den sicheren Arbeitsbereich bewegen.
+    level: 5
+  '1280':
+    description: Laden der Roboterlastparameter fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/loadParams.json
+    level: 5
+  '1281':
+    description: Laden der Robotererkennungsparameter fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei properties/dynamicsParams.json
+    level: 5
+  '1282':
+    description: Laden der Roboterstruktursparameter fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei properties/structure.json
+    level: 5
+  '1283':
+    description: Laden der Punktbewegungsparameter des Teach-Koordinatensystems des Roboters fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei teach/coordinate.json
+    level: 5
+  '1284':
+    description: Laden der Gelenk-Tippbetriebsparameter beim Teachen des Roboters fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei teach/joint.json
+    level: 5
+  '1285':
+    description: Laden der Gelenk-Inchbetriebsparameter beim Teachen des Roboters fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei teach/inch.json
+    level: 5
+  '1286':
+    description: Laden der Parameter zur Raumplanung des Robotergelenks fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei playback/joint.json
+    level: 5
+  '1287':
+    description: Laden der kartesischen Raumplanungsparameter des Roboters fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei playback/coordinate.json
+    level: 5
+  '1288':
+    description: Laden der Typparameter des Roboterportals fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei playback/arch.json
+    level: 5
+  '1289':
+    description: Laden der globale Geschwindigkeitsparameter des Roboters fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei settings/common,json
+    level: 5
+  '1290':
+    description: Laden der Indexparameter fürs Tippbetriebskoordinatensystem des Roboters fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei datasvr/config.json
+    level: 5
+  '1291':
+    description: Laden der Koordinatensystemparameter des Roboterbenutzers fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei coordinate/user.json
+    level: 5
+  '1292':
+    description: Laden der Koordinatensystemparameter des Roboterwerkzeugs fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei coordinate/tool.json
+    level: 5
+  '1293':
+    description: Laden der Parameter für erweiterte Roboterfunktionen fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei properties/advancedFunction.json
+    level: 5
+  '1294':
+    description: Laden der Konfigurationsparameter des Sicherheitssignals des Roboters fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/CC161/safeSignal.json
+    level: 5
+  '1295':
+    description: Laden der Konfigurationsparameter der System-IO-Steuerung fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/ioCtrl.json
+    level: 5
+  '1296':
+    description: Laden der Modbus-Konfigurationsparameter des Systems fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/modbusConf.json
+    level: 5
+  '1297':
+    description: Laden der Fernsteuerungsmodusparameter des Roboters fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/remoteControl.json
+    level: 5
+  '1298':
+    description: Laden der Parameter für die Roboterachsennummer fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei properties/axis.json
+    level: 5
+  '1299':
+    description: Laden der Produkttypsparameter des Roboters fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei properties/bussinessType.json
+    level: 5
+  '1300':
+    description: Laden der Robotertypparameter fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei properties/controllerType.json
+    level: 5
+  '1301':
+    description: Laden der Parameter für den Robotersteuerungstyp fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei properties/controlCabType.json
+    level: 5
+  '1302':
+    description: Laden der Selbstinterferenzparameter des Roboters fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei properties/poseSelfInterference.json
+    level: 5
+  '1303':
+    description: Laden der Parameter wie Beschleunigung des Roboters fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/accFactor.json
+    level: 5
+  '1304':
+    description: Laden der Drehmomentbeschränkungsparameter des Roboters fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/torqueLimit.json
+    level: 5
+  '1305':
+    description: Laden der Konfigurationsparameter für Echtzeit-Rückmeldedatenformat fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/tcp30006Feedback.json
+    level: 5
+  '1306':
+    description: Laden der Begrenzungsparameter des Roboters fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/securityConstraint.json
+    level: 5
+  '1307':
+    description: Laden der Begrenzungsparameter des Robotergelenks fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei properties/jointLimits.json
+    level: 5
+  '1308':
+    description: Laden der Parameter der Robotersicherheitswand fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/virtualWall.json
+    level: 5
+  '1309':
+    description: Laden der Installationsstatusparameter des Roboters fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/install.json
+    level: 5
+  '1310':
+    description: Laden der Parameter kumulativer Systemlaufzeit fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei settings/workTimeRec.json
+    level: 5
+  '1311':
+    description: Laden der Parameter des Robotersimulationsmodus fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/analogMode.json
+    level: 5
+  '1312':
+    description: Laden der Parameter für Roboterwiderstandsempfindlichkeit fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/dragSensivity.json
+    level: 5
+  '1313':
+    description: Laden der Wiedergabeparameter des Roboters fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/reTraceParams.json
+    level: 5
+  '1314':
+    description: Laden der Parameter der Roboterpackungsgesten fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/packPoint.json
+    level: 5
+  '1315':
+    description: Laden der benutzerdefinierten Gesteparameter des Roboters fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/customPoint.json
+    level: 5
+  '1316':
+    description: Laden der Konfigurationsparameter für Sicherheitskollision des Roboterschalters fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/collisionDect.json
+    level: 5
+  '1317':
+    description: Laden der Konfigurationsparameter für die Kollisionsfehlerschwelle des Roboters fehlgeschlagen.
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/collision_error_threshold.json
+    level: 5
+  '1318':
+    description: Laden der Konfigurationsparameter für generisches Signal des Roboters fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/commonSignal.json
+    level: 5
+  '1319':
+    description: Laden der Konfigurationselement der Robotersprache fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei language/language.json
+    level: 5
+  '1320':
+    description: Laden der Konfigurationstabelle auf Chinesisch fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei language/zh_cn.json
+    level: 5
+  '1321':
+    description: Laden der Konfigurationstabelle auf Englisch fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei language/de.json
+    level: 5
+  '1322':
+    description: Laden der Standardparameter für die Bewegungsgeschwindigkeit fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei properties/default.json
+    level: 5
+  '1323':
+    description: Laden der Lastbereichparameter fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/payloadLimit.json
+    level: 5
+  '1325':
+    description: Laden der Konfigurationstabelle auf traditionellem Chinesisch fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei language/zh_hand.json
+    level: 5
+  '1326':
+    description: Laden der Konfigurationstabelle auf Südkoreanisch fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei language/kr.json
+    level: 5
+  '1327':
+    description: Laden der Konfigurationstabelle auf Japanisch fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei language/ja.json
+    level: 5
+  '1328':
+    description: Laden der Konfigurationstabelle auf Deutsch fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei language/de.json
+    level: 5
+  '1329':
+    description: Laden der Endmoduskonfiguration fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/toolMode.json
+    level: 5
+  '1330':
+    description: Laden der Schalterkonfiguration der E-Haut fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei elecSkin/switch.json
+    level: 5
+  '1331':
+    description: Laden der Empfindlichkeitsparameter der E-Haut fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei elecSkin/sensitivity.json
+    level: 5
+  '1332':
+    description: Laden der Lastparameterliste fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/loadConfig.json
+    level: 5
+  '1333':
+    description: Laden der Konfigurationsparameter des Sicherheitssignals des Roboters fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/CC162/safeSignal.json
+    level: 5
+  '1334':
+    description: Laden der Konfigurationsparameter des Sicherheitssignals des Roboters fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/CCBOX/safeSignal.json
+    level: 5
+  '1335':
+    description: Laden der Konfigurationstabelle auf Vietnamesisch fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei language/vi.json
+    level: 5
+  '1336':
+    description: Laden der Datei des Spannungswertebereichs für kleinen Schaltschrank fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/ccboxVoltage.json
+    level: 5
+  '1337':
+    description: Laden der Datei für den Fernsteuerungsschalter io/modbus fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei functions/remoteSwitch.json
+    level: 5
+  '1338':
+    description: Laden der Gelenkbegrenzungsparameter für die Sicherheitshaut des Roboters fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei elecSkin/jointLimit.json
+    level: 5
+  '1339':
+    description: Laden der Hindernisausweichungsparameter für die Sicherheitshaut des Roboters fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei elecSkin/avoidParams.json
+    level: 5
+  '1340':
+    description: Laden der Parameter zur Jitterunterdrückung fehlgeschlagen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei properties/suppressionConfig.json
+    level: 5
+  '1341':
+    description: Laminiert das schweremaß nicht
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei properties/vibrationDetection.json
+    level: 5
+  '1342':
+    description: Geladen, um die fettwerte des oktopus einzustellen
+    cause: ''
+    solution: Prüfen und aktualisieren Sie die Datei function/workZone.json
+    level: 5
+  '1343':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1344':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1345':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1346':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1359':
+    description: Laden der Bootdatei fehlgeschlagen
+    cause: ''
+    solution: Neustarten nach der Aktualisierung der entsprechenden Datei
+    level: 5
+  '1360':
+    description: Roboteraktivierung unten fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1361':
+    description: Öffnen der Haltebremse des Roboters fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1362':
+    description: Schließen der Haltebremse des Roboters fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1363':
+    description: Einschalten fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1364':
+    description: Automatische Erkennung kann nicht gestartet werden
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1365':
+    description: Automatische Erkennung kann nicht gestoppt werden
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1366':
+    description: Der Schleppmodus konnte nicht aktiviert werden
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1367':
+    description: Der Schleppmodus konnte nicht beendet werden
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1368':
+    description: Globale Geschwindigkeitseinstellung fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1369':
+    description: Einstellung der Lastparameter fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1370':
+    description: Kalibrierung der Installationsgesten fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1371':
+    description: Kalibrierung des Koordinatensystems fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1372':
+    description: Einstellung der Installationsgesten fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1373':
+    description: Netzwerkeinstellung fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1374':
+    description: Wifi-Einstellung fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1375':
+    description: Einstellung des Werkzeugkoordinatensystems fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1376':
+    description: Einstellung des Benutzerkoordinatensystems fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1377':
+    description: Ende DO-Einstellung fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1378':
+    description: DO-Einstellung fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1379':
+    description: AO-Einstellung fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1380':
+    description: Ende 485 Einstellung fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1381':
+    description: Einstellung des Schleppmodus fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1382':
+    description: Sicherheitskollisionsfunktion EIN fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1383':
+    description: Sicherheitskollisionsfunktion AUS fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1385':
+    description: Grundkörperabschaltung fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1386':
+    description: Einstellung der Gelenkbegrenzungsparameter fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1387':
+    description: Einstellung der Grenzwertparameter des Roboters fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1388':
+    description: Einstellung der erweiterten Funktion fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1389':
+    description: Aktualisierung der Sicherheitswandparameter fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1390':
+    description: Gelenkbewegung fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1391':
+    description: Lineare Bewegung fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1392':
+    description: Positive Lösungsausführung fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1393':
+    description: Inverse Lösungsausführung fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1394':
+    description: Kreisbewegung fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1395':
+    description: Kreis schließende Bewegung fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1396':
+    description: Relative Gelenkbewegung entlang des Werkzeugkoordinatensystems fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1397':
+    description: Relative lineare Bewegung entlang des Werkzeugkoordinatensystems fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1398':
+    description: Relative Gelenkbewegung entlang des Benutzerkoordinatensystems fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1399':
+    description: Relative lineare Bewegung entlang des Benutzerkoordinatensystems fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1400':
+    description: Relative Gelenkbewegung entlang jeder Achse des Gelenkkoordinatensystems fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1401':
+    description: Kartesische Punktverschiebung entlang des Benutzerkoordinatensystems fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1402':
+    description: Kartesische Punktverschiebung entlang des Werkzeugkoordinatensystems fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1403':
+    description: Erkennung der Bewegung zu einem geraden Punkt fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1404':
+    description: Erkennung der Bewegung zur kartesischen Punktposition fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1406':
+    description: Zeitüberschreitung beim Start des Algorithmus
+    cause: ''
+    solution: Prüfung auf anormalen Start von codesys
+    level: 5
+  '1407':
+    description: Algorithmuskommunikation n.i.O.
+    cause: ''
+    solution: Starten Sie den Roboter erneut. Wenn der Fehler immer noch auftritt, kann es sich um einen
+      Systemfehler handeln; wenden Sie sich bitte an einen Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1408':
+    description: Online-Status von Achse 1 n.i.O.
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1409':
+    description: Online-Status von Achse 2 n.i.O.
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1410':
+    description: Online-Status von Achse 3 n.i.O.
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1411':
+    description: Online-Status von Achse 4 n.i.O.
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1412':
+    description: Online-Status von Achse 5 n.i.O.
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1413':
+    description: Online-Status von Achse 6 n.i.O.
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1414':
+    description: Sicherheit IO Online n.i.O.
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1415':
+    description: Allgemeines IO Online n.i.O.
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1416':
+    description: Einspeisetafel Online n.i.O.
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1417':
+    description: Ende IO Online n.i.O.
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1418':
+    description: Die Projektdatei existiert nicht
+    cause: ''
+    solution: Prüfung auf beschädigte oder nicht vorhandene Projektdateien
+    level: 5
+  '1419':
+    description: Roboter abschalten
+    cause: ''
+    solution: Nach dem Löschen des Fehlers und dem erneuten Einschalten des Geräts kann der normale Betrieb
+      gemäß dem Verfahren wieder aufgenommen werden.
+    level: 1
+  '1420':
+    description: Tippbetrieb fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1421':
+    description: Einstellung der Schleppempfindlichkeit fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1422':
+    description: Skriptlaufstatus n.i.O.
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1423':
+    description: Sicherheitshaut EIN/AUS fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1424':
+    description: Einstellung der Sicherheitshautsempfindlichkeit fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1425':
+    description: Zurücksetzen der Sicherheitshaut fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1426':
+    description: Hartes Zurücksetzen der Sicherheitshaut fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1427':
+    description: Automatische Lasterkennung fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1428':
+    description: Lastinspektion fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1429':
+    description: Zeitüberschreitung beim Warten auf Laufstopp
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1430':
+    description: Abschalten nach Not-Aus
+    cause: Der Roboter wird 500 ms nach Auslösen des Not-Aus-Zustands abgeschaltet, ohne die Bewegung
+      zu stoppen.
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 0
+  '1431':
+    description: ''
+    cause: Berechnung des Benutzerkoordinatensystems fehlgeschlagen
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1432':
+    description: ''
+    cause: Berechnung des Werkzeugkoordinatensystems fehlgeschlagen
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1433':
+    description: ''
+    cause: Hindernisausweichungsfunktion der  Sicherheitshaut EIN/AUS fehlgeschlagen
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1434':
+    description: ''
+    cause: Einstellung von Parametern zur Hindernisausweichung der Sicherheitshaut fehlgeschlagen
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, wenden Sie sich bitte an einen
+      Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1435':
+    description: IPv4-Adressformatfehler
+    cause: IPv4-Adressformatfehler
+    solution: Geben Sie die richtige IPv4-Adresse ein
+    level: 5
+  '1436':
+    description: IPv4-Subnetzmaskenformatfehler
+    cause: IPv4-Subnetzmaskenformatfehler
+    solution: Geben Sie die richtige IPv4-Subnetzmaskenadresse ein
+    level: 5
+  '1437':
+    description: IPv4-Standard-Gateway-Formatfehler
+    cause: IPv4-Standard-Gateway-Formatfehler
+    solution: Geben Sie die korrekte IPv4-Standard-Gateway-Adresse ein
+    level: 5
+  '1438':
+    description: Das System unterstützt kein Profinet
+    cause: Das System unterstützt kein Profinet
+    solution: Mit dem neuesten Controller-System aktualisieren
+    level: 5
+  '1439':
+    description: Die Bewegung zur Spurwiedergabe zum ersten Punkt unterstützt keine Pause, der Roboter
+      hat angehalten
+    cause: Kann eine Kollision, eine Hautkollision sein
+    solution: Behandlung von Anormalien und erneute Ausführung
+    level: 5
+  '1440':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1441':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1442':
+    description: Einstellung der Parameter zur Jitterunterdrückung fehlgeschlagen
+    cause: Der Parameter zum Jitterunterdrückungsverhältnis ist kein int-Wert
+    solution: Überprüfen Sie, ob die Parameterformate der Datei properties/suppressionConfig.json richtig
+      sind
+    level: 5
+  '1443':
+    description: Einstellung der Jitter-Testparameter fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, handelt es sich möglicherweise
+      um einen Systemfehler. Bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1444':
+    description: Aktualisierung der parameter des sicherheitsbereichs fehlgeschlagen
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, handelt es sich möglicherweise
+      um einen Systemfehler. Bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 5
+  '1445':
+    description: Synchronitätsverlust des Feldbusses bei Joint 1
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, handelt es sich möglicherweise
+      um einen Systemfehler. Bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1446':
+    description: Synchronitätsverlust des Feldbusses bei Joint 2
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, handelt es sich möglicherweise
+      um einen Systemfehler. Bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1447':
+    description: Synchronitätsverlust des Feldbusses bei Joint 3
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, handelt es sich möglicherweise
+      um einen Systemfehler. Bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1448':
+    description: Synchronitätsverlust des Feldbusses bei Joint 4
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, handelt es sich möglicherweise
+      um einen Systemfehler. Bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1449':
+    description: Synchronitätsverlust des Feldbusses bei Joint 5
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, handelt es sich möglicherweise
+      um einen Systemfehler. Bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1450':
+    description: Synchronitätsverlust des Feldbusses bei Joint 6
+    cause: ''
+    solution: Versuchen Sie es erneut. Wenn der Fehler weiterhin auftritt, handelt es sich möglicherweise
+      um einen Systemfehler. Bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1451':
+    description: Die Temperatur von Gelenk 1 ist zu hoch
+    cause: Die Umgebungstemperatur ist zu hoch oder es liegt ein Systemfehler vor
+    solution: 作業環境の温度を下げるか、メーカーに技術サポートを依頼してください
+    level: 5
+  '1452':
+    description: Die Temperatur von Gelenk 2 ist zu hoch
+    cause: Die Umgebungstemperatur ist zu hoch oder es liegt ein Systemfehler vor
+    solution: 作業環境の温度を下げるか、メーカーに技術サポートを依頼してください
+    level: 5
+  '1453':
+    description: Die Temperatur von Gelenk 3 ist zu hoch
+    cause: Die Umgebungstemperatur ist zu hoch oder es liegt ein Systemfehler vor
+    solution: 作業環境の温度を下げるか、メーカーに技術サポートを依頼してください
+    level: 5
+  '1454':
+    description: Die Temperatur von Gelenk 4 ist zu hoch
+    cause: Die Umgebungstemperatur ist zu hoch oder es liegt ein Systemfehler vor
+    solution: 作業環境の温度を下げるか、メーカーに技術サポートを依頼してください
+    level: 5
+  '1455':
+    description: Die Temperatur von Gelenk 5 ist zu hoch
+    cause: Die Umgebungstemperatur ist zu hoch oder es liegt ein Systemfehler vor
+    solution: 作業環境の温度を下げるか、メーカーに技術サポートを依頼してください
+    level: 5
+  '1456':
+    description: Die Temperatur von Gelenk 6 ist zu hoch
+    cause: Die Umgebungstemperatur ist zu hoch oder es liegt ein Systemfehler vor
+    solution: 作業環境の温度を下げるか、メーカーに技術サポートを依頼してください
+    level: 5
+  '1457':
+    description: Die Temperatur des Hauptsteuerungschips ist zu hoch
+    cause: Die Umgebungstemperatur ist zu hoch oder es liegt ein Systemfehler vor
+    solution: 作業環境の温度を下げるか、メーカーに技術サポートを依頼してください
+    level: 5
+  '1458':
+    description: Benutzerkoordinatensystem nicht aktiviert
+    cause: Das festgelegte Benutzerkoordinatensystem ist nicht aktiviert
+    solution: Verwenden Sie den richtigen Koordinatensystemindex oder fügen Sie ein neues Benutzerkoordinatensystem
+      hinzu und setzen Sie es
+    level: 5
+  '1459':
+    description: Werkzeugkoordinatensystem nicht aktivier
+    cause: Das festgelegte Werkzeugkoordinatensystem ist nicht aktiviert
+    solution: Verwenden Sie den richtigen Koordinatensystemindex oder fügen Sie ein neues Werkzeugkoordinatensystem
+      hinzu und setzen Sie es
+    level: 5
+  '1538':
+    description: AC-Schütz schließt nicht wie erforderlich für 2Sek. ununterbrochen
+    cause: ''
+    solution: Starten Sie den Roboter neu. Wenn der Fehler weiterhin auftritt, ist möglicherweise die
+      Hardware beschädigt. Bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1540':
+    description: Nach 5 Minuten nach dem Einschalten werden die Online-Daten für 1 Minute nicht aktualisiert.
+    cause: ''
+    solution: Starten Sie den Roboter neu. Wenn der Fehler weiterhin auftritt, ist möglicherweise die
+      Hardware beschädigt. Bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1541':
+    description: Fehler bei der Erkennung des AC-Status
+    cause: ''
+    solution: Starten Sie den Roboter neu. Wenn der Fehler weiterhin auftritt, ist möglicherweise die
+      Hardware beschädigt. Bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1543':
+    description: Bedienfeldschalter wird gedrückt
+    cause: ''
+    solution: Quittieren Sie den Alarm und schalten Sie die Stromversorgung wieder ein.
+    level: 0
+  '1544':
+    description: Ausfall der Einspeisetafel
+    cause: ''
+    solution: Starten Sie den Roboter neu. Wenn der Fehler weiterhin auftritt, ist möglicherweise die
+      Hardware beschädigt. Bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1548':
+    description: Statuserkennung des 24V-Superkondensators n.i.O.
+    cause: ''
+    solution: Starten Sie den Roboter neu. Wenn der Fehler weiterhin auftritt, ist möglicherweise die
+      Hardware beschädigt. Bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 0
+  '1549':
+    description: Statuserkennung des 48V-Superkondensators n.i.O.
+    cause: ''
+    solution: Starten Sie den Roboter neu. Wenn der Fehler weiterhin auftritt, ist möglicherweise die
+      Hardware beschädigt. Bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 0
+  '1792':
+    description: Überspannungsalarm der Eingangsspannungsüberwachung
+    cause: ''
+    solution: Starten Sie den Roboter neu. Wenn der Fehler weiterhin auftritt, ist möglicherweise die
+      Hardware beschädigt. Bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1793':
+    description: Unterspannungsalarm der Eingangsspannungsüberwachung
+    cause: ''
+    solution: Starten Sie den Roboter neu. Wenn der Fehler weiterhin auftritt, ist möglicherweise die
+      Hardware beschädigt. Bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1794':
+    description: Alarm Erkennung des Strombegrenzung-Chips n.i.O.
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1795':
+    description: Überspannungsalarm der Ausgangsspannungserkennung
+    cause: ''
+    solution: Starten Sie den Roboter neu. Wenn der Fehler weiterhin auftritt, ist möglicherweise die
+      Hardware beschädigt. Bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1796':
+    description: Unterspannungsalarm der Ausgangsspannungserkennung
+    cause: ''
+    solution: Starten Sie den Roboter neu. Wenn der Fehler weiterhin auftritt, ist möglicherweise die
+      Hardware beschädigt. Bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1797':
+    description: Alarm Spannungsstabilisierungswert des ersten internen Kanals n.i.O.
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1798':
+    description: Alarm Spannungsstabilisierungswert des zweiten internen Kanals n.i.O.
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1799':
+    description: Alarm Ausgangsspannung vor dem langsamen Start des Grundkörpers n.i.O.
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 0
+  '1800':
+    description: Alarm bei der Überschreitung des Stromgrenzwerts bei der Energieeinspeisungserkennung
+    cause: ''
+    solution: Übermäßiger Speisestrom in der Zuleitung, bitte wenden Sie sich an einen Ingenieur des technischen
+      Kundendienstes.
+    level: 1
+  '1801':
+    description: Überlastungsschutzalarm des Zementwiderstands
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1802':
+    description: Alarm bei der Überschreitung der Busstromgrenze
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1803':
+    description: Energiezufuhralarm beim Einschalten des Cache-Starts des Grundkörpers
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1804':
+    description: Alarm 48V-Ausgangskontrolle MOS-Röhrenstatuserkennung n.i.O.
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1805':
+    description: Alarm langsamer Start des Grundkörpers beim Einschalten n.i.O.
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1808':
+    description: Überspannungsalarm der Eingangsspannungsüberwachung
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 0
+  '1809':
+    description: Unterspannungsalarm der Eingangsspannungsüberwachung
+    cause: ''
+    solution: Übermäßiger Speisestrom in der Zuleitung, bitte wenden Sie sich an einen Ingenieur des technischen
+      Kundendienstes.
+    level: 0
+  '1810':
+    description: Alarm Erkennung des Strombegrenzung-Chips n.i.O.
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 0
+  '1811':
+    description: Überspannungsalarm der Ausgangsspannungserkennung
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 0
+  '1812':
+    description: Unterspannungsalarm der Ausgangsspannungserkennung
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 0
+  '1813':
+    description: Alarm Vorladung des Grundkörpers n.i.O.
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1814':
+    description: Überstromfehleralarm vom Ladechip des 48V Superkondensators
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1815':
+    description: Übertemperaturalarm für MOS-Röhren der 48V-Ausgangssteuerung
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 0
+  '1816':
+    description: Alarm bei der Überschreitung des Stromgrenzwerts bei der Energieeinspeisungserkennung
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1817':
+    description: Überlastungsschutzalarm des Zementwiderstands
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1818':
+    description: Alarm bei der Überschreitung der Busstromgrenze
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1819':
+    description: Alarm Antriebsspannung für den Energieversorgungskreis n.i.O.
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1820':
+    description: Alarm 48V-Ausgangskontrolle MOS-Röhrenstatuserkennung n.i.O.
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1821':
+    description: Alarm Erkennung des Lüfterstatus n.i.O.
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1824':
+    description: Alarm Referenzspannungsüberwachung der Vergleichsschaltung des 48V-Superkondensators
+      n.i.O.
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1825':
+    description: Alarm Stromkreis des 24V-Superkondensators n.i.O.
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1826':
+    description: Alarm Einstellung der maximalen Eingangsspannung n.i.O.
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1827':
+    description: Alarm Einstellung der minimalen Eingangsspannung n.i.O.
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '1828':
+    description: Alarm Erkennung der Einspeisezeit n.i.O.
+    cause: ''
+    solution: Überprüfen Sie die Spezifikationen für die Eingangsleistung und die Last oder wenden Sie
+      sich an einen Ingenieur des technischen Kundendienstes.
+    level: 0
+  '1829':
+    description: Alarm Erkennung von Steuersignalen des Energieversorgungskreises n.i.O.
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 0
+  '2050':
+    description: Alarm bei Zeitüberschreitung des Schutzstopps
+    cause: ''
+    solution: Fehler quittieren und die Stromversorgung wieder einschalten.
+    level: 0
+  '2051':
+    description: Die Innenringposition von Gelenk 1 überschreitet den Grenzwert
+    cause: ''
+    solution: Neustarten. Wenn das Problem immer noch nicht gelöst werden können, wenden Sie sich bitte
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2052':
+    description: Die Innenringposition von Gelenk 2 überschreitet den Grenzwert
+    cause: ''
+    solution: Neustarten. Wenn das Problem immer noch nicht gelöst werden können, wenden Sie sich bitte
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2053':
+    description: Die Innenringposition von Gelenk 3 überschreitet den Grenzwert
+    cause: ''
+    solution: Neustarten. Wenn das Problem immer noch nicht gelöst werden können, wenden Sie sich bitte
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2054':
+    description: Die Innenringposition von Gelenk 4 überschreitet den Grenzwert
+    cause: ''
+    solution: Neustarten. Wenn das Problem immer noch nicht gelöst werden können, wenden Sie sich bitte
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2055':
+    description: Die Innenringposition von Gelenk 5 überschreitet den Grenzwert
+    cause: ''
+    solution: Neustarten. Wenn das Problem immer noch nicht gelöst werden können, wenden Sie sich bitte
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2056':
+    description: Die Innenringposition von Gelenk 6 überschreitet den Grenzwert
+    cause: ''
+    solution: Neustarten. Wenn das Problem immer noch nicht gelöst werden können, wenden Sie sich bitte
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2057':
+    description: Die Innenringgeschwindigkeit von Gelenk 1 überschreitet den Grenzwert
+    cause: ''
+    solution: Verringerung der Gelenkgeschwindigkeits- oder der kartesischen Geschwindigkeitseinstellung
+    level: 1
+  '2058':
+    description: Die Innenringgeschwindigkeit von Gelenk 2 überschreitet den Grenzwert
+    cause: ''
+    solution: Verringerung der Gelenkgeschwindigkeits- oder der kartesischen Geschwindigkeitseinstellung
+    level: 1
+  '2059':
+    description: Die Innenringgeschwindigkeit von Gelenk 3 überschreitet den Grenzwert
+    cause: ''
+    solution: Verringerung der Gelenkgeschwindigkeits- oder der kartesischen Geschwindigkeitseinstellung
+    level: 1
+  '2060':
+    description: Die Innenringgeschwindigkeit von Gelenk 4 überschreitet den Grenzwert
+    cause: ''
+    solution: Verringerung der Gelenkgeschwindigkeits- oder der kartesischen Geschwindigkeitseinstellung
+    level: 1
+  '2061':
+    description: Die Innenringgeschwindigkeit von Gelenk 5 überschreitet den Grenzwert
+    cause: ''
+    solution: Verringerung der Gelenkgeschwindigkeits- oder der kartesischen Geschwindigkeitseinstellung
+    level: 1
+  '2062':
+    description: Die Innenringgeschwindigkeit von Gelenk 6 überschreitet den Grenzwert
+    cause: ''
+    solution: Verringerung der Gelenkgeschwindigkeits- oder der kartesischen Geschwindigkeitseinstellung
+    level: 1
+  '2063':
+    description: Gelenk 1 Drehmomentüberschreitung
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2064':
+    description: Gelenk 2 Drehmomentüberschreitung
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2065':
+    description: Gelenk 3 Drehmomentüberschreitung
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2066':
+    description: Gelenk 4 Drehmomentüberschreitung
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2067':
+    description: Gelenk 5 Drehmomentüberschreitung
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2068':
+    description: Gelenk 6 Drehmomentüberschreitung
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2069':
+    description: TCP-Positionsüberschreitung
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2070':
+    description: TCP-Geschwindigkeitsüberschreitung
+    cause: ''
+    solution: Verringerung der Gelenkgeschwindigkeit oder der kartesischen Geschwindigkeitseinstellung
+    level: 1
+  '2071':
+    description: Sicherheitscontroller A und B Versionen sind nicht kompatibel
+    cause: ''
+    solution: Wenn die Sicherheitscontroller A und B Versionen unterschiedlich sind, aktualisieren Sie
+      bitte die Firmware, um die Kompatibilität zwischen den beiden Versionen sicherzustellen. Kontaktieren
+      Sie den technischen Support, falls weitere Unterstützung benötigt wird.
+    level: 1
+  '2072':
+    description: TCP-Kraftbegrenzung überschritten
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2073':
+    description: Sicherheitsebene überschritten
+    cause: ''
+    solution: Alarm zurücksetzen und den Roboter zurück in den Sicherheitsbereich bewegen
+    level: 1
+  '2074':
+    description: Geschwindigkeitsüberschreitung nach der virtuellen Auslösung der Sicherheitswand-Attrappe
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2075':
+    description: Erkennung des Schützstatus n.i.O.
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2076':
+    description: Online-Erkennung von Anomalien in Energieeinspeisetafeln
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2077':
+    description: Schalter auf der Vorderseite wird gedrückt
+    cause: ''
+    solution: Nach dem Loslassen des Schalters kann der Normalbetrieb programmgemäß fortgesetzt werden
+    level: 0
+  '2078':
+    description: AC-Erkennungsfehler
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2080':
+    description: Die Position oder Geschwindigkeit des Übertragungssystems von Robotergelenk 1 liegt außerhalb
+      der Toleranz
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2081':
+    description: Die Position oder Geschwindigkeit des Übertragungssystems von Robotergelenk 2 liegt außerhalb
+      der Toleranz
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2082':
+    description: Die Position oder Geschwindigkeit des Übertragungssystems von Robotergelenk 3 liegt außerhalb
+      der Toleranz
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2083':
+    description: Die Position oder Geschwindigkeit des Übertragungssystems von Robotergelenk 4 liegt außerhalb
+      der Toleranz
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2084':
+    description: Die Position oder Geschwindigkeit des Übertragungssystems von Robotergelenk 5 liegt außerhalb
+      der Toleranz
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2085':
+    description: Die Position oder Geschwindigkeit des Übertragungssystems von Robotergelenk 6 liegt außerhalb
+      der Toleranz
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2087':
+    description: Fehler bei der Überprüfung der Sicherheitsgrenzwerte
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2088':
+    description: Fehler bei der Anpassung der Sicherheitsgrenzwerte
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2089':
+    description: Erkennung von IO-Eingangsanschlüssen n.i.O.
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2090':
+    description: Erkennung von IO-Ausgangsanschlüssen n.i.O.
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2091':
+    description: 3,3V-Spannungserkennung n.i.O.
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2092':
+    description: 5V-Spannungserkennung n.i.O.
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2093':
+    description: 24V-Spannungserkennung n.i.O.
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2096':
+    description: Erkennung des SCBB-Online-Status n.i.O.
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2097':
+    description: Die Position des Gelenkübertragungssystems des Roboters liegt außerhalb der Toleranz
+    cause: ''
+    solution: Neustarten. Wenn das Problem immer noch nicht gelöst werden können, wenden Sie sich bitte
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2098':
+    description: Die Geschwindigkeit des Gelenkübertragungssystems des Roboters liegt außerhalb der Toleranz
+    cause: ''
+    solution: Neustarten. Wenn das Problem immer noch nicht gelöst werden können, wenden Sie sich bitte
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2099':
+    description: Die Außenringposition von Gelenk 1 überschreitet den Grenzwert
+    cause: ''
+    solution: Neustarten. Wenn das Problem immer noch nicht gelöst werden können, wenden Sie sich bitte
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2100':
+    description: Die Außenringposition von Gelenk 2 überschreitet den Grenzwert
+    cause: ''
+    solution: Neustarten. Wenn das Problem immer noch nicht gelöst werden können, wenden Sie sich bitte
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2101':
+    description: Die Außenringposition von Gelenk 3 überschreitet den Grenzwert
+    cause: ''
+    solution: Neustarten. Wenn das Problem immer noch nicht gelöst werden können, wenden Sie sich bitte
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2102':
+    description: Die Außenringposition von Gelenk 4 überschreitet den Grenzwert
+    cause: ''
+    solution: Neustarten. Wenn das Problem immer noch nicht gelöst werden können, wenden Sie sich bitte
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2103':
+    description: Die Außenringposition von Gelenk 5 überschreitet den Grenzwert
+    cause: ''
+    solution: Neustarten. Wenn das Problem immer noch nicht gelöst werden können, wenden Sie sich bitte
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2104':
+    description: Die Außenringposition von Gelenk 6 überschreitet den Grenzwert
+    cause: ''
+    solution: Neustarten. Wenn das Problem immer noch nicht gelöst werden können, wenden Sie sich bitte
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2105':
+    description: Die Außenringgeschwindigkeit von Gelenk 1 überschreitet den Grenzwert
+    cause: ''
+    solution: Verringerung der Gelenkgeschwindigkeits- oder der kartesischen Geschwindigkeitseinstellung
+    level: 1
+  '2106':
+    description: Die Außenringgeschwindigkeit von Gelenk 2 überschreitet den Grenzwert
+    cause: ''
+    solution: Verringerung der Gelenkgeschwindigkeits- oder der kartesischen Geschwindigkeitseinstellung
+    level: 1
+  '2107':
+    description: Die Außenringgeschwindigkeit von Gelenk 3 überschreitet den Grenzwert
+    cause: ''
+    solution: Verringerung der Gelenkgeschwindigkeits- oder der kartesischen Geschwindigkeitseinstellung
+    level: 1
+  '2108':
+    description: Die Außenringgeschwindigkeit von Gelenk 4 überschreitet den Grenzwert
+    cause: ''
+    solution: Verringerung der Gelenkgeschwindigkeits- oder der kartesischen Geschwindigkeitseinstellung
+    level: 1
+  '2109':
+    description: Die Außenringgeschwindigkeit von Gelenk 5 überschreitet den Grenzwert
+    cause: ''
+    solution: Verringerung der Gelenkgeschwindigkeits- oder der kartesischen Geschwindigkeitseinstellung
+    level: 1
+  '2110':
+    description: Die Außenringgeschwindigkeit von Gelenk 6 überschreitet den Grenzwert
+    cause: ''
+    solution: Verringerung der Gelenkgeschwindigkeits- oder der kartesischen Geschwindigkeitseinstellung
+    level: 1
+  '2112':
+    description: DO Chip-Fehler
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2113':
+    description: DO Überstrom
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2114':
+    description: 24V-Ausgangsalarm
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2128':
+    description: Unterspannungsalarm zur Erkennung der Versorgungsspannung
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2129':
+    description: Überspannungsalarm zur Erkennung der Versorgungsspannung
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2130':
+    description: Alarm Erkennung von abnormalen Energie einspeisen Stromkreisen
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2132':
+    description: Alarm Erkennung einer abnormalen Not-Aus-Linie
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2133':
+    description: Alarm Erkennung von Kurzschluss im Körperstromkreis
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 0
+  '2134':
+    description: Falsche Einstellung des Mindestwertes der Eingangsspannung der Stromversorgung
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2135':
+    description: Falsche Einstellung des Höchstwertes der Eingangsspannung der Stromversorgung
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2136':
+    description: MCU-Chiptemperatur zu hoch erkannt
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2137':
+    description: Alarm DI-Typ PNP-Einstellung Erkennungsfehler
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2138':
+    description: Alarm DI-Typ NPN-Einstellung Erkennungsfehler
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2139':
+    description: Alarme Erkennung bei der Abschaltungsausführung n.i.O.
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2140':
+    description: Erkennung der Energieeinspeisezeit n.i.O.
+    cause: ''
+    solution: Überprüfen Sie die Spezifikationen für die Eingangsleistung und die Last oder wenden Sie
+      sich an einen Ingenieur des technischen Kundendienstes.
+    level: 0
+  '2144':
+    description: Alarm Endunterbrechung
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2145':
+    description: DO1-Ausgang Überstromalarm
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2146':
+    description: DO2-Ausgang Überstromalarm
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2147':
+    description: DO3-Ausgang Überstromalarm
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2148':
+    description: DO4-Ausgang Überstromalarm
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2149':
+    description: Überstromalarm am 24V-Ausgang
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2160':
+    description: Überstromalarm am DO1-Endausgang
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2161':
+    description: Überstromalarm am DO2-Endausgang
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '2162':
+    description: Überstromalarm am 24V-Endausgang
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '4096':
+    description: Die Wiedergabedatei der Strecke existiert nicht
+    cause: ''
+    solution: Bitte überprüfen Sie, ob die Wiedergabedatei der Strecke im richtigen Pfad vorhanden ist.
+    level: 5
+  '4097':
+    description: Fehler im Inhalt der Wiedergabedatei der Strecke
+    cause: ''
+    solution: Bitte überprüfen Sie den Inhalt der Wiedergabedatei der Strecke auf Fehler oder Inkonsistenzen.
+    level: 5
+  '4098':
+    description: Fehlerhafter Name der Wiedergabedatei der Strecke
+    cause: ''
+    solution: Bitte stellen Sie sicher, dass die Wiedergabedatei der Strecke den richtigen und gültigen
+      Dateinamen hat.
+    level: 5
+  '4099':
+    description: Fehler bei der Wiedergabe der Strecke
+    cause: ''
+    solution: Wenn bei der Wiedergabe der Strecke Fehler auftreten, überprüfen Sie bitte die Protokolldateien
+      und identifizieren Sie die Ursache. Bei Bedarf konsultieren Sie den technischen Support für weitere
+      Unterstützung.
+    level: 5
+  '4100':
+    description: Die aktuelle Trajektorienwiederholung unterstützt keine Pause.
+    cause: ''
+    solution: Führen Sie die Flugbahn erneut aus, um sie zu reproduzieren
+    level: 5
+  '4112':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '4128':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '4192':
+    description: Dobot+ Fehler
+    cause: ''
+    solution: Überprüfen Sie dobot+logs für detaillierte Informationen
+    level: 5
+  '4193':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+servo:
+  '8752':
+    description: Überstromschutz der Hardware
+    cause: ''
+    solution: Der tatsächliche Wert des vom Servo erfassten Stroms ist größer als 90 % des maximalen Abtaststroms
+      der Hardware. Prüfen Sie, ob die Hardware i.O. ist, oder wenden Sie sich an einen Ingenieur des
+      technischen Kundendienstes.
+    level: 1
+  '8992':
+    description: Überstromschutz der Software
+    cause: ''
+    solution: Stromausfall und Neustart, oder wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '9040':
+    description: Überlastungsschutz des Moduls
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, oder wenden Sie sich an einen Ingenieur des
+      technischen Kundendienstes.
+    level: 1
+  '9088':
+    description: Überlastungsschutz der Nullstromvorspannung
+    cause: ''
+    solution: Nullpunkt-Stromvorspannung zurücksetzen
+    level: 1
+  '12592':
+    description: Schutz gegen Phasenausfall am Antriebseingang
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, oder wenden Sie sich an einen Ingenieur des
+      technischen Kundendienstes.
+    level: 1
+  '12816':
+    description: Überspannungsschutz zwischen PNs
+    cause: ''
+    solution: Der Servo erkennt einen Busspannungswert, der größer als der eingestellte Schwellenwert
+      ist; überprüfen Sie, ob die Hardware korrekt ist, oder wenden Sie sich an einen Ingenieur des technischen
+      Kundendienstes.
+    level: 1
+  '12832':
+    description: Unterspannungsschutz zwischen PNs
+    cause: ''
+    solution: Der Servo erkennt einen Busspannungswert, der unter dem eingestellten Schwellenwert liegt,
+      prüfen Sie, ob die Hardware i.O. ist, oder wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '12928':
+    description: Fehler bei der Leistungsanpassung von Servo und Motor
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, oder wenden Sie sich an einen Ingenieur des
+      technischen Kundendienstes.
+    level: 1
+  '13184':
+    description: Schutz gegen Fehler in der Phasenfolge des Antriebsausgangs
+    cause: ''
+    solution: Verdrahtung in korrekter Phasenfolge
+    level: 1
+  '17168':
+    description: Überhitzungsschutz des Treibers
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, oder wenden Sie sich an einen Ingenieur des
+      technischen Kundendienstes.
+    level: 1
+  '17169':
+    description: Temperaturmesswiderstand beschädigt oder nicht installiert
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, oder wenden Sie sich an einen Ingenieur des
+      technischen Kundendienstes.
+    level: 1
+  '21008':
+    description: Schutz vor Erkennungsfehlern der Treiberplatte
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, oder wenden Sie sich an einen Ingenieur des
+      technischen Kundendienstes.
+    level: 1
+  '21120':
+    description: FPGA-Konfigurationsfehler
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '21121':
+    description: Interner Fehler
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '21122':
+    description: Schutz gegen STO-Sicherheitsverdrahtungsfehler
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '21569':
+    description: Schutz vor Anschlussfehlern der Antriebsplatine
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, oder wenden Sie sich an einen Ingenieur des
+      technischen Kundendienstes.
+    level: 1
+  '25378':
+    description: Doppelte Zuweisung von DI-Funktionen
+    cause: ''
+    solution: Überprüfung der DI-Gruppenparameter für dieselbe Funktion, die verschiedenen DIs zugewiesen
+      ist
+    level: 1
+  '25379':
+    description: Überschreitung der DO-Funktionszuweisung
+    cause: ''
+    solution: Prüfen Sie, ob das Kommunikationskabel zuverlässig angeschlossen ist
+    level: 1
+  '25382':
+    description: Positionsober- und -untergrenzen der Software falsch eingestellt
+    cause: ''
+    solution: Werte 0x607D-01h, 0x607D-02h korrekt einstellen
+    level: 1
+  '25383':
+    description: Ursprungversatz falsch eingestellt
+    cause: ''
+    solution: Stellen Sie die Werte von 0x607D-01h, 0x607D-02h korrekt ein und stellen Sie sicher, dass
+      der Ursprungversatzswert 0x607C zwischen den beiden Werten liegt
+    level: 1
+  '28961':
+    description: Überhitzungsschutz für blockierten Motor
+    cause: ''
+    solution: Prüfen Sie, ob die Haltebremse ordnungsgemäß öffnet oder ob der Motor nicht aufgrund eines
+      mechanischen Fehlers blockiert ist
+    level: 1
+  '29056':
+    description: Überlastungsschutz des Motors
+    cause: ''
+    solution: Prüfen Sie, ob die Endlast des Roboters die Nennlast des Roboters nicht überschreitet, oder
+      wenden Sie sich an den zuständigen Techniker, um den Motor auszutauschen.
+    level: 1
+  '29568':
+    description: Schutz vor Unterbrechung der Encoder-Kommunikation bei abnormalen Bedingungen
+    cause: ''
+    solution: Überprüfen Sie die Verdrahtung des Encoders oder tauschen Sie den Encoder aus.
+    level: 1
+  '29569':
+    description: Encoder n.i.O.
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, oder wenden Sie sich an einen Ingenieur des
+      technischen Kundendienstes.
+    level: 1
+  '29570':
+    description: Batterieschutz des Encoders n.i.O.
+    cause: ''
+    solution: Wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '29571':
+    description: Interner Fehler im Hauptencoder
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '29572':
+    description: CRC-Prüfsummenfehler des Hauptencoders
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '29573':
+    description: Trennungsfehler im Hilfsencoder (Drahtbruch)
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '29574':
+    description: Interner Fehler im Hilfsencoder
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '29575':
+    description: CRC-Prüfsummenfehler des Hilfsencoders
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '29576':
+    description: Ausnahme im Pwm-Ausgangspuffer
+    cause: ''
+    solution: Austausch des Treibers
+    level: 1
+  '29577':
+    description: Bremsenleistung n.i.O.
+    cause: ''
+    solution: Prüfen Sie, ob die Bremse angeschlossen oder beschädigt ist
+    level: 1
+  '29584':
+    description: Große Positionsabweichung des Gelenks
+    cause: ''
+    solution: 1. Produktionsparameter überprüfen  2. Encoder-Installation überprüfen  3. Übertragungsstruktur
+      überprüfen
+    level: 1
+  '30080':
+    description: Schutz vor EtherCAT-Kommunikationsausfall
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '30081':
+    description: XML-Konfigurationsdatei nicht gebrannt
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '30082':
+    description: Falsche Konfiguration der Synchronisationsperiode
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '30083':
+    description: Master-Synchronisationssignal während der Synchronisationskommunikation verloren
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '30084':
+    description: Synchronisationszyklusfehler zu groß
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '33920':
+    description: Schutz vor Überschreitung der maximalen Drehzahl
+    cause: ''
+    solution: Prüfen Sie, ob die Motordrahtfolge richtig angeschlossen ist.
+    level: 1
+  '33921':
+    description: Schutz vor übermäßiger Drehzahlabweichung
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, und starten Sie es erneut, oder wenden Sie sich
+      an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '33922':
+    description: Motorschutz für Überziehgeschwindigkeit
+    cause: ''
+    solution: Prüfen Sie, ob der Motorwinkel i.O. ist oder ob der Motor beschädigt ist
+    level: 1
+  '34321':
+    description: Schutz vor übermäßiger Positionsabweichung
+    cause: ''
+    solution: Systemfehler, bitte wenden Sie sich an einen Ingenieur des technischen Kundendienstes.
+    level: 1
+  '34322':
+    description: Schutz vor Überschreitung der Positionsvorgabe
+    cause: ''
+    solution: Bitte geben Sie die richtigen Parameter ein
+    level: 1
+  '34323':
+    description: Übermäßige Positionsabweichung von vollständig geschlossenen Schleifen
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, oder wenden Sie sich an einen Ingenieur des
+      technischen Kundendienstes.
+    level: 1
+  '65282':
+    description: Fehler bei der Winkelerkennung
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, oder wenden Sie sich an einen Ingenieur des
+      technischen Kundendienstes.
+    level: 1
+  '65344':
+    description: Fehler bei der Parametererkennung
+    cause: ''
+    solution: Prüfen Sie, ob die Hardware in Ordnung ist, oder wenden Sie sich an einen Ingenieur des
+      technischen Kundendienstes.
+    level: 1

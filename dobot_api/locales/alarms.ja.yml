@@ -1,0 +1,1937 @@
+controller:
+  '16':
+    description: 計画位置はショルダーの特異点に接近しています
+    cause: ''
+    solution: 移動点位置を再度選択するか、特異点付近で関節補間コマンドを使用します
+    level: 5
+  '17':
+    description: 逆計算が解なし
+    cause: ''
+    solution: 目標移動点位置を再度選択し、特異点と到達不可点を回避します
+    level: 5
+  '18':
+    description: 逆計算の結果は位置制限
+    cause: ''
+    solution: 目標移動点位置を再度選択します
+    level: 5
+  '19':
+    description: JUMPまたはARCまたはCircleコマンドの点位置が重複しています
+    cause: ''
+    solution: 移動点位置を再度選択し、これを対応するコマンドの要求に合わせます
+    level: 5
+  '26':
+    description: 計画位置はアームの特異点に接近しています
+    cause: ''
+    solution: 移動点位置を再度選択するか、特異点付近で関節補間コマンドを使用します
+    level: 5
+  '27':
+    description: 計画位置はエルボーの特異点に接近しています
+    cause: ''
+    solution: 移動点位置を再度選択するか、特異点付近で関節補間コマンドを使用します
+    level: 5
+  '29':
+    description: 速度入力パラメータエラー
+    cause: ''
+    solution: 速度パラメータを検査
+    level: 5
+  '30':
+    description: 全パラメータの逆計算の解を求めるのに失敗
+    cause: ''
+    solution: 再起動し、解決できない場合には、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '48':
+    description: 関節1超過速度
+    cause: ''
+    solution: 関節速度またはデカルト速度設定を下げる、あるいは移動点位置を再度選択し、特異点から離します
+    level: 5
+  '49':
+    description: 関節2超過速度
+    cause: ''
+    solution: 関節速度またはデカルト速度設定を下げる、あるいは移動点位置を再度選択し、特異点から離します
+    level: 5
+  '50':
+    description: 関節3超過速度
+    cause: ''
+    solution: 関節速度またはデカルト速度設定を下げる、あるいは移動点位置を再度選択し、特異点から離します
+    level: 5
+  '51':
+    description: 関節4超過速度
+    cause: ''
+    solution: 関節速度またはデカルト速度設定を下げる、あるいは移動点位置を再度選択し、特異点から離します
+    level: 5
+  '52':
+    description: 関節5超過速度
+    cause: ''
+    solution: 関節速度またはデカルト速度設定を下げる、あるいは移動点位置を再度選択し、特異点から離します
+    level: 5
+  '53':
+    description: 関節6超過速度
+    cause: ''
+    solution: 関節速度またはデカルト速度設定を下げる、あるいは移動点位置を再度選択し、特異点から離します
+    level: 5
+  '54':
+    description: 関節1位置公差超過
+    cause: ''
+    solution: 再起動し、解決できない場合には、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '55':
+    description: 関節2位置公差超過
+    cause: ''
+    solution: 再起動し、解決できない場合には、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '56':
+    description: 関節3位置公差超過
+    cause: ''
+    solution: 再起動し、解決できない場合には、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '57':
+    description: 関節4位置公差超過
+    cause: ''
+    solution: 再起動し、解決できない場合には、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '58':
+    description: 関節5位置公差超過
+    cause: ''
+    solution: 再起動し、解決できない場合には、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '59':
+    description: 関節6位置公差超過
+    cause: ''
+    solution: 再起動し、解決できない場合には、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '64':
+    description: 関節1正方向位置制限
+    cause: ''
+    solution: 現在の関節角度とソフトウェア位置制限設定を確認し、反対方向にジョグで制限位置から離すか、ソフトウェア制限位置設定を修正します
+    level: 5
+  '65':
+    description: 関節1負方向位置制限
+    cause: ''
+    solution: 現在の関節角度とソフトウェア位置制限設定を確認し、反対方向にジョグで制限位置から離すか、ソフトウェア制限位置設定を修正します
+    level: 5
+  '66':
+    description: 関節2正方向位置制限
+    cause: ''
+    solution: 現在の関節角度とソフトウェア位置制限設定を確認し、反対方向にジョグで制限位置から離すか、ソフトウェア制限位置設定を修正します
+    level: 5
+  '67':
+    description: 関節2負方向位置制限
+    cause: ''
+    solution: 現在の関節角度とソフトウェア位置制限設定を確認し、反対方向にジョグで制限位置から離すか、ソフトウェア制限位置設定を修正します
+    level: 5
+  '68':
+    description: 関節3正方向位置制限
+    cause: ''
+    solution: 現在の関節角度とソフトウェア位置制限設定を確認し、反対方向にジョグで制限位置から離すか、ソフトウェア制限位置設定を修正します
+    level: 5
+  '69':
+    description: 関節3負方向位置制限
+    cause: ''
+    solution: 現在の関節角度とソフトウェア位置制限設定を確認し、反対方向にジョグで制限位置から離すか、ソフトウェア制限位置設定を修正します
+    level: 5
+  '70':
+    description: 関節4正方向位置制限
+    cause: ''
+    solution: 現在の関節角度とソフトウェア位置制限設定を確認し、反対方向にジョグで制限位置から離すか、ソフトウェア制限位置設定を修正します
+    level: 5
+  '71':
+    description: 関節4負方向位置制限
+    cause: ''
+    solution: 現在の関節角度とソフトウェア位置制限設定を確認し、反対方向にジョグで制限位置から離すか、ソフトウェア制限位置設定を修正します
+    level: 5
+  '72':
+    description: 関節5正方向位置制限
+    cause: ''
+    solution: 現在の関節角度とソフトウェア位置制限設定を確認し、反対方向にジョグで制限位置から離すか、ソフトウェア制限位置設定を修正します
+    level: 5
+  '73':
+    description: 関節5負方向位置制限
+    cause: ''
+    solution: 現在の関節角度とソフトウェア位置制限設定を確認し、反対方向にジョグで制限位置から離すか、ソフトウェア制限位置設定を修正します
+    level: 5
+  '74':
+    description: 関節6正方向位置制限
+    cause: ''
+    solution: 現在の関節角度とソフトウェア位置制限設定を確認し、反対方向にジョグで制限位置から離すか、ソフトウェア制限位置設定を修正します
+    level: 5
+  '75':
+    description: 関節6負方向位置制限
+    cause: ''
+    solution: 現在の関節角度とソフトウェア位置制限設定を確認し、反対方向にジョグで制限位置から離すか、ソフトウェア制限位置設定を修正します
+    level: 5
+  '76':
+    description: ツールボタンがロボット本体と自己干渉している
+    cause: ''
+    solution: ロボットのツール状態を検査し、目標移動点位置を再度選択します
+    level: 5
+  '77':
+    description: ツールフランジがロボット本体と自己干渉している
+    cause: ''
+    solution: ロボットのツール状態を検査し、目標移動点位置を再度選択します
+    level: 5
+  '114':
+    description: ロボットのゼロ点校正失敗
+    cause: ''
+    solution: ロボットを再起動して校正し、解決できない場合には、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '115':
+    description: ロボットを有効にできない
+    cause: ''
+    solution: ロボットを再起動して有効にし、解決できない場合には、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '116':
+    description: ハードの非常停止ボタンが押されている
+    cause: ''
+    solution: 非常停止ボタンを解除した後、手順に従って正常操作に戻すことができます
+    level: 1
+  '132':
+    description: ソフト非常停止信号がトリガされる
+    cause: ''
+    solution: 非常停止ボタンをリセットした後、手順に従って正常操作に戻すことができます
+    level: 1
+  '133':
+    description: ユーザ非常停止信号がトリガされる
+    cause: ''
+    solution: ユーザ非常停止ボタンをリセットした後、手順に従って正常操作に戻すことができます
+    level: 1
+  '134':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '146':
+    description: ジョグ/インチング計画失敗
+    cause: ''
+    solution: 再起動し、解決できない場合には、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '147':
+    description: 軌跡の再現または小さな線分の指定数が4未満です
+    cause: ''
+    solution: 軌跡ファイルを確認、内部の点位置の数が十分になるようにしてください
+    level: 5
+  '148':
+    description: 軌跡の再現は定められた制限に従って再現できない
+    cause: ''
+    solution: 軌跡ファイルが正しいか、合理的なパラメータが設定されているかを確認します
+    level: 5
+  '160':
+    description: 現在のコマンドは一時停止をサポートしていません。ロボットは既に停止しています
+    cause: ''
+    solution: プログラムを再起動します
+    level: 5
+  '224':
+    description: ロボットが安全作業エリアに接近しています
+    cause: ''
+    solution: 警告を解除し、ロボットを安全作業エリアに移動させてください。
+    level: 5
+  '1280':
+    description: ロボットの負荷パラメータのロードに失敗
+    cause: ''
+    solution: function/loadParams.jsonファイルを確認し、更新
+    level: 5
+  '1281':
+    description: ロボットの識別パラメータのロードに失敗
+    cause: ''
+    solution: properties/dynamicsParams.jsonファイルを確認し、更新
+    level: 5
+  '1282':
+    description: ロボットの構造パラメータのロードに失敗
+    cause: ''
+    solution: properties/structure.jsonファイルを確認し、更新
+    level: 5
+  '1283':
+    description: ロボットのティーチング座標系ジョグパラメータのロードに失敗
+    cause: ''
+    solution: teach/coordinate.jsonファイルを確認し、更新
+    level: 5
+  '1284':
+    description: ロボットのティーチング関節ジョグパラメータのロードに失敗
+    cause: ''
+    solution: teach/joint.jsonファイルを確認し、更新
+    level: 5
+  '1285':
+    description: ロボットのティーチングインチングパラメータのロードに失敗
+    cause: ''
+    solution: teach/inch.jsonファイルを確認し、更新
+    level: 5
+  '1286':
+    description: ロボットの関節空間計画パラメータのロードに失敗
+    cause: ''
+    solution: playback/joint.jsonファイルを確認し、更新
+    level: 5
+  '1287':
+    description: ロボットのデカルト空間計画パラメータのロードに失敗
+    cause: ''
+    solution: playback/coordinate.jsonファイルを確認し、更新
+    level: 5
+  '1288':
+    description: ロボットの門型パラメータのロードに失敗
+    cause: ''
+    solution: playback/arch.jsonファイルを確認し、更新
+    level: 5
+  '1289':
+    description: ロボットのグローバル速度パラメータのロードに失敗
+    cause: ''
+    solution: settings/common,jsonファイルを確認し、更新
+    level: 5
+  '1290':
+    description: ロボットのジョグ座標系索引パラメータのロードに失敗
+    cause: ''
+    solution: datasvr/config.json文ファイルを確認し、更新
+    level: 5
+  '1291':
+    description: ロボットのユーザ座標系パラメータのロードに失敗
+    cause: ''
+    solution: coordinate/user.jsonファイルを確認し、更新
+    level: 5
+  '1292':
+    description: ロボットのツール座標系パラメータのロードに失敗
+    cause: ''
+    solution: coordinate/tool.jsonファイルを確認し、更新
+    level: 5
+  '1293':
+    description: ロボットの高度機能パラメータのロードに失敗
+    cause: ''
+    solution: properties/advancedFunction.jsonファイルを確認し、更新
+    level: 5
+  '1294':
+    description: ロボットの安全信号設定パラメータのロードに失敗
+    cause: ''
+    solution: function/CC161/safeSignal.jsonファイルを確認し、更新
+    level: 5
+  '1295':
+    description: システムIO制御設定パラメータのロードに失敗
+    cause: ''
+    solution: function/ioCtrl.jsonファイルを確認し、更新
+    level: 5
+  '1296':
+    description: Modbus設定パラメータのロードに失敗
+    cause: ''
+    solution: function/modbusConf.jsonファイルを確認し、更新
+    level: 5
+  '1297':
+    description: ロボットのリモート制御モードパラメータのロードに失敗
+    cause: ''
+    solution: function/remoteControl.jsonファイルを確認し、更新
+    level: 5
+  '1298':
+    description: ロボットの軸数パラメータのロードに失敗
+    cause: ''
+    solution: properties/axis.jsonファイルを確認し、更新
+    level: 5
+  '1299':
+    description: ロボットの製品タイプパラメータのロードに失敗
+    cause: ''
+    solution: properties/bussinessType.jsonファイルを確認し、更新
+    level: 5
+  '1300':
+    description: ロボットタイプパラメータのロードに失敗
+    cause: ''
+    solution: properties/controllerType.jsonファイルを確認し、更新
+    level: 5
+  '1301':
+    description: ロボットのコントローラタイプパラメータのロードに失敗
+    cause: ''
+    solution: properties/controlCabType.jsonファイルを確認し、更新
+    level: 5
+  '1302':
+    description: ロボットの自己干渉パラメータのロードに失敗
+    cause: ''
+    solution: properties/poseSelfInterference.jsonファイルを確認し、更新
+    level: 5
+  '1303':
+    description: ロボットの加速度等パラメータのロードに失敗
+    cause: ''
+    solution: function/accFactor.jsonファイルを確認し、更新
+    level: 5
+  '1304':
+    description: ロボットのトルク制限パラメータのロードに失敗
+    cause: ''
+    solution: function/torqueLimit.jsonファイルを確認し、更新
+    level: 5
+  '1305':
+    description: リアルタイムフィードバックデータ形式設定パラメータのロードに失敗
+    cause: ''
+    solution: function/tcp30006Feedback.jsonファイルを確認し、更新
+    level: 5
+  '1306':
+    description: ロボット制限値パラメータのロードに失敗
+    cause: ''
+    solution: function/securityConstraint.jsonファイルを確認し、更新
+    level: 5
+  '1307':
+    description: ロボットの関節制限パラメータのロードに失敗
+    cause: ''
+    solution: properties/jointLimits.jsonファイルを確認し、更新
+    level: 5
+  '1308':
+    description: ロボットの安全壁パラメータのロードに失敗
+    cause: ''
+    solution: function/virtualWall.jsonファイルを確認し、更新
+    level: 5
+  '1309':
+    description: ロボット設置状態パラメータのロードに失敗
+    cause: ''
+    solution: function/install.jsonファイルを確認し、更新
+    level: 5
+  '1310':
+    description: システム累計運転時間パラメータのロードに失敗
+    cause: ''
+    solution: settings/workTimeRec.jsonファイルを確認し、更新
+    level: 5
+  '1311':
+    description: ロボットのシミュレーションモードパラメータのロードに失敗
+    cause: ''
+    solution: function/analogMode.jsonファイルを確認し、更新
+    level: 5
+  '1312':
+    description: ロボットドラッグ感度パラメータのロードに失敗
+    cause: ''
+    solution: function/dragSensivity.jsonファイルを確認し、更新
+    level: 5
+  '1313':
+    description: ロボット再現パラメータのロードに失敗
+    cause: ''
+    solution: function/reTraceParams.jsonファイルを確認し、更新
+    level: 5
+  '1314':
+    description: ロボットパッケージ姿勢パラメータのロードに失敗
+    cause: ''
+    solution: function/packPoint.jsonファイルを確認し、更新
+    level: 5
+  '1315':
+    description: ロボットセルフ定義姿勢パラメータのロードに失敗
+    cause: ''
+    solution: function/customPoint.jsonファイルを確認し、更新
+    level: 5
+  '1316':
+    description: ロボットのスイッチ安全衝突設定パラメータのロードに失敗
+    cause: ''
+    solution: function/collisionDect.jsonファイルを確認し、更新
+    level: 5
+  '1317':
+    description: ロボット衝突エラー閾値設定パラメータのロードに失敗
+    cause: ''
+    solution: function/collision_error_threshold.jsonファイルを確認し、更新
+    level: 5
+  '1318':
+    description: ロボットの一般信号設定パラメータのロードに失敗
+    cause: ''
+    solution: function/commonSignal.jsonファイルを確認し、更新
+    level: 5
+  '1319':
+    description: ロボット言語設定パラメータのロードに失敗
+    cause: ''
+    solution: language/language.jsonファイルを確認し、更新
+    level: 5
+  '1320':
+    description: 中国語設定表のロードに失敗
+    cause: ''
+    solution: language/zh_cn.jsonファイルを確認し、更新
+    level: 5
+  '1321':
+    description: 英語設定表のロードに失敗
+    cause: ''
+    solution: language/en.jsonファイルを確認し、更新
+    level: 5
+  '1322':
+    description: デフォルト移動速度パラメータのロードに失敗
+    cause: ''
+    solution: properties/default.jsonファイルを確認し、更新
+    level: 5
+  '1323':
+    description: 負荷範囲パラメータのロードに失敗
+    cause: ''
+    solution: function/payloadLimit.jsonファイルを確認し、更新
+    level: 5
+  '1325':
+    description: 繁体中国語設定表のロードに失敗
+    cause: ''
+    solution: language/zh_hand.jsonファイルを確認し、更新
+    level: 5
+  '1326':
+    description: 韓国語設定表のロードに失敗
+    cause: ''
+    solution: language/kr.jsonファイルを確認し、更新
+    level: 5
+  '1327':
+    description: 日本語設定表のロードに失敗
+    cause: ''
+    solution: language/ja.jsonファイルを確認し、更新
+    level: 5
+  '1328':
+    description: ドイツ語設定表のロードに失敗
+    cause: ''
+    solution: language/de.jsonファイルを確認し、更新
+    level: 5
+  '1329':
+    description: ツールモード設定のロードに失敗
+    cause: ''
+    solution: function/toolMode.jsonファイルを確認し、更新
+    level: 5
+  '1330':
+    description: 電子スキンスイッチ設定のロードに失敗
+    cause: ''
+    solution: elecSkin/switch.jsonファイルを確認し、更新
+    level: 5
+  '1331':
+    description: 電子スキン感度パラメータのロードに失敗
+    cause: ''
+    solution: elecSkin/sensitivity.jsonファイルを確認し、更新
+    level: 5
+  '1332':
+    description: 負荷パラメータ表のロードに失敗
+    cause: ''
+    solution: function/loadConfig.jsonファイルを確認し、更新
+    level: 5
+  '1333':
+    description: ロボットの安全信号設定パラメータのロードに失敗
+    cause: ''
+    solution: function/CC162/safeSignal.jsonファイルを確認し、更新
+    level: 5
+  '1334':
+    description: ロボットの安全信号設定パラメータのロードに失敗
+    cause: ''
+    solution: function/CCBOX/safeSignal.jsonファイルを確認し、更新
+    level: 5
+  '1335':
+    description: ベトナム語設定表のロードに失敗
+    cause: ''
+    solution: language/vi.jsonファイルを確認し、更新
+    level: 5
+  '1336':
+    description: 小型制御キャビネット電圧範囲ファイルのロードに失敗
+    cause: ''
+    solution: function/ccboxVoltage.jsonファイルを確認し、更新
+    level: 5
+  '1337':
+    description: リモートio/modbus制御スイッチファイルのロードに失敗
+    cause: ''
+    solution: function/remoteSwitch.jsonファイルを確認し、更新
+    level: 5
+  '1338':
+    description: ロボットの安全スキン関節制限パラメータのロードに失敗
+    cause: ''
+    solution: elecSkin/jointLimit.jsonファイルを確認し、更新
+    level: 5
+  '1339':
+    description: ロボットの安全スキン障害回避パラメータのロードに失敗
+    cause: ''
+    solution: elecSkin/avoidParams.jsonファイルを確認し、更新
+    level: 5
+  '1340':
+    description: ジッタ抑制パラメータのロードに失敗
+    cause: ''
+    solution: properties/suppressionConfig.jsonファイルを確認し、更新
+    level: 5
+  '1341':
+    description: ローディング加速度計のパラメータ測定に失敗しました
+    cause: ''
+    solution: properties/vibrationDetection.jsonファイルを確認し、更新
+    level: 5
+  '1342':
+    description: 六面体のパラメータを載せるのに失敗しました
+    cause: ''
+    solution: function/workZone.jsonファイルを確認し、更新
+    level: 5
+  '1343':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1344':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1345':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1346':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1359':
+    description: 起動ファイルロード失敗
+    cause: ''
+    solution: 対応するファイルを更新後、再起動します
+    level: 5
+  '1360':
+    description: ロボットを有効にできない
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1361':
+    description: ロボットのブレーキ開に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1362':
+    description: ロボットのブレーキ閉に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1363':
+    description: 電源オンに失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1364':
+    description: 自動識別の起動に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1365':
+    description: 自動識別の停止に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1366':
+    description: ドラッグモード開始に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1367':
+    description: ドラッグモード終了に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1368':
+    description: グローバルレート設定に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1369':
+    description: 負荷パラメータ設定に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1370':
+    description: 設置姿勢校正に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1371':
+    description: 座標系校正に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1372':
+    description: 設置姿勢設定に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1373':
+    description: ネットワーク設定に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1374':
+    description: wifi設定に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1375':
+    description: ツール座標系の設定に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1376':
+    description: ユーザー座標系の設定に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1377':
+    description: ツールDO設定に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1378':
+    description: DO設定に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1379':
+    description: AO設定に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1380':
+    description: ツール485設定に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1381':
+    description: ドラッグモード設定に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1382':
+    description: 安全衝突機能起動に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1383':
+    description: 安全衝突機能終了に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1385':
+    description: 本体電源オフに失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1386':
+    description: 関節制限パラメータの設定に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1387':
+    description: ロボット制限値パラメータの設定に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1388':
+    description: 高度機能設定に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1389':
+    description: 安全壁パラメータの更新に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1390':
+    description: 関節移動に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1391':
+    description: 直線移動に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1392':
+    description: 正演算の実行に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1393':
+    description: 逆演算の実行に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1394':
+    description: 円弧移動に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1395':
+    description: 円移動に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1396':
+    description: ツール座標系に沿った相対関節移動に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1397':
+    description: ツール座標系に沿った相対直線移動に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1398':
+    description: ユーザ座標系に沿った相対関節移動に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1399':
+    description: ユーザ座標系に沿った相対直線移動に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1400':
+    description: 各軸の関節座標系に沿った相対関節移動に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1401':
+    description: ユーザー座標系に沿ったデカルト点位置の偏移に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1402':
+    description: ツール座標系に沿ったデカルト点位置の偏移に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1403':
+    description: 直線点位置まで移動したかの確認に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1404':
+    description: デカルト点位置まで移動したかの確認に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1406':
+    description: アルゴリズム起動タイムアウト
+    cause: ''
+    solution: codesys起動が異常かを確認
+    level: 5
+  '1407':
+    description: アルゴリズム通信異常
+    cause: ''
+    solution: ロボットを再起動し、そのエラーがなお出現する場合、システムエラーである可能性があるので、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1408':
+    description: 軸1オンライン状態異常
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1409':
+    description: 軸2オンライン状態異常
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1410':
+    description: 軸3オンライン状態異常
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1411':
+    description: 軸4オンライン状態異常
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1412':
+    description: 軸5オンライン状態異常
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1413':
+    description: 軸6オンライン状態異常
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1414':
+    description: 安全IOオンライン異常
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1415':
+    description: 一般IOオンライン異常
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1416':
+    description: エネルギー供給ボードのオンライン異常
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1417':
+    description: ツールIOオンライン異常
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1418':
+    description: プロジェクトファイルが存在しません
+    cause: ''
+    solution: プロジェクトファイルが壊れているか、ファイルが存在しないかを確認します
+    level: 5
+  '1419':
+    description: ロボット電源オフ
+    cause: ''
+    solution: エラーを消して、再度電源を入れた後、手順に従って正常操作に戻すことができます
+    level: 1
+  '1420':
+    description: ジョグ失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1421':
+    description: ドラッグ感度設定に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1422':
+    description: スクリプトの実行状態異常
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1423':
+    description: 安全スキン開/閉に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1424':
+    description: 安全スキン感度設定に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1425':
+    description: 安全スキンリセットに失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1426':
+    description: 安全スキンハードリセットに失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1427':
+    description: 負荷自動識別に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1428':
+    description: 負荷検査に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1429':
+    description: 移動待機停止のタイムアウト
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1430':
+    description: 非常停止後に電源オフ
+    cause: 非常停止起動後500msで移動が停止せず、ロボットは電源オフ
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 0
+  '1431':
+    description: ''
+    cause: ユーザー座標系の計算に失敗
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1432':
+    description: ''
+    cause: ツール座標系の計算に失敗
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1433':
+    description: ''
+    cause: 安全スキン生涯回避機能起動/終了に失敗
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1434':
+    description: ''
+    cause: 安全スキン障害回避パラメータの設定に失敗
+    solution: 再度試し、そのエラーがなお出現する場合、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1435':
+    description: IPv4アドレス形式エラー
+    cause: IPv4アドレス形式エラー
+    solution: 正しいIPv4アドレスを入力します
+    level: 5
+  '1436':
+    description: IPv4サブネットマスク形式エラー
+    cause: IPv4サブネットマスク形式エラー
+    solution: 正しいIPv4サブネットマスクを入力します
+    level: 5
+  '1437':
+    description: IPv4デフォルトネットワーク形式エラー
+    cause: IPv4デフォルトネットワーク形式エラー
+    solution: 正しいIPv4デフォルトネットワークを入力します
+    level: 5
+  '1438':
+    description: システムはprofinetをサポートしていません
+    cause: システムはprofinetをサポートしていません
+    solution: 最新のコントローラシステムを読み取ります
+    level: 5
+  '1439':
+    description: 軌跡再現で第1点までの移動は一時停止をサポートしていません。ロボットは既に停止しています
+    cause: 衝突、スキン衝突の可能性があります
+    solution: 処理が異常です。再度移動します
+    level: 5
+  '1440':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1441':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1442':
+    description: ジッタ抑制パラメータの設定に失敗
+    cause: ジッダ抑制比例パラメータがint値ではありません
+    solution: properties/suppressionConfig.jsonファイルパラメータ形式が正しいかを確認します
+    level: 5
+  '1443':
+    description: ジッタ測定パラメータの設定に失敗
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、システムエラーである可能性があるので、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1444':
+    description: セキュリティ領域パラメータの更新失敗です
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、システムエラーである可能性があるので、テクニカルサポートエンジニアに連絡してください
+    level: 5
+  '1445':
+    description: ジョイント1のフィールドバスの同期喪失
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、システムエラーである可能性があるので、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1446':
+    description: ジョイント2のフィールドバスの同期喪失
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、システムエラーである可能性があるので、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1447':
+    description: ジョイント3のフィールドバスの同期喪失
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、システムエラーである可能性があるので、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1448':
+    description: ジョイント4のフィールドバスの同期喪失
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、システムエラーである可能性があるので、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1449':
+    description: ジョイント5のフィールドバスの同期喪失
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、システムエラーである可能性があるので、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1450':
+    description: ジョイント6のフィールドバスの同期喪失
+    cause: ''
+    solution: 再度試し、そのエラーがなお出現する場合、システムエラーである可能性があるので、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1451':
+    description: ジョイント1の温度が高すぎます
+    cause: 周囲温度が高すぎるか、システムに障害があります
+    solution: 作業環境の温度を下げるか、メーカーに技術サポートを依頼してください
+    level: 5
+  '1452':
+    description: ジョイント2の温度が高すぎます
+    cause: 周囲温度が高すぎるか、システムに障害があります
+    solution: 作業環境の温度を下げるか、メーカーに技術サポートを依頼してください
+    level: 5
+  '1453':
+    description: ジョイント3の温度が高すぎます
+    cause: 周囲温度が高すぎるか、システムに障害があります
+    solution: 作業環境の温度を下げるか、メーカーに技術サポートを依頼してください
+    level: 5
+  '1454':
+    description: ジョイント4の温度が高すぎます
+    cause: 周囲温度が高すぎるか、システムに障害があります
+    solution: 作業環境の温度を下げるか、メーカーに技術サポートを依頼してください
+    level: 5
+  '1455':
+    description: ジョイント5の温度が高すぎます
+    cause: 周囲温度が高すぎるか、システムに障害があります
+    solution: 作業環境の温度を下げるか、メーカーに技術サポートを依頼してください
+    level: 5
+  '1456':
+    description: ジョイント6の温度が高すぎます
+    cause: 周囲温度が高すぎるか、システムに障害があります
+    solution: 作業環境の温度を下げるか、メーカーに技術サポートを依頼してください
+    level: 5
+  '1457':
+    description: メインコントロールチップの温度が高すぎます
+    cause: 周囲温度が高すぎるか、システムに障害があります
+    solution: 作業環境の温度を下げるか、メーカーに技術サポートを依頼してください
+    level: 5
+  '1458':
+    description: ユーザー座標系は有効化されていません
+    cause: 指定されたユーザー座標系は有効化されていません
+    solution: 正しい座標系インデックスを使用するか、新しいユーザー座標系を追加して設定してください
+    level: 5
+  '1459':
+    description: 工具座標系は有効化されていません
+    cause: 指定された工具座標系は有効化されていません
+    solution: 正しい座標系インデックスを使用するか、新しい工具座標系を追加して設定してください
+    level: 5
+  '1538':
+    description: 交流接触器が連続2s要求に従って閉じない
+    cause: ''
+    solution: ロボットを再起動し、そのエラーがなお出現する場合、ハードが損傷している可能性があるので、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1540':
+    description: 電源オンから5分後、onlineデータが1min連続で更新されない
+    cause: ''
+    solution: ロボットを再起動し、そのエラーがなお出現する場合、ハードが損傷している可能性があるので、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1541':
+    description: AC状態検査エラー
+    cause: ''
+    solution: ロボットを再起動し、そのエラーがなお出現する場合、ハードが損傷している可能性があるので、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1543':
+    description: パネルスイッチが押されています
+    cause: ''
+    solution: アラームを消して、再度電源をオンにします
+    level: 0
+  '1544':
+    description: エネルギー供給ボードが切断されました
+    cause: ''
+    solution: ロボットを再起動し、そのエラーがなお出現する場合、ハードが損傷している可能性があるので、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1548':
+    description: 24Vスーパーキャパシタの状態検査異常
+    cause: ''
+    solution: ロボットを再起動し、そのエラーがなお出現する場合、ハードが損傷している可能性があるので、テクニカルサポートエンジニアに連絡してください
+    level: 0
+  '1549':
+    description: 48Vスーパーキャパシタの状態検査異常
+    cause: ''
+    solution: ロボットを再起動し、そのエラーがなお出現する場合、ハードが損傷している可能性があるので、テクニカルサポートエンジニアに連絡してください
+    level: 0
+  '1792':
+    description: 入力電圧監視過電圧アラーム
+    cause: ''
+    solution: ロボットを再起動し、そのエラーがなお出現する場合、ハードが損傷している可能性があるので、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1793':
+    description: 入力電圧監視電圧不足アラーム
+    cause: ''
+    solution: ロボットを再起動し、そのエラーがなお出現する場合、ハードが損傷している可能性があるので、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1794':
+    description: 電源制限チップ検査異常アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1795':
+    description: 出力電圧監視過電圧アラーム
+    cause: ''
+    solution: ロボットを再起動し、そのエラーがなお出現する場合、ハードが損傷している可能性があるので、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1796':
+    description: 出力電圧監視電圧不足アラーム
+    cause: ''
+    solution: ロボットを再起動し、そのエラーがなお出現する場合、ハードが損傷している可能性があるので、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1797':
+    description: 内部第1安定電圧値の異常アラーム
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1798':
+    description: 内部第2安定電圧値の異常アラーム
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1799':
+    description: 本体の電源をオンにして起動前の出力電圧異常アラーム
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 0
+  '1800':
+    description: エネルギー供給電流検査制限超過アラーム
+    cause: ''
+    solution: 供給電力が大きすぎます。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1801':
+    description: セメント抵抗過電力保護アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1802':
+    description: バスバー電流検査制限超過アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1803':
+    description: 本体の電源をオンにして起動時にエネルギー供給発生アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1804':
+    description: 48V出力制御MOSトランジスタ状態検査異常アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1805':
+    description: 本体電源オン起動失敗エラー
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1808':
+    description: 入力電圧監視過電圧アラーム
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 0
+  '1809':
+    description: 入力電圧監視電圧不足アラーム
+    cause: ''
+    solution: 供給電力が大きすぎます。テクニカルサポートエンジニアに連絡してください
+    level: 0
+  '1810':
+    description: 電源制限チップ検査異常アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 0
+  '1811':
+    description: 出力電圧監視過電圧アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 0
+  '1812':
+    description: 出力電圧監視電圧不足アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 0
+  '1813':
+    description: 本体予備充電異常アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1814':
+    description: 48Vスーパーキャパシタ充電チップ過電流故障アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1815':
+    description: 48V出力制御MOSトランジスタ管理温度高温アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 0
+  '1816':
+    description: エネルギー供給電流検査制限超過アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1817':
+    description: セメント抵抗過電力保護アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1818':
+    description: バスバー電流検査制限超過アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1819':
+    description: エネルギー供給回路ドライブ電圧異常アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1820':
+    description: 48V出力制御MOSトランジスタ状態検査異常アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1821':
+    description: ファン状態検査異常アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1824':
+    description: 48Vスーパーキャパシタ比較回路参考電圧監視異常アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1825':
+    description: 24Vスーパーキャパシタ回路異常アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1826':
+    description: 入力電圧最大値設定異常アラーム
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1827':
+    description: 入力電圧最小値設定異常アラーム
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '1828':
+    description: エネルギー供給時間検査異常アラーム
+    cause: ''
+    solution: 入力電源と負荷が規定どおりかを確認するか、テクニカルサポートエンジニアに連絡してください
+    level: 0
+  '1829':
+    description: エネルギー供給回路制御信号検査異常アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 0
+  '2050':
+    description: 保護性能停止タイムアウトアラーム
+    cause: ''
+    solution: エラーを消して、再度電源をオンにします
+    level: 0
+  '2051':
+    description: 関節1内輪位置制限超過
+    cause: ''
+    solution: 再起動し、解決できない場合には、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2052':
+    description: 関節2内輪位置制限超過
+    cause: ''
+    solution: 再起動し、解決できない場合には、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2053':
+    description: 関節3内輪位置制限超過
+    cause: ''
+    solution: 再起動し、解決できない場合には、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2054':
+    description: 関節4内輪位置制限超過
+    cause: ''
+    solution: 再起動し、解決できない場合には、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2055':
+    description: 関節5内輪位置制限超過
+    cause: ''
+    solution: 再起動し、解決できない場合には、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2056':
+    description: 関節6内輪位置制限超過
+    cause: ''
+    solution: 再起動し、解決できない場合には、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2057':
+    description: 関節1内輪レート制限超過
+    cause: ''
+    solution: 関節速度またはデカルト速度設定を下げます
+    level: 1
+  '2058':
+    description: 関節2内輪レート制限超過
+    cause: ''
+    solution: 関節速度またはデカルト速度設定を下げます
+    level: 1
+  '2059':
+    description: 関節3内輪レート制限超過
+    cause: ''
+    solution: 関節速度またはデカルト速度設定を下げます
+    level: 1
+  '2060':
+    description: 関節4内輪レート制限超過
+    cause: ''
+    solution: 関節速度またはデカルト速度設定を下げます
+    level: 1
+  '2061':
+    description: 関節5内輪レート制限超過
+    cause: ''
+    solution: 関節速度またはデカルト速度設定を下げます
+    level: 1
+  '2062':
+    description: 関節6内輪レート制限超過
+    cause: ''
+    solution: 関節速度またはデカルト速度設定を下げます
+    level: 1
+  '2063':
+    description: 関節1トルク制限超過
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2064':
+    description: 関節2トルク制限超過
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2065':
+    description: 関節3トルク制限超過
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2066':
+    description: 関節4トルク制限超過
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2067':
+    description: 関節5トルク制限超過
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2068':
+    description: 関節6トルク制限超過
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2069':
+    description: TCP位置制限超過
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2070':
+    description: TCPレート制限超過
+    cause: ''
+    solution: 関節速度またはデカルト速度設定を下げます
+    level: 1
+  '2071':
+    description: セーフティコントローラAとBのバージョンが一致しません
+    cause: ''
+    solution: セーフティコントローラAとBのバージョンが異なる場合は、互換性を確保するためにファームウェアを更新してください。追加のサポートが必要な場合は、技術サポートにお問い合わせください。
+    level: 1
+  '2072':
+    description: TCP力の制限超過
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2073':
+    description: 安全平面の制限を超えました
+    cause: ''
+    solution: 警告を解除し、ロボットを安全エリアに戻してください
+    level: 1
+  '2074':
+    description: 安全壁と仮想壁起動後の位置制限超過
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2075':
+    description: 接触器状態検査異常アラーム
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2076':
+    description: エネルギー供給ボードのオンライン異常
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2077':
+    description: 前部パネルスイッチが押されています
+    cause: ''
+    solution: パネルスイッチを解除した後、手順に従って正常操作に戻すことができます
+    level: 0
+  '2078':
+    description: AC検査エラー
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2080':
+    description: ロボット関節1伝達系の位置または速度が許容範囲外です
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2081':
+    description: ロボット関節2伝達系の位置または速度が許容範囲外です
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2082':
+    description: ロボット関節3伝達系の位置または速度が許容範囲外です
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2083':
+    description: ロボット関節4伝達系の位置または速度が許容範囲外です
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2084':
+    description: ロボット関節5伝達系の位置または速度が許容範囲外です
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2085':
+    description: ロボット関節6伝達系の位置または速度が許容範囲外です
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2087':
+    description: 安全制限値のパラメータチェックエラー
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2088':
+    description: 安全制限値のパラメータ一致エラー
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2089':
+    description: IO入力ポート検査異常
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2090':
+    description: IO出力ポート検査異常
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2091':
+    description: 3.3V電圧検査異常
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2092':
+    description: 5V電圧検査異常
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2093':
+    description: 24V電圧検査異常
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2096':
+    description: SCBBオンライン状態異常
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2097':
+    description: ロボット関節伝達系の位置が許容範囲外です
+    cause: ''
+    solution: 再起動し、解決できない場合には、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2098':
+    description: ロボット関節伝達系の速度が許容範囲外です
+    cause: ''
+    solution: 再起動し、解決できない場合には、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2099':
+    description: 関節1外輪位置制限超過
+    cause: ''
+    solution: 再起動し、解決できない場合には、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2100':
+    description: 関節2外輪位置制限超過
+    cause: ''
+    solution: 再起動し、解決できない場合には、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2101':
+    description: 関節3外輪位置制限超過
+    cause: ''
+    solution: 再起動し、解決できない場合には、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2102':
+    description: 関節4外輪位置制限超過
+    cause: ''
+    solution: 再起動し、解決できない場合には、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2103':
+    description: 関節5外輪位置制限超過
+    cause: ''
+    solution: 再起動し、解決できない場合には、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2104':
+    description: 関節6外輪位置制限超過
+    cause: ''
+    solution: 再起動し、解決できない場合には、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2105':
+    description: 関節1外輪レート制限超過
+    cause: ''
+    solution: 関節速度またはデカルト速度設定を下げます。
+    level: 1
+  '2106':
+    description: 関節2外輪レート制限超過
+    cause: ''
+    solution: 関節速度またはデカルト速度設定を下げます。
+    level: 1
+  '2107':
+    description: 関節3外輪レート制限超過
+    cause: ''
+    solution: 関節速度またはデカルト速度設定を下げます。
+    level: 1
+  '2108':
+    description: 関節4外輪レート制限超過
+    cause: ''
+    solution: 関節速度またはデカルト速度設定を下げます。
+    level: 1
+  '2109':
+    description: 関節5外輪レート制限超過
+    cause: ''
+    solution: 関節速度またはデカルト速度設定を下げます。
+    level: 1
+  '2110':
+    description: 関節6外輪レート制限超過
+    cause: ''
+    solution: 関節速度またはデカルト速度設定を下げます。
+    level: 1
+  '2112':
+    description: DOチップエラー
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2113':
+    description: DO過電流
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2114':
+    description: 24V出力警報
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2128':
+    description: 電源電圧検査電圧不足アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2129':
+    description: 電源電圧検査過電圧アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2130':
+    description: エネルギー供給回路検査異常アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2132':
+    description: 非常停止回路検査異常アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2133':
+    description: 本体回路検査異常アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 0
+  '2134':
+    description: 電源入力電圧最小値設定異常エラー
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2135':
+    description: 電源入力電圧最大値設定異常エラー
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2136':
+    description: MCUチップ温度検査高温
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2137':
+    description: DIタイプPNP設定検査エラー警報
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2138':
+    description: DIタイプNPN設定検査エラー警報
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2139':
+    description: 電源オフ実行検査異常アラーム
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2140':
+    description: エネルギー供給時間検査異常
+    cause: ''
+    solution: 入力電源と負荷が規定どおりかを確認するか、テクニカルサポートエンジニアに連絡してください
+    level: 0
+  '2144':
+    description: ツール切断アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2145':
+    description: DO1出力過電流アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2146':
+    description: DO2出力過電流アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2147':
+    description: DO3出力過電流アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2148':
+    description: DO4出力過電流アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2149':
+    description: 24V出力過電流警アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2160':
+    description: ツールDO1出力過電流アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2161':
+    description: ツールDO2出力過電流アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '2162':
+    description: ツール24V出力過電流警アラーム
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '4096':
+    description: トラックリプレイファイルが存在しません
+    cause: ''
+    solution: トラックリプレイファイルが正しいパスに存在するか確認してください。
+    level: 5
+  '4097':
+    description: トラックリプレイファイルの内容エラー
+    cause: ''
+    solution: トラックリプレイファイルの内容にエラーまたは矛盾がないか確認してください。
+    level: 5
+  '4098':
+    description: トラックリプレイファイル名エラー
+    cause: ''
+    solution: トラックリプレイファイルのファイル名が正確かつ有効であることを確認してください。
+    level: 5
+  '4099':
+    description: トラックリプレイ実行エラー
+    cause: ''
+    solution: トラックリプレイが実行中にエラーが発生している場合は、ログファイルを確認し、原因を特定してください。必要に応じて、さらなるサポートのために技術サポートに相談してください。
+    level: 5
+  '4100':
+    description: 現在の軌道の再帰は一時停止をサポートしていません。
+    cause: ''
+    solution: 軌道を再実行して再現します
+    level: 5
+  '4112':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '4128':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '4192':
+    description: dobot+エラー
+    cause: ''
+    solution: 詳細を取得するためのdobot+ログのチェック
+    level: 5
+  '4193':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+servo:
+  '8752':
+    description: ハード過電流保護
+    cause: ''
+    solution: サーボが収集した電流の実際の値が、ハードの最大サンプリング電流の90%より大きく、ハードが正常であるかを確認するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '8992':
+    description: ソフト過電流保護
+    cause: ''
+    solution: 切断して再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '9040':
+    description: モジュール過負荷保護
+    cause: ''
+    solution: ハードが正常であるかを確認するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '9088':
+    description: ゼロ点電流オフセット過大保護
+    cause: ''
+    solution: ゼロ点電流オフセットを再設定します
+    level: 1
+  '12592':
+    description: ドライバ入力欠相保護
+    cause: ''
+    solution: ハードが正常であるかを確認するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '12816':
+    description: PN間過電流保護
+    cause: ''
+    solution: バスバー電圧値が設定した閾値より大きいとサーボが検出し、ハードが正常であるかを確認するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '12832':
+    description: PN間電圧不足保護
+    cause: ''
+    solution: バスバー電圧値が設定した閾値より小さいとサーボが検出し、ハードが正常であるかを確認するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '12928':
+    description: サーボとモータ電力の一致故障
+    cause: ''
+    solution: ハードが正常であるかを確認するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '13184':
+    description: ドライバ出力相順エラー保護
+    cause: ''
+    solution: 正しい相順で接続してください
+    level: 1
+  '17168':
+    description: ドライバ過熱保護
+    cause: ''
+    solution: ハードが正常であるかを確認するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '17169':
+    description: 温度測定抵抗の損傷または設置されていない
+    cause: ''
+    solution: ハードが正常であるかを確認するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '21008':
+    description: ドライバボード識別異常保護
+    cause: ''
+    solution: ハードが正常であるかを確認するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '21120':
+    description: FPGA設定エラー
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '21121':
+    description: 内部エラー
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '21122':
+    description: STO安全接続故障保護
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '21569':
+    description: ドライバボード接続異常保護
+    cause: ''
+    solution: ハードが正常であるかを確認するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '25378':
+    description: DI機能重複分配
+    cause: ''
+    solution: DIグループパラメータを検査し、同一機能が異なるDIに分配されているかどうか
+    level: 1
+  '25379':
+    description: DO機能分配制限超過
+    cause: ''
+    solution: 通信ケーブルが確実に接続されているかを検査します
+    level: 1
+  '25382':
+    description: ソフトウェア位置の上下限設定エラー
+    cause: ''
+    solution: 0x607D-01hと0x607D-02hの値を正しく設定します
+    level: 1
+  '25383':
+    description: 原点オフセット設定エラー
+    cause: ''
+    solution: 0x607D-01hと0x607D-02hの値を正しく設定し、原点オフセット値0x607Cが2つの間にあることを保証します
+    level: 1
+  '28961':
+    description: モータ詰まり過熱保護
+    cause: ''
+    solution: ブレーキが正常に開いているか、あるいはモータが機械故障で詰まっているかを検査します
+    level: 1
+  '29056':
+    description: モータ過負荷保護
+    cause: ''
+    solution: ロボットのツール負荷がロボットの定格負荷を超過しているかを検査する、あるいは関連の技術スタッフに連絡してモータを交換します
+    level: 1
+  '29568':
+    description: エンコーダ通信遮断異常保護
+    cause: ''
+    solution: エンコーダの接続を検査するか、エンコーダを交換修理します
+    level: 1
+  '29569':
+    description: エンコーダ異常故障
+    cause: ''
+    solution: ハードが正常であるかを確認するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '29570':
+    description: エンコーダ電池異常保護
+    cause: ''
+    solution: テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '29571':
+    description: メインエンコーダ内部エラー
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '29572':
+    description: メインエンコーダCRC校正エラー
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '29573':
+    description: 補助エンコーダ断線エラー
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '29574':
+    description: 補助エンコーダ内部エラー
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '29575':
+    description: 補助エンコーダCRC校正エラー
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '29576':
+    description: pwm出力buffer異常
+    cause: ''
+    solution: ドライバを交換
+    level: 1
+  '29577':
+    description: ブレーキ電源異常
+    cause: ''
+    solution: ブレーキが接続されているか、あるいは損傷しているかを検査します
+    level: 1
+  '29584':
+    description: 関節位置の大きなずれ
+    cause: ''
+    solution: 1. 製造パラメータを確認する  2. エンコーダの設置を確認する  3. 伝送構造を確認する
+    level: 1
+  '30080':
+    description: EtherCAT通信異常保護
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '30081':
+    description: XML設定ファイルが書き込まれていません
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '30082':
+    description: 同期サイクル設定エラー
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '30083':
+    description: 同期通信時にマスター同期信号が失われた
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '30084':
+    description: 同期サイクル誤差が過大
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '33920':
+    description: 最大回転数超過保護
+    cause: ''
+    solution: モータ配線接続が正常であるかを検査します
+    level: 1
+  '33921':
+    description: 速度偏差過大保護
+    cause: ''
+    solution: ハードが正常であるかを確認し、再起動するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '33922':
+    description: モータ失速保護
+    cause: ''
+    solution: モータ電気角度が正常である、あるいはモータが損傷しているかを検査します
+    level: 1
+  '34321':
+    description: 位置偏差過大保護
+    cause: ''
+    solution: システムエラー。テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '34322':
+    description: 位置指令制限超過保護
+    cause: ''
+    solution: 正しいパラメータを入力してください
+    level: 1
+  '34323':
+    description: 全閉ループの位置偏差過大
+    cause: ''
+    solution: ハードが正常であるかを確認するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '65282':
+    description: 角度識別に失敗
+    cause: ''
+    solution: ハードが正常であるかを確認するか、テクニカルサポートエンジニアに連絡してください
+    level: 1
+  '65344':
+    description: パラメータ識別に失敗
+    cause: ''
+    solution: ハードが正常であるかを確認するか、テクニカルサポートエンジニアに連絡してください
+    level: 1

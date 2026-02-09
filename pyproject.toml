@@ -4,13 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dobot_api"
-version = "4.0.0"
-description = "Dobot Robot API V4 for TCP/IP communication with modular architecture"
+version = "4.1.0"
+description = "Dobot Robot API V4 for TCP/IP communication with modular architecture and i18n support"
 readme = "README.md"
 authors = [
     { name = "Dobot", email = "support@dobot.cc" }
 ]
-keywords = ["dobot", "robot", "tcp", "api", "automation", "robotics"]
+keywords = ["dobot", "robot", "tcp", "api", "automation", "robotics", "i18n"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -27,6 +27,8 @@ requires-python = ">=3.9"
 dependencies = [
     "numpy>=1.20.0",
     "loguru>=0.7.0",
+    "python-i18n>=0.3.9",
+    "pyyaml>=6.0",
 ]
 
 [project.optional-dependencies]

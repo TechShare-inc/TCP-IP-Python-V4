@@ -1,0 +1,2005 @@
+controller:
+  '16':
+    description: The planned point is closed to the shoulder singularity point
+    cause: ''
+    solution: Reselect the movement points or The joint interpolation command is used near the singularity
+      point
+    level: 5
+  '17':
+    description: Inverse kinematics error with no solution
+    cause: ''
+    solution: The moving point position of the target is selected again to avoid the singular point and
+      the unreachable point
+    level: 5
+  '18':
+    description: Inverse kinematics error with result out of working area
+    cause: ''
+    solution: Reselect the target movement points
+    level: 5
+  '19':
+    description: The starting point and the end point are the same when the JUMP command, ARC command
+      or Circle command is running
+    cause: ''
+    solution: Reselect the target movement points to make it meet the requirements of corresponding instructions
+    level: 5
+  '26':
+    description: The planned point is closed to the wrist singularity point
+    cause: ''
+    solution: Reselect the movement points or The joint interpolation command is used near the singularity
+      point
+    level: 5
+  '27':
+    description: The planned point is closed to the elbow singularity point
+    cause: Reselect the movement points or The joint interpolation command is used near the singularity
+      point
+    solution: ''
+    level: 5
+  '29':
+    description: Speed parameter is wrong
+    cause: ''
+    solution: Check speed parameters
+    level: 5
+  '30':
+    description: 'The full parameter inverse solution fails to be solved '
+    cause: ''
+    solution: Restart controller,If the fault persists, contact technical support engineers
+    level: 5
+  '48':
+    description: Joint1 is overspeed
+    cause: ''
+    solution: Reduce the joint velocity or Cartesian velocity setting, or reselect the moving point position
+      away from the singular point
+    level: 5
+  '49':
+    description: Joint2 overspeed
+    cause: ''
+    solution: Reduce the joint velocity or Cartesian velocity setting, or reselect the moving point position
+      away from the singular point
+    level: 5
+  '50':
+    description: Joint3 overspeed
+    cause: ''
+    solution: Reduce the joint velocity or Cartesian velocity setting, or reselect the moving point position
+      away from the singular point
+    level: 5
+  '51':
+    description: Joint4 overspeed
+    cause: ''
+    solution: Reduce the joint velocity or Cartesian velocity setting, or reselect the moving point position
+      away from the singular point
+    level: 5
+  '52':
+    description: Joint5 overspeed
+    cause: ''
+    solution: Reduce the joint velocity or Cartesian velocity setting, or reselect the moving point position
+      away from the singular point
+    level: 5
+  '53':
+    description: Joint6 overspeed
+    cause: ''
+    solution: Reduce the joint velocity or Cartesian velocity setting, or reselect the moving point position
+      away from the singular point
+    level: 5
+  '54':
+    description: Joint1 position lag error
+    cause: ''
+    solution: Restart controller,If the fault persists, contact technical support engineers
+    level: 5
+  '55':
+    description: Joint2 position lag error
+    cause: ''
+    solution: Restart controller,If the fault persists, contact technical support engineers
+    level: 5
+  '56':
+    description: Joint3 position lag error
+    cause: ''
+    solution: Restart controller,If the fault persists, contact technical support engineers
+    level: 5
+  '57':
+    description: Joint4 position lag error
+    cause: ''
+    solution: Restart controller,If the fault persists, contact technical support engineers
+    level: 5
+  '58':
+    description: Joint5 position lag error
+    cause: ''
+    solution: Restart controller,If the fault persists, contact technical support engineers
+    level: 5
+  '59':
+    description: Joint6 position lag error
+    cause: ''
+    solution: Restart controller,If the fault persists, contact technical support engineers
+    level: 5
+  '64':
+    description: Positive limit alarm of Joint1
+    cause: ''
+    solution: Confirm the current joint Angle and soft limit setting, and move out of the limit in reverse
+      motion or modify the soft limit setting
+    level: 5
+  '65':
+    description: Negative limit alarm of Joint1
+    cause: ''
+    solution: Confirm the current joint Angle and soft limit setting, and move out of the limit in reverse
+      motion or modify the soft limit setting
+    level: 5
+  '66':
+    description: Positive limit alarm of Joint2
+    cause: ''
+    solution: Confirm the current joint Angle and soft limit setting, and move out of the limit in reverse
+      motion or modify the soft limit setting
+    level: 5
+  '67':
+    description: Negative limit alarm of Joint2
+    cause: ''
+    solution: Confirm the current joint Angle and soft limit setting, and move out of the limit in reverse
+      motion or modify the soft limit setting
+    level: 5
+  '68':
+    description: Positive limit alarm of Joint3
+    cause: ''
+    solution: Confirm the current joint Angle and soft limit setting, and move out of the limit in reverse
+      motion or modify the soft limit setting
+    level: 5
+  '69':
+    description: Negative limit alarm of Joint3
+    cause: ''
+    solution: Confirm the current joint Angle and soft limit setting, and move out of the limit in reverse
+      motion or modify the soft limit setting
+    level: 5
+  '70':
+    description: Positive limit alarm of Joint4
+    cause: ''
+    solution: Confirm the current joint Angle and soft limit setting, and move out of the limit in reverse
+      motion or modify the soft limit setting
+    level: 5
+  '71':
+    description: Negative limit alarm of Joint4
+    cause: ''
+    solution: Confirm the current joint Angle and soft limit setting, and move out of the limit in reverse
+      motion or modify the soft limit setting
+    level: 5
+  '72':
+    description: Positive limit alarm of Joint5
+    cause: ''
+    solution: Confirm the current joint Angle and soft limit setting, and move out of the limit in reverse
+      motion or modify the soft limit setting
+    level: 5
+  '73':
+    description: Negative limit alarm of Joint5
+    cause: ''
+    solution: Confirm the current joint Angle and soft limit setting, and move out of the limit in reverse
+      motion or modify the soft limit setting
+    level: 5
+  '74':
+    description: Positive limit alarm of Joint6
+    cause: ''
+    solution: Confirm the current joint Angle and soft limit setting, and move out of the limit in reverse
+      motion or modify the soft limit setting
+    level: 5
+  '75':
+    description: Negative limit alarm of Joint6
+    cause: ''
+    solution: Confirm the current joint Angle and soft limit setting, and move out of the limit in reverse
+      motion or modify the soft limit setting
+    level: 5
+  '76':
+    description: The end key interferes with the robot body
+    cause: ''
+    solution: Check the end state of the robot and select the moving point position again
+    level: 5
+  '77':
+    description: The end flanges interfere with the robot body
+    cause: ''
+    solution: Check the end state of the robot and select the moving point position again
+    level: 5
+  '114':
+    description: The robot failed to calibrate zero
+    cause: ''
+    solution: Restart the robot and calibrate it again. If the fault persists, contact technical support
+      engineers
+    level: 5
+  '115':
+    description: The robot failed to enable
+    cause: ''
+    solution: Restart the robot and enable it again. If the fault persists, contact technical support
+      engineers
+    level: 5
+  '116':
+    description: The emergency stop button is captured
+    cause: ''
+    solution: After releasing the emergency stop button, normal operation can be resumed according to
+      the program
+    level: 1
+  '132':
+    description: The software emergency stop signal is triggered
+    cause: ''
+    solution: After the reset software emergency stop signal, normal operation can be resumed according
+      to the program
+    level: 1
+  '133':
+    description: The user emergency stop signal is triggered
+    cause: ''
+    solution: After resetting the user emergency stop signal, normal operation can be resumed according
+      to the program
+    level: 1
+  '134':
+    description: The robot cannot remain stationary
+    cause: ''
+    solution: Check that the load is set correctly
+    level: 1
+  '146':
+    description: The target point is out range of workspace when inching robot
+    cause: ''
+    solution: Restart the robot. If the fault persists, contact technical support engineers
+    level: 5
+  '147':
+    description: Trajectory of repetition or a given point of a small line segment is less than 4
+    cause: ''
+    solution: Check the trajectory file to ensure that the number of internal points is sufficient
+    level: 5
+  '148':
+    description: Failed to reproduce the trajectory according to the given constraints
+    cause: ''
+    solution: Check whether the track file is correct or proper parameters are set
+    level: 5
+  '160':
+    description: The current command does not support pausing. The robot has been stopped
+    cause: ''
+    solution: Restart the robot
+    level: 5
+  '224':
+    description: Robot approaching safe working area
+    cause: ''
+    solution: Clear the alarm and jog the robot back into the safe working area.
+    level: 5
+  '1280':
+    description: Failed to load robot load parameters
+    cause: ''
+    solution: Check and update the function/loadParams.json file
+    level: 5
+  '1281':
+    description: Failed to load robot identification parameters
+    cause: ''
+    solution: Check and update the properties/dynamicsParams.json file
+    level: 5
+  '1282':
+    description: Failed to load robot structural parameters
+    cause: ''
+    solution: Check and update the properties/structure.json file
+    level: 5
+  '1283':
+    description: Failed to load the moving parameters of the robot teaching coordinate params
+    cause: ''
+    solution: Check and update the teach/coordinate.json file
+    level: 5
+  '1284':
+    description: Failed to load the moving parameters of the robot teaching joint params
+    cause: ''
+    solution: Check and update the teach/joint.json file
+    level: 5
+  '1285':
+    description: Failed to load the moving parameters of the robot teaching inch params
+    cause: ''
+    solution: Check and update the teach/inch.json file
+    level: 5
+  '1286':
+    description: Failed to load robot playback joint parameters
+    cause: ''
+    solution: Check and update the playback/joint.json file
+    level: 5
+  '1287':
+    description: Failed to load robot playback coordinate parameters
+    cause: ''
+    solution: Check and update the playback/coordinate.json file
+    level: 5
+  '1288':
+    description: Failed to load robot playback arch parameters
+    cause: ''
+    solution: Check and update the playback/arch.json file
+    level: 5
+  '1289':
+    description: Failed to load the robot global rate parameter
+    cause: ''
+    solution: Check and update the settings/common.json file
+    level: 5
+  '1290':
+    description: Failed to load the robot motion coordinate system index parameter
+    cause: ''
+    solution: Check and update the datasvr/config.json file
+    level: 5
+  '1291':
+    description: Failed to load the robot user coordinate system parameters
+    cause: ''
+    solution: Check and update the coordinate/user.json file
+    level: 5
+  '1292':
+    description: Failed to load the robot tool coordinate system parameters
+    cause: ''
+    solution: Check and update the coordinate/tool.json file
+    level: 5
+  '1293':
+    description: Failed to load robot advanced function parameters
+    cause: ''
+    solution: Check and update the properties/advancedFunction.json file
+    level: 5
+  '1294':
+    description: Failed to load the safety signal configuration parameters for the robot
+    cause: ''
+    solution: Check and update the function/CC161/safeSignal.json file
+    level: 5
+  '1295':
+    description: Failed to load system I/O control configuration parameters
+    cause: ''
+    solution: Check and update the function/ioCtrl.json file
+    level: 5
+  '1296':
+    description: Failed to load system Modbus configuration parameters
+    cause: ''
+    solution: Check and update the function/modbusConf.json file
+    level: 5
+  '1297':
+    description: Failed to load robot remote control mode parameters
+    cause: ''
+    solution: Check and update the function/remoteControl.json file
+    level: 5
+  '1298':
+    description: Failed to load the robot shaft number parameter
+    cause: ''
+    solution: Check and update the properties/axis.json file
+    level: 5
+  '1299':
+    description: Failed to load the robot bussiness type parameter
+    cause: ''
+    solution: Check and update the properties/bussinessType.json file
+    level: 5
+  '1300':
+    description: Failed to load the robot type parameter
+    cause: ''
+    solution: Check and update the properties/controllerType.json file
+    level: 5
+  '1301':
+    description: Failed to load the controller type parameter
+    cause: ''
+    solution: Check and update the properties/controlCabType.json file
+    level: 5
+  '1302':
+    description: Failed to load the robot's self-interference parameters
+    cause: ''
+    solution: Check and update the properties/poseSelfInterference.json file
+    level: 5
+  '1303':
+    description: Failed to load parameters such as acceleration of the robot
+    cause: ''
+    solution: Check and update the function/accFactor.json file
+    level: 5
+  '1304':
+    description: Failed to load the torque constraint information parameters of the robot
+    cause: ''
+    solution: Check and update the function/torqueLimit.json file
+    level: 5
+  '1305':
+    description: Failed to load the real-time feedback data format configuration parameters
+    cause: ''
+    solution: Check and update the function/tcp30006Feedback.json file
+    level: 5
+  '1306':
+    description: Failed to load the robot limit parameter
+    cause: ''
+    solution: Check and update the function/securityConstraint.json file
+    level: 5
+  '1307':
+    description: Failed to load the robot joint restriction parameter
+    cause: ''
+    solution: Check and update the properties/jointLimits.json file
+    level: 5
+  '1308':
+    description: Failed to load robot virtualWall parameters
+    cause: ''
+    solution: Check and update the function/virtualWall.json file
+    level: 5
+  '1309':
+    description: Failed to load robot installation status parameters
+    cause: ''
+    solution: Check and update the function/install.json file
+    level: 5
+  '1310':
+    description: Failed to load the parameters of the total system running time
+    cause: ''
+    solution: Check and update the settings/workTimeRec.json file
+    level: 5
+  '1311':
+    description: Failed to load robot simulation mode parameters
+    cause: ''
+    solution: Check and update the function/analogMode.json file
+    level: 5
+  '1312':
+    description: Failed to load the robot drag sensitivity parameter
+    cause: ''
+    solution: Check and update the function/dragSensivity.json file
+    level: 5
+  '1313':
+    description: Failed to load the robot recurrence parameter
+    cause: ''
+    solution: Check and update the function/reTraceParams.json file
+    level: 5
+  '1314':
+    description: Failed to load the robot packing attitude parameters
+    cause: ''
+    solution: Check and update the function/packPoint.json file
+    level: 5
+  '1315':
+    description: Failed to load the robot's custom attitude parameters
+    cause: ''
+    solution: Check and update the function/customPoint.json file
+    level: 5
+  '1316':
+    description: Failed to load robot switch safety crash configuration parameters
+    cause: ''
+    solution: Check and update the function/collisionDect.json file
+    level: 5
+  '1317':
+    description: Failed to load the robot collision error threshold configuration parameter
+    cause: ''
+    solution: Check and update the function/collision_error_threshold.json file
+    level: 5
+  '1318':
+    description: Failed to load robot common signal configuration parameter failed
+    cause: ''
+    solution: Check and update the function/commonSignal.json file
+    level: 5
+  '1319':
+    description: Failed to load the robot language configuration item
+    cause: ''
+    solution: Check and update the language/language.json file
+    level: 5
+  '1320':
+    description: Failed to load the Chinese configuration table
+    cause: ''
+    solution: Check and update the language/zh_cn.json file
+    level: 5
+  '1321':
+    description: Failed to load the English configuration table
+    cause: ''
+    solution: Check and update the language/en.json file
+    level: 5
+  '1322':
+    description: Failed to load the default motion speed parameter
+    cause: ''
+    solution: Check and update the properties/default.json file
+    level: 5
+  '1323':
+    description: Failed to load the payloadLimit parameter
+    cause: ''
+    solution: Check and update the function/payloadLimit.json file
+    level: 5
+  '1325':
+    description: Failed to load the Traditional Chinese configuration table
+    cause: ''
+    solution: Check and update the language/zh_hand.json file
+    level: 5
+  '1326':
+    description: Failed to load the Korean configuration table
+    cause: ''
+    solution: Check and update the language/kr.json file
+    level: 5
+  '1327':
+    description: Failed to load the Japanese configuration table
+    cause: ''
+    solution: Check and update the language/ja.json file
+    level: 5
+  '1328':
+    description: Failed to load the German configuration table
+    cause: ''
+    solution: Check and update the language/de.json file
+    level: 5
+  '1329':
+    description: Failed to load the end-mode configuration
+    cause: ''
+    solution: Check and update the function/toolMode.json file
+    level: 5
+  '1330':
+    description: Failed to load the configuration of electronic skin switch
+    cause: ''
+    solution: Check and update the elecSkin/switch.json file
+    level: 5
+  '1331':
+    description: Failed to load the electronic skin sensitivity parameter
+    cause: ''
+    solution: Check and update the elecSkin/sensitivity.json file
+    level: 5
+  '1332':
+    description: Failed to load the load parameter list
+    cause: ''
+    solution: Check and update the function/loadConfig.json file
+    level: 5
+  '1333':
+    description: Failed to load the safety signal configuration parameters for the robot
+    cause: ''
+    solution: Check and update the function/CC162/safeSignal.json file
+    level: 5
+  '1334':
+    description: Failed to load the safety signal configuration parameters for the robot
+    cause: ''
+    solution: Check and update the function/CCBOX/safeSignal.json file
+    level: 5
+  '1335':
+    description: Failed to load the Vietnamese configuration table
+    cause: ''
+    solution: Check and update the language/vi.json file
+    level: 5
+  '1336':
+    description: Failed to load the json file of the voltage range of the small control cabinet
+    cause: ''
+    solution: Check and update the function/ccboxVoltage.json file
+    level: 5
+  '1337':
+    description: Failed to load the remote io/modbus control switch file.
+    cause: ''
+    solution: Check and update the function/remoteSwitch.json file
+    level: 5
+  '1338':
+    description: Failed to load the safe skin joint limit parameter of the robot
+    cause: ''
+    solution: Check and update the elecSkin/jointLimit.json file
+    level: 5
+  '1339':
+    description: Failed to load the safe skin obstacle avoidParams parameters of the robot
+    cause: ''
+    solution: Check and update the elecSkin/avoidParams.json file
+    level: 5
+  '1340':
+    description: Failed to load jitter suppression parameters
+    cause: ''
+    solution: Check and update the properties/suppressionConfig.json file
+    level: 5
+  '1341':
+    description: Failed to load vibration detection parameters
+    cause: ''
+    solution: Check and update the properties/vibrationDetection.json file
+    level: 5
+  '1342':
+    description: Failed to load vibration detection parameters
+    cause: ''
+    solution: Check and update the function/workZone.json file
+    level: 5
+  '1343':
+    description: Failed to load the Spanish configuration table
+    cause: ''
+    solution: Check and update the language/es.json file
+    level: 5
+  '1344':
+    description: Failed to load the French configuration table
+    cause: ''
+    solution: Check and update the language/fr.json file
+    level: 5
+  '1345':
+    description: Failed to load the Korean configuration table
+    cause: ''
+    solution: Check and update the language/ko.json file
+    level: 5
+  '1346':
+    description: Failed to load the Russian configuration table
+    cause: ''
+    solution: Check and update the language/ru.json file
+    level: 5
+  '1359':
+    description: Failed to load the startup file
+    cause: ''
+    solution: Update the corresponding file and restart the system
+    level: 5
+  '1360':
+    description: Failed to diabble the robot
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1361':
+    description: Failed to open the robot brake
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1362':
+    description: Failed to close the robot brake
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1363':
+    description: Failed to power on
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 1
+  '1364':
+    description: Failed to start autoIdentify
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1365':
+    description: Failed to stop autoIdentify
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1366':
+    description: Failed to enter drag mode
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1367':
+    description: Failed to exit  drag mode
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1368':
+    description: Failed to set the global rate
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1369':
+    description: Failed to set load parameters
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1370':
+    description: 'Failed to installation attitude calibration '
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1371':
+    description: Failed to coordinate system calibration
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1372':
+    description: Failed to set the installation posture
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1373':
+    description: Failed to set network
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1374':
+    description: Failed to set wifi
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1375':
+    description: Failed to set the tool coordinate system
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1376':
+    description: Failed to set the user coordinate system
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1377':
+    description: Failed to set the end DO
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1378':
+    description: Failed to set the DO
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1379':
+    description: Failed to set the AO
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1380':
+    description: Failed to set terminal 485
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1381':
+    description: Failed to set the drag mode
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1382':
+    description: Failed to enable the safety collision function
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1383':
+    description: Failed to disable the safety collision function
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1385':
+    description: Failed to power off
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 1
+  '1386':
+    description: Failed to set the joint limit parameter
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1387':
+    description: Failed to set the robot limit parameter
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1388':
+    description: 'Failed to set advanced function '
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1389':
+    description: Failed to update virtuall wall parameters
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1390':
+    description: Failed to joint motion
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1391':
+    description: Failed to linear motion
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1392':
+    description: Description Execution of the positive solution failed
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1393':
+    description: The inverse solution failed to execute
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1394':
+    description: 'Failed to arc motion '
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1395':
+    description: Failed to full circle motion
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1396':
+    description: Failed to move relative joint using tool coordinate system
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1397':
+    description: Failed to move relative linear using tool coordinate system
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1398':
+    description: Failed to move relative joint using user coordinate system
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1399':
+    description: Failed to move relative linear using user coordinate system
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1400':
+    description: Failed to Relative joint motion using joint coordinate system of each axis
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1401':
+    description: Failed to Cartesian point offset using user coordinate system
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1402':
+    description: Failed to Cartesian point offset using tool coordinate system
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1403':
+    description: Failed to detect whether the motion reaches the line position
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1404':
+    description: Failed to detect whether the motion reaches the descartes position
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1406':
+    description: Algorithm startup timeout
+    cause: ''
+    solution: Check whether codesys starts abnormally
+    level: 5
+  '1407':
+    description: Algorithm communication abnormal
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 5
+  '1408':
+    description: The online status of axis 1 is abnormal
+    cause: ''
+    solution: Check whether the hardware is working properly, and restart the controller， or contact technical
+      support engineer
+    level: 1
+  '1409':
+    description: The online status of axis 2 is abnormal
+    cause: ''
+    solution: Check whether the hardware is working properly, and restart the controller， or contact technical
+      support engineer
+    level: 1
+  '1410':
+    description: The online status of axis 3 is abnormal
+    cause: ''
+    solution: Check whether the hardware is working properly, and restart the controller， or contact technical
+      support engineer
+    level: 1
+  '1411':
+    description: The online status of axis 4 is abnormal
+    cause: ''
+    solution: Check whether the hardware is working properly, and restart the controller， or contact technical
+      support engineer
+    level: 1
+  '1412':
+    description: The online status of axis 5 is abnormal
+    cause: ''
+    solution: Check whether the hardware is working properly, and restart the controller， or contact technical
+      support engineer
+    level: 1
+  '1413':
+    description: The online status of axis 6 is abnormal.
+    cause: ''
+    solution: Check whether the hardware is working properly, and restart the controller， or contact technical
+      support engineer
+    level: 1
+  '1414':
+    description: The online status of security I/O  is abnormal
+    cause: ''
+    solution: Check whether the hardware is working properly, and restart the controller， or contact technical
+      support engineer
+    level: 1
+  '1415':
+    description: The online status of universal I/O  is abnormal
+    cause: ''
+    solution: Check whether the hardware is working properly, and restart the controller， or contact technical
+      support engineer
+    level: 1
+  '1416':
+    description: The online status of energy feeder plate  is abnormal
+    cause: ''
+    solution: Check whether the hardware is working properly, and restart the controller， or contact technical
+      support engineer
+    level: 1
+  '1417':
+    description: The online status of end I/O  is abnormal
+    cause: ''
+    solution: Check whether the hardware is working properly, and restart the controller， or contact technical
+      support engineer
+    level: 1
+  '1418':
+    description: Project file does not exist
+    cause: ''
+    solution: Check whether the project document is damaged or does not exist
+    level: 5
+  '1419':
+    description: Robot Power off
+    cause: ''
+    solution: After the error is cleared and the device is powered on again, the normal operation can
+      be resumed according to the program
+    level: 1
+  '1420':
+    description: Jog Move Failed
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1421':
+    description: Failed to set drag sensitivity
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1422':
+    description: The script running status is abnormal
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1423':
+    description: The script running status is abnormal
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1424':
+    description: The script running status is abnormal
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1425':
+    description: The script running status is abnormal
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1426':
+    description: The script running status is abnormal
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1427':
+    description: Automatic load identification failed
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1428':
+    description: Load check failure
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1429':
+    description: Wait for the run to stop timeout
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1430':
+    description: Power off after emergency stop
+    cause: After the emergency stop is triggered, the robot is powered off if it does not stop moving
+      for 500ms
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 0
+  '1431':
+    description: ''
+    cause: Failed to compute the user coordinate system
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1432':
+    description: Failed to compute the tool coordinate system
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1433':
+    description: Safety skin obstacle avoidance function failed to open/close
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1434':
+    description: Safety skin obstacle avoidance parameters failed to be set
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1435':
+    description: IPv4 address format error
+    cause: ''
+    solution: Fill in the correct IPv4 address
+    level: 5
+  '1436':
+    description: IPv4 mask format error
+    cause: ''
+    solution: Fill in the correct IPv4 mask address
+    level: 5
+  '1437':
+    description: IPv4 default gateway format error
+    cause: ''
+    solution: Fill in the correct IPv4 gateway address
+    level: 5
+  '1438':
+    description: The system does not support profinet
+    cause: ''
+    solution: Flash the latest controller system
+    level: 5
+  '1439':
+    description: The trajectory reproduction movement to the first point does not support pause, the robot
+      has stopped
+    cause: 'collision or safeskin collision '
+    solution: handle the exception and rerun
+    level: 5
+  '1440':
+    description: The temperature is too high, or the temperature control system cannot effectively control
+      the temperature
+    cause: Excessive ambient temperature or temperature control system malfunction
+    solution: Reduce the working environment temperature or contact the manufacturer for technical support
+    level: 5
+  '1441':
+    description: Zero calibration failure
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 5
+  '1442':
+    description: Failed to set jitter suppression parameters
+    cause: The jitter suppression ratio parameter is not an int
+    solution: Check the properties/suppressionConfig.json file format parameters are correct
+    level: 5
+  '1443':
+    description: Failed to set vibration detection parameters
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1444':
+    description: Description Failed to update security zone parameters
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 5
+  '1445':
+    description: Joint 1 fieldbus lost synchronicity
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 1
+  '1446':
+    description: Joint 2 fieldbus lost synchronicity
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 1
+  '1447':
+    description: Joint 3 fieldbus lost synchronicity
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 1
+  '1448':
+    description: Joint 4 fieldbus lost synchronicity
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 1
+  '1449':
+    description: Joint 5 fieldbus lost synchronicity
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 1
+  '1450':
+    description: Joint 6 fieldbus lost synchronicity
+    cause: ''
+    solution: Try again. If the error persists, contact technical support engineers
+    level: 1
+  '1451':
+    description: Joint 1 temperature is too high
+    cause: The ambient temperature is too high or there is a system failure
+    solution: Reduce the working environment temperature or contact the manufacturer for technical support
+    level: 5
+  '1452':
+    description: Joint 2 temperature is too high
+    cause: The ambient temperature is too high or there is a system failure
+    solution: Reduce the working environment temperature or contact the manufacturer for technical support
+    level: 5
+  '1453':
+    description: Joint 3 temperature is too high
+    cause: The ambient temperature is too high or there is a system failure
+    solution: Reduce the working environment temperature or contact the manufacturer for technical support
+    level: 5
+  '1454':
+    description: Joint 4 temperature is too high
+    cause: The ambient temperature is too high or there is a system failure
+    solution: Reduce the working environment temperature or contact the manufacturer for technical support
+    level: 5
+  '1455':
+    description: Joint 5 temperature is too high
+    cause: The ambient temperature is too high or there is a system failure
+    solution: Reduce the working environment temperature or contact the manufacturer for technical support
+    level: 5
+  '1456':
+    description: Joint 6 temperature is too high
+    cause: The ambient temperature is too high or there is a system failure.
+    solution: Reduce the working environment temperature or contact the manufacturer for technical support.
+    level: 5
+  '1457':
+    description: The temperature of the main control chip is too high
+    cause: The ambient temperature is too high or there is a system failure
+    solution: Reduce the working environment temperature or contact the manufacturer for technical support
+    level: 5
+  '1458':
+    description: User coordinate system not enabled
+    cause: The designated user coordinate system is not enabled
+    solution: Use the correct coordinate system index or add and set a new user coordinate system
+    level: 5
+  '1459':
+    description: Tool coordinate system not enabled
+    cause: The designated tool coordinate system is not enabled
+    solution: Use the correct coordinate system index or add and set a new tool coordinate system
+    level: 5
+  '1538':
+    description: The AC contactor was not closed as required for 2 consecutive seconds
+    cause: ''
+    solution: Restart the robot. If the error persists, the hardware may be damaged. Contact technical
+      support engineers
+    level: 1
+  '1540':
+    description: Data of the feedback board is not updated
+    cause: ''
+    solution: Restart the robot. If the error persists, the hardware may be damaged. Contact technical
+      support engineers
+    level: 1
+  '1541':
+    description: The AC status detection is incorrect
+    cause: ''
+    solution: Restart the robot. If the error persists, the hardware may be damaged. Contact technical
+      support engineers
+    level: 1
+  '1543':
+    description: The panel switch is pushed down
+    cause: ''
+    solution: Clear the alarm and power on the device
+    level: 0
+  '1544':
+    description: The energy feeder is offline
+    cause: ''
+    solution: Restart the robot. If the error persists, the hardware may be damaged. Contact technical
+      support engineers
+    level: 1
+  '1548':
+    description: The status of the 24V supercapacitor is abnormal
+    cause: ''
+    solution: Restart the robot. If the error persists, the hardware may be damaged. Contact technical
+      support engineers
+    level: 0
+  '1549':
+    description: The status of the 48V supercapacitor is abnormal
+    cause: ''
+    solution: Restart the robot. If the error persists, the hardware may be damaged. Contact technical
+      support engineers
+    level: 0
+  '1792':
+    description: Input voltage monitoring overvoltage alarm
+    cause: ''
+    solution: Restart the robot. If the error persists, the hardware may be damaged. Contact technical
+      support engineers
+    level: 1
+  '1793':
+    description: Input voltage monitoring undervoltage alarm
+    cause: ''
+    solution: Restart the robot. If the error persists, the hardware may be damaged. Contact technical
+      support engineers
+    level: 1
+  '1794':
+    description: The power current limiting chip detects an abnormal alarm
+    cause: ''
+    solution: Restart the robot. If the error persists, the hardware may be damaged. Contact technical
+      support engineers
+    level: 1
+  '1795':
+    description: Output voltage detection overvoltage alarm
+    cause: ''
+    solution: Restart the robot. If the error persists, the hardware may be damaged. Contact technical
+      support engineers
+    level: 1
+  '1796':
+    description: Output voltage detection undervoltage alarm
+    cause: ''
+    solution: Restart the robot. If the error persists, the hardware may be damaged. Contact technical
+      support engineers
+    level: 1
+  '1797':
+    description: Internal first line voltage regulator abnormal alarm
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 1
+  '1798':
+    description: Internal second voltage regulator abnormal alarm
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 1
+  '1799':
+    description: The output voltage is abnormal before slow start on the body
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 0
+  '1800':
+    description: Regenerative current detection over limit alarm
+    cause: ''
+    solution: The feed current is too large, contact technical support engineers
+    level: 1
+  '1801':
+    description: Cement resistance overpower protection alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart it, or contact technical support engineers
+    level: 1
+  '1802':
+    description: Bus current detection out of limit alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart it, or contact technical support engineers
+    level: 1
+  '1803':
+    description: An energy feed alarm occurs when the ontology power-on cache is started
+    cause: ''
+    solution: Check whether the hardware is normal and restart it, or contact technical support engineers
+    level: 1
+  '1804':
+    description: The output voltage control MOS tube is abnormal
+    cause: ''
+    solution: Check whether the hardware is normal and restart it, or contact technical support engineers
+    level: 1
+  '1805':
+    description: The body is powered on and slow start fails
+    cause: ''
+    solution: Check whether the hardware is normal and restart it, or contact technical support engineers
+    level: 1
+  '1808':
+    description: Input voltage monitoring overvoltage alarm
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 0
+  '1809':
+    description: Input voltage monitoring undervoltage alarm
+    cause: ''
+    solution: The feed current is too large, contact technical support engineers
+    level: 0
+  '1810':
+    description: The power current limiting chip detects an abnormal alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart it, or contact technical support engineers
+    level: 0
+  '1811':
+    description: Output voltage detection overvoltage alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart it, or contact technical support engineers
+    level: 0
+  '1812':
+    description: Output voltage detection undervoltage alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart it, or contact technical support engineers
+    level: 0
+  '1813':
+    description: Body precharge abnormal alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart it, or contact technical support engineers
+    level: 1
+  '1814':
+    description: 48V supercapacitor charging chip overcurrent fault alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart it, or contact technical support engineers
+    level: 1
+  '1815':
+    description: 48V output control MOS tube temperature is too high alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart it, or contact technical support engineers
+    level: 0
+  '1816':
+    description: Regenerative current detection over limit alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart it, or contact technical support engineers
+    level: 1
+  '1817':
+    description: Cement resistance overpower protection alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart it, or contact technical support engineers
+    level: 1
+  '1818':
+    description: Bus current detection out of limit alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart it, or contact technical support engineers
+    level: 1
+  '1819':
+    description: Energy regenerative circuit drive voltage abnormal alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart it, or contact technical support engineers
+    level: 1
+  '1820':
+    description: 48V output control MOS tube status detection abnormal alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart it, or contact technical support engineers
+    level: 1
+  '1821':
+    description: The fan status detection is abnormal
+    cause: ''
+    solution: Check whether the hardware is normal and restart it, or contact technical support engineers
+    level: 1
+  '1824':
+    description: 48V ultracapacitor comparison circuit reference voltage monitoring abnormal alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart it, or contact technical support engineers
+    level: 1
+  '1825':
+    description: 24V ultracapacitor circuit abnormal alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart it, or contact technical support engineers
+    level: 1
+  '1826':
+    description: The maximum input voltage is set to an abnormal alarm
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 1
+  '1827':
+    description: Input voltage minimum setting abnormal alarm
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 1
+  '1828':
+    description: Energy regenerative time detection abnormal alarm
+    cause: ''
+    solution: Check whether the input power supply and load are normal, or contact technical support engineers
+    level: 0
+  '1829':
+    description: Energy regenerative circuit control signal detection abnormal alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart it, or contact technical support engineers
+    level: 0
+  '2050':
+    description: Protective stop timeout alarm
+    cause: ''
+    solution: Clear the error and power on again
+    level: 0
+  '2051':
+    description: Joint 1 inner encoder position overrun
+    cause: ''
+    solution: Restart. If the fault persists, contact technical support engineers
+    level: 1
+  '2052':
+    description: Joint 2 inner encoder position overrun
+    cause: ''
+    solution: Restart. If the fault persists, contact technical support engineers
+    level: 1
+  '2053':
+    description: Joint 3 inner encoder position overrun
+    cause: ''
+    solution: Restart. If the fault persists, contact technical support engineers
+    level: 1
+  '2054':
+    description: Joint 4 inner encoder position overrun
+    cause: ''
+    solution: Restart. If the fault persists, contact technical support engineers
+    level: 1
+  '2055':
+    description: Joint 5 inner encoder position overrun
+    cause: ''
+    solution: Restart. If the fault persists, contact technical support engineers
+    level: 1
+  '2056':
+    description: Joint 6 inner encoder position overrun
+    cause: ''
+    solution: Restart. If the fault persists, contact technical support engineers
+    level: 1
+  '2057':
+    description: Joint 1 inner encoder speed overrun
+    cause: ''
+    solution: Reduce joint speed or Cartesian speed settings
+    level: 1
+  '2058':
+    description: Joint 2 inner encoder speed overrun
+    cause: ''
+    solution: Reduce joint speed or Cartesian speed settings
+    level: 1
+  '2059':
+    description: Joint 3 inner encoder speed overrun
+    cause: ''
+    solution: Reduce joint speed or Cartesian speed settings
+    level: 1
+  '2060':
+    description: Joint 4 inner encoder speed overrun
+    cause: ''
+    solution: Reduce joint speed or Cartesian speed settings
+    level: 1
+  '2061':
+    description: Joint 5 inner encoder speed overrun
+    cause: ''
+    solution: Reduce joint speed or Cartesian speed settings
+    level: 1
+  '2062':
+    description: Joint 6 inner encoder speed overrun
+    cause: ''
+    solution: Reduce joint speed or Cartesian speed settings
+    level: 1
+  '2063':
+    description: Joint 1 torque exceeds the limit
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 1
+  '2064':
+    description: Joint 2 torque exceeds the limit
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 1
+  '2065':
+    description: Joint 3 torque exceeds the limit
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 1
+  '2066':
+    description: Joint 4 torque exceeds the limit
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 1
+  '2067':
+    description: Joint 5 torque exceeds the limit
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 1
+  '2068':
+    description: Joint 6 torque exceeds the limit
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 1
+  '2069':
+    description: The TCP position exceeded the limit
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 1
+  '2070':
+    description: The TCP rate exceeds the upper limit
+    cause: ''
+    solution: Reduce joint speed or Cartesian speed Settings
+    level: 1
+  '2071':
+    description: Safety controller A and B version mismatch
+    cause: ''
+    solution: If the safety controller A and B versions are different, please update the firmware to ensure
+      compatibility between the two versions. Contact technical support if you need further assistance.
+    level: 1
+  '2072':
+    description: TCP force limit exceeds the limit
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 1
+  '2073':
+    description: Exceeded safety plane limits
+    cause: ''
+    solution: Clear the alarm, re-enable and jog the robot back into the safety area
+    level: 1
+  '2074':
+    description: The speed exceeds the threshold after the virtual wall is triggered
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 1
+  '2075':
+    description: Contactor status detection is abnormal. Procedure
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 1
+  '2076':
+    description: The energy feeder detects anomalies online
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 1
+  '2077':
+    description: Joint 2 torque exceeds the limit
+    cause: ''
+    solution: After loosening the panel switch, normal operation can be resumed according to the program
+    level: 0
+  '2078':
+    description: AC detection error
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 1
+  '2080':
+    description: Robot joint 1 transmission system position or speed error
+    cause: ''
+    solution: System error, contact technical support engineers
+    level: 1
+  '2081':
+    description: Robot joint 2 transmission system position or speed error
+    cause: ''
+    solution: System error, contact technical support engineers
+    level: 1
+  '2082':
+    description: Robot joint 3 transmission system position or speed error
+    cause: ''
+    solution: System error, contact technical support engineers
+    level: 1
+  '2083':
+    description: Robot joint 4 transmission system position or speed error
+    cause: ''
+    solution: System error, contact technical support engineers
+    level: 1
+  '2084':
+    description: Robot joint 5 transmission system position or speed error
+    cause: ''
+    solution: System error, contact technical support engineers
+    level: 1
+  '2085':
+    description: Robot joint 6 transmission system position or speed error
+    cause: ''
+    solution: System error, contact technical support engineers
+    level: 1
+  '2087':
+    description: Security limit parameter verification error alarm
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 1
+  '2088':
+    description: The security limit parameter matches an incorrect alarm
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 1
+  '2089':
+    description: I/O input port detection exception alarm
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 1
+  '2090':
+    description: Abnormal I/O output detection alarm
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 1
+  '2091':
+    description: 3.3V Voltage Detection Exception Alarm
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 1
+  '2092':
+    description: The 5V voltage detection is abnormal
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 1
+  '2093':
+    description: 24V voltage detection exception alarm
+    cause: ''
+    solution: the system is faulty, contact technical support engineers
+    level: 1
+  '2096':
+    description: SCBB online status detection exception alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart, or contact technical support engineers
+    level: 1
+  '2097':
+    description: Robot joint transmission system position deviation
+    cause: ''
+    solution: Restart. If the fault persists, contact technical support engineers.
+    level: 1
+  '2098':
+    description: Robot joint transmission system speed deviation
+    cause: ''
+    solution: Restart. If the fault persists, contact technical support engineers.
+    level: 1
+  '2099':
+    description: Joint 1 outer encoder position overrun
+    cause: ''
+    solution: Restart. If the fault persists, contact technical support engineers.
+    level: 1
+  '2100':
+    description: Joint 2 outer encoder position overrun
+    cause: ''
+    solution: Restart. If the fault persists, contact technical support engineers.
+    level: 1
+  '2101':
+    description: Joint 3 outer encoder position overrun
+    cause: ''
+    solution: Restart. If the fault persists, contact technical support engineers.
+    level: 1
+  '2102':
+    description: Joint 4 outer encoder position overrun
+    cause: ''
+    solution: Restart. If the fault persists, contact technical support engineers.
+    level: 1
+  '2103':
+    description: Joint 5 outer encoder position overrun
+    cause: ''
+    solution: Restart. If the fault persists, contact technical support engineers.
+    level: 1
+  '2104':
+    description: Joint 6 outer encoder position overrun
+    cause: ''
+    solution: Restart. If the fault persists, contact technical support engineers.
+    level: 1
+  '2105':
+    description: Joint 1 outer encoder speed overrun
+    cause: ''
+    solution: Reduce joint speed or Cartesian speed settings.
+    level: 1
+  '2106':
+    description: Joint 2 outer encoder speed overrun
+    cause: ''
+    solution: Reduce joint speed or Cartesian speed settings.
+    level: 1
+  '2107':
+    description: Joint 3 outer encoder speed overrun
+    cause: ''
+    solution: Reduce joint speed or Cartesian speed settings.
+    level: 1
+  '2108':
+    description: Joint 4 outer encoder speed overrun
+    cause: ''
+    solution: Reduce joint speed or Cartesian speed settings.
+    level: 1
+  '2109':
+    description: Joint 5 outer encoder speed overrun
+    cause: ''
+    solution: Reduce joint speed or Cartesian speed settings.
+    level: 1
+  '2110':
+    description: Joint 6 outer encoder speed overrun
+    cause: ''
+    solution: Reduce joint speed or Cartesian speed settings.
+    level: 1
+  '2112':
+    description: DO chip error
+    cause: ''
+    solution: Check whether the hardware is normal and restart, or contact technical support engineers
+    level: 1
+  '2113':
+    description: DO overcurrent alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart, or contact technical support engineers
+    level: 1
+  '2114':
+    description: 24V Generates alarms
+    cause: ''
+    solution: Check whether the hardware is normal and restart, or contact technical support engineers
+    level: 1
+  '2128':
+    description: Power supply voltage detection An undervoltage alarm is generated
+    cause: ''
+    solution: Check whether the hardware is normal and restart, or contact technical support engineers
+    level: 1
+  '2129':
+    description: Power supply voltage detection overvoltage alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart, or contact technical support engineers
+    level: 1
+  '2130':
+    description: The energy regenerative circuit detects an abnormal alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart, or contact technical support engineers
+    level: 1
+  '2132':
+    description: Emergency stop line detection exception alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart, or contact technical support engineers
+    level: 1
+  '2133':
+    description: The body circuit detects a short circuit alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart, or contact technical support engineers
+    level: 0
+  '2134':
+    description: The minimum input voltage is incorrectly set
+    cause: ''
+    solution: A system error occurs. Contact technical support engineers
+    level: 1
+  '2135':
+    description: 24V Output overcurrent alarm
+    cause: ''
+    solution: A system error occurs. Contact technical support engineers
+    level: 1
+  '2136':
+    description: The MCU chip temperature is too high
+    cause: ''
+    solution: Check whether the hardware is normal and restart, or contact technical support engineers
+    level: 1
+  '2137':
+    description: DI Type PNP setting detection error alarm
+    cause: ''
+    solution: A system error occurs. Contact technical support engineers
+    level: 1
+  '2138':
+    description: DI Type NPN Setting detection error alarm
+    cause: ''
+    solution: A system error occurs. Contact technical support engineers
+    level: 1
+  '2139':
+    description: Shutdown check abnormal alarms
+    cause: ''
+    solution: A system error occurs. Contact technical support engineers
+    level: 1
+  '2140':
+    description: The energy regenerative time is detected abnormally
+    cause: ''
+    solution: Check whether the input power supply and load are normal, or contact technical support engineers
+    level: 0
+  '2144':
+    description: End drop alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart, or contact technical support engineers
+    level: 1
+  '2145':
+    description: DO1 output overcurrent alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart, or contact technical support engineers
+    level: 1
+  '2146':
+    description: DO2 output overcurrent alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart, or contact technical support engineers
+    level: 1
+  '2147':
+    description: DO3 output overcurrent alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart, or contact technical support engineers
+    level: 1
+  '2148':
+    description: DO4 output overcurrent alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart, or contact technical support engineers
+    level: 1
+  '2149':
+    description: 24V output overcurrent alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart, or contact technical support engineers
+    level: 1
+  '2160':
+    description: Terminal DO1 output overcurrent alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart, or contact technical support engineers
+    level: 1
+  '2161':
+    description: Terminal DO2 output overcurrent alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart, or contact technical support engineers
+    level: 1
+  '2162':
+    description: Terminal 24V output overcurrent alarm
+    cause: ''
+    solution: Check whether the hardware is normal and restart, or contact technical support engineers
+    level: 1
+  '4096':
+    description: Track replay file does not exist
+    cause: ''
+    solution: Please check if the track replay file exists in the correct path.
+    level: 5
+  '4097':
+    description: Track replay file content error
+    cause: ''
+    solution: Please verify the content of the track replay file for any errors or inconsistencies.
+    level: 5
+  '4098':
+    description: Track replay file name error
+    cause: ''
+    solution: Please ensure the track replay file has the correct and valid file name.
+    level: 5
+  '4099':
+    description: Track replay running error
+    cause: ''
+    solution: If the track replay is encountering errors during execution, please review the log files
+      and identify the root cause. If necessary, consult technical support for further assistance.
+    level: 5
+  '4100':
+    description: The current trajectory recurrence does not support pausing.
+    cause: ''
+    solution: Rerun the trajectory to reproduce
+    level: 5
+  '4112':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '4128':
+    description: The CODESYS engineering version of the controller does not match the board version
+    cause: ''
+    solution: 'Matching results file/dobot/userdata/SlaveLog, matching relation between file/dobot/userdata/codesys/codesys
+      json, check the controller codesys project and the board, the matching relation between contact
+      technical support. '
+    level: 5
+  '4192':
+    description: dobot+ error
+    cause: ''
+    solution: Check dobot+ logs for detailed information
+    level: 5
+  '4193':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+servo:
+  '8752':
+    description: Hardware overcurrent protection
+    cause: ''
+    solution: If the actual current collected by the servo is greater than 90% of the maximum hardware
+      sampling current, check whether the hardware is normal, or contact technical support engineers
+    level: 1
+  '8992':
+    description: Software over-current
+    cause: ''
+    solution: Power off and restart controller, or please contact technical support engineer
+    level: 1
+  '9040':
+    description: Module in overload status
+    cause: ''
+    solution: Check whether the hardware is working properly, or contact technical support engineer
+    level: 1
+  '9088':
+    description: The current offset of homing point is too high
+    cause: ''
+    solution: Reset the Zero point current offset
+    level: 1
+  '12592':
+    description: Driver input phase is lost
+    cause: ''
+    solution: Check whether the hardware is working properly, or contact technical support engineer
+    level: 1
+  '12816':
+    description: Voltage between PN is too high
+    cause: ''
+    solution: The server detects that the bus voltage is greater than the preset threshold. Check whether
+      the hardware is normal, or contact technical support engineers
+    level: 1
+  '12832':
+    description: Voltage between PN is too low
+    cause: ''
+    solution: The server detects that the bus voltage is less than the preset threshold. Check whether
+      the hardware is normal, or contact technical support engineers
+    level: 1
+  '12928':
+    description: Servo and motor power matching failure
+    cause: ''
+    solution: Check whether the hardware is working properly, or contact technical support engineer
+    level: 1
+  '13184':
+    description: Driver output phase is wrong
+    cause: ''
+    solution: Wire as the correct phase sequence
+    level: 1
+  '17168':
+    description: Driver temperature is too high
+    cause: ''
+    solution: Check whether the hardware is working properly, or contact technical support engineer
+    level: 1
+  '17169':
+    description: The temperature measuring resistance is damaged or not installed
+    cause: ''
+    solution: Check whether the hardware is working properly, or contact technical support engineer
+    level: 1
+  '21008':
+    description: Driver recognition is abnormal
+    cause: ''
+    solution: Check whether the hardware is working properly, or contact technical support engineer
+    level: 1
+  '21120':
+    description: FPGA configuration is wrong
+    cause: ''
+    solution: System error, please contact technical support engineer
+    level: 1
+  '21121':
+    description: System error
+    cause: ''
+    solution: Please contact technical support engineer
+    level: 1
+  '21122':
+    description: STO safety wiring is fault
+    cause: ''
+    solution: System error, please contact technical support engineer
+    level: 1
+  '21569':
+    description: Dirver connection is abnormal
+    cause: ''
+    solution: Check whether the hardware is working properly, or contact technical support engineer
+    level: 1
+  '25378':
+    description: The DI function is repeatedly assigned
+    cause: ''
+    solution: Check DI group parameters to see whether the same function is assigned to different DI's
+    level: 1
+  '25379':
+    description: The DO function allocation exceeds the limit
+    cause: ''
+    solution: Check whether communication cables are reliably connected
+    level: 1
+  '25382':
+    description: The upper and lower limits of the software location are incorrectly set
+    cause: ''
+    solution: Check whether communication cables are reliably connected
+    level: 1
+  '25383':
+    description: The origin bias setting is incorrect
+    cause: ''
+    solution: Set the values of 0x607D-01h and 0x607D-02h correctly and ensure that the origin offset
+      of 0x607C is between them
+    level: 1
+  '28961':
+    description: Blocking motor overheating protection
+    cause: ''
+    solution: Check whether the lock gate opens normally or whether the motor is stuck due to mechanical
+      failure
+    level: 1
+  '29056':
+    description: Motor is in overload status
+    cause: ''
+    solution: Check whether the end load of the robot exceeds the nominal load of the robot or contact
+      the relevant technical personnel to replace the motor
+    level: 1
+  '29568':
+    description: Encoder communication is abnormal
+    cause: ''
+    solution: Check the encoder connection or replace the maintenance encoder
+    level: 1
+  '29569':
+    description: Encoder is abnormal
+    cause: ''
+    solution: Check whether the hardware is working properly, or contact technical support engineer
+    level: 1
+  '29570':
+    description: Encoder battery is abnormal
+    cause: ''
+    solution: Please contact technical support engineer
+    level: 1
+  '29571':
+    description: Encoder internal error
+    cause: ''
+    solution: System error, please contact technical support engineer
+    level: 1
+  '29572':
+    description: Encoder CRC check error
+    cause: ''
+    solution: System error, please contact technical support engineer
+    level: 1
+  '29573':
+    description: Auxiliary Encoder is disconnected
+    cause: ''
+    solution: System error, please contact technical support engineer
+    level: 1
+  '29574':
+    description: Auxiliary Encoder internal error
+    cause: ''
+    solution: System error, please contact technical support engineer
+    level: 1
+  '29575':
+    description: Auxiliary Encoder CRC check error
+    cause: ''
+    solution: System error, please contact technical support engineer
+    level: 1
+  '29576':
+    description: The pwm output buffer is abnormal
+    cause: ''
+    solution: Replace driver
+    level: 1
+  '29577':
+    description: The lock power supply is abnormal
+    cause: ''
+    solution: Check whether the lock is connected or damaged
+    level: 1
+  '29584':
+    description: Large deviation of joint position
+    cause: ''
+    solution: 1. Check production parameters; 2. Check encoder installation; 3. Check transmission structure
+    level: 1
+  '30080':
+    description: EtherCAT communication is abnormal
+    cause: ''
+    solution: System error, please contact technical support engineer
+    level: 1
+  '30081':
+    description: The XML configuration file was not burned
+    cause: ''
+    solution: System error, please contact technical support engineer
+    level: 1
+  '30082':
+    description: The synchronization period is incorrectly configured
+    cause: ''
+    solution: System error, please contact technical support engineer
+    level: 1
+  '30083':
+    description: During synchronous communication, the synchronization signal of the master station is
+      lost
+    cause: ''
+    solution: System error, please contact technical support engineer
+    level: 1
+  '30084':
+    description: The synchronization period error is too large
+    cause: ''
+    solution: System error, please contact technical support engineer
+    level: 1
+  '33920':
+    description: Output speed is higher than the expected speed
+    cause: ''
+    solution: Check whether the linear connection of the motor is normal
+    level: 1
+  '33921':
+    description: Difference between the set speed and current speed exceeds the range
+    cause: ''
+    solution: Check whether the hardware is working properly, restart the controller, or contact technical
+      support engineer
+    level: 1
+  '33922':
+    description: 'Motor is stalled '
+    cause: ''
+    solution: Check whether the electrical Angle is normal or whether the motor is damaged
+    level: 1
+  '34321':
+    description: Difference between the set positon and current position exceeds the range
+    cause: ''
+    solution: System error, please contact technical support engineer
+    level: 1
+  '34322':
+    description: Postion is out of range
+    cause: ''
+    solution: Enter the correct parameters
+    level: 1
+  '34323':
+    description: The full closed-loop position deviation is too large
+    cause: ''
+    solution: Check whether the hardware is working properly, restart the controller, or contact technical
+      support engineer
+    level: 1
+  '65282':
+    description: Angle recognition failure
+    cause: ''
+    solution: Check whether the hardware is working properly, restart the controller, or contact technical
+      support engineer
+    level: 1
+  '65344':
+    description: Parameter identification failure
+    cause: ''
+    solution: Check whether the hardware is working properly, restart the controller, or contact technical
+      support engineer
+    level: 1

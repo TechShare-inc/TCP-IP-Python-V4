@@ -1,0 +1,1941 @@
+controller:
+  '16':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '17':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '18':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '19':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '26':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '27':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '29':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '30':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '48':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '49':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '50':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '51':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '52':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '53':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '54':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '55':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '56':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '57':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '58':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '59':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '64':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '65':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '66':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '67':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '68':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '69':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '70':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '71':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '72':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '73':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '74':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '75':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '76':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '77':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '114':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '115':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '116':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '132':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '133':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '134':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '146':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '147':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '148':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '160':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '224':
+    description: Robot tiếp cận khu vực làm việc an toàn
+    cause: ''
+    solution: Hủy báo động và di chuyển robot về khu vực làm việc an toàn.
+    level: 5
+  '1280':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1281':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1282':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1283':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1284':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1285':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1286':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1287':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1288':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1289':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1290':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1291':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1292':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1293':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1294':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1295':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1296':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1297':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1298':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1299':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1300':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1301':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1302':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1303':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1304':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1305':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1306':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1307':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1308':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1309':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1310':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1311':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1312':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1313':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1314':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1315':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1316':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1317':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1318':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1319':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1320':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1321':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1322':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1323':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1325':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1326':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1327':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1328':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1329':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1330':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1331':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1332':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1333':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1334':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1335':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1336':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1337':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1338':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1339':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1340':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1341':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1342':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1343':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1344':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1345':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1346':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1359':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1360':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1361':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1362':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1363':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1364':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1365':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1366':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1367':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1368':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1369':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1370':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1371':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1372':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1373':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1374':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1375':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1376':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1377':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1378':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1379':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1380':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1381':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1382':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1383':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1385':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1386':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1387':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1388':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1389':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1390':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1391':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1392':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1393':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1394':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1395':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1396':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1397':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1398':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1399':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1400':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1401':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1402':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1403':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1404':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1406':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1407':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1408':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1409':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1410':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1411':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1412':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1413':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1414':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1415':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1416':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1417':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1418':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1419':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1420':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1421':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1422':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1423':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1424':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1425':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1426':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1427':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1428':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1429':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1430':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 0
+  '1431':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1432':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1433':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1434':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1435':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1436':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1437':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1438':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1439':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1440':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1441':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1442':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1443':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1444':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1445':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1446':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1447':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1448':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1449':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1450':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1451':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1452':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1453':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1454':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1455':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1456':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1457':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1458':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1459':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '1538':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1540':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1541':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1543':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 0
+  '1544':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1548':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 0
+  '1549':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 0
+  '1792':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1793':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1794':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1795':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1796':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1797':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1798':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1799':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 0
+  '1800':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1801':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1802':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1803':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1804':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1805':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1808':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 0
+  '1809':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 0
+  '1810':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 0
+  '1811':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 0
+  '1812':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 0
+  '1813':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1814':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1815':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 0
+  '1816':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1817':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1818':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1819':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1820':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1821':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1824':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1825':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1826':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1827':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '1828':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 0
+  '1829':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 0
+  '2050':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 0
+  '2051':
+    description: Vị trí khớp 1 vượt quá giới hạn
+    cause: ''
+    solution: Khởi động lại. Nếu lỗi vẫn tiếp tục, hãy liên hệ với kỹ sư hỗ trợ kỹ thuật
+    level: 1
+  '2052':
+    description: Vị trí khớp 2 vượt quá giới hạn
+    cause: ''
+    solution: Khởi động lại. Nếu lỗi vẫn tiếp tục, hãy liên hệ với kỹ sư hỗ trợ kỹ thuật
+    level: 1
+  '2053':
+    description: Vị trí khớp 3 vượt quá giới hạn
+    cause: ''
+    solution: Khởi động lại. Nếu lỗi vẫn tiếp tục, hãy liên hệ với kỹ sư hỗ trợ kỹ thuật
+    level: 1
+  '2054':
+    description: Vị trí khớp 4 vượt quá giới hạn
+    cause: ''
+    solution: Khởi động lại. Nếu lỗi vẫn tiếp tục, hãy liên hệ với kỹ sư hỗ trợ kỹ thuật
+    level: 1
+  '2055':
+    description: Vị trí khớp 5 vượt quá giới hạn
+    cause: ''
+    solution: Khởi động lại. Nếu lỗi vẫn tiếp tục, hãy liên hệ với kỹ sư hỗ trợ kỹ thuật
+    level: 1
+  '2056':
+    description: Vị trí khớp 6 vượt quá giới hạn
+    cause: ''
+    solution: Khởi động lại. Nếu lỗi vẫn tiếp tục, hãy liên hệ với kỹ sư hỗ trợ kỹ thuật
+    level: 1
+  '2057':
+    description: Vượt quá tốc độ khớp 1
+    cause: ''
+    solution: Giảm tốc độ khớp hoặc cài đặt tốc độ Descartes
+    level: 1
+  '2058':
+    description: Vượt quá tốc độ khớp 2
+    cause: ''
+    solution: Giảm tốc độ khớp hoặc cài đặt tốc độ Descartes
+    level: 1
+  '2059':
+    description: Vượt quá tốc độ khớp 3
+    cause: ''
+    solution: Giảm tốc độ khớp hoặc cài đặt tốc độ Descartes
+    level: 1
+  '2060':
+    description: Vượt quá tốc độ khớp 4
+    cause: ''
+    solution: Giảm tốc độ khớp hoặc cài đặt tốc độ Descartes
+    level: 1
+  '2061':
+    description: Vượt quá tốc độ khớp 5
+    cause: ''
+    solution: Giảm tốc độ khớp hoặc cài đặt tốc độ Descartes
+    level: 1
+  '2062':
+    description: Vượt quá tốc độ khớp 6
+    cause: ''
+    solution: Giảm tốc độ khớp hoặc cài đặt tốc độ Descartes
+    level: 1
+  '2063':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2064':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2065':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2066':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2067':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2068':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2069':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2070':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2071':
+    description: Lỗi không tương thích giữa bảng điều khiển an toàn A và B
+    cause: ''
+    solution: Nếu bảng điều khiển an toàn A và B có phiên bản khác nhau, vui lòng cập nhật firmware để
+      đảm bảo tính tương thích giữa hai phiên bản. Liên hệ với bộ phận hỗ trợ kỹ thuật nếu bạn cần được
+      hỗ trợ thêm.
+    level: 1
+  '2072':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2073':
+    description: Vượt quá giới hạn mặt phẳng an toàn
+    cause: ''
+    solution: Xóa cảnh báo, kích hoạt lại và di chuyển robot trở lại khu vực an toàn
+    level: 1
+  '2074':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2075':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2076':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2077':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 0
+  '2078':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2080':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2081':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2082':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2083':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2084':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2085':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2087':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2088':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2089':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2090':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2091':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2092':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2093':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2096':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2097':
+    description: Cảnh báo sai lệch vị trí hệ thống truyền động khớp robot
+    cause: ''
+    solution: Khởi động lại. Nếu lỗi vẫn tiếp tục, hãy liên hệ với kỹ sư hỗ trợ kỹ thuật.
+    level: 1
+  '2098':
+    description: Cảnh báo sai lệch tốc độ hệ thống truyền động khớp robot
+    cause: ''
+    solution: Khởi động lại. Nếu lỗi vẫn tiếp tục, hãy liên hệ với kỹ sư hỗ trợ kỹ thuật.
+    level: 1
+  '2099':
+    description: Cảnh báo vượt quá vị trí ngoài khớp 1
+    cause: ''
+    solution: Khởi động lại. Nếu lỗi vẫn tiếp tục, hãy liên hệ với kỹ sư hỗ trợ kỹ thuật.
+    level: 1
+  '2100':
+    description: Cảnh báo vượt quá vị trí ngoài khớp 2
+    cause: ''
+    solution: Khởi động lại. Nếu lỗi vẫn tiếp tục, hãy liên hệ với kỹ sư hỗ trợ kỹ thuật.
+    level: 1
+  '2101':
+    description: Cảnh báo vượt quá vị trí ngoài khớp 3
+    cause: ''
+    solution: Khởi động lại. Nếu lỗi vẫn tiếp tục, hãy liên hệ với kỹ sư hỗ trợ kỹ thuật.
+    level: 1
+  '2102':
+    description: Cảnh báo vượt quá vị trí ngoài khớp 4
+    cause: ''
+    solution: Khởi động lại. Nếu lỗi vẫn tiếp tục, hãy liên hệ với kỹ sư hỗ trợ kỹ thuật.
+    level: 1
+  '2103':
+    description: Cảnh báo vượt quá vị trí ngoài khớp 5
+    cause: ''
+    solution: Khởi động lại. Nếu lỗi vẫn tiếp tục, hãy liên hệ với kỹ sư hỗ trợ kỹ thuật.
+    level: 1
+  '2104':
+    description: Cảnh báo vượt quá vị trí ngoài khớp 6
+    cause: ''
+    solution: Khởi động lại. Nếu lỗi vẫn tiếp tục, hãy liên hệ với kỹ sư hỗ trợ kỹ thuật.
+    level: 1
+  '2105':
+    description: Cảnh báo vượt quá tốc độ ngoài của khớp 1
+    cause: ''
+    solution: Giảm tốc độ khớp hoặc cài đặt tốc độ Descartes.
+    level: 1
+  '2106':
+    description: Cảnh báo vượt quá tốc độ ngoài của khớp 2
+    cause: ''
+    solution: Giảm tốc độ khớp hoặc cài đặt tốc độ Descartes.
+    level: 1
+  '2107':
+    description: Cảnh báo vượt quá tốc độ ngoài của khớp 3
+    cause: ''
+    solution: Giảm tốc độ khớp hoặc cài đặt tốc độ Descartes.
+    level: 1
+  '2108':
+    description: Cảnh báo vượt quá tốc độ ngoài của khớp 4
+    cause: ''
+    solution: Giảm tốc độ khớp hoặc cài đặt tốc độ Descartes.
+    level: 1
+  '2109':
+    description: Cảnh báo vượt quá tốc độ ngoài của khớp 5
+    cause: ''
+    solution: Giảm tốc độ khớp hoặc cài đặt tốc độ Descartes.
+    level: 1
+  '2110':
+    description: Cảnh báo vượt quá tốc độ ngoài của khớp 6
+    cause: ''
+    solution: Giảm tốc độ khớp hoặc cài đặt tốc độ Descartes.
+    level: 1
+  '2112':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2113':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2114':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2128':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2129':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2130':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2132':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2133':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 0
+  '2134':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2135':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2136':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2137':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2138':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2139':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2140':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 0
+  '2144':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2145':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2146':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2147':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2148':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2149':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2160':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2161':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '2162':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '4096':
+    description: Tập tin phát lại theo dõi không tồn tại
+    cause: ''
+    solution: Vui lòng kiểm tra xem tập tin phát lại theo dõi có tồn tại trong đường dẫn đúng không.
+    level: 5
+  '4097':
+    description: Lỗi nội dung tập tin phát lại theo dõi
+    cause: ''
+    solution: Vui lòng kiểm tra nội dung của tập tin phát lại theo dõi để tìm lỗi hoặc không nhất quán.
+    level: 5
+  '4098':
+    description: Lỗi tên tập tin phát lại theo dõi
+    cause: ''
+    solution: Vui lòng đảm bảo tập tin phát lại theo dõi có tên tệp đúng và hợp lệ.
+    level: 5
+  '4099':
+    description: Lỗi chạy tập tin phát lại theo dõi
+    cause: ''
+    solution: Nếu tập tin phát lại theo dõi gặp lỗi trong quá trình thực thi, vui lòng xem lại các tệp
+      nhật ký và xác định nguyên nhân gốc. Nếu cần thiết, hãy tham vấn hỗ trợ kỹ thuật để được giúp đỡ
+      thêm.
+    level: 5
+  '4100':
+    description: Sự lặp lại quỹ đạo hiện tại không hỗ trợ việc tạm dừng.
+    cause: ''
+    solution: Перезапустите траекторию для воспроизведения.
+    level: 5
+  '4112':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '4128':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '4192':
+    description: dobot+lỗi
+    cause: ''
+    solution: Kiểm tra nhật ký dobot+để biết chi tiết
+    level: 5
+  '4193':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+servo:
+  '8752':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '8992':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '9040':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '9088':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '12592':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '12816':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '12832':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '12928':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '13184':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '17168':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '17169':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '21008':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '21120':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '21121':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '21122':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '21569':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '25378':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '25379':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '25382':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '25383':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '28961':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '29056':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '29568':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '29569':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '29570':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '29571':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '29572':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '29573':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '29574':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '29575':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '29576':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '29577':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '29584':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '30080':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '30081':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '30082':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '30083':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '30084':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '33920':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '33921':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '33922':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '34321':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '34322':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '34323':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '65282':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1
+  '65344':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 1

@@ -1,3 +1,37 @@
+"""
+⚠️ DEPRECATION WARNING ⚠️
+
+This file (alarmServo.py) is DEPRECATED as of version 4.1.0 and will be 
+removed in version 5.0.0.
+
+Please migrate to the new i18n system using the AlarmI18n class:
+
+    from dobot_api import AlarmI18n
+    
+    i18n = AlarmI18n('en')  # or 'zh_CN', 'ja', etc.
+    alarm = i18n.get_servo_alarm(8752)
+    print(alarm['description'])
+
+See MIGRATION_V4.0_TO_V4.1.md for complete migration guide.
+
+---
+
+This file contains hardcoded servo alarm translations in a dictionary format.
+It is maintained for backward compatibility only.
+
+For new code, use: dobot_api/locales/alarms.*.yml files with AlarmI18n class.
+"""
+
+import warnings
+
+# Emit deprecation warning when module is imported
+warnings.warn(
+    "alarmServo.py is deprecated as of version 4.1.0 and will be removed in 5.0.0. "
+    "Use AlarmI18n class from dobot_api instead. See MIGRATION_V4.0_TO_V4.1.md for details.",
+    DeprecationWarning,
+    stacklevel=2
+)
+
 alarm_servo_list=[
     {
         "id": 8752,

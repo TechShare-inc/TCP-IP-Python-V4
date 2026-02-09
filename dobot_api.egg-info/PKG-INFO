@@ -1,58 +1,36 @@
+Metadata-Version: 2.4
+Name: dobot_api
+Version: 4.1.0
+Summary: Dobot Robot API V4 for TCP/IP communication with modular architecture and i18n support
+Author-email: Dobot <support@dobot.cc>
+Project-URL: Homepage, https://github.com/Dobot-Arm/TCP-IP-Python-V4
+Project-URL: Documentation, https://github.com/Dobot-Arm/TCP-IP-Python-V4/blob/main/README.md
+Project-URL: Repository, https://github.com/Dobot-Arm/TCP-IP-Python-V4
+Project-URL: Issues, https://github.com/Dobot-Arm/TCP-IP-Python-V4/issues
+Keywords: dobot,robot,tcp,api,automation,robotics,i18n
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: System :: Hardware
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy>=1.20.0
+Requires-Dist: loguru>=0.7.0
+Requires-Dist: python-i18n>=0.3.9
+Requires-Dist: pyyaml>=6.0
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0; extra == "dev"
+Requires-Dist: mypy>=1.0; extra == "dev"
+Dynamic: license-file
+
 # TCP-IP-Python-V4 项目说明文档
-
-## 🆕 V4.1.0 更新 / NEW FEATURES
-
-**版本 4.1.0 引入了国际化 (i18n) 支持！**
-
-### 新增功能：
-
-1. **AlarmI18n 类**：专业的多语言报警信息管理系统
-   - 支持 10 种语言：英语、中文（简/繁）、日语、德语、韩语、越南语、西班牙语、俄语、法语
-   - 自动语言代码标准化（例如：`zh_cn` → `zh_CN`，`kr` → `ko`）
-   - 本地翻译，无需 HTTP 请求
-
-2. **YAML 格式翻译文件**：
-   - 将 22,000+ 行硬编码翻译文件缩减至 ~2,000 行 YAML
-   - 翻译文件位于 `dobot_api/locales/` 目录
-   - 易于维护和更新
-
-3. **增强的报警监控**：
-   - `RobotErrorMonitor` 现在使用本地 i18n 翻译
-   - 减少网络请求（不再需要 HTTP POST 设置语言）
-   - 支持离线使用
-
-### 快速使用：
-
-```python
-from dobot_api import AlarmI18n
-
-# 初始化（支持任意语言）
-i18n = AlarmI18n('zh_CN')  # 或 'en', 'ja', 'de', 等
-
-# 获取报警信息
-alarm = i18n.get_controller_alarm(16)
-print(f"描述: {alarm['description']}")
-print(f"解决方案: {alarm['solution']}")
-
-# 切换语言
-i18n.set_language('en')
-alarm_en = i18n.get_controller_alarm(16)
-print(f"Description: {alarm_en['description']}")
-
-# 支持的语言
-languages = AlarmI18n.get_supported_languages()
-# ['en', 'zh_CN', 'zh_Hant', 'ja', 'de', 'ko', 'vi', 'es', 'ru', 'fr']
-```
-
-### 兼容性：
-
-- ✅ **完全向后兼容**：旧的 `alarmAlarmJsonFile()` 仍然可用（已弃用）
-- 📝 **迁移指南**：参见 [MIGRATION_V4.0_TO_V4.1.md](MIGRATION_V4.0_TO_V4.1.md) 了解详细信息
-- 🕒 **弃用时间表**：
-  - v4.1.0: 添加弃用警告
-  - v5.0.0: 移除旧的翻译文件
-
----
 
 ## ⚠️ V4.0.0 重大更新 / BREAKING CHANGES
 
@@ -162,29 +140,8 @@ pip install numpy
   - 获取机器人状态（1440 字节数据包）
   - V4 字段使用 PascalCase：`QActual`, `DigitalInputs`, `RobotMode` 等
 
-#### dobot_api/i18n_manager.py （V4.1.0 新增）
-- **AlarmI18n**: 国际化报警信息管理器
-  - 支持 10 种语言的报警翻译
-  - 方法：
-    - `set_language(language)`: 切换语言
-    - `get_controller_alarm(id)`: 获取控制器报警
-    - `get_servo_alarm(id)`: 获取伺服报警
-    - `get_alarm(id)`: 自动检测报警类型
-    - `format_alarm(id)`: 格式化输出报警信息
-    - `enrich_alarm_data(robot_data)`: 为机器人数据添加翻译
-    - `get_supported_languages()`: 获取支持的语言列表
-  - 使用 YAML 翻译文件（`dobot_api/locales/alarms.*.yml`）
-  - 自动语言代码标准化
-
-#### dobot_api/error_monitor.py （V4.1.0 更新）
-- **RobotErrorMonitor**: HTTP 报警监控（已集成 i18n）
-  - 通过 HTTP 获取机器人报警信息
-  - 自动使用 AlarmI18n 添加本地翻译
-  - 减少网络请求（不再需要 POST 设置语言）
-  - 支持离线翻译
-
 #### dobot_api/utils.py
-- 报警文件读取：`alarmAlarmJsonFile()` （v4.1.0 已弃用，请使用 AlarmI18n）
+- 报警文件读取：`alarmAlarmJsonFile()`
 
 ### 2. examples/ 目录
 
@@ -197,13 +154,6 @@ pip install numpy
 - GetError 接口使用示例
 - 多语言报警信息获取
 - 报警监控类实现
-
-#### examples/i18n_demo.py （V4.1.0 新增）
-- AlarmI18n 类使用示例
-- 演示多语言切换
-- 自动类型检测
-- 报警信息格式化
-- 数据丰富化（添加翻译）
 
 #### examples/main.py
 - 项目主入口示例
@@ -223,12 +173,6 @@ pip install numpy
 - 迁移检查清单
 - 代码示例对照
 
-#### MIGRATION_V4.0_TO_V4.1.md（V4.1.0 新增）
-- **V4.0 到 V4.1 迁移指南**
-- i18n 系统使用说明
-- AlarmI18n API 参考
-- 代码迁移示例
-
 #### GetError_README.md / GetError_README_EN.md
 - GetError 接口详细说明（中/英文）
 
@@ -242,36 +186,21 @@ TCP-IP-Python-V4/
 │   ├── dashboard.py          # 控制命令
 │   ├── move.py               # 运动命令（V3 风格分离）
 │   ├── feedback.py           # 状态反馈
-│   ├── error_monitor.py      # HTTP 报警监控（V4.1.0 已集成 i18n）
-│   ├── i18n_manager.py       # 国际化管理器（V4.1.0 新增）
 │   ├── utils.py              # 工具函数
-│   ├── locales/              # i18n 翻译文件（V4.1.0 新增）
-│   │   ├── alarms.en.yml     # 英语
-│   │   ├── alarms.zh_CN.yml  # 简体中文
-│   │   ├── alarms.zh_Hant.yml # 繁体中文
-│   │   ├── alarms.ja.yml     # 日语
-│   │   ├── alarms.de.yml     # 德语
-│   │   ├── alarms.ko.yml     # 韩语
-│   │   ├── alarms.vi.yml     # 越南语
-│   │   ├── alarms.es.yml     # 西班牙语
-│   │   ├── alarms.ru.yml     # 俄语
-│   │   └── alarms.fr.yml     # 法语
-│   └── files/                # 报警配置文件（已弃用）
+│   └── files/                # 报警配置文件
 │       ├── alarmController.json
-│       ├── alarmController.py （v4.1.0 已弃用）
+│       ├── alarmController.py
 │       ├── alarmServo.json
-│       └── alarmServo.py     （v4.1.0 已弃用）
+│       └── alarmServo.py
 ├── examples/                  # 示例程序（V4.0.0 更新）
 │   ├── basic_demo.py         # 基础示例
 │   ├── error_handling.py     # 报警处理示例
-│   ├── i18n_demo.py          # i18n 使用示例（V4.1.0 新增）
 │   ├── main.py               # 主程序入口
 │   └── ui_demo/              # GUI 示例
 │       ├── main_UI.py
 │       └── ui.py
 ├── pyproject.toml            # 包配置文件（新增）
-├── MIGRATION_V3_TO_V4.md     # V3→V4 迁移指南
-├── MIGRATION_V4.0_TO_V4.1.md # V4.0→V4.1 迁移指南（V4.1.0 新增）
+├── MIGRATION_V3_TO_V4.md     # API 迁移指南（新增）
 ├── README.md                 # 中文说明文档
 ├── README-EN.md              # 英文说明文档
 ├── GetError_README.md        # GetError 中文文档

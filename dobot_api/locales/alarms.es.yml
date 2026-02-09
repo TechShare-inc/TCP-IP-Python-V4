@@ -1,0 +1,2131 @@
+controller:
+  '16':
+    description: El punto planificado está cerca del punto singular de hombro
+    cause: ''
+    solution: Vuelva a seleccionar los puntos de movimiento o se utiliza el comando de interpolación de
+      articulación cerca del punto singular
+    level: 5
+  '17':
+    description: Error de cinemática inversa sin solución
+    cause: ''
+    solution: La posición del punto móvil del destino se selecciona de nuevo para evitar el punto singular
+      y el punto inalcanzable
+    level: 5
+  '18':
+    description: Error de cinemática inversa con resultado fuera del área de trabajo
+    cause: ''
+    solution: Vuelva a seleccionar los puntos de movimiento objetivo
+    level: 5
+  '19':
+    description: El punto inicial y el punto final son los mismos cuando se ejecuta el comando JUMP, el
+      comando ARC o el comando Círculo
+    cause: ''
+    solution: Vuelva a seleccionar los puntos de movimiento objetivo para que cumplan los requisitos de
+      los comandos correspondientes
+    level: 5
+  '26':
+    description: El punto planificado está cerca del punto singular de muñeca
+    cause: ''
+    solution: Vuelva a seleccionar los puntos de movimiento o se utiliza el comando de interpolación de
+      articulación cerca del punto singular
+    level: 5
+  '27':
+    description: El punto planificado está cerca del punto singular de codo
+    cause: ''
+    solution: Vuelva a seleccionar los puntos de movimiento o se utiliza el comando de interpolación de
+      articulación cerca del punto singular
+    level: 5
+  '29':
+    description: El parámetro de velocidad es incorrecto
+    cause: ''
+    solution: Comprobar parámetros de velocidad
+    level: 5
+  '30':
+    description: La solución inversa de parámetros completos no se puede resolver
+    cause: ''
+    solution: Reinicie el controlador. Si el fallo persiste, comuníquese con los ingenieros de soporte
+      técnico
+    level: 5
+  '48':
+    description: La articulación 1 tiene exceso de velocidad
+    cause: ''
+    solution: Reduzca la velocidad de articulación o la configuración de velocidad cartesiana, o vuelva
+      a seleccionar la posición del punto móvil alejada del punto singular
+    level: 5
+  '49':
+    description: La articulación 2 tiene exceso de velocidad
+    cause: ''
+    solution: Reduzca la velocidad de articulación o la configuración de velocidad cartesiana, o vuelva
+      a seleccionar la posición del punto móvil alejada del punto singular
+    level: 5
+  '50':
+    description: La articulación 3 tiene exceso de velocidad
+    cause: ''
+    solution: Reduzca la velocidad de articulación o la configuración de velocidad cartesiana, o vuelva
+      a seleccionar la posición del punto móvil alejada del punto singular
+    level: 5
+  '51':
+    description: La articulación 4 tiene exceso de velocidad
+    cause: ''
+    solution: Reduzca la velocidad de articulación o la configuración de velocidad cartesiana, o vuelva
+      a seleccionar la posición del punto móvil alejada del punto singular
+    level: 5
+  '52':
+    description: La articulación 5 tiene exceso de velocidad
+    cause: ''
+    solution: Reduzca la velocidad de articulación o la configuración de velocidad cartesiana, o vuelva
+      a seleccionar la posición del punto móvil alejada del punto singular
+    level: 5
+  '53':
+    description: La articulación 6 tiene exceso de velocidad
+    cause: ''
+    solution: Reduzca la velocidad de articulación o la configuración de velocidad cartesiana, o vuelva
+      a seleccionar la posición del punto móvil alejada del punto singular
+    level: 5
+  '54':
+    description: Error de retraso de posición de la articulación 1
+    cause: ''
+    solution: Reinicie el controlador. Si el fallo persiste, comuníquese con los ingenieros de soporte
+      técnico
+    level: 5
+  '55':
+    description: Error de retraso de posición de la articulación 2
+    cause: ''
+    solution: Reinicie el controlador. Si el fallo persiste, comuníquese con los ingenieros de soporte
+      técnico
+    level: 5
+  '56':
+    description: Error de retraso de posición de la articulación 3
+    cause: ''
+    solution: Reinicie el controlador. Si el fallo persiste, comuníquese con los ingenieros de soporte
+      técnico
+    level: 5
+  '57':
+    description: Error de retraso de posición de la articulación 4
+    cause: ''
+    solution: Reinicie el controlador. Si el fallo persiste, comuníquese con los ingenieros de soporte
+      técnico
+    level: 5
+  '58':
+    description: Error de retraso de posición de la articulación 5
+    cause: ''
+    solution: Reinicie el controlador. Si el fallo persiste, comuníquese con los ingenieros de soporte
+      técnico
+    level: 5
+  '59':
+    description: Error de retraso de posición de la articulación 6
+    cause: ''
+    solution: Reinicie el controlador. Si el fallo persiste, comuníquese con los ingenieros de soporte
+      técnico
+    level: 5
+  '64':
+    description: Alarma de límite positivo de la articulación 1
+    cause: ''
+    solution: Confirme el ángulo de articulación actual y la configuración del límite suave, y salga del
+      límite en movimiento inverso o modifique la configuración del límite suave
+    level: 5
+  '65':
+    description: Alarma de límite negativo de la articulación 1
+    cause: ''
+    solution: Confirme el ángulo de articulación actual y la configuración del límite suave, y salga del
+      límite en movimiento inverso o modifique la configuración del límite suave
+    level: 5
+  '66':
+    description: Alarma de límite positivo de la articulación 2
+    cause: ''
+    solution: Confirme el ángulo de articulación actual y la configuración del límite suave, y salga del
+      límite en movimiento inverso o modifique la configuración del límite suave
+    level: 5
+  '67':
+    description: Alarma de límite negativo de la articulación 2
+    cause: ''
+    solution: Confirme el ángulo de articulación actual y la configuración del límite suave, y salga del
+      límite en movimiento inverso o modifique la configuración del límite suave
+    level: 5
+  '68':
+    description: Alarma de límite positivo de la articulación 3
+    cause: ''
+    solution: Confirme el ángulo de articulación actual y la configuración del límite suave, y salga del
+      límite en movimiento inverso o modifique la configuración del límite suave
+    level: 5
+  '69':
+    description: Alarma de límite negativo de la articulación 3
+    cause: ''
+    solution: Confirme el ángulo de articulación actual y la configuración del límite suave, y salga del
+      límite en movimiento inverso o modifique la configuración del límite suave
+    level: 5
+  '70':
+    description: Alarma de límite positivo de la articulación 4
+    cause: ''
+    solution: Confirme el ángulo de articulación actual y la configuración del límite suave, y salga del
+      límite en movimiento inverso o modifique la configuración del límite suave
+    level: 5
+  '71':
+    description: Alarma de límite negativo de la articulación 4
+    cause: ''
+    solution: Confirme el ángulo de articulación actual y la configuración del límite suave, y salga del
+      límite en movimiento inverso o modifique la configuración del límite suave
+    level: 5
+  '72':
+    description: Alarma de límite positivo de la articulación 5
+    cause: ''
+    solution: Confirme el ángulo de articulación actual y la configuración del límite suave, y salga del
+      límite en movimiento inverso o modifique la configuración del límite suave
+    level: 5
+  '73':
+    description: Alarma de límite negativo de la articulación 5
+    cause: ''
+    solution: Confirme el ángulo de articulación actual y la configuración del límite suave, y salga del
+      límite en movimiento inverso o modifique la configuración del límite suave
+    level: 5
+  '74':
+    description: Alarma de límite positivo de la articulación 6
+    cause: ''
+    solution: Confirme el ángulo de articulación actual y la configuración del límite suave, y salga del
+      límite en movimiento inverso o modifique la configuración del límite suave
+    level: 5
+  '75':
+    description: Alarma de límite negativo de la articulación 6
+    cause: ''
+    solution: Confirme el ángulo de articulación actual y la configuración del límite suave, y salga del
+      límite en movimiento inverso o modifique la configuración del límite suave
+    level: 5
+  '76':
+    description: La tecla de extremo interfiere con el cuerpo del robot
+    cause: ''
+    solution: Compruebe el estado de extremo del robot y seleccione de nuevo la posición del punto móvil
+    level: 5
+  '77':
+    description: Las bridas de extremo interfieren con el cuerpo del robot
+    cause: ''
+    solution: Compruebe el estado de extremo del robot y seleccione de nuevo la posición del punto móvil
+    level: 5
+  '114':
+    description: El robot no ha podido calibrar el cero
+    cause: ''
+    solution: Reinicie el robot y calíbrelo de nuevo. Si el fallo persiste, comuníquese con los ingenieros
+      de soporte técnico
+    level: 5
+  '115':
+    description: El robot no se ha podido activar
+    cause: ''
+    solution: Reinicie el robot y actívelo de nuevo. Si el fallo persiste, comuníquese con los ingenieros
+      de soporte técnico
+    level: 5
+  '116':
+    description: Se captura el botón de parada de emergencia
+    cause: ''
+    solution: Después de soltar el botón de parada de emergencia, se puede reanudar el funcionamiento
+      normal
+    level: 1
+  '132':
+    description: Se activa la señal de parada de emergencia del software
+    cause: ''
+    solution: Después de restablecer la señal de parada de emergencia del software, se puede reanudar
+      el funcionamiento normal
+    level: 1
+  '133':
+    description: Se activa la señal de parada de emergencia del usuario
+    cause: ''
+    solution: Después de restablecer la señal de parada de emergencia del usuario, se puede reanudar el
+      funcionamiento normal
+    level: 1
+  '134':
+    description: El robot no puede permanecer parado
+    cause: ''
+    solution: Compruebe que la carga esté configurada correctamente
+    level: 1
+  '146':
+    description: El punto de destino está fuera del alcance del espacio de trabajo cuando el robot se
+      desplaza lento
+    cause: ''
+    solution: Reinicie el controlador. Si el fallo persiste, comuníquese con los ingenieros de soporte
+      técnico
+    level: 5
+  '147':
+    description: La reproducción de trayectoria o un punto dado de un segmento de línea pequeño es menor
+      que 4
+    cause: ''
+    solution: Compruebe el archivo de trayectoria para asegurarse de que la cantidad de puntos internos
+      sea suficiente
+    level: 5
+  '148':
+    description: No se ha podido reproducir la trayectoria de acuerdo con las restricciones dadas
+    cause: ''
+    solution: Compruebe si el archivo de seguimiento es correcto o si están configurados los parámetros
+      adecuados
+    level: 5
+  '160':
+    description: El comando actual no admite la pausa. El robot se ha detenido
+    cause: ''
+    solution: Reiniciar el robot
+    level: 5
+  '224':
+    description: Robot aproximándose al área de trabajo seguro
+    cause: ''
+    solution: Eliminar la alarma y mover el robot hacia el área de trabajo seguro.
+    level: 5
+  '1280':
+    description: No se han podido cargar los parámetros de carga del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo function/loadParams.json
+    level: 5
+  '1281':
+    description: No se han podido cargar los parámetros de identificación del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo properties/dynamicsParams.json
+    level: 5
+  '1282':
+    description: No se han podido cargar los parámetros estructurales del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo properties/structure.json
+    level: 5
+  '1283':
+    description: No se han podido cargar los parámetros de movimiento del robot que enseña los parámetros
+      de coordenadas
+    cause: ''
+    solution: Compruebe y actualice el archivo teach/coordinate.json
+    level: 5
+  '1284':
+    description: No se han podido cargar los parámetros de movimiento del robot que enseña los parámetros
+      de articulación
+    cause: ''
+    solution: Compruebe y actualice el archivo teach/joint.json
+    level: 5
+  '1285':
+    description: No se han podido cargar los parámetros de movimiento del robot que enseña los parámetros
+      de desplazamiento lento
+    cause: ''
+    solution: Compruebe y actualice el archivo teach/inch.json
+    level: 5
+  '1286':
+    description: No se han podido cargar los parámetros de articulación de reproducción del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo playback/joint.json
+    level: 5
+  '1287':
+    description: No se han podido cargar los parámetros de coordenadas de reproducción del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo playback/coordinate.json
+    level: 5
+  '1288':
+    description: No se han podido cargar los parámetros de arco de reproducción del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo playback/arch.json
+    level: 5
+  '1289':
+    description: No se ha podido cargar el parámetro de tasa global del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo settings/common.json
+    level: 5
+  '1290':
+    description: No se ha podido cargar el parámetro de índice del sistema de coordenadas de movimiento
+      del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo datasvr/config.json
+    level: 5
+  '1291':
+    description: No se han podido cargar los parámetros del sistema de coordenadas del usuario del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo coordinate/user.json
+    level: 5
+  '1292':
+    description: No se han podido cargar los parámetros del sistema de coordenadas de la herramienta del
+      robot
+    cause: ''
+    solution: Compruebe y actualice el archivo coordinate/tool.json
+    level: 5
+  '1293':
+    description: No se han podido cargar los parámetros de funciones avanzadas del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo properties/advancedFunction.json
+    level: 5
+  '1294':
+    description: No se han podido cargar los parámetros de configuración de señales de seguridad del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo function/CC161/safeSignal.json
+    level: 5
+  '1295':
+    description: No se han podido cargar los parámetros de configuración de control de E/S del sistema
+    cause: ''
+    solution: Compruebe y actualice el archivo function/ioCtrl.json
+    level: 5
+  '1296':
+    description: No se han podido cargar los parámetros de configuración de Modbus del sistema
+    cause: ''
+    solution: Compruebe y actualice el archivo function/modbusConf.json
+    level: 5
+  '1297':
+    description: No se han podido cargar los parámetros de modo de control remoto del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo function/remoteControl.json
+    level: 5
+  '1298':
+    description: No se ha podido cargar el parámetro de número de eje del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo properties/axis.json
+    level: 5
+  '1299':
+    description: No se ha podido cargar el parámetro de tipo de negocio del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo properties/bussinessType.json
+    level: 5
+  '1300':
+    description: No se ha podido cargar el parámetro de tipo de robot
+    cause: ''
+    solution: Compruebe y actualice el archivo properties/controllerType.json
+    level: 5
+  '1301':
+    description: No se ha podido cargar el parámetro de tipo de controlador
+    cause: ''
+    solution: Compruebe y actualice el archivo properties/controlCabType.json
+    level: 5
+  '1302':
+    description: No se han podido cargar los parámetros de autointerferencia del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo properties/poseSelfInterference.json
+    level: 5
+  '1303':
+    description: No se han podido cargar parámetros como el de la aceleración del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo function/accFactor.json
+    level: 5
+  '1304':
+    description: No se han podido cargar los parámetros de información de restricción de par del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo function/torqueLimit.json
+    level: 5
+  '1305':
+    description: No se han podido cargar los parámetros de configuración del formato de datos de retroalimentación
+      en tiempo real
+    cause: ''
+    solution: Compruebe y actualice el archivo function/tcp30006Feedback.json
+    level: 5
+  '1306':
+    description: No se ha podido cargar el parámetro de límite del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo function/securityConstraint.json
+    level: 5
+  '1307':
+    description: No se ha podido cargar el parámetro de restricción de articulación del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo properties/jointLimits.json
+    level: 5
+  '1308':
+    description: No se han podido cargar los parámetros de pared de seguridad del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo function/virtualWall.json
+    level: 5
+  '1309':
+    description: No se han podido cargar los parámetros de estado de instalación del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo function/install.json
+    level: 5
+  '1310':
+    description: No se han podido cargar los parámetros del tiempo de ejecución total del sistema
+    cause: ''
+    solution: Compruebe y actualice el archivo settings/workTimeRec.json
+    level: 5
+  '1311':
+    description: No se han podido cargar los parámetros de modo de simulación del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo function/analogMode.json
+    level: 5
+  '1312':
+    description: No se ha podido cargar el parámetro de sensibilidad de arrastre del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo function/dragSensivity.json
+    level: 5
+  '1313':
+    description: No se ha podido cargar el parámetro de reproducción del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo function/reTraceParams.json
+    level: 5
+  '1314':
+    description: No se han podido cargar los parámetros de postura compacta del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo function/packPoint.json
+    level: 5
+  '1315':
+    description: No se han podido cargar los parámetros de postura personalizada del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo function/customPoint.json
+    level: 5
+  '1316':
+    description: No se han podido cargar los parámetros de configuración de colisión de seguridad del
+      conmutador del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo function/collisionDect.json
+    level: 5
+  '1317':
+    description: No se ha podido cargar el parámetro de configuración del umbral de error de colisión
+      del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo function/collision_error_threshold.json
+    level: 5
+  '1318':
+    description: No se ha podido cargar el parámetro de configuración de señal común del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo function/commonSignal.json
+    level: 5
+  '1319':
+    description: No se ha podido cargar el elemento de configuración de idioma del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo language/language.json
+    level: 5
+  '1320':
+    description: No se ha podido cargar la tabla de configuración de chino
+    cause: ''
+    solution: Compruebe y actualice el archivo language/zh_cn.json
+    level: 5
+  '1321':
+    description: No se ha podido cargar la tabla de configuración de inglés
+    cause: ''
+    solution: Compruebe y actualice el archivo language/en.json
+    level: 5
+  '1322':
+    description: No se ha podido cargar el parámetro de velocidad de movimiento por defecto
+    cause: ''
+    solution: Compruebe y actualice el archivo properties/default.json
+    level: 5
+  '1323':
+    description: No se ha podido cargar el parámetro payloadLimit
+    cause: ''
+    solution: Compruebe y actualice el archivo function/payloadLimit.json
+    level: 5
+  '1325':
+    description: No se ha podido cargar la tabla de configuración de chino tradicional
+    cause: ''
+    solution: Compruebe y actualice el archivo language/zh_hand.json
+    level: 5
+  '1326':
+    description: No se ha podido cargar la tabla de configuración de coreano
+    cause: ''
+    solution: Compruebe y actualice el archivo language/kr.json
+    level: 5
+  '1327':
+    description: No se ha podido cargar la tabla de configuración de japonés
+    cause: ''
+    solution: Compruebe y actualice el archivo language/ja.json
+    level: 5
+  '1328':
+    description: No se ha podido cargar la tabla de configuración de alemán
+    cause: ''
+    solution: Compruebe y actualice el archivo language/de.json
+    level: 5
+  '1329':
+    description: No se ha podido cargar la configuración de modo de extremo
+    cause: ''
+    solution: Compruebe y actualice el archivo function/toolMode.json
+    level: 5
+  '1330':
+    description: No se ha podido cargar la configuración del conmutador de piel electrónica
+    cause: ''
+    solution: Compruebe y actualice el archivo elecSkin/switch.json
+    level: 5
+  '1331':
+    description: No se ha podido cargar el parámetro de sensibilidad de piel electrónica
+    cause: ''
+    solution: Compruebe y actualice el archivo elecSkin/sensitivity.json
+    level: 5
+  '1332':
+    description: No se ha podido cargar la lista de parámetros de carga
+    cause: ''
+    solution: Compruebe y actualice el archivo function/loadConfig.json
+    level: 5
+  '1333':
+    description: No se han podido cargar los parámetros de configuración de señales de seguridad del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo function/CC162/safeSignal.json
+    level: 5
+  '1334':
+    description: No se han podido cargar los parámetros de configuración de señales de seguridad del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo function/CCBOX/safeSignal.json
+    level: 5
+  '1335':
+    description: No se ha podido cargar la tabla de configuración de vietnamita
+    cause: ''
+    solution: Compruebe y actualice el archivo language/vi.json
+    level: 5
+  '1336':
+    description: No se ha podido cargar el archivo json del rango de voltaje del armario de control pequeño
+    cause: ''
+    solution: Compruebe y actualice el archivo function/ccboxVoltage.json
+    level: 5
+  '1337':
+    description: No se ha podido cargar el archivo de conmutador de control remoto de ES/Modbus
+    cause: ''
+    solution: Compruebe y actualice el archivo function/remoteSwitch.json
+    level: 5
+  '1338':
+    description: No se ha podido cargar el parámetro de límite de articulación de piel segura del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo elecSkin/jointLimit.json
+    level: 5
+  '1339':
+    description: No se han podido cargar los parámetros avoidParams de obstáculos de piel segura del robot
+    cause: ''
+    solution: Compruebe y actualice el archivo elecSkin/avoidParams.json
+    level: 5
+  '1340':
+    description: No se han podido cargar los parámetros de supresión de vibración
+    cause: ''
+    solution: Compruebe y actualice el archivo properties/suppressionConfig.json
+    level: 5
+  '1341':
+    description: No se han podido cargar los parámetros de detección del medidor de aceleración
+    cause: ''
+    solution: Compruebe y actualice el archivo properties/vibrationDetection.json
+    level: 5
+  '1342':
+    description: No se han podido cargar los parámetros de configuración del hexaedro
+    cause: ''
+    solution: Compruebe y actualice el archivo function/workZone.json
+    level: 5
+  '1343':
+    description: No se ha podido cargar la tabla de configuración de español
+    cause: ''
+    solution: Compruebe y actualice el archivo language/es.json
+    level: 5
+  '1344':
+    description: No se ha podido cargar la tabla de configuración de francés
+    cause: ''
+    solution: Compruebe y actualice el archivo language/fr.json
+    level: 5
+  '1345':
+    description: No se ha podido cargar la tabla de configuración de coreano
+    cause: ''
+    solution: Compruebe y actualice el archivo language/ko.json
+    level: 5
+  '1346':
+    description: No se ha podido cargar la tabla de configuración de ruso
+    cause: ''
+    solution: Compruebe y actualice el archivo language/ru.json
+    level: 5
+  '1359':
+    description: No se ha podido cargar el archivo de inicio
+    cause: ''
+    solution: Actualice el archivo correspondiente y reinicie el sistema
+    level: 5
+  '1360':
+    description: No se ha podido desactivar el robot
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1361':
+    description: No se ha podido abrir el freno del robot
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1362':
+    description: No se ha podido cerrar el freno del robot
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1363':
+    description: No se ha podido encender
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '1364':
+    description: No se ha podido iniciar la identificación automática
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1365':
+    description: No se ha podido detener la identificación automática
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1366':
+    description: No se ha podido entrar en el modo de arrastre
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1367':
+    description: No se ha podido salir del modo de arrastre
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1368':
+    description: No se ha podido establecer la tasa de velocidad global
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1369':
+    description: No se han podido establecer los parámetros de carga
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1370':
+    description: No se ha podido realizar la calibración de la postura de instalación
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1371':
+    description: No se ha podido realizar la calibración del sistema de coordenadas
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1372':
+    description: No se ha podido establecer la postura de instalación
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1373':
+    description: No se ha podido establecer la red
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1374':
+    description: No se ha podido establecer la wifi
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1375':
+    description: No se ha podido establecer el sistema de coordenadas de la herramienta
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1376':
+    description: No se ha podido establecer el sistema de coordenadas del usuario
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1377':
+    description: No se ha podido establecer la DO de extremo
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1378':
+    description: No se ha podido establecer la DO
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1379':
+    description: No se ha podido establecer la AO
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1380':
+    description: No se ha podido establecer el terminal 485
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1381':
+    description: No se ha podido establecer el modo de arrastre
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1382':
+    description: No se ha podido activar la función de colisión de seguridad
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1383':
+    description: No se ha podido desactivar la función de colisión de seguridad
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1385':
+    description: No se ha podido apagar
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '1386':
+    description: No se ha podido establecer el parámetro de límite de la articulación
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1387':
+    description: No se ha podido establecer el parámetro de límite del robot
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1388':
+    description: No se han podido establecer funciones avanzadas
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1389':
+    description: No se han podido actualizar los parámetros de la pared de seguridad
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1390':
+    description: Fallo del movimiento de articulación
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1391':
+    description: Fallo del movimiento lineal
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1392':
+    description: Fallo de la ejecución de la cinemática directa
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1393':
+    description: Fallo de la ejecución de la cinemática inversa
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1394':
+    description: Fallo del movimiento del arco
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1395':
+    description: Fallo del movimiento circular completo
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1396':
+    description: No se ha podido realizar el movimiento de articulación relativo usando el sistema de
+      coordenadas de la herramienta
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1397':
+    description: No se ha podido realizar el movimiento lineal relativo usando el sistema de coordenadas
+      de la herramienta
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1398':
+    description: No se ha podido mover la articulación relativa usando el sistema de coordenadas del usuario
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1399':
+    description: Fallo del movimiento lineal relativo usando el sistema de coordenadas del usuario
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1400':
+    description: Fallo del movimiento de articulación relativo usando el sistema de coordenadas de articulación
+      de cada eje
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1401':
+    description: Fallo de desplazamiento del punto cartesiano usando el sistema de coordenadas del usuario
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1402':
+    description: Fallo de desplazamiento del punto cartesiano usando el sistema de coordenadas de la herramienta
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1403':
+    description: No se ha podido detectar si el movimiento alcanza la posición de línea
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1404':
+    description: No se ha podido detectar si el movimiento alcanza la posición cartesiana
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1406':
+    description: Tiempo de espera de inicio del algoritmo
+    cause: ''
+    solution: Compruebe si codesys se inicia de forma anómala
+    level: 5
+  '1407':
+    description: Error de comunicación del algoritmo
+    cause: ''
+    solution: Reinicie el robot. Si el error persiste, puede ser un error del sistema; comuníquese con
+      el ingeniero de soporte técnico.
+    level: 5
+  '1408':
+    description: El estado en línea del eje 1 es anómalo
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1409':
+    description: El estado en línea del eje 2 es anómalo
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1410':
+    description: El estado en línea del eje 3 es anómalo
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1411':
+    description: El estado en línea del eje 4 es anómalo
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1412':
+    description: El estado en línea del eje 5 es anómalo
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1413':
+    description: El estado en línea del eje 6 es anómalo
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1414':
+    description: El estado en línea de la E/S de seguridad es anómalo
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1415':
+    description: El estado en línea de la E/S universal es anómalo
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1416':
+    description: El estado en línea de la placa de alimentación de energía es anómalo
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1417':
+    description: El estado en línea de la E/S de extremo es anómalo
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1418':
+    description: El archivo de proyecto no existe
+    cause: ''
+    solution: Compruebe si el documento del proyecto está dañado o no existe
+    level: 5
+  '1419':
+    description: El robot está apagado
+    cause: ''
+    solution: Una vez resuelto el error y encendido de nuevo el robot, se puede reanudar el funcionamiento
+      normal
+    level: 1
+  '1420':
+    description: Fallo del desplazamiento por impulsos
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1421':
+    description: No se ha podido establecer la sensibilidad de arrastre
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1422':
+    description: El estado de ejecución de script es anómalo
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1423':
+    description: No se ha podido activar/desactivar la piel de seguridad
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1424':
+    description: No se ha podido establecer la sensibilidad de la piel de seguridad
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1425':
+    description: No se ha podido restablecer la piel de seguridad
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1426':
+    description: No se ha podido restablecer por completo la piel de seguridad
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1427':
+    description: Fallo de la identificación automática de la carga
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1428':
+    description: Fallo de la comprobación de carga
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1429':
+    description: Tiempo de espera para que se detenga la ejecución
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1430':
+    description: Apagado después de parada de emergencia
+    cause: Una vez que se activa la parada de emergencia, el robot se apaga si no deja de moverse durante
+      500 ms.
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 0
+  '1431':
+    description: ''
+    cause: No se ha podido calcular el sistema de coordenadas del usuario
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1432':
+    description: ''
+    cause: No se ha podido calcular el sistema de coordenadas de la herramienta
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1433':
+    description: ''
+    cause: No se ha podido activar/desactivar la función para evitar obstáculos de la piel de seguridad
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1434':
+    description: ''
+    cause: No se han podido establecer los parámetros para evitar obstáculos de la piel de seguridad
+    solution: Inténtelo de nuevo. Si el error persiste, comuníquese con los ingenieros de soporte técnico
+    level: 5
+  '1435':
+    description: Error de formato de dirección IPv4
+    cause: Error de formato de dirección IPv4
+    solution: Rellene la dirección IPv4 correcta
+    level: 5
+  '1436':
+    description: Error de formato de máscara IPv4
+    cause: Error de formato de máscara IPv4
+    solution: Rellene la dirección de máscara IPv4 correcta
+    level: 5
+  '1437':
+    description: Error de formato de puerta de enlace IPv4 por defecto
+    cause: Error de formato de puerta de enlace IPv4 por defecto
+    solution: Rellene la dirección de puerta de enlace IPv4 por defecto correcta
+    level: 5
+  '1438':
+    description: La Profinet no es compatible
+    cause: La Profinet no es compatible
+    solution: Actualice el sistema del controlador a la última versión
+    level: 5
+  '1439':
+    description: No se admite la pausa para el movimiento de reproducción de trayectoria hasta el primer
+      punto. El robot se ha detenido.
+    cause: Colisión o colisión de la piel
+    solution: Resuelva la excepción y vuelva a ejecutar
+    level: 5
+  '1440':
+    description: La temperatura es demasiado alta o el sistema de control de temperatura no puede controlar
+      eficazmente la temperatura
+    cause: La temperatura ambiente es demasiado alta o el sistema de control de temperatura es anómalo
+    solution: Reduzca la temperatura del entorno de trabajo o comuníquese con el fabricante para obtener
+      soporte técnico
+    level: 5
+  '1441':
+    description: Fallo de la calibración cero
+    cause: ''
+    solution: Reinicie el robot. Si el error persiste, puede ser un error del sistema; comuníquese con
+      el ingeniero de soporte técnico.
+    level: 5
+  '1442':
+    description: No se han podido establecer los parámetros de supresión de vibración
+    cause: El parámetro de relación de supresión de vibración no es un int
+    solution: Compruebe el formato del parámetro del archivo properties/suppressionConfig.json
+    level: 5
+  '1443':
+    description: No se han podido establecer los parámetros de prueba de vibración
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, puede ser un error del sistema; comuníquese con
+      el ingeniero de soporte técnico.
+    level: 5
+  '1444':
+    description: No se han podido actualizar los parámetros de la zona de seguridad
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, puede ser un error del sistema; comuníquese con
+      el ingeniero de soporte técnico.
+    level: 5
+  '1445':
+    description: Se ha perdido la sincronización del bus de campo de la articulación 1
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, puede ser un error del sistema; comuníquese con
+      el ingeniero de soporte técnico.
+    level: 1
+  '1446':
+    description: Se ha perdido la sincronización del bus de campo de la articulación 2
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, puede ser un error del sistema; comuníquese con
+      el ingeniero de soporte técnico.
+    level: 1
+  '1447':
+    description: Se ha perdido la sincronización del bus de campo de la articulación 3
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, puede ser un error del sistema; comuníquese con
+      el ingeniero de soporte técnico.
+    level: 1
+  '1448':
+    description: Se ha perdido la sincronización del bus de campo de la articulación 4
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, puede ser un error del sistema; comuníquese con
+      el ingeniero de soporte técnico.
+    level: 1
+  '1449':
+    description: Se ha perdido la sincronización del bus de campo de la articulación 5
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, puede ser un error del sistema; comuníquese con
+      el ingeniero de soporte técnico.
+    level: 1
+  '1450':
+    description: Se ha perdido la sincronización del bus de campo de la articulación 6
+    cause: ''
+    solution: Inténtelo de nuevo. Si el error persiste, puede ser un error del sistema; comuníquese con
+      el ingeniero de soporte técnico.
+    level: 1
+  '1451':
+    description: La temperatura de la articulación 1 es demasiado alta
+    cause: La temperatura ambiente es demasiado alta o el sistema es anómalo
+    solution: Reduzca la temperatura del entorno de trabajo o comuníquese con el fabricante para obtener
+      soporte técnico
+    level: 5
+  '1452':
+    description: La temperatura de la articulación 2 es demasiado alta
+    cause: La temperatura ambiente es demasiado alta o el sistema es anómalo
+    solution: Reduzca la temperatura del entorno de trabajo o comuníquese con el fabricante para obtener
+      soporte técnico
+    level: 5
+  '1453':
+    description: La temperatura de la articulación 3 es demasiado alta
+    cause: La temperatura ambiente es demasiado alta o el sistema es anómalo
+    solution: Reduzca la temperatura del entorno de trabajo o comuníquese con el fabricante para obtener
+      soporte técnico
+    level: 5
+  '1454':
+    description: La temperatura de la articulación 4 es demasiado alta
+    cause: La temperatura ambiente es demasiado alta o el sistema es anómalo
+    solution: Reduzca la temperatura del entorno de trabajo o comuníquese con el fabricante para obtener
+      soporte técnico
+    level: 5
+  '1455':
+    description: La temperatura de la articulación 5 es demasiado alta
+    cause: La temperatura ambiente es demasiado alta o el sistema es anómalo
+    solution: Reduzca la temperatura del entorno de trabajo o comuníquese con el fabricante para obtener
+      soporte técnico
+    level: 5
+  '1456':
+    description: La temperatura de la articulación 6 es demasiado alta
+    cause: La temperatura ambiente es demasiado alta o el sistema es anómalo
+    solution: Reduzca la temperatura del entorno de trabajo o comuníquese con el fabricante para obtener
+      soporte técnico
+    level: 5
+  '1457':
+    description: La temperatura del chip de control principal es demasiado alta
+    cause: La temperatura ambiente es demasiado alta o el sistema es anómalo
+    solution: Reduzca la temperatura del entorno de trabajo o comuníquese con el fabricante para obtener
+      soporte técnico
+    level: 5
+  '1458':
+    description: Sistema de coordenadas del usuario no activado
+    cause: El sistema de coordenadas del usuario designado no está activado
+    solution: Utilice el índice del sistema de coordenadas correcto o añada y establezca un nuevo sistema
+      de coordenadas del usuario
+    level: 5
+  '1459':
+    description: Sistema de coordenadas de la herramienta no activado
+    cause: El sistema de coordenadas de la herramienta designada no está activado
+    solution: Utilice el índice del sistema de coordenadas correcto o añada y establezca un nuevo sistema
+      de coordenadas de la herramienta
+    level: 5
+  '1538':
+    description: El contactor de CA no se cerró como se necesitaba durante 2 segundos consecutivos
+    cause: ''
+    solution: Reinicie el robot. Si el error persiste, es posible que el hardware resulte dañado. Comuníquese
+      con los ingenieros de soporte técnico
+    level: 1
+  '1540':
+    description: Los datos en línea no se actualizan durante 1 minuto después de 5 minutos de encendido
+    cause: ''
+    solution: Reinicie el robot. Si el error persiste, es posible que el hardware resulte dañado. Comuníquese
+      con los ingenieros de soporte técnico
+    level: 1
+  '1541':
+    description: La detección del estado de CA es incorrecta
+    cause: ''
+    solution: Reinicie el robot. Si el error persiste, es posible que el hardware resulte dañado. Comuníquese
+      con los ingenieros de soporte técnico
+    level: 1
+  '1543':
+    description: El conmutador del panel está presionado hacia abajo
+    cause: ''
+    solution: Borre la alarma y vuelva a encender
+    level: 0
+  '1544':
+    description: La placa de alimentación de energía está fuera de línea
+    cause: ''
+    solution: Reinicie el robot. Si el error persiste, es posible que el hardware resulte dañado. Comuníquese
+      con los ingenieros de soporte técnico
+    level: 1
+  '1548':
+    description: El estado del supercondensador de 24 V es anómalo
+    cause: ''
+    solution: Reinicie el robot. Si el error persiste, es posible que el hardware resulte dañado. Comuníquese
+      con los ingenieros de soporte técnico
+    level: 0
+  '1549':
+    description: El estado del supercondensador de 48 V es anómalo
+    cause: ''
+    solution: Reinicie el robot. Si el error persiste, es posible que el hardware resulte dañado. Comuníquese
+      con los ingenieros de soporte técnico
+    level: 0
+  '1792':
+    description: Alarma de sobretensión de supervisión del voltaje de entrada
+    cause: ''
+    solution: Reinicie el robot. Si el error persiste, es posible que el hardware resulte dañado. Comuníquese
+      con los ingenieros de soporte técnico
+    level: 1
+  '1793':
+    description: Alarma de subtensión de supervisión del voltaje de entrada
+    cause: ''
+    solution: Reinicie el robot. Si el error persiste, es posible que el hardware resulte dañado. Comuníquese
+      con los ingenieros de soporte técnico
+    level: 1
+  '1794':
+    description: Alarma activada por detección anómala en el chip limitador de corriente de alimentación
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1795':
+    description: Alarma de sobretensión de detección del voltaje de salida
+    cause: ''
+    solution: Reinicie el robot. Si el error persiste, es posible que el hardware resulte dañado. Comuníquese
+      con los ingenieros de soporte técnico
+    level: 1
+  '1796':
+    description: Alarma de subtensión de detección del voltaje de salida
+    cause: ''
+    solution: Reinicie el robot. Si el error persiste, es posible que el hardware resulte dañado. Comuníquese
+      con los ingenieros de soporte técnico
+    level: 1
+  '1797':
+    description: Alarma activada por un valor anómalo del regulador de voltaje del primer circuito interno
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '1798':
+    description: Alarma activada por un valor anómalo del regulador de voltaje del segundo circuito interno
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '1799':
+    description: Alarma activada por voltaje de salida anómalo antes del inicio lento del encendido principal
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 0
+  '1800':
+    description: Sobrecorriente detectada en la corriente de alimentación de energía
+    cause: ''
+    solution: La corriente de alimentación es demasiado grande. Comuníquese con los ingenieros de soporte
+      técnico
+    level: 1
+  '1801':
+    description: Alarma activada por protección de sobrepotencia de resistencia del cemento
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1802':
+    description: Alarma activada por la corriente de bus que excede el límite
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1803':
+    description: Alarma activada por alimentación de energía durante el inicio lento del encendido principal
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1804':
+    description: Alarma activada por detección anómala del estado del tubo MOS de control de salida de
+      48 V.
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1805':
+    description: Alarma activada por fallo de inicio lento del encendido principal.
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1808':
+    description: Alarma de sobretensión de supervisión del voltaje de entrada
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 0
+  '1809':
+    description: Alarma de subtensión de supervisión del voltaje de entrada
+    cause: ''
+    solution: La corriente de alimentación es demasiado grande. Comuníquese con los ingenieros de soporte
+      técnico
+    level: 0
+  '1810':
+    description: Alarma activada por detección anómala en el chip limitador de corriente de alimentación
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 0
+  '1811':
+    description: Alarma de sobretensión de detección del voltaje de salida
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 0
+  '1812':
+    description: Alarma de subtensión de detección del voltaje de salida
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 0
+  '1813':
+    description: Alarma activada por precarga anómala del cuerpo principal
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1814':
+    description: Alarma activada por falla de sobrecorriente en el chip de carga del supercondensador
+      de 48V
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1815':
+    description: Alarma activada por alta temperatura en el tubo MOS de control de salida de 48 V.
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 0
+  '1816':
+    description: Sobrecorriente detectada en la corriente de alimentación de energía
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1817':
+    description: Alarma activada por protección de sobrepotencia de resistencia del cemento
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1818':
+    description: Alarma activada por la corriente de bus que excede el límite
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1819':
+    description: Alarma activada por voltaje de transmisión anómalo del circuito de alimentación de energía
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1820':
+    description: Alarma activada por detección anómala del estado del tubo MOS de control de salida de
+      48 V.
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1821':
+    description: La detección del estado del ventilador es anómala
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1824':
+    description: Alarma activada por supervisión de voltaje de referencia anómalo en el circuito comparador
+      del supercondensador de 48 V
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1825':
+    description: Alarma activada por circuito anómalo del supercondensador de 24 V
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '1826':
+    description: Alarma activada por configuración anómala del voltaje máximo de entrada
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '1827':
+    description: Alarma activada por configuración anómala del voltaje mínimo de entrada
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '1828':
+    description: Alarma activada por detección de tiempo de alimentación de energía anómala
+    cause: ''
+    solution: Compruebe si la fuente de alimentación de entrada y la carga son normales o comuníquese
+      con los ingenieros de soporte técnico
+    level: 0
+  '1829':
+    description: Alarma activada por detección anómala de la señal de control del circuito de alimentación
+      de energía
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 0
+  '2050':
+    description: Alarma de tiempo de espera de parada de protección
+    cause: ''
+    solution: Borre el error y vuelva a encender
+    level: 0
+  '2051':
+    description: La posición del anillo interior de la articulación 1 excede el límite
+    cause: ''
+    solution: Reinicie. Si el problema aún no se puede resolver, comuníquese con los ingenieros de soporte
+      técnico.
+    level: 1
+  '2052':
+    description: La posición del anillo interior de la articulación 2 excede el límite
+    cause: ''
+    solution: Reinicie. Si el problema aún no se puede resolver, comuníquese con los ingenieros de soporte
+      técnico.
+    level: 1
+  '2053':
+    description: La posición del anillo interior de la articulación 3 excede el límite
+    cause: ''
+    solution: Reinicie. Si el problema aún no se puede resolver, comuníquese con los ingenieros de soporte
+      técnico.
+    level: 1
+  '2054':
+    description: La posición del anillo interior de la articulación 4 excede el límite
+    cause: ''
+    solution: Reinicie. Si el problema aún no se puede resolver, comuníquese con los ingenieros de soporte
+      técnico.
+    level: 1
+  '2055':
+    description: La posición del anillo interior de la articulación 5 excede el límite
+    cause: ''
+    solution: Reinicie. Si el problema aún no se puede resolver, comuníquese con los ingenieros de soporte
+      técnico.
+    level: 1
+  '2056':
+    description: La posición del anillo interior de la articulación 6 excede el límite
+    cause: ''
+    solution: Reinicie. Si el problema aún no se puede resolver, comuníquese con los ingenieros de soporte
+      técnico.
+    level: 1
+  '2057':
+    description: La velocidad del anillo interior de la articulación 1 excede el límite
+    cause: ''
+    solution: Disminuir la velocidad de las articulaciones o los ajustes de velocidad cartesiana
+    level: 1
+  '2058':
+    description: La velocidad del anillo interior de la articulación 2 excede el límite
+    cause: ''
+    solution: Disminuir la velocidad de las articulaciones o los ajustes de velocidad cartesiana
+    level: 1
+  '2059':
+    description: La velocidad del anillo interior de la articulación 3 excede el límite
+    cause: ''
+    solution: Disminuir la velocidad de las articulaciones o los ajustes de velocidad cartesiana
+    level: 1
+  '2060':
+    description: La velocidad del anillo interior de la articulación 4 excede el límite
+    cause: ''
+    solution: Disminuir la velocidad de las articulaciones o los ajustes de velocidad cartesiana
+    level: 1
+  '2061':
+    description: La velocidad del anillo interior de la articulación 5 excede el límite
+    cause: ''
+    solution: Disminuir la velocidad de las articulaciones o los ajustes de velocidad cartesiana
+    level: 1
+  '2062':
+    description: La velocidad del anillo interior de la articulación 6 excede el límite
+    cause: ''
+    solution: Disminuir la velocidad de las articulaciones o los ajustes de velocidad cartesiana
+    level: 1
+  '2063':
+    description: El par de articulación 1 excede el límite
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2064':
+    description: El par de articulación 2 excede el límite
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2065':
+    description: El par de articulación 3 excede el límite
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2066':
+    description: El par de articulación 4 excede el límite
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2067':
+    description: El par de articulación 5 excede el límite
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2068':
+    description: El par de articulación 6 excede el límite
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2069':
+    description: La posición de TCP excede el límite
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2070':
+    description: La tasa de TCP excede el límite
+    cause: ''
+    solution: Reducir ajustes de velocidad de articulación o de velocidad cartesiana
+    level: 1
+  '2071':
+    description: Incompatibilidad de versiones en los controladores de seguridad A y B
+    cause: ''
+    solution: Si las versiones de los controladores de seguridad A y B son diferentes, actualice el firmware
+      para asegurar la compatibilidad entre las dos versiones. Si necesita ayuda adicional, comuníquese
+      con el soporte técnico.
+    level: 1
+  '2072':
+    description: El límite de fuerza de TCP excede el límite
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2073':
+    description: Límites del plano de seguridad excedidos
+    cause: ''
+    solution: Eliminar la alarma, volver a habilitar y mover el robot de regreso al área de seguridad
+    level: 1
+  '2074':
+    description: La velocidad excede el límite una vez que se activa la pared de seguridad virtual
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2075':
+    description: La detección del estado del contactor es anómala
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2076':
+    description: La detección en línea de la placa de alimentación de energía es anómala
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2077':
+    description: Se ha presionado el conmutador del panel frontal
+    cause: ''
+    solution: Después de aflojar el conmutador del panel, se puede reanudar el funcionamiento normal
+    level: 0
+  '2078':
+    description: Error de detección de CA
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2080':
+    description: La posición o velocidad del sistema de transmisión de la articulación 1 del robot está
+      fuera de tolerancia
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2081':
+    description: La posición o velocidad del sistema de transmisión de la articulación 2 del robot está
+      fuera de tolerancia.
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2082':
+    description: La posición o velocidad del sistema de transmisión de la articulación 3 del robot está
+      fuera de tolerancia
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2083':
+    description: La posición o velocidad del sistema de transmisión de la articulación 4 del robot está
+      fuera de tolerancia
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2084':
+    description: La posición o velocidad del sistema de transmisión de la articulación 5 del robot está
+      fuera de tolerancia
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2085':
+    description: La posición o velocidad del sistema de transmisión de la articulación 6 del robot está
+      fuera de tolerancia.
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2087':
+    description: Error de verificación del parámetro de límite de seguridad
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2088':
+    description: Error de coincidencia del parámetro de límite de seguridad
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2089':
+    description: Error de detección del puerto de entrada de E/S
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2090':
+    description: Error de detección del puerto de salida de E/S
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2091':
+    description: Error de detección de voltaje de 3,3 V
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2092':
+    description: Error de detección de voltaje de 5 V
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2093':
+    description: Error de detección de voltaje de 24 V
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2096':
+    description: Error de detección de estado en línea de SCBB
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '2097':
+    description: La posición del sistema de transmisión de la articulación del robot está fuera de tolerancia.
+    cause: ''
+    solution: Reinicie. Si el problema aún no se puede resolver, comuníquese con los ingenieros de soporte
+      técnico.
+    level: 1
+  '2098':
+    description: La velocidad del sistema de transmisión de la articulación del robot está fuera de tolerancia.
+    cause: ''
+    solution: Reinicie. Si el problema aún no se puede resolver, comuníquese con los ingenieros de soporte
+      técnico.
+    level: 1
+  '2099':
+    description: La posición del anillo exterior de la articulación 1 excede el límite
+    cause: ''
+    solution: Reinicie. Si el problema aún no se puede resolver, comuníquese con los ingenieros de soporte
+      técnico.
+    level: 1
+  '2100':
+    description: La posición del anillo exterior de la articulación 2 excede el límite
+    cause: ''
+    solution: Reinicie. Si el problema aún no se puede resolver, comuníquese con los ingenieros de soporte
+      técnico.
+    level: 1
+  '2101':
+    description: La posición del anillo exterior de la articulación 3 supera el límite
+    cause: ''
+    solution: Reinicie. Si el problema aún no se puede resolver, comuníquese con los ingenieros de soporte
+      técnico.
+    level: 1
+  '2102':
+    description: La posición del anillo exterior de la articulación 4 supera el límite
+    cause: ''
+    solution: Reinicie. Si el problema aún no se puede resolver, comuníquese con los ingenieros de soporte
+      técnico.
+    level: 1
+  '2103':
+    description: La posición del anillo exterior de la articulación 5 excede el límite
+    cause: ''
+    solution: Reinicie. Si el problema aún no se puede resolver, comuníquese con los ingenieros de soporte
+      técnico.
+    level: 1
+  '2104':
+    description: La posición del anillo exterior de la articulación 6 supera el límite
+    cause: ''
+    solution: Reinicie. Si el problema aún no se puede resolver, comuníquese con los ingenieros de soporte
+      técnico.
+    level: 1
+  '2105':
+    description: La velocidad del anillo exterior de la articulación 1 excede el límite
+    cause: ''
+    solution: Disminuir la velocidad de las articulaciones o los ajustes de velocidad cartesiana
+    level: 1
+  '2106':
+    description: La velocidad del anillo exterior de la articulación 2 excede el límite
+    cause: ''
+    solution: Disminuir la velocidad de las articulaciones o los ajustes de velocidad cartesiana
+    level: 1
+  '2107':
+    description: La velocidad del anillo exterior de la articulación 3 excede el límite
+    cause: ''
+    solution: Disminuir la velocidad de las articulaciones o los ajustes de velocidad cartesiana
+    level: 1
+  '2108':
+    description: La velocidad del anillo exterior de la articulación 4 excede el límite
+    cause: ''
+    solution: Disminuir la velocidad de las articulaciones o los ajustes de velocidad cartesiana
+    level: 1
+  '2109':
+    description: La velocidad del anillo exterior de la articulación 5 excede el límite
+    cause: ''
+    solution: Disminuir la velocidad de las articulaciones o los ajustes de velocidad cartesiana
+    level: 1
+  '2110':
+    description: La velocidad del anillo exterior de la articulación 6 excede el límite
+    cause: ''
+    solution: Disminuir la velocidad de las articulaciones o los ajustes de velocidad cartesiana
+    level: 1
+  '2112':
+    description: Error de chip de DO
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '2113':
+    description: Sobrecorriente de DO
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '2114':
+    description: Alarma de salida de 24 V
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '2128':
+    description: Alarma de subtensión para detección de voltaje de alimentación
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '2129':
+    description: Alarma de sobretensión para detección de voltaje de alimentación
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '2130':
+    description: Alarma anómala para detección del circuito de alimentación de energía
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '2132':
+    description: Alarma anómala para detección del circuito de parada de emergencia
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '2133':
+    description: Alarma de cortocircuito para detección del circuito del cuerpo principal
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 0
+  '2134':
+    description: Error al establecer el voltaje mínimo de entrada
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2135':
+    description: Error al establecer el voltaje máximo de entrada
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2136':
+    description: La temperatura del chip MCU es demasiado alta
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '2137':
+    description: Alarma activada por error de detección en configuración de tipo PNP de DI
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2138':
+    description: Alarma activada por error de detección en configuración de tipo NPN de DI
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2139':
+    description: Alarma activada por detección anómala en ejecución de apagado
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '2140':
+    description: Detección anómala en el tiempo de alimentación de energía
+    cause: ''
+    solution: Compruebe si la fuente de alimentación de entrada y la carga son normales o comuníquese
+      con los ingenieros de soporte técnico
+    level: 0
+  '2144':
+    description: Alarma de fuera de línea de extremo
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '2145':
+    description: Alarma de sobrecorriente de salida DO1
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '2146':
+    description: Alarma de sobrecorriente de salida DO2
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '2147':
+    description: Alarma de sobrecorriente de salida DO3
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '2148':
+    description: Alarma de sobrecorriente de salida DO4
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '2149':
+    description: Alarma de sobrecorriente de salida de 24 V
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '2160':
+    description: Alarma de sobrecorriente de salida DO1 de extremo
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '2161':
+    description: Alarma de sobrecorriente de salida DO2 de extremo
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '2162':
+    description: Alarma de sobrecorriente de salida de 24 V de extremo
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '4096':
+    description: Archivo de repetición de trayectoria no existe
+    cause: ''
+    solution: Por favor, verifique si el archivo de repetición de trayectoria existe en la ruta correcta.
+    level: 5
+  '4097':
+    description: Error de contenido en el archivo de repetición de trayectoria
+    cause: ''
+    solution: Por favor, verifique el contenido del archivo de repetición de trayectoria en busca de errores
+      o inconsistencias.
+    level: 5
+  '4098':
+    description: Error de nombre del archivo de repetición de trayectoria
+    cause: ''
+    solution: Por favor, asegúrese de que el archivo de repetición de trayectoria tenga el nombre correcto
+      y válido.
+    level: 5
+  '4099':
+    description: Error en la ejecución de la repetición de la trayectoria
+    cause: ''
+    solution: Si la repetición de la trayectoria encuentra errores durante la ejecución, por favor revise
+      los archivos de registro e identifique la causa raíz. Si es necesario, consulte el soporte técnico
+      para obtener ayuda adicional.
+    level: 5
+  '4100':
+    description: Vuelva a ejecutar la trayectoria para reproducir.
+    cause: ''
+    solution: Vuelva a ejecutar la trayectoria para reproducir.
+    level: 5
+  '4112':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '4128':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '4192':
+    description: dobot+ error
+    cause: ''
+    solution: Check user logs for more detailed information
+    level: 5
+  '4193':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+servo:
+  '8752':
+    description: Protección contra sobrecorriente de hardware
+    cause: ''
+    solution: Si la corriente real recogida por el servo es superior al 90 % de la corriente máxima de
+      muestreo del hardware, compruebe si el hardware es normal o comuníquese con los ingenieros de soporte
+      técnico
+    level: 1
+  '8992':
+    description: Protección contra sobrecorriente de software
+    cause: ''
+    solution: Apague y reinicie el controlador, o comuníquese con el ingeniero de soporte técnico
+    level: 1
+  '9040':
+    description: Módulo en estado de sobrecarga
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente o comuníquese con el ingeniero de soporte
+      técnico
+    level: 1
+  '9088':
+    description: El desplazamiento actual del punto cero es demasiado alto
+    cause: ''
+    solution: Restablezca el desplazamiento actual del punto cero
+    level: 1
+  '12592':
+    description: Se ha perdido la fase de entrada del controlador
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente o comuníquese con el ingeniero de soporte
+      técnico
+    level: 1
+  '12816':
+    description: El voltaje entre PN es demasiado alto
+    cause: ''
+    solution: El servidor detecta que el voltaje de bus es mayor que el umbral preestablecido. Compruebe
+      si el hardware es normal o comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '12832':
+    description: El voltaje entre PN es demasiado bajo
+    cause: ''
+    solution: El servidor detecta que el voltaje de bus es menor que el umbral preestablecido. Compruebe
+      si el hardware es normal o comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '12928':
+    description: Fallo de coincidencia de potencia del servo y del motor
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente o comuníquese con el ingeniero de soporte
+      técnico
+    level: 1
+  '13184':
+    description: La fase de salida del controlador es incorrecta
+    cause: ''
+    solution: Realice el cableado como la secuencia de fase correcta
+    level: 1
+  '17168':
+    description: La temperatura del controlador es demasiado alta
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente o comuníquese con el ingeniero de soporte
+      técnico
+    level: 1
+  '17169':
+    description: La resistencia de medición de temperatura está dañada o no se ha instalado
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente o comuníquese con el ingeniero de soporte
+      técnico
+    level: 1
+  '21008':
+    description: La identificación del controlador es anómala
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente o comuníquese con el ingeniero de soporte
+      técnico
+    level: 1
+  '21120':
+    description: La configuración de FPGA es incorrecta
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '21121':
+    description: Error interno
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '21122':
+    description: El cableado de seguridad de STO es anómalo
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '21569':
+    description: La conexión del controlador es anómala
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente o comuníquese con el ingeniero de soporte
+      técnico
+    level: 1
+  '25378':
+    description: La función de DI se asigna repetidamente
+    cause: ''
+    solution: Compruebe los parámetros del grupo de DI para ver si la misma función está asignada a diferentes
+      DI
+    level: 1
+  '25379':
+    description: La asignación de la función de DO excede el límite
+    cause: ''
+    solution: Compruebe si los cables de comunicación están conectados de forma fiable
+    level: 1
+  '25382':
+    description: Los límites superior e inferior de la ubicación de software se han establecido de forma
+      incorrecta
+    cause: ''
+    solution: Establezca los valores correctos de 0x607D-01h y 0x607D-02h
+    level: 1
+  '25383':
+    description: La configuración de desplazamiento de origen es incorrecta
+    cause: ''
+    solution: Establezca los valores correctos de 0x607D-01h y 0x607D-02h y asegúrese de que el desplazamiento
+      de origen de 0x607C esté entre ellos
+    level: 1
+  '28961':
+    description: Bloqueo de protección contra sobrecalentamiento del motor.
+    cause: ''
+    solution: Compruebe si el freno se abre normalmente o si el motor está atascado debido a un fallo
+      mecánico
+    level: 1
+  '29056':
+    description: El motor está en estado de sobrecarga
+    cause: ''
+    solution: Compruebe si la carga de extremo del robot excede la carga nominal del robot o comuníquese
+      con el personal técnico correspondiente para reemplazar el motor
+    level: 1
+  '29568':
+    description: La comunicación del codificador es anómala
+    cause: ''
+    solution: Compruebe la conexión del codificador o reemplace el codificador de mantenimiento
+    level: 1
+  '29569':
+    description: El codificador es anómalo
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente o comuníquese con el ingeniero de soporte
+      técnico
+    level: 1
+  '29570':
+    description: La batería del codificador es anómala
+    cause: ''
+    solution: Comuníquese con el ingeniero de soporte técnico
+    level: 1
+  '29571':
+    description: Error interno del codificador principal
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '29572':
+    description: Error de verificación de CRC del codificador principal
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '29573':
+    description: El codificador auxiliar está desconectado
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '29574':
+    description: Error interno del codificador auxiliar
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '29575':
+    description: Error de verificación de CRC del codificador auxiliar
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '29576':
+    description: El búfer de salida de pwm es anómalo
+    cause: ''
+    solution: Reemplace el controlador
+    level: 1
+  '29577':
+    description: La fuente de alimentación del freno es anómala
+    cause: ''
+    solution: Compruebe si el freno está conectado o dañado
+    level: 1
+  '29584':
+    description: Gran desviación en la posición de la articulación.
+    cause: ''
+    solution: 1. Verificar los parámetros de producción  2. Verificar la instalación del codificador  3.
+      Verificar la estructura de transmisión
+    level: 1
+  '30080':
+    description: La comunicación EtherCAT es anómala
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '30081':
+    description: El archivo de configuración XML no se ha grabado
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '30082':
+    description: El periodo de sincronización se ha configurado de forma incorrecta
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '30083':
+    description: Durante la comunicación síncrona, se ha perdido la señal de sincronización de la estación
+      maestra
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '30084':
+    description: El error del periodo de sincronización es demasiado grande
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '33920':
+    description: La velocidad de salida es mayor que la velocidad esperada
+    cause: ''
+    solution: Compruebe si la conexión lineal del motor es normal
+    level: 1
+  '33921':
+    description: La diferencia entre la velocidad establecida y la velocidad actual excede el rango
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente y reinicie el controlador, o comuníquese
+      con el ingeniero de soporte técnico
+    level: 1
+  '33922':
+    description: El motor se ha calado
+    cause: ''
+    solution: Compruebe si el ángulo eléctrico es normal o si el motor está dañado
+    level: 1
+  '34321':
+    description: La diferencia entre la posición establecida y la posición actual excede el rango
+    cause: ''
+    solution: Error del sistema. Comuníquese con los ingenieros de soporte técnico
+    level: 1
+  '34322':
+    description: La posición está fuera de rango
+    cause: ''
+    solution: Introduzca los parámetros correctos
+    level: 1
+  '34323':
+    description: La desviación de posición de bucle cerrado total es demasiado grande
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente o comuníquese con el ingeniero de soporte
+      técnico
+    level: 1
+  '65282':
+    description: Fallo de identificación del ángulo
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente o comuníquese con el ingeniero de soporte
+      técnico
+    level: 1
+  '65344':
+    description: Fallo de identificación del parámetro
+    cause: ''
+    solution: Compruebe si el hardware funciona correctamente o comuníquese con el ingeniero de soporte
+      técnico
+    level: 1

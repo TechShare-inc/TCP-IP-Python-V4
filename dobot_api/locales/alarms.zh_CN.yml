@@ -1,0 +1,1937 @@
+controller:
+  '16':
+    description: 规划位置接近肩奇异点
+    cause: ''
+    solution: 重新选取运动点位或在奇异点附近采用关节插补指令
+    level: 5
+  '17':
+    description: 逆解算无解
+    cause: ''
+    solution: 重新选取目标运动点位，避开奇异点和不可达点
+    level: 5
+  '18':
+    description: 逆解结果限位
+    cause: ''
+    solution: 重新选取目标运动点位
+    level: 5
+  '19':
+    description: JUMP或ARC或Circles指令点位重复
+    cause: ''
+    solution: 重新选取运动点位，使之符合对应指令的要求
+    level: 5
+  '26':
+    description: 规划位置接近腕奇异点
+    cause: ''
+    solution: 重新选取运动点位或在奇异点附近采用关节插补指令
+    level: 5
+  '27':
+    description: 规划位置接近肘奇异点
+    cause: ''
+    solution: 重新选取运动点位或在奇异点附近采用关节插补指令
+    level: 5
+  '29':
+    description: 速度输入参数错误
+    cause: ''
+    solution: 检查速度参数
+    level: 5
+  '30':
+    description: 全参逆解求解失败
+    cause: ''
+    solution: 重新启动，若仍无法解决请联系技术支持工程师或接近关节奇异点附近，离开即可
+    level: 5
+  '48':
+    description: 关节1超速
+    cause: ''
+    solution: 减小关节速度或笛卡尔速度设置，或重新选取运动点位，远离奇异点
+    level: 5
+  '49':
+    description: 关节2超速
+    cause: ''
+    solution: 减小关节速度或笛卡尔速度设置，或重新选取运动点位，远离奇异点
+    level: 5
+  '50':
+    description: 关节3超速
+    cause: ''
+    solution: 减小关节速度或笛卡尔速度设置，或重新选取运动点位，远离奇异点
+    level: 5
+  '51':
+    description: 关节4超速
+    cause: ''
+    solution: 减小关节速度或笛卡尔速度设置，或重新选取运动点位，远离奇异点
+    level: 5
+  '52':
+    description: 关节5超速
+    cause: ''
+    solution: 减小关节速度或笛卡尔速度设置，或重新选取运动点位，远离奇异点
+    level: 5
+  '53':
+    description: 关节6超速
+    cause: ''
+    solution: 减小关节速度或笛卡尔速度设置，或重新选取运动点位，远离奇异点
+    level: 5
+  '54':
+    description: 关节1位置超差
+    cause: ''
+    solution: 重新启动，若仍无法解决请联系技术支持工程师
+    level: 5
+  '55':
+    description: 关节2位置超差
+    cause: ''
+    solution: 重新启动，若仍无法解决请联系技术支持工程师
+    level: 5
+  '56':
+    description: 关节3位置超差
+    cause: ''
+    solution: 重新启动，若仍无法解决请联系技术支持工程师
+    level: 5
+  '57':
+    description: 关节4位置超差
+    cause: ''
+    solution: 重新启动，若仍无法解决请联系技术支持工程师
+    level: 5
+  '58':
+    description: 关节5位置超差
+    cause: ''
+    solution: 重新启动，若仍无法解决请联系技术支持工程师
+    level: 5
+  '59':
+    description: 关节6位置超差
+    cause: ''
+    solution: 重新启动，若仍无法解决请联系技术支持工程师
+    level: 5
+  '64':
+    description: 关节1正向限位
+    cause: ''
+    solution: 确认当前关节角度和软限位设置，反向点动脱离限位或修改软限位设置
+    level: 5
+  '65':
+    description: 关节1负向限位
+    cause: ''
+    solution: 确认当前关节角度和软限位设置，反向点动脱离限位或修改软限位设置
+    level: 5
+  '66':
+    description: 关节2正向限位
+    cause: ''
+    solution: 确认当前关节角度和软限位设置，反向点动脱离限位或修改软限位设置
+    level: 5
+  '67':
+    description: 关节2负向限位
+    cause: ''
+    solution: 确认当前关节角度和软限位设置，反向点动脱离限位或修改软限位设置
+    level: 5
+  '68':
+    description: 关节3正向限位
+    cause: ''
+    solution: 确认当前关节角度和软限位设置，反向点动脱离限位或修改软限位设置
+    level: 5
+  '69':
+    description: 关节3负向限位
+    cause: ''
+    solution: 确认当前关节角度和软限位设置，反向点动脱离限位或修改软限位设置
+    level: 5
+  '70':
+    description: 关节4正向限位
+    cause: ''
+    solution: 确认当前关节角度和软限位设置，反向点动脱离限位或修改软限位设置
+    level: 5
+  '71':
+    description: 关节4负向限位
+    cause: ''
+    solution: 确认当前关节角度和软限位设置，反向点动脱离限位或修改软限位设置
+    level: 5
+  '72':
+    description: 关节5正向限位
+    cause: ''
+    solution: 确认当前关节角度和软限位设置，反向点动脱离限位或修改软限位设置
+    level: 5
+  '73':
+    description: 关节5负向限位
+    cause: ''
+    solution: 确认当前关节角度和软限位设置，反向点动脱离限位或修改软限位设置
+    level: 5
+  '74':
+    description: 关节6正向限位
+    cause: ''
+    solution: 确认当前关节角度和软限位设置，反向点动脱离限位或修改软限位设置
+    level: 5
+  '75':
+    description: 关节6负向限位
+    cause: ''
+    solution: 确认当前关节角度和软限位设置，反向点动脱离限位或修改软限位设置
+    level: 5
+  '76':
+    description: 末端按键与机器人本体发生自干涉
+    cause: ''
+    solution: 检查机器人末端状态，重新选取运动点位
+    level: 5
+  '77':
+    description: 末端法兰盘与机器人本体发生自干涉
+    cause: ''
+    solution: 检查机器人末端状态，重新选取运动点位
+    level: 5
+  '114':
+    description: 机器人标定零点失败
+    cause: ''
+    solution: 重启机器人再次标定，若仍无法解决请联系技术支持工程师
+    level: 5
+  '115':
+    description: 机器人使能失败
+    cause: ''
+    solution: 重启机器人再次使能，若仍无法解决请联系技术支持工程师
+    level: 5
+  '116':
+    description: 硬件急停按钮被拍下
+    cause: ''
+    solution: 松开急停按钮后依程序可恢复正常操作
+    level: 1
+  '132':
+    description: 软件急停信号被触发
+    cause: ''
+    solution: 复位软件急停信号后依程序可恢复正常操作
+    level: 1
+  '133':
+    description: 用户急停信号被触发
+    cause: ''
+    solution: 复位用户急停信号后依程序可恢复正常操作
+    level: 1
+  '134':
+    description: 机器人无法保持静止
+    cause: ''
+    solution: 检查负载是否设置正确或错误安装角度设置
+    level: 1
+  '146':
+    description: 点动/寸动规划失败
+    cause: ''
+    solution: 重新启动，若仍无法解决请联系技术支持工程师
+    level: 5
+  '147':
+    description: 轨迹复现或小线段给定点位小于4
+    cause: ''
+    solution: 检查轨迹文件，确保内部点位数量足够
+    level: 5
+  '148':
+    description: 轨迹复现按给定约束复现失败
+    cause: ''
+    solution: 检查轨迹文件是否正确或设置合理的参数
+    level: 5
+  '160':
+    description: 当前指令不支持暂停，机器人已停止
+    cause: ''
+    solution: 重新启动程序
+    level: 5
+  '224':
+    description: 机器人接近安全工作区域
+    cause: ''
+    solution: 清除报警，并点动机器人回到安全工作区域内。
+    level: 5
+  '1280':
+    description: 加载机器人负载参数失败
+    cause: ''
+    solution: 检查并更新function/loadParams.json文件
+    level: 5
+  '1281':
+    description: 加载机器人辨识参数失败
+    cause: ''
+    solution: 检查并更新properties/dynamicsParams.json文件
+    level: 5
+  '1282':
+    description: 加载机器人结构参数失败
+    cause: ''
+    solution: 检查并更新properties/structure.json文件
+    level: 5
+  '1283':
+    description: 加载机器人示教坐标系点动参数失败
+    cause: ''
+    solution: 检查并更新teach/coordinate.json文件
+    level: 5
+  '1284':
+    description: 加载机器人示教关节点动参数失败
+    cause: ''
+    solution: 检查并更新teach/joint.json文件
+    level: 5
+  '1285':
+    description: 加载机器人示教寸动参数失败
+    cause: ''
+    solution: 检查并更新teach/inch.json文件
+    level: 5
+  '1286':
+    description: 加载机器人关节空间规划参数失败
+    cause: ''
+    solution: 检查并更新playback/joint.json文件
+    level: 5
+  '1287':
+    description: 加载机器人笛卡尔空间规划参数失败
+    cause: ''
+    solution: 检查并更新playback/coordinate.json文件
+    level: 5
+  '1288':
+    description: 加载机器人门型参数失败
+    cause: ''
+    solution: 检查并更新playback/arch.json文件
+    level: 5
+  '1289':
+    description: 加载机器人全局速率参数失败
+    cause: ''
+    solution: 检查并更新settings/common,json文件
+    level: 5
+  '1290':
+    description: 加载机器人点动坐标系索引参数失败
+    cause: ''
+    solution: 检查并更新datasvr/config.json文件
+    level: 5
+  '1291':
+    description: 加载机器人用户坐标系参数失败
+    cause: ''
+    solution: 检查并更新coordinate/user.json文件
+    level: 5
+  '1292':
+    description: 加载机器人工具坐标系参数失败
+    cause: ''
+    solution: 检查并更新coordinate/tool.json文件
+    level: 5
+  '1293':
+    description: 加载机器人高级功能参数失败
+    cause: ''
+    solution: 检查并更新properties/advancedFunction.json文件
+    level: 5
+  '1294':
+    description: 加载机器人的安全信号配置参数失败
+    cause: ''
+    solution: 检查并更新function/CC161/safeSignal.json文件
+    level: 5
+  '1295':
+    description: 加载系统IO控制配置参数失败
+    cause: ''
+    solution: 检查并更新function/ioCtrl.json文件
+    level: 5
+  '1296':
+    description: 加载系统Modbus配置参数失败
+    cause: ''
+    solution: 检查并更新function/modbusConf.json文件
+    level: 5
+  '1297':
+    description: 加载机器人远程控制模式参数失败
+    cause: ''
+    solution: 检查并更新function/remoteControl.json文件
+    level: 5
+  '1298':
+    description: 加载机器人轴数量参数失败
+    cause: ''
+    solution: 检查并更新properties/axis.json文件
+    level: 5
+  '1299':
+    description: 加载机器人产品类型参数失败
+    cause: ''
+    solution: 检查并更新properties/bussinessType.json文件
+    level: 5
+  '1300':
+    description: 加载机器人类型参数失败
+    cause: ''
+    solution: 检查并更新properties/controllerType.json文件
+    level: 5
+  '1301':
+    description: 加载机器人控制器类型参数失败
+    cause: ''
+    solution: 检查并更新properties/controlCabType.json文件
+    level: 5
+  '1302':
+    description: 加载机器人的自干涉参数失败
+    cause: ''
+    solution: 检查并更新properties/poseSelfInterference.json文件
+    level: 5
+  '1303':
+    description: 加载机器人的加速度等参数失败
+    cause: ''
+    solution: 检查并更新function/accFactor.json文件
+    level: 5
+  '1304':
+    description: 加载机器人的力矩约束信息参数失败
+    cause: ''
+    solution: 检查并更新function/torqueLimit.json文件
+    level: 5
+  '1305':
+    description: 加载实时反馈数据格式配置参数失败
+    cause: ''
+    solution: 检查并更新function/tcp30006Feedback.json文件
+    level: 5
+  '1306':
+    description: 加载机器人限值参数失败
+    cause: ''
+    solution: 检查并更新function/securityConstraint.json文件
+    level: 5
+  '1307':
+    description: 加载机器人关节限制参数失败
+    cause: ''
+    solution: 检查并更新properties/jointLimits.json文件
+    level: 5
+  '1308':
+    description: 加载机器人安全墙参数失败
+    cause: ''
+    solution: 检查并更新function/virtualWall.json文件
+    level: 5
+  '1309':
+    description: 加载机器人安装状态参数失败
+    cause: ''
+    solution: 检查并更新function/install.json文件
+    level: 5
+  '1310':
+    description: 加载系统累计运行时间参数失败
+    cause: ''
+    solution: 检查并更新settings/workTimeRec.json文件
+    level: 5
+  '1311':
+    description: 加载机器人模拟模式参数失败
+    cause: ''
+    solution: 检查并更新function/analogMode.json文件
+    level: 5
+  '1312':
+    description: 加载机器人拖拽灵敏度参数失败
+    cause: ''
+    solution: 检查并更新function/dragSensivity.json文件
+    level: 5
+  '1313':
+    description: 加载机器人复现参数失败
+    cause: ''
+    solution: 检查并更新function/reTraceParams.json文件
+    level: 5
+  '1314':
+    description: 加载机器人打包姿态参数失败
+    cause: ''
+    solution: 检查并更新function/packPoint.json文件
+    level: 5
+  '1315':
+    description: 加载机器人自定义姿态参数失败
+    cause: ''
+    solution: 检查并更新function/customPoint.json文件
+    level: 5
+  '1316':
+    description: 加载机器人开关安全碰撞配置参数失败
+    cause: ''
+    solution: 检查并更新function/collisionDect.json文件
+    level: 5
+  '1317':
+    description: 加载机器人碰撞误差阈值配置参数失败
+    cause: ''
+    solution: 检查并更新function/collision_error_threshold.json文件
+    level: 5
+  '1318':
+    description: 加载器机器人通用信号配置参数失败
+    cause: ''
+    solution: 检查并更新function/commonSignal.json文件
+    level: 5
+  '1319':
+    description: 加载机器人语言配置项失败
+    cause: ''
+    solution: 检查并更新language/language.json文件
+    level: 5
+  '1320':
+    description: 加载中文配置表失败
+    cause: ''
+    solution: 检查并更新language/zh_cn.json文件
+    level: 5
+  '1321':
+    description: 加载英文配置表失败
+    cause: ''
+    solution: 检查并更新language/en.json文件
+    level: 5
+  '1322':
+    description: 加载默认运动速度参数失败
+    cause: ''
+    solution: 检查并更新properties/default.json文件
+    level: 5
+  '1323':
+    description: 加载负载范围参数失败
+    cause: ''
+    solution: 检查并更新function/payloadLimit.json文件
+    level: 5
+  '1325':
+    description: 加载繁体中文配置表失败
+    cause: ''
+    solution: 检查并更新language/zh_hand.json文件
+    level: 5
+  '1326':
+    description: 加载韩文配置表失败
+    cause: ''
+    solution: 检查并更新language/kr.json文件
+    level: 5
+  '1327':
+    description: 加载日文配置表失败
+    cause: ''
+    solution: 检查并更新language/ja.json文件
+    level: 5
+  '1328':
+    description: 加载德文配置表失败
+    cause: ''
+    solution: 检查并更新language/de.json文件
+    level: 5
+  '1329':
+    description: 加载末端模式配置失败
+    cause: ''
+    solution: 检查并更新function/toolMode.json文件
+    level: 5
+  '1330':
+    description: 加载电子皮肤开关配置失败
+    cause: ''
+    solution: 检查并更新elecSkin/switch.json文件
+    level: 5
+  '1331':
+    description: 加载电子皮肤灵敏度参数失败
+    cause: ''
+    solution: 检查并更新elecSkin/sensitivity.json文件
+    level: 5
+  '1332':
+    description: 加载负载参数列表失败
+    cause: ''
+    solution: 检查并更新function/loadConfig.json文件
+    level: 5
+  '1333':
+    description: 加载机器人的安全信号配置参数失败
+    cause: ''
+    solution: 检查并更新function/CC162/safeSignal.json文件
+    level: 5
+  '1334':
+    description: 加载机器人的安全信号配置参数失败
+    cause: ''
+    solution: 检查并更新function/CCBOX/safeSignal.json文件
+    level: 5
+  '1335':
+    description: 加载越南文配置表失败
+    cause: ''
+    solution: 检查并更新language/vi.json文件
+    level: 5
+  '1336':
+    description: 加载小型控制柜电压值范围文件失败
+    cause: ''
+    solution: 检查并更新function/ccboxVoltage.json文件
+    level: 5
+  '1337':
+    description: 加载远程io/modbus控制开关文件失败
+    cause: ''
+    solution: 检查并更新function/remoteSwitch.json文件
+    level: 5
+  '1338':
+    description: 加载机器人的安全皮肤关节限制参数失败
+    cause: ''
+    solution: 检查并更新elecSkin/jointLimit.json文件
+    level: 5
+  '1339':
+    description: 加载机器人的安全皮肤避障参数失败
+    cause: ''
+    solution: 检查并更新elecSkin/avoidParams.json文件
+    level: 5
+  '1340':
+    description: 加载抖动抑制参数失败
+    cause: ''
+    solution: 检查并更新properties/suppressionConfig.json文件
+    level: 5
+  '1341':
+    description: 加载加速度计测量参数失败
+    cause: ''
+    solution: 检查并更新properties/vibrationDetection.json文件
+    level: 5
+  '1342':
+    description: 加载六面体配置参数失败
+    cause: ''
+    solution: 检查并更新function/workZone.json文件
+    level: 5
+  '1343':
+    description: 加载西班牙文配置表失败
+    cause: ''
+    solution: 检查并更新language/es.json文件
+    level: 5
+  '1344':
+    description: 加载法文配置表失败
+    cause: ''
+    solution: 检查并更新language/fr.json文件
+    level: 5
+  '1345':
+    description: 加载韩文配置表失败
+    cause: ''
+    solution: 检查并更新language/ko.json文件
+    level: 5
+  '1346':
+    description: 加载俄文配置表失败
+    cause: ''
+    solution: 检查并更新language/ru.json文件
+    level: 5
+  '1359':
+    description: 开机文件加载失败
+    cause: ''
+    solution: 更新对应文件后，并重新启动
+    level: 5
+  '1360':
+    description: 机器人下使能失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1361':
+    description: 机器人开抱闸失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1362':
+    description: 机器人关抱闸失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1363':
+    description: 上电失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 1
+  '1364':
+    description: 启动自动辨识失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1365':
+    description: 停止自动辨识失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1366':
+    description: 进入拖拽模式失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1367':
+    description: 退出拖拽模式失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1368':
+    description: 全局速率设置失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1369':
+    description: 负载参数设置失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1370':
+    description: 安装姿态标定失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1371':
+    description: 坐标系标定失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1372':
+    description: 设置安装姿态失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1373':
+    description: 网络设置失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1374':
+    description: wifi设置失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1375':
+    description: 工具坐标系设置失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1376':
+    description: 用户坐标系设置失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1377':
+    description: 末端DO设置失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1378':
+    description: DO设置失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1379':
+    description: AO设置失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1380':
+    description: 末端485设置失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1381':
+    description: 拖拽模式设置失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1382':
+    description: 开安全碰撞功能失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1383':
+    description: 关安全碰撞功能失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1385':
+    description: 本体下电失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 1
+  '1386':
+    description: 设置关节限制参数失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1387':
+    description: 设置机器人限值参数失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1388':
+    description: 高级功能设置失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1389':
+    description: 更新安全墙参数失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1390':
+    description: 关节运动失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1391':
+    description: 直线运动失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1392':
+    description: 正解执行失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1393':
+    description: 逆解执行失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1394':
+    description: 圆弧运动失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1395':
+    description: 整圆运动失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1396':
+    description: 沿工具坐标系相对关节运动失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1397':
+    description: 沿工具坐标系相对直线运动失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1398':
+    description: 沿用户坐标系相对关节运动失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1399':
+    description: 沿用户坐标系相对直线运动失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1400':
+    description: 沿各轴关节坐标系相对关节运动失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1401':
+    description: 沿用户坐标系笛卡尔点位偏移失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1402':
+    description: 沿工具坐标系笛卡尔点位偏移失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1403':
+    description: 检测是否运动到直线点位失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1404':
+    description: 检测是否运动到笛卡尔点位失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1406':
+    description: 算法启动超时
+    cause: ''
+    solution: 检查codesys启动是否异常
+    level: 5
+  '1407':
+    description: 算法通讯异常
+    cause: ''
+    solution: 重启机器人，如仍然出现该错误，则可能是系统错误，请联系技术支持工程师
+    level: 5
+  '1408':
+    description: 轴1在线状态异常
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1409':
+    description: 轴2在线状态异常
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1410':
+    description: 轴3在线状态异常
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1411':
+    description: 轴4在线状态异常
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1412':
+    description: 轴5在线状态异常
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1413':
+    description: 轴6在线状态异常
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1414':
+    description: 安全IO在线异常
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1415':
+    description: 通用IO在线异常
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1416':
+    description: 馈能板在线异常
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1417':
+    description: 末端IO在线异常
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1418':
+    description: 工程文件不存在
+    cause: ''
+    solution: 检查工程文件是否损毁或文件不存在
+    level: 5
+  '1419':
+    description: 机器人下电
+    cause: ''
+    solution: 清除错误并重新上电后依程序可恢复正常操作
+    level: 1
+  '1420':
+    description: 点动失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1421':
+    description: 设置拖拽灵敏度失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1422':
+    description: 脚本运行状态异常
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1423':
+    description: 开/关安全皮肤失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1424':
+    description: 设置安全皮肤灵敏度失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1425':
+    description: 复位安全皮肤失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1426':
+    description: 安全皮肤硬复位失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1427':
+    description: 负载自动辨识失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1428':
+    description: 负载检查失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1429':
+    description: 等待运行停止超时
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1430':
+    description: 急停后下电
+    cause: 急停触发后500ms未停止运动，机器人下电
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 0
+  '1431':
+    description: ''
+    cause: 计算用户坐标系失败
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1432':
+    description: ''
+    cause: 计算工具坐标系失败
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1433':
+    description: ''
+    cause: 安全皮肤避障功能开启/关闭失败
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1434':
+    description: ''
+    cause: 安全皮肤避障参数设置失败
+    solution: 重新尝试，如仍然出现该错误，请联系技术支持工程师
+    level: 5
+  '1435':
+    description: IPv4地址格式错误
+    cause: IPv4地址格式错误
+    solution: 填写正确IPv4地址
+    level: 5
+  '1436':
+    description: IPv4子网掩码格式错误
+    cause: IPv4子网掩码格式错误
+    solution: 填写正确IPv4子网掩码地址
+    level: 5
+  '1437':
+    description: IPv4默认网关格式错误
+    cause: IPv4默认网关格式错误
+    solution: 填写正确IPv4默认网关地址
+    level: 5
+  '1438':
+    description: 系统不支持profinet
+    cause: 系统不支持profinet
+    solution: 刷最新的控制器系统
+    level: 5
+  '1439':
+    description: 轨迹复现运动到第一个点不支持暂停，机器人已停止
+    cause: 可能是碰撞、皮肤碰撞
+    solution: 处理异常，重新运行
+    level: 5
+  '1440':
+    description: 温度过高，或温控系统无法有效控制温度
+    cause: 环境温度过高或温控系统故障
+    solution: 降低工作环境温度或联系厂商提供技术支持
+    level: 5
+  '1441':
+    description: 零点标定失败
+    cause: ''
+    solution: 重启机器人，如仍然出现该错误，则可能是系统错误，请联系技术支持工程师
+    level: 5
+  '1442':
+    description: 设置抖动抑制参数失败
+    cause: 抖动抑制比例参数不为int值
+    solution: 检查properties/suppressionConfig.json文件参数格式是否正确
+    level: 5
+  '1443':
+    description: 设置抖动测试参数失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，则可能是系统错误，请联系技术支持工程师
+    level: 5
+  '1444':
+    description: 更新安全区域参数失败
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，则可能是系统错误，请联系技术支持工程师
+    level: 5
+  '1445':
+    description: 关节1现场总线同步性丢失
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，则可能是系统错误，请联系技术支持工程师
+    level: 1
+  '1446':
+    description: 关节2现场总线同步性丢失
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，则可能是系统错误，请联系技术支持工程师
+    level: 1
+  '1447':
+    description: 关节3现场总线同步性丢失
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，则可能是系统错误，请联系技术支持工程师
+    level: 1
+  '1448':
+    description: 关节4现场总线同步性丢失
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，则可能是系统错误，请联系技术支持工程师
+    level: 1
+  '1449':
+    description: 关节5现场总线同步性丢失
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，则可能是系统错误，请联系技术支持工程师
+    level: 1
+  '1450':
+    description: 关节6现场总线同步性丢失
+    cause: ''
+    solution: 重新尝试，如仍然出现该错误，则可能是系统错误，请联系技术支持工程师
+    level: 1
+  '1451':
+    description: 关节1温度过高
+    cause: 环境温度过高或系统故障
+    solution: 降低工作环境温度或联系厂商提供技术支持
+    level: 5
+  '1452':
+    description: 关节2温度过高
+    cause: 环境温度过高或系统故障
+    solution: 降低工作环境温度或联系厂商提供技术支持
+    level: 5
+  '1453':
+    description: 关节3温度过高
+    cause: 环境温度过高或系统故障
+    solution: 降低工作环境温度或联系厂商提供技术支持
+    level: 5
+  '1454':
+    description: 关节4温度过高
+    cause: 环境温度过高或系统故障
+    solution: 降低工作环境温度或联系厂商提供技术支持
+    level: 5
+  '1455':
+    description: 关节5温度过高
+    cause: 环境温度过高或系统故障
+    solution: 降低工作环境温度或联系厂商提供技术支持
+    level: 5
+  '1456':
+    description: 关节6温度过高
+    cause: 环境温度过高或系统故障
+    solution: 降低工作环境温度或联系厂商提供技术支持
+    level: 5
+  '1457':
+    description: 主控芯片温度过高
+    cause: 环境温度过高或系统故障
+    solution: 降低工作环境温度或联系厂商提供技术支持
+    level: 5
+  '1458':
+    description: 用户坐标系未启用
+    cause: 设定的用户坐标系未启用
+    solution: 使用正确的坐标系索引或新增加设定用户坐标系
+    level: 5
+  '1459':
+    description: 工具坐标系未启用
+    cause: 设定的工具坐标系未启用
+    solution: 使用正确的坐标系索引或新增加设定工具坐标系
+    level: 5
+  '1538':
+    description: 交流接触器连续2s没有按要求闭合
+    cause: ''
+    solution: 重启机器人，如仍然出现该错误，则可能是硬件损坏，请联系技术支持工程师
+    level: 1
+  '1540':
+    description: 上电5分钟后，online数据持续1min没更新
+    cause: ''
+    solution: 重启机器人，如仍然出现该错误，则可能是硬件损坏，请联系技术支持工程师
+    level: 1
+  '1541':
+    description: AC状态检测错误
+    cause: ''
+    solution: 重启机器人，如仍然出现该错误，则可能是硬件损坏，请联系技术支持工程师
+    level: 1
+  '1543':
+    description: 面板开关被按下
+    cause: ''
+    solution: 清除报警，并重新上电
+    level: 0
+  '1544':
+    description: 馈能板掉线
+    cause: ''
+    solution: 重启机器人，如仍然出现该错误，则可能是硬件损坏，请联系技术支持工程师
+    level: 1
+  '1548':
+    description: 24V超级电容状态检测异常
+    cause: ''
+    solution: 重启机器人，如仍然出现该错误，则可能是硬件损坏，请联系技术支持工程师
+    level: 0
+  '1549':
+    description: 48V超级电容状态检测异常
+    cause: ''
+    solution: 重启机器人，如仍然出现该错误，则可能是硬件损坏，请联系技术支持工程师
+    level: 0
+  '1792':
+    description: 输入电压监测过压报警
+    cause: ''
+    solution: 重启机器人，如仍然出现该错误，则可能是硬件损坏，请联系技术支持工程师
+    level: 1
+  '1793':
+    description: 输入电压监测欠压报警
+    cause: ''
+    solution: 重启机器人，如仍然出现该错误，则可能是硬件损坏，请联系技术支持工程师
+    level: 1
+  '1794':
+    description: 电源限流芯片检测异常报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1795':
+    description: 输出电压检测过压报警
+    cause: ''
+    solution: 重启机器人，如仍然出现该错误，则可能是硬件损坏，请联系技术支持工程师
+    level: 1
+  '1796':
+    description: 输出电压检测欠压报警
+    cause: ''
+    solution: 重启机器人，如仍然出现该错误，则可能是硬件损坏，请联系技术支持工程师
+    level: 1
+  '1797':
+    description: 内部第一路稳压值异常报警
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '1798':
+    description: 内部第二路稳压值异常报警
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '1799':
+    description: 本体上电缓启动前输出电压异常报警
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 0
+  '1800':
+    description: 馈能电流检测超限报警
+    cause: ''
+    solution: 馈电电流过大，请联系技术支持工程师
+    level: 1
+  '1801':
+    description: 水泥电阻超功率保护报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1802':
+    description: 母线电流检测超限报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1803':
+    description: 本体上电缓存启动时发生馈能报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1804':
+    description: 48V输出控制MOS管状态检测异常报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1805':
+    description: 本体上电缓启动失败报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1808':
+    description: 输入电压监测过压报警
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 0
+  '1809':
+    description: 输入电压监测欠压报警
+    cause: ''
+    solution: 馈电电流过大，请联系技术支持工程师
+    level: 0
+  '1810':
+    description: 电源限流芯片检测异常报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 0
+  '1811':
+    description: 输出电压检测过压报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 0
+  '1812':
+    description: 输出电压检测欠压报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 0
+  '1813':
+    description: 本体预充电异常报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1814':
+    description: 48V超级电容充电芯片过流故障报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1815':
+    description: 48V输出控制MOS管温度过高报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 0
+  '1816':
+    description: 馈能电流检测超限报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1817':
+    description: 水泥电阻超功率保护报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1818':
+    description: 母线电流检测超限报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1819':
+    description: 馈能电路驱动电压异常报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1820':
+    description: 48V输出控制MOS管状态检测异常报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1821':
+    description: 风扇状态检测异常报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1824':
+    description: 48V超级电容比较电路参考电压监测异常报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1825':
+    description: 24V超级电容电路异常报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '1826':
+    description: 输入电压最大值设置异常报警
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '1827':
+    description: 输入电压最小值设置异常报警
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '1828':
+    description: 馈能时间检测异常报警
+    cause: ''
+    solution: 检查输入电源和负载是否规范，或联系技术支持工程师
+    level: 0
+  '1829':
+    description: 馈能电路控制信号检测异常报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 0
+  '2050':
+    description: 防护性停止超时告警
+    cause: ''
+    solution: 清除错误,重新上电
+    level: 0
+  '2051':
+    description: 关节1内圈位置超限
+    cause: ''
+    solution: 重新启动，若仍无法解决请联系技术支持工程师
+    level: 1
+  '2052':
+    description: 关节2内圈位置超限
+    cause: ''
+    solution: 重新启动，若仍无法解决请联系技术支持工程师
+    level: 1
+  '2053':
+    description: 关节3内圈位置超限
+    cause: ''
+    solution: 重新启动，若仍无法解决请联系技术支持工程师
+    level: 1
+  '2054':
+    description: 关节4内圈位置超限
+    cause: ''
+    solution: 重新启动，若仍无法解决请联系技术支持工程师
+    level: 1
+  '2055':
+    description: 关节5内圈位置超限
+    cause: ''
+    solution: 重新启动，若仍无法解决请联系技术支持工程师
+    level: 1
+  '2056':
+    description: 关节6内圈位置超限
+    cause: ''
+    solution: 重新启动，若仍无法解决请联系技术支持工程师
+    level: 1
+  '2057':
+    description: 关节1内圈速率超限
+    cause: ''
+    solution: 减小关节速度或笛卡尔速度设置
+    level: 1
+  '2058':
+    description: 关节2内圈速率超限
+    cause: ''
+    solution: 减小关节速度或笛卡尔速度设置
+    level: 1
+  '2059':
+    description: 关节3内圈速率超限
+    cause: ''
+    solution: 减小关节速度或笛卡尔速度设置
+    level: 1
+  '2060':
+    description: 关节4内圈速率超限
+    cause: ''
+    solution: 减小关节速度或笛卡尔速度设置
+    level: 1
+  '2061':
+    description: 关节5内圈速率超限
+    cause: ''
+    solution: 减小关节速度或笛卡尔速度设置
+    level: 1
+  '2062':
+    description: 关节6内圈速率超限
+    cause: ''
+    solution: 减小关节速度或笛卡尔速度设置
+    level: 1
+  '2063':
+    description: 关节1转矩超限
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2064':
+    description: 关节2转矩超限
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2065':
+    description: 关节3转矩超限
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2066':
+    description: 关节4转矩超限
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2067':
+    description: 关节5转矩超限
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2068':
+    description: 关节6转矩超限
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2069':
+    description: TCP位置超限
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2070':
+    description: TCP速率超限
+    cause: ''
+    solution: 减小关节速度或笛卡尔速度设置
+    level: 1
+  '2071':
+    description: 安全控制器A板和B板版本不一致
+    cause: ''
+    solution: 如果安全控制器A板和B板版本不一致，请更新固件以确保两个版本之间的兼容性。如需进一步帮助，请联系技术支持。
+    level: 1
+  '2072':
+    description: TCP力限制超限
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2073':
+    description: 超出安全平面限制
+    cause: ''
+    solution: 清除报警，重新上使能并点动机器人回到安全区域内
+    level: 1
+  '2074':
+    description: 安全墙虚墙触发后速率超限
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2075':
+    description: 接触器状态检测异常
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2076':
+    description: 馈能板在线检测异常
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2077':
+    description: 前面板开关被按下
+    cause: ''
+    solution: 松开面板开关后依程序可恢复正常操作
+    level: 0
+  '2078':
+    description: AC检测错误
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2080':
+    description: 机器人关节1传动系统位置或速度超差
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2081':
+    description: 机器人关节2传动系统位置或速度超差
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2082':
+    description: 机器人关节3传动系统位置或速度超差
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2083':
+    description: 机器人关节4传动系统位置或速度超差
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2084':
+    description: 机器人关节5传动系统位置或速度超差
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2085':
+    description: 机器人关节6传动系统位置或速度超差
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2087':
+    description: 安全限值参数校验错误
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2088':
+    description: 安全限值参数匹配错误
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2089':
+    description: IO输入口检测异常
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2090':
+    description: IO输出口检测异常
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2091':
+    description: 3.3V电压检测异常
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2092':
+    description: 5V电压检测异常
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2093':
+    description: 24V电压检测异常
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2096':
+    description: SCBB在线状态检测异常
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '2097':
+    description: 机器人关节传动系统位置超差
+    cause: ''
+    solution: 重新启动，若仍无法解决请联系技术支持工程师
+    level: 1
+  '2098':
+    description: 机器人关节传动系统速度超差
+    cause: ''
+    solution: 重新启动，若仍无法解决请联系技术支持工程师
+    level: 1
+  '2099':
+    description: 关节1外圈位置超限
+    cause: ''
+    solution: 重新启动，若仍无法解决请联系技术支持工程师
+    level: 1
+  '2100':
+    description: 关节2外圈位置超限
+    cause: ''
+    solution: 重新启动，若仍无法解决请联系技术支持工程师
+    level: 1
+  '2101':
+    description: 关节3外圈位置超限
+    cause: ''
+    solution: 重新启动，若仍无法解决请联系技术支持工程师
+    level: 1
+  '2102':
+    description: 关节4外圈位置超限
+    cause: ''
+    solution: 重新启动，若仍无法解决请联系技术支持工程师
+    level: 1
+  '2103':
+    description: 关节5外圈位置超限
+    cause: ''
+    solution: 重新启动，若仍无法解决请联系技术支持工程师
+    level: 1
+  '2104':
+    description: 关节6外圈位置超限
+    cause: ''
+    solution: 重新启动，若仍无法解决请联系技术支持工程师
+    level: 1
+  '2105':
+    description: 关节1外圈速率超限
+    cause: ''
+    solution: 减小关节速度或笛卡尔速度设置。
+    level: 1
+  '2106':
+    description: 关节2外圈速率超限
+    cause: ''
+    solution: 减小关节速度或笛卡尔速度设置。
+    level: 1
+  '2107':
+    description: 关节3外圈速率超限
+    cause: ''
+    solution: 减小关节速度或笛卡尔速度设置。
+    level: 1
+  '2108':
+    description: 关节4外圈速率超限
+    cause: ''
+    solution: 减小关节速度或笛卡尔速度设置。
+    level: 1
+  '2109':
+    description: 关节5外圈速率超限
+    cause: ''
+    solution: 减小关节速度或笛卡尔速度设置。
+    level: 1
+  '2110':
+    description: 关节6外圈速率超限
+    cause: ''
+    solution: 减小关节速度或笛卡尔速度设置。
+    level: 1
+  '2112':
+    description: DO芯片错误
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '2113':
+    description: DO过流
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '2114':
+    description: 24V输出告警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '2128':
+    description: 电源电压检测欠压告警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '2129':
+    description: 电源电压检测过压告警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '2130':
+    description: 馈能电路检测异常告警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '2132':
+    description: 急停线路检测异常告警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '2133':
+    description: 本体电路检测短路告警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 0
+  '2134':
+    description: 电源输入电压最小值设置错误
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2135':
+    description: 电源输入电压最大值设置错误
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2136':
+    description: MCU芯片温度检测过高
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '2137':
+    description: DI类型PNP设置检测错误告警
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2138':
+    description: DI类型NPN设置检测错误告警
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2139':
+    description: 关机执行检测异常告警
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '2140':
+    description: 馈能时间检测异常
+    cause: ''
+    solution: 检查输入电源和负载是否规范，或联系技术支持工程师
+    level: 0
+  '2144':
+    description: 末端掉线报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '2145':
+    description: DO1输出过流报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '2146':
+    description: DO2输出过流报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '2147':
+    description: DO3输出过流报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '2148':
+    description: DO4输出过流报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '2149':
+    description: 24V输出过流报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '2160':
+    description: 末端DO1输出过流报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '2161':
+    description: 末端DO2输出过流报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '2162':
+    description: 末端24V输出过流报警
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '4096':
+    description: 轨迹复现文件不存在
+    cause: ''
+    solution: 请检查轨迹复现文件是否存在于正确的路径中。
+    level: 5
+  '4097':
+    description: 轨迹复现文件内容错误
+    cause: ''
+    solution: 请验证轨迹复现文件的内容是否存在错误或不一致之处。
+    level: 5
+  '4098':
+    description: 轨迹复现文件名字错误
+    cause: ''
+    solution: 请确保轨迹复现文件具有正确且有效的文件名。
+    level: 5
+  '4099':
+    description: 轨迹复现运行中报错
+    cause: ''
+    solution: 如果轨迹复现在运行过程中遇到错误，请查阅日志文件并找出根本原因。必要时，请咨询技术支持以获得进一步帮助。
+    level: 5
+  '4100':
+    description: 当前轨迹复现不支持暂停
+    cause: ''
+    solution: 重新进行轨迹复现
+    level: 5
+  '4112':
+    description: 机器人本体SN和控制器匹配的SN不一致
+    cause: ''
+    solution: 检查本体和控制器的匹配关系，联系技术支持。
+    level: 5
+  '4128':
+    description: 控制器CODESYS工程版本与板卡版本不匹配
+    cause: ''
+    solution: 匹配结果文件/dobot/userdata/SlaveLog，匹配关系文件/dobot/userdata/codesys/codesys.json，检查控制器CODESYS工程与板卡的匹配关系，联系技术支持。
+    level: 5
+  '4192':
+    description: dobot+ 错误
+    cause: ''
+    solution: 检查dobot+日志获取详细信息
+    level: 5
+  '4193':
+    description: 用户脚本启动时，加载生态插件接口报错
+    cause: ''
+    solution: 检查用户日志以及生态日志以获取详细的错误信息,或者联系技术支持获取更多帮助
+    level: 5
+servo:
+  '8752':
+    description: 硬件过流保护
+    cause: ''
+    solution: 伺服采集的电流实际值大于硬件最大采样电流的90%，检查硬件是否正常，或联系技术支持工程师
+    level: 1
+  '8992':
+    description: 软件过流保护
+    cause: ''
+    solution: 断电重新启动，或联系技术支持工程师
+    level: 1
+  '9040':
+    description: 模块过载保护
+    cause: ''
+    solution: 检查硬件是否正常，或联系技术支持工程师
+    level: 1
+  '9088':
+    description: 零点电流偏置过大保护
+    cause: ''
+    solution: 重新设置零点电流偏置
+    level: 1
+  '12592':
+    description: 驱动器输入缺相保护
+    cause: ''
+    solution: 检查硬件是否正常，或联系技术支持工程师
+    level: 1
+  '12816':
+    description: PN间过电压保护
+    cause: ''
+    solution: 伺服检测母线电压值大于设定的阈值，检查硬件是否正常，或联系技术支持工程师
+    level: 1
+  '12832':
+    description: PN间电压不足保护
+    cause: ''
+    solution: 伺服检测母线电压值小于设定的阈值，检查硬件是否正常，或联系技术支持工程师
+    level: 1
+  '12928':
+    description: 伺服和电机功率匹配故障
+    cause: ''
+    solution: 检查硬件是否正常，或联系技术支持工程师
+    level: 1
+  '13184':
+    description: 驱动器输出相序错误保护
+    cause: ''
+    solution: 按正确相序接线
+    level: 1
+  '17168':
+    description: 驱动器过热保护
+    cause: ''
+    solution: 检查硬件是否正常，或联系技术支持工程师
+    level: 1
+  '17169':
+    description: 测温电阻损坏或未安装
+    cause: ''
+    solution: 检查硬件是否正常，或联系技术支持工程师
+    level: 1
+  '21008':
+    description: 驱动板辨识异常保护
+    cause: ''
+    solution: 检查硬件是否正常，或联系技术支持工程师
+    level: 1
+  '21120':
+    description: FPGA配置错误
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '21121':
+    description: 内部错误
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '21122':
+    description: STO安全接线故障保护
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '21569':
+    description: 驱动板连接异常保护
+    cause: ''
+    solution: 检查硬件是否正常，或联系技术支持工程师
+    level: 1
+  '25378':
+    description: DI功能重复分配
+    cause: ''
+    solution: 检查DI组参数，是否有同一个功能分配在不同的DI上
+    level: 1
+  '25379':
+    description: DO功能分配超限
+    cause: ''
+    solution: 检查通讯线缆是否可靠连接
+    level: 1
+  '25382':
+    description: 软件位置上下限设置错误
+    cause: ''
+    solution: 正确的设置0x607D-01h，0x607D-02h的值
+    level: 1
+  '25383':
+    description: 原点偏置设置错误
+    cause: ''
+    solution: 正确的设置0x607D-01h，0x607D-02h的值，保证原点偏置值0x607C介于二者之间
+    level: 1
+  '28961':
+    description: 堵转电机过热保护
+    cause: ''
+    solution: 检查抱闸是否正常打开或电机是否由于机械故障被卡住
+    level: 1
+  '29056':
+    description: 电机过载保护
+    cause: ''
+    solution: 检查机器人末端负载是否超过机器人标称负载或联系相关技术人员更换电机
+    level: 1
+  '29568':
+    description: 编码器通信断线异常保护
+    cause: ''
+    solution: 检查编码器接线或更换维修编码器
+    level: 1
+  '29569':
+    description: 编码器异常故障
+    cause: ''
+    solution: 检查硬件是否正常，或联系技术支持工程师
+    level: 1
+  '29570':
+    description: 编码器电池异常保护
+    cause: ''
+    solution: 请联系技术支持工程师
+    level: 1
+  '29571':
+    description: 主编码器内部错误
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '29572':
+    description: 主编码器CRC校验错误
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '29573':
+    description: 辅助编码器断线错误
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '29574':
+    description: 辅助编码器内部错误
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '29575':
+    description: 辅助编码器CRC校验错误
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '29576':
+    description: pwm输出buffer异常
+    cause: ''
+    solution: 更换驱动器
+    level: 1
+  '29577':
+    description: 抱闸电源异常
+    cause: ''
+    solution: 检查抱闸是否连接或是否损坏
+    level: 1
+  '29584':
+    description: 关节位置偏差大
+    cause: ''
+    solution: 1.检查生产参数 2.检查编码器安装 3.检查传动结构
+    level: 1
+  '30080':
+    description: EtherCAT通讯异常保护
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '30081':
+    description: 未烧录XML配置文件
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '30082':
+    description: 同步周期配置错误
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '30083':
+    description: 同步通信时，主站同步信号丢失
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '30084':
+    description: 同步周期误差过大
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '33920':
+    description: 超过最大转速保护
+    cause: ''
+    solution: 检测电机线序连接是否正常
+    level: 1
+  '33921':
+    description: 速度偏差过大保护
+    cause: ''
+    solution: 检查硬件是否正常并重新启动，或联系技术支持工程师
+    level: 1
+  '33922':
+    description: 电机失速保护
+    cause: ''
+    solution: 检查电机电角度是否正常或电机是否损坏
+    level: 1
+  '34321':
+    description: 位置偏差过大保护
+    cause: ''
+    solution: 系统错误，请联系技术支持工程师
+    level: 1
+  '34322':
+    description: 位置给定超限保护
+    cause: ''
+    solution: 请输入正确参数
+    level: 1
+  '34323':
+    description: 全闭环位置偏差过大
+    cause: ''
+    solution: 检查硬件是否正常，或联系技术支持工程师
+    level: 1
+  '65282':
+    description: 角度辨识失败
+    cause: ''
+    solution: 检查硬件是否正常，或联系技术支持工程师
+    level: 1
+  '65344':
+    description: 参数辨识失败
+    cause: ''
+    solution: 检查硬件是否正常，或联系技术支持工程师
+    level: 1

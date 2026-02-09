@@ -14,6 +14,7 @@ import urllib.request
 import urllib.error
 from loguru import logger
 from .dashboard import DobotApiDashboard
+from .i18n_manager import AlarmI18n
 
 
 class RobotErrorMonitor:
@@ -42,6 +43,7 @@ class RobotErrorMonitor:
         self.robot_ip = robot_ip
         self.dashboard_port = dashboard_port
         self.dashboard = None
+        self.i18n = AlarmI18n(default_language="en")  # Initialize i18n manager
 
     def connect(self):
         """
@@ -69,16 +71,17 @@ class RobotErrorMonitor:
             self.dashboard.close()
             logger.info("Disconnected from robot")
 
-    def get_error_info(self, language="zh_cn"):
+    def get_error_info(self, language="zh_CN"):
         """
-        Get robot alarm information via HTTP interface.
+        Get robot alarm information via HTTP interface with local translations.
 
-        This method uses HTTP requests (port 22000) to retrieve structured alarm
-        information in JSON format with multi-language support.
+        This method retrieves alarm IDs from the robot via HTTP (port 22000) and
+        enriches them with localized translations from the i18n system.
 
         Args:
-            language (str): Language setting, default is "zh_cn"
-                           Supported languages: zh_cn, zh_hant, en, ja, de, vi, es, fr, ko, ru
+            language (str): Language setting, default is "zh_CN"
+                           Supported languages: en, zh_CN, zh_Hant, ja, de, ko, vi, es, ru, fr
+                           Also accepts: zh_cn, kr (auto-normalized)
 
         Returns:
             dict or None: Returns alarm information dictionary on success, None on error.
@@ -87,12 +90,14 @@ class RobotErrorMonitor:
                              "errMsg": [
                                  {
                                      "id": int,              # Error ID
+                                     "type": str,            # "controller" or "servo"
                                      "level": int,           # Error level
-                                     "description": str,     # Error description
-                                     "solution": str,        # Solution suggestion
-                                     "mode": str,            # Error mode
-                                     "date": str,            # Error date
-                                     "time": str             # Error time
+                                     "description": str,     # Error description (localized)
+                                     "cause": str,           # Error cause (localized)
+                                     "solution": str,        # Solution suggestion (localized)
+                                     "mode": str,            # Error mode (from robot)
+                                     "date": str,            # Error date (from robot)
+                                     "time": str             # Error time (from robot)
                                  }
                              ]
                          }
@@ -104,28 +109,26 @@ class RobotErrorMonitor:
                     print(f"ID: {error['id']}, Description: {error['description']}")
         """
         try:
-            # Step 1: Set language preference via POST request
-            language_url = f"http://{self.robot_ip}:22000/interface/language"
-            language_data = json.dumps({"type": language}).encode("utf-8")
-            language_headers = {"Content-Type": "application/json"}
+            # Set i18n language for local translations
+            self.i18n.set_language(language)
 
-            language_req = urllib.request.Request(
-                language_url,
-                data=language_data,
-                headers=language_headers,
-                method="POST",
-            )
-
-            with urllib.request.urlopen(language_req, timeout=5) as response:
-                response.read()  # Read but don't need to parse response
-
-            # Step 2: Retrieve alarm information via GET request
+            # Retrieve alarm information via GET request (no language POST needed)
             alarm_url = f"http://{self.robot_ip}:22000/protocol/getAlarm"
             alarm_req = urllib.request.Request(alarm_url, method="GET")
 
             with urllib.request.urlopen(alarm_req, timeout=5) as response:
                 alarm_data = response.read().decode("utf-8")
-                return json.loads(alarm_data)
+                robot_response = json.loads(alarm_data)
+
+            # Enrich alarm data with localized translations
+            if robot_response and "errMsg" in robot_response:
+                enriched_alarms = []
+                for alarm in robot_response["errMsg"]:
+                    enriched = self.i18n.enrich_alarm_data(alarm)
+                    enriched_alarms.append(enriched)
+                robot_response["errMsg"] = enriched_alarms
+
+            return robot_response
 
         except urllib.error.HTTPError as e:
             logger.error(f"GetError: HTTP error {e.code} - {e.reason}")

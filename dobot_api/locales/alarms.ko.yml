@@ -1,0 +1,1937 @@
+controller:
+  '16':
+    description: 계획된 위치가 어깨 특이점에 가깝습니다
+    cause: ''
+    solution: 운동 포인트 위치를 다시 선택하거나 특이점 근처에서 조인트 보간 지령을 사용하시오
+    level: 5
+  '17':
+    description: 역연산에 해가 없음
+    cause: ''
+    solution: 타깃 운동 포인트 위치를 다시 선택하여 특이점과 도달할 수 없는 포인트를 피하십시오
+    level: 5
+  '18':
+    description: 역연산 결과 위치 제한
+    cause: ''
+    solution: 타깃 운동 포인트 위치를 다시 선택하십시오
+    level: 5
+  '19':
+    description: JUMP 또는 ARC 또는 Circles 지령 포인트 위치가 중복됩니다
+    cause: ''
+    solution: 운동 포인트 위치를 다시 선택하여 해당 지령의 요구사항을 충족시키십시오
+    level: 5
+  '26':
+    description: 계획된 위치가 손목 특이점에 가깝습니다
+    cause: ''
+    solution: 운동 포인트 위치를 다시 선택하거나 특이점 근처에서 조인트 보간 지령을 사용하시오
+    level: 5
+  '27':
+    description: 계획된 위치가 팔꿈치 특이점에 가깝습니다
+    cause: ''
+    solution: 운동 포인트 위치를 다시 선택하거나 특이점 근처에서 조인트 보간 지령을 사용하시오
+    level: 5
+  '29':
+    description: 속도 입력 파라미터 오류
+    cause: ''
+    solution: 속도 파라미터를 확인하십시오
+    level: 5
+  '30':
+    description: 전체 파라미터 역연산 실패
+    cause: ''
+    solution: 리부팅하고, 여전히 해결되지 않으면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '48':
+    description: 조인트1 과속
+    cause: ''
+    solution: 조인트 속도 또는 데카르트 속도 설정을 감소하거나, 운동 포인트 위치를 다시 선택하여 특이점을 멀리하십시오
+    level: 5
+  '49':
+    description: 조인트2 과속
+    cause: ''
+    solution: 조인트 속도 또는 데카르트 속도 설정을 감소하거나, 운동 포인트 위치를 다시 선택하여 특이점을 멀리하십시오
+    level: 5
+  '50':
+    description: 조인트3 과속
+    cause: ''
+    solution: 조인트 속도 또는 데카르트 속도 설정을 감소하거나, 운동 포인트 위치를 다시 선택하여 특이점을 멀리하십시오
+    level: 5
+  '51':
+    description: 조인트4 과속
+    cause: ''
+    solution: 조인트 속도 또는 데카르트 속도 설정을 감소하거나, 운동 포인트 위치를 다시 선택하여 특이점을 멀리하십시오
+    level: 5
+  '52':
+    description: 조인트5 과속
+    cause: ''
+    solution: 조인트 속도 또는 데카르트 속도 설정을 감소하거나, 운동 포인트 위치를 다시 선택하여 특이점을 멀리하십시오
+    level: 5
+  '53':
+    description: 조인트6 과속
+    cause: ''
+    solution: 조인트 속도 또는 데카르트 속도 설정을 감소하거나, 운동 포인트 위치를 다시 선택하여 특이점을 멀리하십시오
+    level: 5
+  '54':
+    description: 조인트1 위치가 공차를 초과하였습니다
+    cause: ''
+    solution: 리부팅하고, 여전히 해결되지 않으면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '55':
+    description: 조인트2 위치가 공차를 초과하였습니다
+    cause: ''
+    solution: 리부팅하고, 여전히 해결되지 않으면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '56':
+    description: 조인트3 위치가 공차를 초과하였습니다
+    cause: ''
+    solution: 리부팅하고, 여전히 해결되지 않으면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '57':
+    description: 조인트4 위치가 공차를 초과하였습니다
+    cause: ''
+    solution: 리부팅하고, 여전히 해결되지 않으면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '58':
+    description: 조인트5 위치가 공차를 초과하였습니다
+    cause: ''
+    solution: 리부팅하고, 여전히 해결되지 않으면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '59':
+    description: 조인트6 위치가 공차를 초과하였습니다
+    cause: ''
+    solution: 리부팅하고, 여전히 해결되지 않으면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '64':
+    description: 조인트1 순방향 위치 제한
+    cause: ''
+    solution: 현재 조인트 각도와 소프트 위치 제한 설정을 확인하고, 역방향으로 조그 이동하여 위치 제한을 벗어나거나 소프트 위치 제한 설정을 수정하십시오
+    level: 5
+  '65':
+    description: 조인트1 역방향 위치 제한
+    cause: ''
+    solution: 현재 조인트 각도와 소프트 위치 제한 설정을 확인하고, 역방향으로 조그 이동하여 위치 제한을 벗어나거나 소프트 위치 제한 설정을 수정하십시오
+    level: 5
+  '66':
+    description: 조인트2 순방향 위치 제한
+    cause: ''
+    solution: 현재 조인트 각도와 소프트 위치 제한 설정을 확인하고, 역방향으로 조그 이동하여 위치 제한을 벗어나거나 소프트 위치 제한 설정을 수정하십시오
+    level: 5
+  '67':
+    description: 조인트2 역방향 위치 제한
+    cause: ''
+    solution: 현재 조인트 각도와 소프트 위치 제한 설정을 확인하고, 역방향으로 조그 이동하여 위치 제한을 벗어나거나 소프트 위치 제한 설정을 수정하십시오
+    level: 5
+  '68':
+    description: 조인트3 순방향 위치 제한
+    cause: ''
+    solution: 현재 조인트 각도와 소프트 위치 제한 설정을 확인하고, 역방향으로 조그 이동하여 위치 제한을 벗어나거나 소프트 위치 제한 설정을 수정하십시오
+    level: 5
+  '69':
+    description: 조인트3 역방향 위치 제한
+    cause: ''
+    solution: 현재 조인트 각도와 소프트 위치 제한 설정을 확인하고, 역방향으로 조그 이동하여 위치 제한을 벗어나거나 소프트 위치 제한 설정을 수정하십시오
+    level: 5
+  '70':
+    description: 조인트4 순방향 위치 제한
+    cause: ''
+    solution: 현재 조인트 각도와 소프트 위치 제한 설정을 확인하고, 역방향으로 조그 이동하여 위치 제한을 벗어나거나 소프트 위치 제한 설정을 수정하십시오
+    level: 5
+  '71':
+    description: 조인트4 역방향 위치 제한
+    cause: ''
+    solution: 현재 조인트 각도와 소프트 위치 제한 설정을 확인하고, 역방향으로 조그 이동하여 위치 제한을 벗어나거나 소프트 위치 제한 설정을 수정하십시오
+    level: 5
+  '72':
+    description: 조인트5 순방향 위치 제한
+    cause: ''
+    solution: 현재 조인트 각도와 소프트 위치 제한 설정을 확인하고, 역방향으로 조그 이동하여 위치 제한을 벗어나거나 소프트 위치 제한 설정을 수정하십시오
+    level: 5
+  '73':
+    description: 조인트5 역방향 위치 제한
+    cause: ''
+    solution: 현재 조인트 각도와 소프트 위치 제한 설정을 확인하고, 역방향으로 조그 이동하여 위치 제한을 벗어나거나 소프트 위치 제한 설정을 수정하십시오
+    level: 5
+  '74':
+    description: 조인트6 순방향 위치 제한
+    cause: ''
+    solution: 현재 조인트 각도와 소프트 위치 제한 설정을 확인하고, 역방향으로 조그 이동하여 위치 제한을 벗어나거나 소프트 위치 제한 설정을 수정하십시오
+    level: 5
+  '75':
+    description: 조인트6 역방향 위치 제한
+    cause: ''
+    solution: 현재 조인트 각도와 소프트 위치 제한 설정을 확인하고, 역방향으로 조그 이동하여 위치 제한을 벗어나거나 소프트 위치 제한 설정을 수정하십시오
+    level: 5
+  '76':
+    description: 끝단 버튼과 로봇 본체 자체 간섭 발생
+    cause: ''
+    solution: 로봇 끝단 상태를 확인하고 운동 포인트 위치를 다시 선택하십시오
+    level: 5
+  '77':
+    description: 끝단 플랜지와 로봇 본체 자체 간섭 발생
+    cause: ''
+    solution: 로봇 끝단 상태를 확인하고 운동 포인트 위치를 다시 선택하십시오
+    level: 5
+  '114':
+    description: 로봇의 원점 보정이 실패했습니다
+    cause: ''
+    solution: 로봇을 리부팅하고 다시 보정하십시오. 여전히 해결되지 않으면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '115':
+    description: 로봇 활성화 실패
+    cause: ''
+    solution: 로봇을 리부팅하고 다시 활성화하십시오. 여전히 해결되지 않으면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '116':
+    description: 하드웨어 긴급 정지 버튼 눌림
+    cause: ''
+    solution: 긴급 정지 버튼 누름을 해제한 후 프로그램에 따라 정상 작업을 복구할 수 있습니다
+    level: 1
+  '132':
+    description: 소프트웨어 긴급 정지 신호가 트리거되었습니다
+    cause: ''
+    solution: 소프트웨어 긴급 정지 신호를 리셋한 후 프로그램에 따라 정상 작업을 회복할 수 있습니다
+    level: 1
+  '133':
+    description: 사용자 긴급 정지 신호가 트리거되었습니다
+    cause: ''
+    solution: 사용자 긴급 정지 신호를 리셋한 후 프로그램에 따라 정상 작업을 회복할 수 있습니다
+    level: 1
+  '134':
+    description: 로봇이 정지 상태를 유지할 수 없습니다
+    cause: ''
+    solution: 부하 설정이 정확한지 확인하십시오
+    level: 1
+  '146':
+    description: 조그/인치인 계획 실패
+    cause: ''
+    solution: 리부팅하고, 여전히 해결되지 않으면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '147':
+    description: 트랙 재현 또는 소선분 지정 포인트 위치가 4보다 작습니다
+    cause: ''
+    solution: 트랙 파일을 확인하여 내부 포인트 위치 수가 충분하도록 하십시오
+    level: 5
+  '148':
+    description: 트랙 재현이 주어진 제약 조건에 따라 재현에 실패했습니다
+    cause: ''
+    solution: 트랙 파일 정확 여부를 확인하거나 합리적인 파라미터를 설정하십시오
+    level: 5
+  '160':
+    description: 현재 지령은 일시 정지를 지원하지 않으며, 로봇은 이미 정지했습니다
+    cause: ''
+    solution: 프로그램을 리부팅하십시오
+    level: 5
+  '224':
+    description: 로봇이 안전 작업 영역에 접근 중입니다.
+    cause: ''
+    solution: 경고를 해제하고 로봇을 안전 작업 영역으로 이동하세요.
+    level: 5
+  '1280':
+    description: 로봇 부하 파라미터 로딩 실패
+    cause: ''
+    solution: function/loadParams.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1281':
+    description: 로봇 인식 파라미터 로딩 실패
+    cause: ''
+    solution: properties/dynamicsParams.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1282':
+    description: 로봇 구조 파라미터 로딩 실패
+    cause: ''
+    solution: properties/structure.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1283':
+    description: 로봇 티칭 좌표계 조그 파라미터 로딩 실패
+    cause: ''
+    solution: teach/coordinate.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1284':
+    description: 로봇 티칭 조인트 조그 파라미터 로딩 실패
+    cause: ''
+    solution: teach/joint.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1285':
+    description: 로봇 티칭 인치인 파라미터 로딩 실패
+    cause: ''
+    solution: teach/inch.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1286':
+    description: 로봇 조인트 공간 계획 파라미터 로딩 실패
+    cause: ''
+    solution: playback/joint.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1287':
+    description: 로봇 데카르트 공간 계획 파라미터 로딩 실패
+    cause: ''
+    solution: playback/coordinate.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1288':
+    description: 로봇 게이트 파라미터 로딩 실패
+    cause: ''
+    solution: playback/arch.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1289':
+    description: 로봇 전역 속도 파라미터 로딩 실패
+    cause: ''
+    solution: settings/common,json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1290':
+    description: 로봇 조그 좌표계 인덱스 파라미터 로딩 실패
+    cause: ''
+    solution: datasvr/config.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1291':
+    description: 로봇 사용자 좌표계 파라미터 로딩 실패
+    cause: ''
+    solution: coordinate/user.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1292':
+    description: 로봇 도구 좌표계 파라미터 로딩 실패
+    cause: ''
+    solution: coordinate/tool.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1293':
+    description: 로봇 고급 기능 파라미터 로딩 실패
+    cause: ''
+    solution: properties/advancedFunction.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1294':
+    description: 로봇의 안전 신호 설정 파라미터 로딩 실패
+    cause: ''
+    solution: function/CC161/safeSignal.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1295':
+    description: 시스템 IO 제어 설정 파라미터 로딩 실패
+    cause: ''
+    solution: function/ioCtrl.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1296':
+    description: 시스템 Modbus 설정 파라미터 로딩 실패
+    cause: ''
+    solution: function/modbusConf.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1297':
+    description: 로봇 원격 제어 모드 파라미터 로딩 실패
+    cause: ''
+    solution: function/remoteControl.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1298':
+    description: 로봇 축 수 파라미터 로딩 실패
+    cause: ''
+    solution: properties/axis.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1299':
+    description: 로봇 제품 유형 파라미터 로딩 실패
+    cause: ''
+    solution: properties/bussinessType.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1300':
+    description: 로봇 유형 파라미터 로딩 실패
+    cause: ''
+    solution: properties/controllerType.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1301':
+    description: 로봇 컨트롤러 유형 파라미터 로딩 실패
+    cause: ''
+    solution: properties/controlCabType.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1302':
+    description: 로봇의 자체 간섭 파라미터 로딩 실패
+    cause: ''
+    solution: properties/poseSelfInterference.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1303':
+    description: 로봇의 가속도 등 파라미터 로딩 실패
+    cause: ''
+    solution: function/accFactor.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1304':
+    description: 로봇의 토크 제약 정보 파라미터 로딩 실패
+    cause: ''
+    solution: function/torqueLimit.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1305':
+    description: 실시간 피드백 데이터 형식 설정 파라미터 로딩 실패
+    cause: ''
+    solution: function/tcp30006Feedback.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1306':
+    description: 로봇 제한 값 파라미터 로딩 실패
+    cause: ''
+    solution: function/securityConstraint.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1307':
+    description: 로봇 조인트 제한 파라미터 로딩 실패
+    cause: ''
+    solution: properties/jointLimits.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1308':
+    description: 로봇 방호벽 파라미터 로딩 실패
+    cause: ''
+    solution: function/virtualWall.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1309':
+    description: 로봇 설치 상태 파라미터 로딩 실패
+    cause: ''
+    solution: function/install.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1310':
+    description: 시스템 누적 실행 시간 파라미터 로딩 실패
+    cause: ''
+    solution: settings/workTimeRec.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1311':
+    description: 로봇 아날로그 모드 파라미터 로딩 실패
+    cause: ''
+    solution: function/analogMode.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1312':
+    description: 로봇 드래그 감도 파라미터 로딩 실패
+    cause: ''
+    solution: function/dragSensivity.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1313':
+    description: 로봇 재현 파라미터 로딩 실패
+    cause: ''
+    solution: function/reTraceParams.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1314':
+    description: 로봇 패키지 자세 파라미터 로딩 실패
+    cause: ''
+    solution: function/packPoint.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1315':
+    description: 로봇 자체 정의 자세 파라미터 로딩 실패
+    cause: ''
+    solution: function/customPoint.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1316':
+    description: 로봇 스위치 안전 충돌 설정 파라미터 로딩 실패
+    cause: ''
+    solution: function/collisionDect.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1317':
+    description: 로봇 충돌 오차 임계치 설정 파라미터 로딩 실패
+    cause: ''
+    solution: function/collision_error_threshold.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1318':
+    description: 로봇 범용 신호 구성 파라미터 로딩 실패
+    cause: ''
+    solution: function/commonSignal.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1319':
+    description: 로봇 언어 설정 항 로딩 실패
+    cause: ''
+    solution: language/language.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1320':
+    description: 중국어 설정 표 로딩 실패
+    cause: ''
+    solution: language/zh_cn.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1321':
+    description: 영어 설정 표 로딩 실패
+    cause: ''
+    solution: language/en.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1322':
+    description: 기본 운동 속도 파라미터 로딩 실패
+    cause: ''
+    solution: properties/default.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1323':
+    description: 부하 범위 파라미터 로딩 실패
+    cause: ''
+    solution: function/payloadLimit.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1325':
+    description: 중국어 번체 설정 표 로딩 실패
+    cause: ''
+    solution: language/zh_hand.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1326':
+    description: 한국어 설정 표 로딩 실패
+    cause: ''
+    solution: language/kr.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1327':
+    description: 일본어 설정 표 로딩 실패
+    cause: ''
+    solution: language/ja.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1328':
+    description: 독일어 설정 표 로딩 실패
+    cause: ''
+    solution: language/de.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1329':
+    description: 끝단 모드 설정 로딩 실패
+    cause: ''
+    solution: function/toolMode.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1330':
+    description: 전자 스킨 스위치 설정 로딩 실패
+    cause: ''
+    solution: elecSkin/switch.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1331':
+    description: 전자 스킨 감도 파라미터 로딩 실패
+    cause: ''
+    solution: elecSkin/sensitivity.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1332':
+    description: 부하 파라미터 리스트 로딩 실패
+    cause: ''
+    solution: function/loadConfig.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1333':
+    description: 로봇의 안전 신호 설정 파라미터 로딩 실패
+    cause: ''
+    solution: function/CC162/safeSignal.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1334':
+    description: 로봇의 안전 신호 설정 파라미터 로딩 실패
+    cause: ''
+    solution: function/CCBOX/safeSignal.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1335':
+    description: 베트남어 설정 표 로딩 실패
+    cause: ''
+    solution: language/vi.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1336':
+    description: 소형 제어 캐비닛 전압값 범위 파일 로딩 실패
+    cause: ''
+    solution: function/ccboxVoltage.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1337':
+    description: 원격 io/modbus 제어 스위치 파일 로딩 실패
+    cause: ''
+    solution: function/remoteSwitch.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1338':
+    description: 로봇의 안전 스킨 조인트 제한 파라미터 로딩 실패
+    cause: ''
+    solution: elecSkin/jointLimit.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1339':
+    description: 로봇의 안전 스킨 장애물 회피 파라미터 로딩 실패
+    cause: ''
+    solution: elecSkin/avoidParams.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1340':
+    description: 떨림 억제 파라미터 로딩 실패
+    cause: ''
+    solution: properties/suppressionConfig.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1341':
+    description: 가속도계 측정 파라미터 로딩 실패
+    cause: ''
+    solution: properties/vibrationDetection.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1342':
+    description: 육면체 설정 파라미터 로딩 실패
+    cause: ''
+    solution: function/workZone.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1343':
+    description: 스페인어 설정 표 로딩 실패
+    cause: ''
+    solution: language/es.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1344':
+    description: 프랑스어 설정 표 로딩 실패
+    cause: ''
+    solution: language/fr.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1345':
+    description: 한국어 설정 표 로딩 실패
+    cause: ''
+    solution: language/ko.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1346':
+    description: 러시아어 설정 표 로딩 실패
+    cause: ''
+    solution: language/ru.json 파일을 확인하고 업데이트하십시오
+    level: 5
+  '1359':
+    description: 부팅 파일 로딩 실패
+    cause: ''
+    solution: 해당 파일을 업데이트하고 리부팅하십시오
+    level: 5
+  '1360':
+    description: 로봇 비활성화 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1361':
+    description: 로봇의 브레이크 홀딩 열기 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1362':
+    description: 로봇의 브레이크 홀딩 닫기 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1363':
+    description: 전원 공급 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1364':
+    description: 자동 인식 시작 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1365':
+    description: 자동 인식 정지 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1366':
+    description: 드래그 모드 진입 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1367':
+    description: 드래그 모드 종료 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1368':
+    description: 전역 속도 설정 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1369':
+    description: 부하 파라미터 설정 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1370':
+    description: 설치 자세 보정 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1371':
+    description: 좌표계 보정 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1372':
+    description: 설치 자세 설정 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1373':
+    description: 네트워크 설정 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1374':
+    description: wifi 설정 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1375':
+    description: 도구 좌표계 설정 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1376':
+    description: 사용자 좌표계 설정 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1377':
+    description: 끝단 DO 설정 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1378':
+    description: DO 설정 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1379':
+    description: AO 설정 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1380':
+    description: 끝단 485 설정 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1381':
+    description: 드래그 모드 설정 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1382':
+    description: 안전 충돌 기능 활성화 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1383':
+    description: 안전 충돌 기능 비활성화 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1385':
+    description: 본체 전원 끄기 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1386':
+    description: 조인트 제한 파라미터 설정 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1387':
+    description: 로봇 제한 값 파라미터 설정 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1388':
+    description: 고급 기능 설정 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1389':
+    description: 방호벽 파라미터 업데이트 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1390':
+    description: 조인트 운동 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1391':
+    description: 직선 운동 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1392':
+    description: 정연산 실행 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1393':
+    description: 역연산 실행 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1394':
+    description: 호 운동 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1395':
+    description: 원 운동 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1396':
+    description: 도구 좌표계를 따른 상대적 조인트 운동 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1397':
+    description: 도구 좌표계를 따른 상대적 직선 운동 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1398':
+    description: 사용자 좌표계를 따른 상대적 조인트 운동 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1399':
+    description: 사용자 좌표계를 따른 상대적 직선 운동 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1400':
+    description: 각 축 조인트 좌표계를 따른 상대적 조인트 운동 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1401':
+    description: 사용자 좌표계를 따른 데카르트 포인트 위치 오프셋 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1402':
+    description: 도구 좌표계에 따른 데카르트 포인트 위치 오프셋 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1403':
+    description: 직선  포인트 위치까지의 이동 여부 감지 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1404':
+    description: 디카르트 포인트 위치까지의 이동 여부 감지 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1406':
+    description: 알고리즘 시작 시간 초과
+    cause: ''
+    solution: codesys 시작 이상 여부 확인
+    level: 5
+  '1407':
+    description: 알고리즘 통신 이상
+    cause: ''
+    solution: 로봇을 리부팅하고, 여전히 해당 오류가 발생하면 시스템 오류일 수 있으므로 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1408':
+    description: 축1 온라인 상태 이상
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1409':
+    description: 축2 온라인 상태 이상
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1410':
+    description: 축3 온라인 상태 이상
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1411':
+    description: 축4 온라인 상태 이상
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1412':
+    description: 축5 온라인 상태 이상
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1413':
+    description: 축6 온라인 상태 이상
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1414':
+    description: 안전 IO 온라인 이상
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1415':
+    description: 일반 IO 온라인 이상
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1416':
+    description: 에너지 피더 보드 온라인 이상
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1417':
+    description: 끝단 IO 온라인 이상
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1418':
+    description: 프로젝트 파일이 존재하지 않음
+    cause: ''
+    solution: 프로젝트 파일이 손상되었거나 존재하지 않는지 확인
+    level: 5
+  '1419':
+    description: 로봇 전원 끄기
+    cause: ''
+    solution: 오류를 처리하고 다시 전원을 켠 후 프로그램에 따라 정상 작업을 회복할 수 있습니다
+    level: 1
+  '1420':
+    description: 조그 이동 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1421':
+    description: 드래그 감도 설정 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1422':
+    description: 스크립트 실행 상태 이상
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1423':
+    description: 안전 스킨 ON/OFF 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1424':
+    description: 안전 스킨 감도 설정 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1425':
+    description: 안전 스킨 리셋 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1426':
+    description: 안전 스킨 하드 리셋 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1427':
+    description: 부하 자동 인식 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1428':
+    description: 부하 검사 실패
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1429':
+    description: 실행 정지 대기 시간 초과
+    cause: ''
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1430':
+    description: 긴급 정지 후 전원 끄기
+    cause: 긴급 정지 트리거 후 500ms 이내에 움직임이 멈추지 않으면 로봇 전원 꺼짐
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 0
+  '1431':
+    description: ''
+    cause: 사용자 좌표계 산출 실패
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1432':
+    description: ''
+    cause: 도구 좌표계 산출 실패
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1433':
+    description: ''
+    cause: 안전 스킨 장애물 회피 기능 활성화/비활성화 실패
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1434':
+    description: ''
+    cause: 안전 스킨 장애물 회피 파라미터 설정 실패
+    solution: 다시 시도해 보고, 여전히 해당 오류가 발생하면 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1435':
+    description: IPv4 주소 형식 오류
+    cause: IPv4 주소 형식 오류
+    solution: 정확한 IPv4 주소를 입력하십시오
+    level: 5
+  '1436':
+    description: IPv4 서브넷 마스크 형식 오류
+    cause: IPv4 서브넷 마스크 형식 오류
+    solution: 정확한 IPv4 서브넷 마스크 주소를 입력하십시오
+    level: 5
+  '1437':
+    description: IPv4 기본 게이트웨이 형식 오류
+    cause: IPv4 기본 게이트웨이 형식 오류
+    solution: 정확한 IPv4 기본 게이트웨이 주소를 입력하십시오
+    level: 5
+  '1438':
+    description: 시스템은 profinet을 지원하지 않습니다
+    cause: 시스템은 profinet을 지원하지 않습니다
+    solution: 최신 컨트롤러 시스템으로 업데이트하십시오
+    level: 5
+  '1439':
+    description: 트랙 재현이 제1 포인트로 이동하는 것은 일시 정지가 지원되지 않으며, 로봇이 정지되었습니다
+    cause: 충돌이나 스킨 충돌이 있을 수 있습니다
+    solution: 이상 처리, 재실행
+    level: 5
+  '1440':
+    description: 온도가 너무 높거나 온도 제어 시스템이 온도를 효과적으로 제어할 수 없습니다
+    cause: 환경의 온도가 너무 높거나 온도 제어 시스템에 오류가 있습니다
+    solution: 작업 환경의 온도를 낮추거나 제조업체에 기술 지원을 요청하십시오
+    level: 5
+  '1441':
+    description: 영점 보정 실패
+    cause: ''
+    solution: 로봇을 리부팅하고, 여전히 해당 오류가 발생하면 시스템 오류일 수 있으므로 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1442':
+    description: 떨림 억제 파라미터 설정 실패
+    cause: 떨림 억제 비율 파라미터가 int 값이 아닙니다
+    solution: properties/suppressionConfig.json 파일 파라미터 형식이 올바른지 확인하십시오
+    level: 5
+  '1443':
+    description: 떨림 테스트 파라미터 설정 실패
+    cause: ''
+    solution: 다시 시도하십시오. 만약 여전히 해당 오류가 발생하면 시스템 오류일 수 있으므로 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1444':
+    description: 안전 영역 파라미터 업데이트 실패
+    cause: ''
+    solution: 다시 시도하십시오. 만약 여전히 해당 오류가 발생하면 시스템 오류일 수 있으므로 기술 지원 엔지니어에게 문의하십시오
+    level: 5
+  '1445':
+    description: 조인트 1 필드 버스 동기화 손실
+    cause: ''
+    solution: 다시 시도하십시오. 만약 여전히 해당 오류가 발생하면 시스템 오류일 수 있으므로 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1446':
+    description: 조인트 2 필드 버스 동기화 손실
+    cause: ''
+    solution: 다시 시도하십시오. 만약 여전히 해당 오류가 발생하면 시스템 오류일 수 있으므로 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1447':
+    description: 조인트 3 필드 버스 동기화 손실
+    cause: ''
+    solution: 다시 시도하십시오. 만약 여전히 해당 오류가 발생하면 시스템 오류일 수 있으므로 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1448':
+    description: 조인트 4 필드 버스 동기화 손실
+    cause: ''
+    solution: 다시 시도하십시오. 만약 여전히 해당 오류가 발생하면 시스템 오류일 수 있으므로 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1449':
+    description: 조인트 5 필드 버스 동기화 손실
+    cause: ''
+    solution: 다시 시도하십시오. 만약 여전히 해당 오류가 발생하면 시스템 오류일 수 있으므로 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1450':
+    description: 조인트 6 필드 버스 동기화 손실
+    cause: ''
+    solution: 다시 시도하십시오. 만약 여전히 해당 오류가 발생하면 시스템 오류일 수 있으므로 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1451':
+    description: 조인트1의 온도가 너무 높습니다
+    cause: 환경 온도가 너무 높거나 시스템 오류가 있습니다
+    solution: 작업 환경의 온도를 낮추거나 제조업체에 기술 지원을 요청하십시오
+    level: 5
+  '1452':
+    description: 조인트2의 온도가 너무 높습니다
+    cause: 환경 온도가 너무 높거나 시스템 오류가 있습니다
+    solution: 작업 환경의 온도를 낮추거나 제조업체에 기술 지원을 요청하십시오
+    level: 5
+  '1453':
+    description: 조인트3의 온도가 너무 높습니다
+    cause: 환경 온도가 너무 높거나 시스템 오류가 있습니다
+    solution: 작업 환경의 온도를 낮추거나 제조업체에 기술 지원을 요청하십시오
+    level: 5
+  '1454':
+    description: 조인트4의 온도가 너무 높습니다
+    cause: 환경 온도가 너무 높거나 시스템 오류가 있습니다
+    solution: 작업 환경의 온도를 낮추거나 제조업체에 기술 지원을 요청하십시오
+    level: 5
+  '1455':
+    description: 조인트5의 온도가 너무 높습니다
+    cause: 환경 온도가 너무 높거나 시스템 오류가 있습니다
+    solution: 작업 환경의 온도를 낮추거나 제조업체에 기술 지원을 요청하십시오
+    level: 5
+  '1456':
+    description: 조인트6의 온도가 너무 높습니다
+    cause: 환경 온도가 너무 높거나 시스템 오류가 있습니다
+    solution: 작업 환경의 온도를 낮추거나 제조업체에 기술 지원을 요청하십시오
+    level: 5
+  '1457':
+    description: 주 제어 칩 온도가 너무 높습니다
+    cause: 환경 온도가 너무 높거나 시스템 오류가 있습니다
+    solution: 작업 환경의 온도를 낮추거나 제조업체에 기술 지원을 요청하십시오
+    level: 5
+  '1458':
+    description: 사용자 좌표계가 활성화되지 않았습니다
+    cause: 설정된 사용자 좌표계가 활성화되지 않았습니다
+    solution: 올바른 좌표계 인덱스를 사용하거나 사용자 좌표계를 새로 추가 설정하십시오
+    level: 5
+  '1459':
+    description: 도구 좌표계가 활성화되지 않았습니다
+    cause: 설정된 도구 좌표계가 활성화되지 않았습니다
+    solution: 올바른 좌표계 인덱스를 사용하거나 도구 좌표계를 새로 추가 설정하십시오
+    level: 5
+  '1538':
+    description: AC 접촉기가 연속으로 2초 동안 요구 사항에 따라 닫히지 않음
+    cause: ''
+    solution: 로봇을 재부팅하십시오. 만약 여전히 해당 오류가 발생한다면 하드웨어가 손상되었을 수 있으므로 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1540':
+    description: 전원 공급 5분 후, 온라인 데이터가 1분 동안 업데이트되지 않음
+    cause: ''
+    solution: 로봇을 재부팅하십시오. 만약 여전히 해당 오류가 발생한다면 하드웨어가 손상되었을 수 있으므로 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1541':
+    description: AC 상태 오류 감지
+    cause: ''
+    solution: 로봇을 재부팅하십시오. 만약 여전히 해당 오류가 발생한다면 하드웨어가 손상되었을 수 있으므로 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1543':
+    description: 패널 스위치 눌림
+    cause: ''
+    solution: 경보를 처리하고 다시 전원을 켜십시오
+    level: 0
+  '1544':
+    description: 피드 보드 오프라인
+    cause: ''
+    solution: 로봇을 재부팅하십시오. 만약 여전히 해당 오류가 발생한다면 하드웨어가 손상되었을 수 있으므로 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1548':
+    description: 24V 슈퍼 커패시터 상태 이상 감지
+    cause: ''
+    solution: 로봇을 재부팅하십시오. 만약 여전히 해당 오류가 발생한다면 하드웨어가 손상되었을 수 있으므로 기술 지원 엔지니어에게 문의하십시오
+    level: 0
+  '1549':
+    description: 48V 슈퍼 커패시터 상태 이상 감지
+    cause: ''
+    solution: 로봇을 재부팅하십시오. 만약 여전히 해당 오류가 발생한다면 하드웨어가 손상되었을 수 있으므로 기술 지원 엔지니어에게 문의하십시오
+    level: 0
+  '1792':
+    description: 입력 전압 과전압 경보 모니터링
+    cause: ''
+    solution: 로봇을 재부팅하십시오. 만약 여전히 해당 오류가 발생한다면 하드웨어가 손상되었을 수 있으므로 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1793':
+    description: 입력 전압 저전압 경보 모니터링
+    cause: ''
+    solution: 로봇을 재부팅하십시오. 만약 여전히 해당 오류가 발생한다면 하드웨어가 손상되었을 수 있으므로 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1794':
+    description: 전원 전류 제한 칩 이상 경보 감지
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1795':
+    description: 출력 전압 과전압 경보 감지
+    cause: ''
+    solution: 로봇을 재부팅하십시오. 만약 여전히 해당 오류가 발생한다면 하드웨어가 손상되었을 수 있으므로 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1796':
+    description: 출력 전압 저전압 경보 감지
+    cause: ''
+    solution: 로봇을 재부팅하십시오. 만약 여전히 해당 오류가 발생한다면 하드웨어가 손상되었을 수 있으므로 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1797':
+    description: 내부 제1 로드 안정값 이상 경보
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1798':
+    description: 내부 제2 로드 안정값 이상 경보
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1799':
+    description: 본체 전원 소프트 스타트 전 출력 전압 이상 경보
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 0
+  '1800':
+    description: 피드 전류 제한 초과 경보 감지
+    cause: ''
+    solution: 피드 전류가 너무 크면 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1801':
+    description: 시멘트 저항 전력 초과 보호 경보
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1802':
+    description: 버스 전류 제한 초과 경보 감지
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1803':
+    description: 본체 전원 소프트 스타트 시 피드 경보 발생
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1804':
+    description: 48V 출력 MOS 튜브 제어 상태 이상 경보 감지
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1805':
+    description: 본체 전원 소프트 스타트 실패 경보
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1808':
+    description: 입력 전압 과전압 경보 모니터링
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 0
+  '1809':
+    description: 입력 전압 저전압 경보 모니터링
+    cause: ''
+    solution: 피드 전류가 너무 크면 기술 지원 엔지니어에게 문의하십시오
+    level: 0
+  '1810':
+    description: 전원 전류 제한 칩 이상 경보 감지
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 0
+  '1811':
+    description: 출력 전압 과전압 경보 감지
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 0
+  '1812':
+    description: 출력 전압 저전압 경보 감지
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 0
+  '1813':
+    description: 본체 사전 충전 이상 경보
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1814':
+    description: 48V 슈퍼 커패시터 충전 칩 과전류 오류 경보
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1815':
+    description: 48V 출력 MOS 튜브 제어 과열 경보
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 0
+  '1816':
+    description: 피드 전류 제한 초과 경보 감지
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1817':
+    description: 시멘트 저항 전력 초과 보호 경보
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1818':
+    description: 버스 전류 제한 초과 경보 감지
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1819':
+    description: 피드 회로 구동 전압 이상 경보
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1820':
+    description: 48V 출력 MOS 튜브 제어 상태 이상 경보 감지
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1821':
+    description: 팬 상태 이상 감지 경보
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1824':
+    description: 48V 슈퍼 커패시터 비교 회로 참조 전압 이상 경보 모니터링
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1825':
+    description: 24V 슈퍼 커패시터 회로 이상 경보
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1826':
+    description: 입력 전압 최대치 설정 이상 경보
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1827':
+    description: 입력 전압 최소치 설정 이상 경보
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '1828':
+    description: 피드 시간 이상 경보 감지
+    cause: ''
+    solution: 입력 전원 및 부하가 규격에 맞는지 확인하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 0
+  '1829':
+    description: 피드 회로 제어 신호 이상 경보 감지
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 0
+  '2050':
+    description: 방호성 정지 시간 초과 경보
+    cause: ''
+    solution: 오류를 처리하고 다시 전원을 켜십시오
+    level: 0
+  '2051':
+    description: 조인트1 이너 링 위치 제한 초과
+    cause: ''
+    solution: 재시작하고, 여전히 문제가 해결되지 않으면 기술 지원 엔지니어에게 문의하십시오.
+    level: 1
+  '2052':
+    description: 조인트2 이너 링 위치 제한 초과
+    cause: ''
+    solution: 재시작하고, 여전히 문제가 해결되지 않으면 기술 지원 엔지니어에게 문의하십시오.
+    level: 1
+  '2053':
+    description: 조인트3 이너 링 위치 제한 초과
+    cause: ''
+    solution: 재시작하고, 여전히 문제가 해결되지 않으면 기술 지원 엔지니어에게 문의하십시오.
+    level: 1
+  '2054':
+    description: 조인트4 이너 링 위치 제한 초과
+    cause: ''
+    solution: 재시작하고, 여전히 문제가 해결되지 않으면 기술 지원 엔지니어에게 문의하십시오.
+    level: 1
+  '2055':
+    description: 조인트5 이너 링 위치 제한 초과
+    cause: ''
+    solution: 재시작하고, 여전히 문제가 해결되지 않으면 기술 지원 엔지니어에게 문의하십시오.
+    level: 1
+  '2056':
+    description: 조인트6 이너 링 위치 제한 초과
+    cause: ''
+    solution: 재시작하고, 여전히 문제가 해결되지 않으면 기술 지원 엔지니어에게 문의하십시오.
+    level: 1
+  '2057':
+    description: 조인트 1 이너 링 속도 제한 초과
+    cause: ''
+    solution: 조인트 속도 또는 데카르트 속도 설정을 줄이십시오
+    level: 1
+  '2058':
+    description: 조인트 2 이너 링 속도 제한 초과
+    cause: ''
+    solution: 조인트 속도 또는 데카르트 속도 설정을 줄이십시오
+    level: 1
+  '2059':
+    description: 조인트 3 이너 링 속도 제한 초과
+    cause: ''
+    solution: 조인트 속도 또는 데카르트 속도 설정을 줄이십시오
+    level: 1
+  '2060':
+    description: 조인트 4 이너 링 속도 제한 초과
+    cause: ''
+    solution: 조인트 속도 또는 데카르트 속도 설정을 줄이십시오
+    level: 1
+  '2061':
+    description: 조인트 5 이너 링 속도 제한 초과
+    cause: ''
+    solution: 조인트 속도 또는 데카르트 속도 설정을 줄이십시오
+    level: 1
+  '2062':
+    description: 조인트 6 이너 링 속도 제한 초과
+    cause: ''
+    solution: 조인트 속도 또는 데카르트 속도 설정을 줄이십시오
+    level: 1
+  '2063':
+    description: 조인트 1 토크 제한 초과
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2064':
+    description: 조인트 2 토크 제한 초과
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2065':
+    description: 조인트 3 토크 제한 초과
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2066':
+    description: 조인트 4 토크 제한 초과
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2067':
+    description: 조인트 5 토크 제한 초과
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2068':
+    description: 조인트 6 토크 제한 초과
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2069':
+    description: TCP 위치 제한 초과
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2070':
+    description: TCP 속도 제한 초과
+    cause: ''
+    solution: 조인트 속도 또는 데카르트 속도 설정을 줄이십시오
+    level: 1
+  '2071':
+    description: 안전 컨트롤러 A와 B의 버전 불일치
+    cause: ''
+    solution: 안전 컨트롤러 A와 B의 버전이 다른 경우, 두 버전 간의 호환성을 위해 펌웨어를 업데이트하십시오. 추가 지원이 필요한 경우 기술 지원에 문의하십시오.
+    level: 1
+  '2072':
+    description: TCP 힘 제한 초과
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2073':
+    description: 안전 평면 제한 초과
+    cause: ''
+    solution: 경고를 해제하고 로봇을 안전 영역으로 다시 이동하세요
+    level: 1
+  '2074':
+    description: 방호벽 가상 벽 트리거 후 속도 제한 초과
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2075':
+    description: 접촉기 상태 이상 감지
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2076':
+    description: 피드 보드 온라인 이상 감지
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2077':
+    description: 전면 패널 스위치 눌림
+    cause: ''
+    solution: 패널 스위치 누름 해제 후 프로그램에 따라 정상 작업을 회복할 수 있습니다
+    level: 0
+  '2078':
+    description: AC 오류 감지
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2080':
+    description: 로봇 조인트 1 드라이브 시스템 위치 또는 속도가 허용 오차를 벗어났습니다.
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2081':
+    description: 로봇 조인트 2 드라이브 시스템 위치 또는 속도가 허용 오차를 벗어났습니다.
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2082':
+    description: 로봇 조인트 3 드라이브 시스템 위치 또는 속도가 허용 오차를 벗어났습니다.
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2083':
+    description: 로봇 조인트 4 드라이브 시스템 위치 또는 속도가 허용 오차를 벗어났습니다.
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2084':
+    description: 로봇 조인트 5 드라이브 시스템 위치 또는 속도가 허용 오차를 벗어났습니다.
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2085':
+    description: 로봇 조인트 6 드라이브 시스템 위치 또는 속도가 허용 오차를 벗어났습니다.
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2087':
+    description: 안전 제한값 파라미터 검증 오류
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2088':
+    description: 안전 제한값 파라미터 일치 오류
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2089':
+    description: IO 입력 포트 이상 감지
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2090':
+    description: IO 출력 포트 이상 감지
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2091':
+    description: 3.3V 전압 이상 감지
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2092':
+    description: 5V 전압 이상 감지
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2093':
+    description: 24V 전압 이상 감지
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2096':
+    description: SCBB 온라인 상태 이상 감지
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2097':
+    description: 로봇 조인트 드라이브 시스템의 위치가 허용 오차를 벗어났습니다.
+    cause: ''
+    solution: 재시작하고, 여전히 문제가 해결되지 않으면 기술 지원 엔지니어에게 문의하십시오.
+    level: 1
+  '2098':
+    description: 로봇 조인트 드라이브 시스템의 속도가 허용 오차를 벗어났습니다.
+    cause: ''
+    solution: 재시작하고, 여전히 문제가 해결되지 않으면 기술 지원 엔지니어에게 문의하십시오.
+    level: 1
+  '2099':
+    description: 조인트1 아웃 링 위치 제한 초과
+    cause: ''
+    solution: 재시작하고, 여전히 문제가 해결되지 않으면 기술 지원 엔지니어에게 문의하십시오.
+    level: 1
+  '2100':
+    description: 조인트2 아웃 링 위치 제한 초과
+    cause: ''
+    solution: 재시작하고, 여전히 문제가 해결되지 않으면 기술 지원 엔지니어에게 문의하십시오.
+    level: 1
+  '2101':
+    description: 조인트3 아웃 링 위치 제한 초과
+    cause: ''
+    solution: 재시작하고, 여전히 문제가 해결되지 않으면 기술 지원 엔지니어에게 문의하십시오.
+    level: 1
+  '2102':
+    description: 조인트4 아웃 링 위치 제한 초과
+    cause: ''
+    solution: 재시작하고, 여전히 문제가 해결되지 않으면 기술 지원 엔지니어에게 문의하십시오.
+    level: 1
+  '2103':
+    description: 조인트5 아웃 링 위치 제한 초과
+    cause: ''
+    solution: 재시작하고, 여전히 문제가 해결되지 않으면 기술 지원 엔지니어에게 문의하십시오.
+    level: 1
+  '2104':
+    description: 조인트6 아웃 링 위치 제한 초과
+    cause: ''
+    solution: 재시작하고, 여전히 문제가 해결되지 않으면 기술 지원 엔지니어에게 문의하십시오.
+    level: 1
+  '2105':
+    description: 조인트 1 아웃 링 속도 제한 초과
+    cause: ''
+    solution: 조인트 속도 또는 데카르트 속도 설정을 줄이십시오
+    level: 1
+  '2106':
+    description: 조인트 2 아웃 링 속도 제한 초과
+    cause: ''
+    solution: 조인트 속도 또는 데카르트 속도 설정을 줄이십시오
+    level: 1
+  '2107':
+    description: 조인트 3 아웃 링 속도 제한 초과
+    cause: ''
+    solution: 조인트 속도 또는 데카르트 속도 설정을 줄이십시오
+    level: 1
+  '2108':
+    description: 조인트 4 아웃 링 속도 제한 초과
+    cause: ''
+    solution: 조인트 속도 또는 데카르트 속도 설정을 줄이십시오
+    level: 1
+  '2109':
+    description: 조인트 5 아웃 링 속도 제한 초과
+    cause: ''
+    solution: 조인트 속도 또는 데카르트 속도 설정을 줄이십시오
+    level: 1
+  '2110':
+    description: 조인트 6 아웃 링 속도 제한 초과
+    cause: ''
+    solution: 조인트 속도 또는 데카르트 속도 설정을 줄이십시오
+    level: 1
+  '2112':
+    description: DO 칩 오류
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2113':
+    description: DO 과전류
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2114':
+    description: 24V 출력 경보
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2128':
+    description: 전원 전압 저전압 경보 감지
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2129':
+    description: 전원 전압 과전압 경보 감지
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2130':
+    description: 피드 회로 이상 경보 감지
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2132':
+    description: 긴급 정지 회로 이상 경보 감지
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2133':
+    description: 본체 회로 단락 경보 감지
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 0
+  '2134':
+    description: 전원 입력 전압 최소치 설정 오류
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2135':
+    description: 전원 입력 전압 최대치 설정 오류
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2136':
+    description: MCU 칩 과열 감지
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2137':
+    description: DI 유형 PNP 설정 오류 경보 감지
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2138':
+    description: DI 유형 NPN 설정 오류 경보 감지
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2139':
+    description: 전원 끄기 실행 이상 경보 감지
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2140':
+    description: 피드 시간 이상 감지
+    cause: ''
+    solution: 입력 전원 및 부하가 규격에 맞는지 확인하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 0
+  '2144':
+    description: 끝단 오프라인 경보
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2145':
+    description: DO1 출력 과전류 경보
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2146':
+    description: DO2 출력 과전류 경보
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2147':
+    description: DO3 출력 과전류 경보
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2148':
+    description: DO4 출력 과전류 경보
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2149':
+    description: 24V 출력 과전류 경보
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2160':
+    description: 끝단 DO1 출력 과전류 경보
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2161':
+    description: 끝단 DO2 출력 과전류 경보
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '2162':
+    description: 끝단 24V 출력 과전류 경보
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '4096':
+    description: 트랙 재생 파일이 존재하지 않습니다
+    cause: ''
+    solution: 트랙 재생 파일이 올바른 경로에 있는지 확인하십시오.
+    level: 5
+  '4097':
+    description: 트랙 재생 파일 내용 오류
+    cause: ''
+    solution: 트랙 재생 파일의 내용에 오류 또는 불일치 사항이 있는지 확인하십시오.
+    level: 5
+  '4098':
+    description: 트랙 재생 파일 이름 오류
+    cause: ''
+    solution: 트랙 재생 파일의 이름이 올바르고 유효한지 확인하십시오.
+    level: 5
+  '4099':
+    description: 트랙 재생 실행 오류
+    cause: ''
+    solution: 트랙 재생이 실행 중 오류가 발생하는 경우 로그 파일을 검토하고 원인을 확인하십시오. 필요한 경우 기술 지원을 상담하여 추가 도움을 받으십시오.
+    level: 5
+  '4100':
+    description: 현재 궤적 반복은 일시정지를 지원하지 않습니다.
+    cause: ''
+    solution: 궤적을 다시 실행하여 재현
+    level: 5
+  '4112':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '4128':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+  '4192':
+    description: dobot+ 오류
+    cause: ''
+    solution: 자세한 내용은 dobot+로그를 확인하십시오.
+    level: 5
+  '4193':
+    description: ''
+    cause: ''
+    solution: ''
+    level: 5
+servo:
+  '8752':
+    description: 하드웨어 과전류 보호
+    cause: ''
+    solution: 서보가 수집한 전류 실제 값이 하드웨어 최대 샘플링 전류의 90%보다 크면, 하드웨어 정상 여부를 확인하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '8992':
+    description: 소프트웨어 과전류 보호
+    cause: ''
+    solution: 전원을 끄고 리부팅하거나, 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '9040':
+    description: 모듈 과부하 보호
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하거나, 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '9088':
+    description: 영점 전류 바이어스 과대 보호
+    cause: ''
+    solution: 영점 전류 바이어스를 다시 설정하십시오
+    level: 1
+  '12592':
+    description: 드라이버 입력 결상 보호
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하거나, 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '12816':
+    description: PN 간 과전압 보호
+    cause: ''
+    solution: 서보가 감지한 버스 전압값이 설정된 임계값보다 큽니다. 하드웨어가 정상인지 확인하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '12832':
+    description: PN 간 전압 부족 보호
+    cause: ''
+    solution: 서보가 감지한 버스 전압값이 설정된 임계값보다 작습니다. 하드웨어가 정상인지 확인하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '12928':
+    description: 서보 및 모터 전력 일치 오류
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하거나, 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '13184':
+    description: 드라이버 출력 위상 순서 오류 보호
+    cause: ''
+    solution: 올바른 위상 순서로 배선하십시오
+    level: 1
+  '17168':
+    description: 드라이버 과열 보호
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하거나, 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '17169':
+    description: 온도 측정 저항이 파손되었거나 설치되지 않음
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하거나, 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '21008':
+    description: 구동 보드 인식 이상 보호
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하거나, 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '21120':
+    description: FPGA 설정 오류
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '21121':
+    description: 내부 오류
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '21122':
+    description: STO 안전 배선 오류 보호
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '21569':
+    description: 구동 보드 연결 이상 보호
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하거나, 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '25378':
+    description: DI 기능 중복 할당
+    cause: ''
+    solution: DI 그룹 파라미터를 확인하고, 동일한 기능이 상이한 DI에 할당되어 있는지 확인하십시오
+    level: 1
+  '25379':
+    description: DO 기능 할당 한계 초과
+    cause: ''
+    solution: 통신 케이블이 안전하게 연결되었는지 확인하십시오
+    level: 1
+  '25382':
+    description: 소프트웨어 위치 상한/하한 설정 오류
+    cause: ''
+    solution: 0x607D-01h, 0x607D-02h 값을 정확하게 설정하십시오
+    level: 1
+  '25383':
+    description: 원점 바이어스 설정 오류
+    cause: ''
+    solution: 0x607D-01h, 0x607D-02h 값을 정확하게 설정하고, 원점 바이어스 값 0x607C이 두 값 사이에 있도록 하십시오
+    level: 1
+  '28961':
+    description: 블로킹 모터 과열 보호
+    cause: ''
+    solution: 브레이크 홀딩이 정상적으로 열렸는지 또는 기계적 결함으로 인해 모터에 걸림이 있는지 확인하십시오
+    level: 1
+  '29056':
+    description: 모터 과부하 보호
+    cause: ''
+    solution: 로봇의 끝단 부하가 공칭하중을 초과하는지 확인하거나 관련 기술자에게 문의하여 모터를 교체하십시오
+    level: 1
+  '29568':
+    description: 인코더 통신 끊김 이상 보호
+    cause: ''
+    solution: 인코더 배선을 확인하거나 인코더를 교체 또는 보수하십시오
+    level: 1
+  '29569':
+    description: 인코더 이상 오류
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하거나, 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '29570':
+    description: 인코더 배터리 이상 보호
+    cause: ''
+    solution: 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '29571':
+    description: 메인 인코더 내부 오류
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '29572':
+    description: 메인 인코더 CRC 검증 오류
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '29573':
+    description: 보조 인코더 끊김 오류
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '29574':
+    description: 보조 인코더 내부 오류
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '29575':
+    description: 보조 인코더 CRC 검증 오류
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '29576':
+    description: pwm buffer 출력 이상
+    cause: ''
+    solution: 드라이버 교체
+    level: 1
+  '29577':
+    description: 브레이크 홀딩 전원 이상
+    cause: ''
+    solution: 브레이크 홀딩 연결 여부 또는 손상 여부를 확인하십시오
+    level: 1
+  '29584':
+    description: 조인트 위치의 편차가 큼
+    cause: ''
+    solution: 1. 생산 매개변수 확인  2. 엔코더 설치 확인  3. 드라이브 구조 확인
+    level: 1
+  '30080':
+    description: EtherCAT 통신 이상 보호
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '30081':
+    description: XML 설정 파일을 굽지 않음
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '30082':
+    description: 주기 동기화 설정 오류
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '30083':
+    description: 통신 동기화 시, 일차국 동기화 신호 손실
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '30084':
+    description: 주기 동기화 오차가 지나치게 큼
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '33920':
+    description: 최대 회전 속도 초과 보호
+    cause: ''
+    solution: 모터 배선 순서가 정상적으로 연결되었는지 확인하십시오
+    level: 1
+  '33921':
+    description: 속도 편차 과대 보호
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하고 리부팅하거나 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '33922':
+    description: 모터 스톨 보호
+    cause: ''
+    solution: 모터 전기 각도 정상 여부 또는 모터 손상 여부를 확인하십시오
+    level: 1
+  '34321':
+    description: 위치 편차 과대 보호
+    cause: ''
+    solution: 시스템 오류가 발생했습니다. 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '34322':
+    description: 위치 지정 한계 초과 보호
+    cause: ''
+    solution: 정확한 파라미터를 입력하십시오
+    level: 1
+  '34323':
+    description: 전체 폐쇄 루프 위치 편차 과대
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하거나, 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '65282':
+    description: 각도 인식 실패
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하거나, 기술 지원 엔지니어에게 문의하십시오
+    level: 1
+  '65344':
+    description: 파라미터 인식 실패
+    cause: ''
+    solution: 하드웨어가 정상인지 확인하거나, 기술 지원 엔지니어에게 문의하십시오
+    level: 1
