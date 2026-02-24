@@ -1,0 +1,1271 @@
+"""Motion commands for Dobot V4 API."""
+
+from typing import List, Optional, Sequence, Tuple, Union
+
+from loguru import logger
+
+from ._serialization import _SerializationMixin
+
+
+class _MotionMixin(_SerializationMixin):
+    """Mixin for robot motion commands.
+
+    Includes joint/linear/arc/circle motions, servo control, relative motions,
+    jog, trajectory playback, spline, and motion-with-IO commands.
+    """
+
+    # ------------------------------------------------------------------
+    # helpers (private)
+    # ------------------------------------------------------------------
+
+    @staticmethod
+    def _validate_coordinate_mode(coordinate_mode: int, cmd: str) -> None:
+        """Raise ValueError if coordinate_mode is not 0 or 1."""
+        if coordinate_mode not in (0, 1):
+            logger.error(
+                f"Invalid coordinateMode parameter: {coordinate_mode}. "
+                "Expected 0 (pose) or 1 (joint)"
+            )
+            raise ValueError(
+                f"Invalid coordinateMode parameter: {coordinate_mode}. "
+                "Expected 0 (pose) or 1 (joint)"
+            )
+
+    @staticmethod
+    def _pose_or_joint(coordinate_mode: int) -> str:
+        """Return ``'pose'`` or ``'joint'`` based on *coordinate_mode*."""
+        return "pose" if coordinate_mode == 0 else "joint"
+
+    @staticmethod
+    def _append_speed_params(
+        params: list,
+        v: int,
+        speed: int,
+        cp: int,
+        r: int,
+    ) -> None:
+        """Append v/speed and cp/r params with precedence rules."""
+        if v != -1 and speed != -1:
+            params.append("speed={:d}".format(speed))
+        elif speed != -1:
+            params.append("speed={:d}".format(speed))
+        elif v != -1:
+            params.append("v={:d}".format(v))
+        if cp != -1 and r != -1:
+            params.append("r={:d}".format(r))
+        elif r != -1:
+            params.append("r={:d}".format(r))
+        elif cp != -1:
+            params.append("cp={:d}".format(cp))
+
+    # ------------------------------------------------------------------
+    # Basic Motion
+    # ------------------------------------------------------------------
+
+    def mov_j(
+        self,
+        a1: float,
+        b1: float,
+        c1: float,
+        d1: float,
+        e1: float,
+        f1: float,
+        coordinate_mode: int,
+        user: int = -1,
+        tool: int = -1,
+        a: int = -1,
+        v: int = -1,
+        cp: int = -1,
+    ) -> str:
+        """Move to target position through joint motion.
+
+        Args:
+            a1..f1: Target point (6 values — joint angles or Cartesian pose).
+            coordinate_mode: 0 = pose, 1 = joint.
+            user: User coordinate system index. -1 = not set.
+            tool: Tool coordinate system index. -1 = not set.
+            a: Acceleration ratio. Range: (0, 100]. -1 = not set.
+            v: Velocity ratio. Range: (0, 100]. -1 = not set.
+            cp: Continuous path ratio. Range: [0, 100]. -1 = not set.
+
+        Returns:
+            Raw response string from robot.
+        """
+        self._validate_coordinate_mode(coordinate_mode, "MovJ")
+        kind = self._pose_or_joint(coordinate_mode)
+        string = "MovJ({:s}={{{:f},{:f},{:f},{:f},{:f},{:f}}}".format(
+            kind, a1, b1, c1, d1, e1, f1
+        )
+        params: list[str] = []
+        if user != -1:
+            params.append("user={:d}".format(user))
+        if tool != -1:
+            params.append("tool={:d}".format(tool))
+        if a != -1:
+            params.append("a={:d}".format(a))
+        if v != -1:
+            params.append("v={:d}".format(v))
+        if cp != -1:
+            params.append("cp={:d}".format(cp))
+        for ii in params:
+            string = string + "," + ii
+        string = string + ")"
+        return self.send_recv_msg(string)
+
+    MovJ = mov_j
+
+    def mov_l(
+        self,
+        a1: float,
+        b1: float,
+        c1: float,
+        d1: float,
+        e1: float,
+        f1: float,
+        coordinate_mode: int,
+        user: int = -1,
+        tool: int = -1,
+        a: int = -1,
+        v: int = -1,
+        speed: int = -1,
+        cp: int = -1,
+        r: int = -1,
+    ) -> str:
+        """Move to target position in linear mode.
+
+        Args:
+            a1..f1: Target point (6 values — joint angles or Cartesian pose).
+            coordinate_mode: 0 = pose, 1 = joint.
+            user: User coordinate system index. -1 = not set.
+            tool: Tool coordinate system index. -1 = not set.
+            a: Acceleration ratio. Range: (0, 100]. -1 = not set.
+            v: Velocity ratio, incompatible with *speed*. Range: (0, 100].
+            speed: Target speed (mm/s), takes precedence over *v*.
+            cp: Continuous path ratio, incompatible with *r*. Range: [0, 100].
+            r: Continuous path radius (mm), takes precedence over *cp*.
+
+        Returns:
+            Raw response string from robot.
+        """
+        self._validate_coordinate_mode(coordinate_mode, "MovL")
+        kind = self._pose_or_joint(coordinate_mode)
+        string = "MovL({:s}={{{:f},{:f},{:f},{:f},{:f},{:f}}}".format(
+            kind, a1, b1, c1, d1, e1, f1
+        )
+        params: list[str] = []
+        if user != -1:
+            params.append("user={:d}".format(user))
+        if tool != -1:
+            params.append("tool={:d}".format(tool))
+        if a != -1:
+            params.append("a={:d}".format(a))
+        self._append_speed_params(params, v, speed, cp, r)
+        for ii in params:
+            string = string + "," + ii
+        string = string + ")"
+        return self.send_recv_msg(string)
+
+    MovL = mov_l
+
+    # ------------------------------------------------------------------
+    # Servo
+    # ------------------------------------------------------------------
+
+    def servo_j(
+        self,
+        j1: float,
+        j2: float,
+        j3: float,
+        j4: float,
+        j5: float,
+        j6: float,
+        t: float = -1.0,
+        ahead_time: float = -1.0,
+        gain: float = -1.0,
+    ) -> str:
+        """Dynamic servo joint motion.
+
+        Args:
+            j1..j6: Target joint variables.
+            t: Running time (s). Range: [0.02, 3600.0]. Default: 0.1.
+            ahead_time: Advance time (D-like PID). Range: [20.0, 100.0]. Default: 50.
+            gain: Proportional gain (P-like PID). Range: [200.0, 1000.0]. Default: 500.
+
+        Returns:
+            Raw response string from robot.
+        """
+        string = "ServoJ({:f},{:f},{:f},{:f},{:f},{:f}".format(j1, j2, j3, j4, j5, j6)
+        params: list[str] = []
+        if t != -1:
+            params.append("t={:f}".format(t))
+        if ahead_time != -1:
+            params.append("aheadtime={:f}".format(ahead_time))
+        if gain != -1:
+            params.append("gain={:f}".format(gain))
+        for ii in params:
+            string = string + "," + ii
+        string = string + ")"
+        return self.send_recv_msg(string)
+
+    ServoJ = servo_j
+
+    def servo_p(
+        self,
+        x: float,
+        y: float,
+        z: float,
+        rx: float,
+        ry: float,
+        rz: float,
+        t: float = -1.0,
+        ahead_time: float = -1.0,
+        gain: float = -1.0,
+    ) -> str:
+        """Dynamic servo Cartesian motion.
+
+        Args:
+            x..rz: Target posture variables (global user/tool coordinate).
+            t: Running time (s). Range: [0.02, 3600.0]. Default: 0.1.
+            ahead_time: Advance time (D-like PID). Range: [20.0, 100.0]. Default: 50.
+            gain: Proportional gain (P-like PID). Range: [200.0, 1000.0]. Default: 500.
+
+        Returns:
+            Raw response string from robot.
+        """
+        string = "ServoP({:f},{:f},{:f},{:f},{:f},{:f}".format(x, y, z, rx, ry, rz)
+        params: list[str] = []
+        if t != -1:
+            params.append("t={:f}".format(t))
+        if ahead_time != -1:
+            params.append("aheadtime={:f}".format(ahead_time))
+        if gain != -1:
+            params.append("gain={:f}".format(gain))
+        for ii in params:
+            string = string + "," + ii
+        string = string + ")"
+        return self.send_recv_msg(string)
+
+    ServoP = servo_p
+
+    # ------------------------------------------------------------------
+    # Motion with IO
+    # ------------------------------------------------------------------
+
+    def mov_l_io(
+        self,
+        a1: float,
+        b1: float,
+        c1: float,
+        d1: float,
+        e1: float,
+        f1: float,
+        coordinate_mode: int,
+        mode: int,
+        distance: int,
+        index: int,
+        status: int,
+        user: int = -1,
+        tool: int = -1,
+        a: int = -1,
+        v: int = -1,
+        speed: int = -1,
+        cp: int = -1,
+        r: int = -1,
+    ) -> str:
+        """Linear motion with digital-output triggering.
+
+        Args:
+            a1..f1: Target point (6 values).
+            coordinate_mode: 0 = pose, 1 = joint.
+            mode: Trigger mode. 0 = distance percentage, 1 = distance value.
+            distance: Trigger distance. Positive = from start, negative = from end.
+                If mode 0: percentage (0, 100]. If mode 1: mm.
+            index: DO index.
+            status: DO status. 0 = no signal, 1 = signal.
+            user: User coordinate system. -1 = not set.
+            tool: Tool coordinate system. -1 = not set.
+            a: Acceleration ratio. -1 = not set.
+            v: Velocity ratio, incompatible with *speed*. -1 = not set.
+            speed: Target speed (mm/s), takes precedence over *v*.
+            cp: Continuous path ratio, incompatible with *r*.
+            r: Continuous path radius (mm), takes precedence over *cp*.
+
+        Returns:
+            Raw response string from robot.
+        """
+        self._validate_coordinate_mode(coordinate_mode, "MovLIO")
+        kind = self._pose_or_joint(coordinate_mode)
+        string = (
+            "MovLIO({:s}={{{:f},{:f},{:f},{:f},{:f},{:f}}},"
+            "{{{:d},{:d},{:d},{:d}}}"
+        ).format(kind, a1, b1, c1, d1, e1, f1, mode, distance, index, status)
+        params: list[str] = []
+        if user != -1:
+            params.append("user={:d}".format(user))
+        if tool != -1:
+            params.append("tool={:d}".format(tool))
+        if a != -1:
+            params.append("a={:d}".format(a))
+        self._append_speed_params(params, v, speed, cp, r)
+        for ii in params:
+            string = string + "," + ii
+        string = string + ")"
+        return self.send_recv_msg(string)
+
+    MovLIO = mov_l_io
+
+    def mov_j_io(
+        self,
+        a1: float,
+        b1: float,
+        c1: float,
+        d1: float,
+        e1: float,
+        f1: float,
+        coordinate_mode: int,
+        mode: int,
+        distance: int,
+        index: int,
+        status: int,
+        user: int = -1,
+        tool: int = -1,
+        a: int = -1,
+        v: int = -1,
+        cp: int = -1,
+    ) -> str:
+        """Joint motion with digital-output triggering.
+
+        Args:
+            a1..f1: Target point (6 values).
+            coordinate_mode: 0 = pose, 1 = joint.
+            mode: Trigger mode. 0 = distance percentage, 1 = distance value.
+            distance: Trigger distance (percentage or degrees).
+            index: DO index.
+            status: DO status. 0 = no signal, 1 = signal.
+            user: User coordinate system. -1 = not set.
+            tool: Tool coordinate system. -1 = not set.
+            a: Acceleration ratio. -1 = not set.
+            v: Velocity ratio. -1 = not set.
+            cp: Continuous path ratio. -1 = not set.
+
+        Returns:
+            Raw response string from robot.
+        """
+        self._validate_coordinate_mode(coordinate_mode, "MovJIO")
+        kind = self._pose_or_joint(coordinate_mode)
+        string = (
+            "MovJIO({:s}={{{:f},{:f},{:f},{:f},{:f},{:f}}},"
+            "{{{:d},{:d},{:d},{:d}}}"
+        ).format(kind, a1, b1, c1, d1, e1, f1, mode, distance, index, status)
+        params: list[str] = []
+        if user != -1:
+            params.append("user={:d}".format(user))
+        if tool != -1:
+            params.append("tool={:d}".format(tool))
+        if a != -1:
+            params.append("a={:d}".format(a))
+        if v != -1:
+            params.append("v={:d}".format(v))
+        if cp != -1:
+            params.append("cp={:d}".format(cp))
+        for ii in params:
+            string = string + "," + ii
+        string = string + ")"
+        return self.send_recv_msg(string)
+
+    MovJIO = mov_j_io
+
+    # ------------------------------------------------------------------
+    # Arc / Circle
+    # ------------------------------------------------------------------
+
+    def arc(
+        self,
+        a1: float,
+        b1: float,
+        c1: float,
+        d1: float,
+        e1: float,
+        f1: float,
+        a2: float,
+        b2: float,
+        c2: float,
+        d2: float,
+        e2: float,
+        f2: float,
+        coordinate_mode: int,
+        user: int = -1,
+        tool: int = -1,
+        a: int = -1,
+        v: int = -1,
+        speed: int = -1,
+        cp: int = -1,
+        r: int = -1,
+    ) -> str:
+        """Arc interpolated motion through two points.
+
+        The current position, through-point P1, and target-point P2 define the
+        arc. They must not be collinear.
+
+        Args:
+            a1..f1: Through point P1 (6 values).
+            a2..f2: Target point P2 (6 values).
+            coordinate_mode: 0 = pose, 1 = joint.
+            user: User coordinate system. -1 = not set.
+            tool: Tool coordinate system. -1 = not set.
+            a: Acceleration ratio. -1 = not set.
+            v: Velocity ratio, incompatible with *speed*.
+            speed: Target speed (mm/s), takes precedence over *v*.
+            cp: Continuous path ratio, incompatible with *r*.
+            r: Continuous path radius (mm), takes precedence over *cp*.
+
+        Returns:
+            Raw response string from robot.
+        """
+        self._validate_coordinate_mode(coordinate_mode, "Arc")
+        kind = self._pose_or_joint(coordinate_mode)
+        string = (
+            "Arc({kind}={{{:f},{:f},{:f},{:f},{:f},{:f}}},"
+            "{kind}={{{:f},{:f},{:f},{:f},{:f},{:f}}}"
+        ).format(a1, b1, c1, d1, e1, f1, a2, b2, c2, d2, e2, f2, kind=kind)
+        params: list[str] = []
+        if user != -1:
+            params.append("user={:d}".format(user))
+        if tool != -1:
+            params.append("tool={:d}".format(tool))
+        if a != -1:
+            params.append("a={:d}".format(a))
+        self._append_speed_params(params, v, speed, cp, r)
+        for ii in params:
+            string = string + "," + ii
+        string = string + ")"
+        return self.send_recv_msg(string)
+
+    Arc = arc
+
+    def circle(
+        self,
+        a1: float,
+        b1: float,
+        c1: float,
+        d1: float,
+        e1: float,
+        f1: float,
+        a2: float,
+        b2: float,
+        c2: float,
+        d2: float,
+        e2: float,
+        f2: float,
+        coordinate_mode: int,
+        count: int,
+        user: int = -1,
+        tool: int = -1,
+        a: int = -1,
+        v: int = -1,
+        speed: int = -1,
+        cp: int = -1,
+        r: int = -1,
+    ) -> str:
+        """Full-circle interpolated motion.
+
+        The current position, P1, and P2 define the circle. They must not
+        be collinear.
+
+        Args:
+            a1..f1: Through point P1 (6 values).
+            a2..f2: End point P2 (6 values).
+            coordinate_mode: 0 = pose, 1 = joint.
+            count: Number of full circles. Range: [1, 999].
+            user: User coordinate system. -1 = not set.
+            tool: Tool coordinate system. -1 = not set.
+            a: Acceleration ratio. -1 = not set.
+            v: Velocity ratio, incompatible with *speed*.
+            speed: Target speed (mm/s), takes precedence over *v*.
+            cp: Continuous path ratio, incompatible with *r*.
+            r: Continuous path radius (mm), takes precedence over *cp*.
+
+        Returns:
+            Raw response string from robot.
+        """
+        self._validate_coordinate_mode(coordinate_mode, "Circle")
+        kind = self._pose_or_joint(coordinate_mode)
+        string = (
+            "Circle({kind}={{{:f},{:f},{:f},{:f},{:f},{:f}}},"
+            "{kind}={{{:f},{:f},{:f},{:f},{:f},{:f}}},{:d}"
+        ).format(
+            a1, b1, c1, d1, e1, f1, a2, b2, c2, d2, e2, f2, count, kind=kind
+        )
+        params: list[str] = []
+        if user != -1:
+            params.append("user={:d}".format(user))
+        if tool != -1:
+            params.append("tool={:d}".format(tool))
+        if a != -1:
+            params.append("a={:d}".format(a))
+        self._append_speed_params(params, v, speed, cp, r)
+        for ii in params:
+            string = string + "," + ii
+        string = string + ")"
+        return self.send_recv_msg(string)
+
+    Circle = circle
+
+    def arc_io(
+        self,
+        a1: float,
+        b1: float,
+        c1: float,
+        d1: float,
+        e1: float,
+        f1: float,
+        a2: float,
+        b2: float,
+        c2: float,
+        d2: float,
+        e2: float,
+        f2: float,
+        coordinate_mode: int,
+        *io_params: Union[list, tuple],
+        user: int = -1,
+        tool: int = -1,
+        a: int = -1,
+        v: int = -1,
+        speed: int = -1,
+        cp: int = -1,
+        r: int = -1,
+        mode: int = -1,
+    ) -> str:
+        """Arc motion with digital-output triggering.
+
+        Args:
+            a1..f1: Through point P1 (6 values).
+            a2..f2: Target point P2 (6 values).
+            coordinate_mode: 0 = pose, 1 = joint.
+            *io_params: IO trigger groups, each a 4-element list/tuple
+                ``(Mode, Distance, Index, Status)``.
+            user: User coordinate system. -1 = not set.
+            tool: Tool coordinate system. -1 = not set.
+            a: Acceleration ratio. -1 = not set.
+            v: Velocity ratio, incompatible with *speed*.
+            speed: Target speed (mm/s), takes precedence over *v*.
+            cp: Continuous path ratio, incompatible with *r*.
+            r: Continuous path radius (mm), takes precedence over *cp*.
+            mode: Arc mode. -1 = not set.
+
+        Returns:
+            Raw response string from robot.
+        """
+        self._validate_coordinate_mode(coordinate_mode, "ArcIO")
+        kind = self._pose_or_joint(coordinate_mode)
+        string = (
+            "ArcIO({kind}={{{:f},{:f},{:f},{:f},{:f},{:f}}},"
+            "{kind}={{{:f},{:f},{:f},{:f},{:f},{:f}}}"
+        ).format(a1, b1, c1, d1, e1, f1, a2, b2, c2, d2, e2, f2, kind=kind)
+
+        for io_param in io_params:
+            if isinstance(io_param, (list, tuple)) and len(io_param) == 4:
+                string += ",{{{:d},{:d},{:d},{:d}}}".format(*io_param)
+            else:
+                logger.error(
+                    f"Invalid io_param format: {io_param}. "
+                    "Expected list or tuple with 4 elements"
+                )
+                raise ValueError(
+                    f"Invalid io_param format: {io_param}. "
+                    "Expected list or tuple with 4 elements"
+                )
+
+        params: list[str] = []
+        if user != -1:
+            params.append("user={:d}".format(user))
+        if tool != -1:
+            params.append("tool={:d}".format(tool))
+        if a != -1:
+            params.append("a={:d}".format(a))
+        self._append_speed_params(params, v, speed, cp, r)
+        if mode != -1:
+            params.append("mode={:d}".format(mode))
+        for ii in params:
+            string += "," + ii
+        string += ")"
+        return self.send_recv_msg(string)
+
+    ArcIO = arc_io
+
+    # ------------------------------------------------------------------
+    # Jog
+    # ------------------------------------------------------------------
+
+    def move_jog(
+        self,
+        axis_id: str = "",
+        coord_type: int = -1,
+        user: int = -1,
+        tool: int = -1,
+    ) -> str:
+        """Start or stop joint jog motion.
+
+        Call with an ``axis_id`` to start jogging, or with an empty string
+        to stop.
+
+        Args:
+            axis_id: Axis/direction string, e.g. ``"J1+"``, ``"X-"``, ``""``.
+            coord_type: 1 = user coordinate, 2 = tool coordinate. -1 = not set.
+            user: User coordinate index. -1 = not set.
+            tool: Tool coordinate index. -1 = not set.
+
+        Returns:
+            Raw response string from robot.
+        """
+        string = "MoveJog({:s}".format(axis_id)
+        params: list[str] = []
+        if coord_type != -1:
+            params.append("coordtype={:d}".format(coord_type))
+        if user != -1:
+            params.append("user={:d}".format(user))
+        if tool != -1:
+            params.append("tool={:d}".format(tool))
+        for ii in params:
+            string = string + "," + ii
+        string = string + ")"
+        return self.send_recv_msg(string)
+
+    MoveJog = move_jog
+
+    # ------------------------------------------------------------------
+    # Trajectory Playback
+    # ------------------------------------------------------------------
+
+    def get_start_pose(self, trace_name: str) -> str:
+        """Get the start point of a trajectory file.
+
+        Args:
+            trace_name: Trajectory file name (with suffix). Stored in
+                ``/dobot/userdata/project/process/trajectory/``.
+
+        Returns:
+            Raw response string from robot.
+        """
+        string = "GetStartPose({:s})".format(trace_name)
+        return self.send_recv_msg(string)
+
+    GetStartPose = get_start_pose
+
+    def start_path(
+        self,
+        trace_name: str,
+        is_const: int = -1,
+        multi: float = -1.0,
+        user: int = -1,
+        tool: int = -1,
+    ) -> str:
+        """Play back a recorded trajectory.
+
+        Args:
+            trace_name: Trajectory file name (with suffix).
+            is_const: Constant speed playback. 1 = constant speed at global
+                rate, 0 = original speed scaled by *multi*.
+            multi: Speed multiplier (valid when is_const=0). Range: [0.25, 2].
+            user: User coordinate system index. -1 = use file value.
+            tool: Tool coordinate system index. -1 = use file value.
+
+        Returns:
+            Raw response string from robot.
+        """
+        string = "StartPath({:s}".format(trace_name)
+        params: list[str] = []
+        if is_const != -1:
+            params.append("isConst={:d}".format(is_const))
+        if multi != -1:
+            params.append("multi={:f}".format(multi))
+        if user != -1:
+            params.append("user={:d}".format(user))
+        if tool != -1:
+            params.append("tool={:d}".format(tool))
+        for ii in params:
+            string = string + "," + ii
+        string = string + ")"
+        return self.send_recv_msg(string)
+
+    StartPath = start_path
+
+    # ------------------------------------------------------------------
+    # Relative Motion (Tool / User / Joint)
+    # ------------------------------------------------------------------
+
+    def rel_mov_j_tool(
+        self,
+        offset_x: float,
+        offset_y: float,
+        offset_z: float,
+        offset_rx: float,
+        offset_ry: float,
+        offset_rz: float,
+        user: int = -1,
+        tool: int = -1,
+        a: int = -1,
+        v: int = -1,
+        cp: int = -1,
+    ) -> str:
+        """Relative joint motion along the tool coordinate system.
+
+        Args:
+            offset_x: X offset (mm).
+            offset_y: Y offset (mm).
+            offset_z: Z offset (mm).
+            offset_rx: Rx offset (degrees).
+            offset_ry: Ry offset (degrees).
+            offset_rz: Rz offset (degrees).
+            user: User coordinate system. -1 = not set.
+            tool: Tool coordinate system. -1 = not set.
+            a: Acceleration ratio. -1 = not set.
+            v: Velocity ratio. -1 = not set.
+            cp: Continuous path ratio. -1 = not set.
+
+        Returns:
+            Raw response string from robot.
+        """
+        string = "RelMovJTool({:f},{:f},{:f},{:f},{:f},{:f}".format(
+            offset_x, offset_y, offset_z, offset_rx, offset_ry, offset_rz
+        )
+        params: list[str] = []
+        if user != -1:
+            params.append("user={:d}".format(user))
+        if tool != -1:
+            params.append("tool={:d}".format(tool))
+        if a != -1:
+            params.append("a={:d}".format(a))
+        if v != -1:
+            params.append("v={:d}".format(v))
+        if cp != -1:
+            params.append("cp={:d}".format(cp))
+        for ii in params:
+            string = string + "," + ii
+        string = string + ")"
+        return self.send_recv_msg(string)
+
+    RelMovJTool = rel_mov_j_tool
+
+    def rel_mov_l_tool(
+        self,
+        offset_x: float,
+        offset_y: float,
+        offset_z: float,
+        offset_rx: float,
+        offset_ry: float,
+        offset_rz: float,
+        user: int = -1,
+        tool: int = -1,
+        a: int = -1,
+        v: int = -1,
+        speed: int = -1,
+        cp: int = -1,
+        r: int = -1,
+    ) -> str:
+        """Relative linear motion along the tool coordinate system.
+
+        For 6-axis robots.
+
+        Args:
+            offset_x: X offset (mm).
+            offset_y: Y offset (mm).
+            offset_z: Z offset (mm).
+            offset_rx: Rx offset (degrees).
+            offset_ry: Ry offset (degrees).
+            offset_rz: Rz offset (degrees).
+            user: User coordinate system. -1 = not set.
+            tool: Tool coordinate system. -1 = not set.
+            a: Acceleration ratio. -1 = not set.
+            v: Velocity ratio, incompatible with *speed*.
+            speed: Target speed (mm/s), takes precedence over *v*.
+            cp: Continuous path ratio, incompatible with *r*.
+            r: Continuous path radius (mm), takes precedence over *cp*.
+
+        Returns:
+            Raw response string from robot.
+        """
+        string = "RelMovLTool({:f},{:f},{:f},{:f},{:f},{:f}".format(
+            offset_x, offset_y, offset_z, offset_rx, offset_ry, offset_rz
+        )
+        params: list[str] = []
+        if user != -1:
+            params.append("user={:d}".format(user))
+        if tool != -1:
+            params.append("tool={:d}".format(tool))
+        if a != -1:
+            params.append("a={:d}".format(a))
+        self._append_speed_params(params, v, speed, cp, r)
+        for ii in params:
+            string = string + "," + ii
+        string = string + ")"
+        return self.send_recv_msg(string)
+
+    RelMovLTool = rel_mov_l_tool
+
+    def rel_mov_j_user(
+        self,
+        offset_x: float,
+        offset_y: float,
+        offset_z: float,
+        offset_rx: float,
+        offset_ry: float,
+        offset_rz: float,
+        user: int = -1,
+        tool: int = -1,
+        a: int = -1,
+        v: int = -1,
+        cp: int = -1,
+    ) -> str:
+        """Relative joint motion along the user coordinate system.
+
+        Args:
+            offset_x: X offset (mm).
+            offset_y: Y offset (mm).
+            offset_z: Z offset (mm).
+            offset_rx: Rx offset (degrees).
+            offset_ry: Ry offset (degrees).
+            offset_rz: Rz offset (degrees).
+            user: User coordinate system. -1 = not set.
+            tool: Tool coordinate system. -1 = not set.
+            a: Acceleration ratio. -1 = not set.
+            v: Velocity ratio. -1 = not set.
+            cp: Continuous path ratio. -1 = not set.
+
+        Returns:
+            Raw response string from robot.
+        """
+        string = "RelMovJUser({:f},{:f},{:f},{:f},{:f},{:f}".format(
+            offset_x, offset_y, offset_z, offset_rx, offset_ry, offset_rz
+        )
+        params: list[str] = []
+        if user != -1:
+            params.append("user={:d}".format(user))
+        if tool != -1:
+            params.append("tool={:d}".format(tool))
+        if a != -1:
+            params.append("a={:d}".format(a))
+        if v != -1:
+            params.append("v={:d}".format(v))
+        if cp != -1:
+            params.append("cp={:d}".format(cp))
+        for ii in params:
+            string = string + "," + ii
+        string = string + ")"
+        return self.send_recv_msg(string)
+
+    RelMovJUser = rel_mov_j_user
+
+    def rel_mov_l_user(
+        self,
+        offset_x: float,
+        offset_y: float,
+        offset_z: float,
+        offset_rx: float,
+        offset_ry: float,
+        offset_rz: float,
+        user: int = -1,
+        tool: int = -1,
+        a: int = -1,
+        v: int = -1,
+        speed: int = -1,
+        cp: int = -1,
+        r: int = -1,
+    ) -> str:
+        """Relative linear motion along the user coordinate system.
+
+        Args:
+            offset_x: X offset (mm).
+            offset_y: Y offset (mm).
+            offset_z: Z offset (mm).
+            offset_rx: Rx offset (degrees).
+            offset_ry: Ry offset (degrees).
+            offset_rz: Rz offset (degrees).
+            user: User coordinate system. -1 = not set.
+            tool: Tool coordinate system. -1 = not set.
+            a: Acceleration ratio. -1 = not set.
+            v: Velocity ratio, incompatible with *speed*.
+            speed: Target speed (mm/s), takes precedence over *v*.
+            cp: Continuous path ratio, incompatible with *r*.
+            r: Continuous path radius (mm), takes precedence over *cp*.
+
+        Returns:
+            Raw response string from robot.
+        """
+        string = "RelMovLUser({:f},{:f},{:f},{:f},{:f},{:f}".format(
+            offset_x, offset_y, offset_z, offset_rx, offset_ry, offset_rz
+        )
+        params: list[str] = []
+        if user != -1:
+            params.append("user={:d}".format(user))
+        if tool != -1:
+            params.append("tool={:d}".format(tool))
+        if a != -1:
+            params.append("a={:d}".format(a))
+        self._append_speed_params(params, v, speed, cp, r)
+        for ii in params:
+            string = string + "," + ii
+        string = string + ")"
+        return self.send_recv_msg(string)
+
+    RelMovLUser = rel_mov_l_user
+
+    def rel_joint_mov_j(
+        self,
+        offset1: float,
+        offset2: float,
+        offset3: float,
+        offset4: float,
+        offset5: float,
+        offset6: float,
+        a: int = -1,
+        v: int = -1,
+        cp: int = -1,
+    ) -> str:
+        """Relative joint motion along the joint coordinate system.
+
+        Args:
+            offset1..offset6: Joint axis offsets (degrees).
+            a: Acceleration ratio. -1 = not set.
+            v: Velocity ratio. -1 = not set.
+            cp: Continuous path ratio. -1 = not set.
+
+        Returns:
+            Raw response string from robot.
+        """
+        string = "RelJointMovJ({:f},{:f},{:f},{:f},{:f},{:f}".format(
+            offset1, offset2, offset3, offset4, offset5, offset6
+        )
+        params: list[str] = []
+        if a != -1:
+            params.append("a={:d}".format(a))
+        if v != -1:
+            params.append("v={:d}".format(v))
+        if cp != -1:
+            params.append("cp={:d}".format(cp))
+        for ii in params:
+            string = string + "," + ii
+        string = string + ")"
+        return self.send_recv_msg(string)
+
+    RelJointMovJ = rel_joint_mov_j
+
+    def rel_point_tool(
+        self,
+        coordinate_mode: int,
+        a1: float,
+        b1: float,
+        c1: float,
+        d1: float,
+        e1: float,
+        f1: float,
+        x: float,
+        y: float,
+        z: float,
+        rx: float,
+        ry: float,
+        rz: float,
+    ) -> str:
+        """Relative point motion in tool coordinate system.
+
+        Args:
+            coordinate_mode: 0 = pose, 1 = joint.
+            a1..f1: Reference point (6 values).
+            x..rz: Offset values (6 values).
+
+        Returns:
+            Raw response string from robot.
+        """
+        kind = self._pose_or_joint(coordinate_mode)
+        string = "RelPointTool({:s}={{{:f},{:f},{:f},{:f},{:f},{:f}}},".format(
+            kind, a1, b1, c1, d1, e1, f1
+        )
+        string = (
+            string
+            + "{"
+            + "{:f},{:f},{:f},{:f},{:f},{:f}".format(x, y, z, rx, ry, rz)
+            + "}"
+        )
+        string = string + ")"
+        return self.send_recv_msg(string)
+
+    RelPointTool = rel_point_tool
+
+    def rel_point_user(
+        self,
+        coordinate_mode: int,
+        a1: float,
+        b1: float,
+        c1: float,
+        d1: float,
+        e1: float,
+        f1: float,
+        x: float,
+        y: float,
+        z: float,
+        rx: float,
+        ry: float,
+        rz: float,
+    ) -> str:
+        """Relative point motion in user coordinate system.
+
+        Args:
+            coordinate_mode: 0 = pose, 1 = joint.
+            a1..f1: Reference point (6 values).
+            x..rz: Offset values (6 values).
+
+        Returns:
+            Raw response string from robot.
+        """
+        kind = self._pose_or_joint(coordinate_mode)
+        string = "RelPointUser({:s}={{{:f},{:f},{:f},{:f},{:f},{:f}}},".format(
+            kind, a1, b1, c1, d1, e1, f1
+        )
+        string = (
+            string
+            + "{"
+            + "{:f},{:f},{:f},{:f},{:f},{:f}".format(x, y, z, rx, ry, rz)
+            + "}"
+        )
+        string = string + ")"
+        return self.send_recv_msg(string)
+
+    RelPointUser = rel_point_user
+
+    def rel_joint(
+        self,
+        j1: float,
+        j2: float,
+        j3: float,
+        j4: float,
+        j5: float,
+        j6: float,
+        offset1: float,
+        offset2: float,
+        offset3: float,
+        offset4: float,
+        offset5: float,
+        offset6: float,
+    ) -> str:
+        """Relative joint motion from a reference joint configuration.
+
+        Args:
+            j1..j6: Reference joint angles.
+            offset1..offset6: Joint offsets.
+
+        Returns:
+            Raw response string from robot.
+        """
+        string = (
+            "RelJoint({:f},{:f},{:f},{:f},{:f},{:f},"
+            "{{{:f},{:f},{:f},{:f},{:f},{:f}}})"
+        ).format(
+            j1, j2, j3, j4, j5, j6,
+            offset1, offset2, offset3, offset4, offset5, offset6,
+        )
+        return self.send_recv_msg(string)
+
+    RelJoint = rel_joint
+
+    # ------------------------------------------------------------------
+    # MoveL (pose-only variant)
+    # ------------------------------------------------------------------
+
+    def move_l(
+        self,
+        a1: float,
+        b1: float,
+        c1: float,
+        d1: float,
+        e1: float,
+        f1: float,
+        user: int = -1,
+        tool: int = -1,
+        a: int = -1,
+        v: int = -1,
+        speed: int = -1,
+        cp: int = -1,
+        r: int = -1,
+    ) -> str:
+        """Linear motion to target pose (pose-only, no coordinate_mode).
+
+        Args:
+            a1..f1: Target Cartesian pose (X, Y, Z, Rx, Ry, Rz).
+            user: User coordinate system. -1 = not set.
+            tool: Tool coordinate system. -1 = not set.
+            a: Acceleration ratio. -1 = not set.
+            v: Velocity ratio, incompatible with *speed*.
+            speed: Target speed (mm/s), takes precedence over *v*.
+            cp: Continuous path ratio, incompatible with *r*.
+            r: Continuous path radius (mm), takes precedence over *cp*.
+
+        Returns:
+            Raw response string from robot.
+        """
+        string = "MoveL(pose={{{:f},{:f},{:f},{:f},{:f},{:f}}}".format(
+            a1, b1, c1, d1, e1, f1
+        )
+        params: list[str] = []
+        if user != -1:
+            params.append("user={:d}".format(user))
+        if tool != -1:
+            params.append("tool={:d}".format(tool))
+        if a != -1:
+            params.append("a={:d}".format(a))
+        self._append_speed_params(params, v, speed, cp, r)
+        for ii in params:
+            string += "," + ii
+        string += ")"
+        return self.send_recv_msg(string)
+
+    MoveL = move_l
+
+    # ------------------------------------------------------------------
+    # Spline (MovS)
+    # ------------------------------------------------------------------
+
+    def mov_s(
+        self,
+        file: Optional[str] = None,
+        coordinate_mode: int = -1,
+        points: Optional[Sequence[Sequence[float]]] = None,
+        user: int = -1,
+        tool: int = -1,
+        v: int = -1,
+        speed: int = -1,
+        a: int = -1,
+        freq: int = -1,
+    ) -> str:
+        """Spline motion through multiple points or from a file.
+
+        Either *file* or both *points* + *coordinate_mode* must be provided.
+
+        Args:
+            file: Spline data file name.
+            coordinate_mode: 0 = pose, 1 = joint (required with *points*).
+            points: Sequence of 6-element point lists.
+            user: User coordinate system. -1 = not set.
+            tool: Tool coordinate system. -1 = not set.
+            v: Velocity ratio, incompatible with *speed*.
+            speed: Target speed (mm/s), takes precedence over *v*.
+            a: Acceleration ratio. -1 = not set.
+            freq: Frequency parameter. -1 = not set.
+
+        Returns:
+            Raw response string from robot.
+        """
+        string = "MovS("
+        if file is not None:
+            string += "file={:s}".format(file)
+        elif points is not None and coordinate_mode != -1:
+            pts_str = []
+            for pt in points:
+                if coordinate_mode == 0:
+                    pts_str.append(
+                        "pose={{{:f},{:f},{:f},{:f},{:f},{:f}}}".format(*pt)
+                    )
+                elif coordinate_mode == 1:
+                    pts_str.append(
+                        "joint={{{:f},{:f},{:f},{:f},{:f},{:f}}}".format(*pt)
+                    )
+            string += ",".join(pts_str)
+        else:
+            logger.error(
+                "Invalid MovS parameters. Expected either 'file' or both "
+                "'points' and 'coordinateMode'"
+            )
+            raise ValueError(
+                "Invalid MovS parameters. Expected either 'file' or both "
+                "'points' and 'coordinateMode'"
+            )
+
+        params: list[str] = []
+        if user != -1:
+            params.append("user={:d}".format(user))
+        if tool != -1:
+            params.append("tool={:d}".format(tool))
+        if v != -1 and speed != -1:
+            params.append("speed={:d}".format(speed))
+        elif speed != -1:
+            params.append("speed={:d}".format(speed))
+        elif v != -1:
+            params.append("v={:d}".format(v))
+        if a != -1:
+            params.append("a={:d}".format(a))
+        if freq != -1:
+            params.append("freq={:d}".format(freq))
+
+        if len(params) > 0:
+            if file is not None or (points is not None and len(points) > 0):
+                string += ","
+            string += ",".join(params)
+
+        string += ")"
+        return self.send_recv_msg(string)
+
+    MovS = mov_s
+
+    # ------------------------------------------------------------------
+    # RunTo
+    # ------------------------------------------------------------------
+
+    def run_to(
+        self,
+        a1: float,
+        b1: float,
+        c1: float,
+        d1: float,
+        e1: float,
+        f1: float,
+        move_type: int,
+        user: int = -1,
+        tool: int = -1,
+        a: int = -1,
+        v: int = -1,
+    ) -> str:
+        """Move to a target point for single-step execution.
+
+        Args:
+            a1..f1: Target point (6 values).
+            move_type: 0 = pose (linear), 1 = joint.
+            user: User coordinate system. -1 = not set.
+            tool: Tool coordinate system. -1 = not set.
+            a: Acceleration ratio. -1 = not set.
+            v: Velocity ratio. -1 = not set.
+
+        Returns:
+            Raw response string from robot.
+        """
+        if move_type == 0:
+            string = "RunTo(pose={{{:f},{:f},{:f},{:f},{:f},{:f}}},moveType=0".format(
+                a1, b1, c1, d1, e1, f1
+            )
+        elif move_type == 1:
+            string = "RunTo(joint={{{:f},{:f},{:f},{:f},{:f},{:f}}},moveType=1".format(
+                a1, b1, c1, d1, e1, f1
+            )
+        else:
+            logger.error(
+                f"Invalid moveType parameter: {move_type}. "
+                "Expected 0 (pose) or 1 (joint)"
+            )
+            raise ValueError(
+                f"Invalid moveType parameter: {move_type}. "
+                "Expected 0 (pose) or 1 (joint)"
+            )
+
+        params: list[str] = []
+        if user != -1:
+            params.append("user={:d}".format(user))
+        if tool != -1:
+            params.append("tool={:d}".format(tool))
+        if a != -1:
+            params.append("a={:d}".format(a))
+        if v != -1:
+            params.append("v={:d}".format(v))
+        for ii in params:
+            string += "," + ii
+        string += ")"
+        return self.send_recv_msg(string)
+
+    RunTo = run_to
