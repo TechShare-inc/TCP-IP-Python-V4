@@ -71,10 +71,10 @@ class _QueryMixin(_SerializationMixin):
         params = []
         state = True
         if user != -1:
-            params.append("user={:d}".format(user))
+            params.append(f"user={user:d}")
             state = not state
         if tool != -1:
-            params.append("tool={:d}".format(tool))
+            params.append(f"tool={tool:d}")
             state = not state
         if not state:
             return (
@@ -84,10 +84,7 @@ class _QueryMixin(_SerializationMixin):
             )
 
         for i, param in enumerate(params):
-            if i == len(params) - 1:
-                string = string + param
-            else:
-                string = string + param + ","
+            string = string + param if i == len(params) - 1 else string + param + ","
 
         string = string + ")"
         return self.send_recv_msg(string)
@@ -139,14 +136,12 @@ class _QueryMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "PositiveKin({:f},{:f},{:f},{:f},{:f},{:f}".format(
-            j1, j2, j3, j4, j5, j6
-        )
+        string = f"PositiveKin({j1:f},{j2:f},{j3:f},{j4:f},{j5:f},{j6:f}"
         params = []
         if user != -1:
-            params.append("user={:d}".format(user))
+            params.append(f"user={user:d}")
         if tool != -1:
-            params.append("tool={:d}".format(tool))
+            params.append(f"tool={tool:d}")
         for ii in params:
             string = string + "," + ii
         string = string + ")"
@@ -190,16 +185,16 @@ class _QueryMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "InverseKin({:f},{:f},{:f},{:f},{:f},{:f}".format(x, y, z, rx, ry, rz)
+        string = f"InverseKin({x:f},{y:f},{z:f},{rx:f},{ry:f},{rz:f}"
         params = []
         if user != -1:
-            params.append("user={:d}".format(user))
+            params.append(f"user={user:d}")
         if tool != -1:
-            params.append("tool={:d}".format(tool))
+            params.append(f"tool={tool:d}")
         if use_joint_near != -1:
-            params.append("useJointNear={:d}".format(use_joint_near))
+            params.append(f"useJointNear={use_joint_near:d}")
         if joint_near != "":
-            params.append("JointNear={:s}".format(joint_near))
+            params.append(f"JointNear={joint_near:s}")
         for ii in params:
             string = string + "," + ii
         string = string + ")"
@@ -235,16 +230,14 @@ class _QueryMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "InverseSolution(pose={{{:f},{:f},{:f},{:f},{:f},{:f}}}".format(
-            x, y, z, rx, ry, rz
-        )
+        string = f"InverseSolution(pose={{{x:f},{y:f},{z:f},{rx:f},{ry:f},{rz:f}}}"
         params = []
         if user != -1:
-            params.append("user={:d}".format(user))
+            params.append(f"user={user:d}")
         if tool != -1:
-            params.append("tool={:d}".format(tool))
+            params.append(f"tool={tool:d}")
         if is_joint != 0:
-            params.append("isJoint={:d}".format(is_joint))
+            params.append(f"isJoint={is_joint:d}")
         for ii in params:
             string += "," + ii
         string += ")"
@@ -306,7 +299,7 @@ class _QueryMixin(_SerializationMixin):
     # Log Export
     # ------------------------------------------------------------------
 
-    def log_export_usb(self, range: int) -> str:
+    def log_export_usb(self, range: int) -> str:  # noqa: A002
         """Export logs to USB storage.
 
         Args:
@@ -315,7 +308,7 @@ class _QueryMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "LogExportUSB({:d})".format(range)
+        string = f"LogExportUSB({range:d})"
         return self.send_recv_msg(string)
 
     LogExportUSB = log_export_usb

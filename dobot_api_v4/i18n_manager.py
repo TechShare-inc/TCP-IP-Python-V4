@@ -5,9 +5,10 @@ This module provides the AlarmI18n class for managing multi-language
 alarm translations using python-i18n library with YAML locale files.
 """
 
-import i18n
 from pathlib import Path
-from typing import Optional, Dict, Any, List
+from typing import Any, Optional
+
+import i18n
 from loguru import logger
 
 
@@ -131,7 +132,7 @@ class AlarmI18n:
         alarm_id: int,
         alarm_type: Optional[str] = None,
         field: Optional[str] = None,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Get alarm information by ID.
 
@@ -189,7 +190,7 @@ class AlarmI18n:
             "level": level,
         }
 
-    def get_controller_alarm(self, alarm_id: int) -> Dict[str, Any]:
+    def get_controller_alarm(self, alarm_id: int) -> dict[str, Any]:
         """
         Get controller alarm by ID.
 
@@ -207,7 +208,7 @@ class AlarmI18n:
         """
         return self.get_alarm(alarm_id, alarm_type="controller")
 
-    def get_servo_alarm(self, alarm_id: int) -> Dict[str, Any]:
+    def get_servo_alarm(self, alarm_id: int) -> dict[str, Any]:
         """
         Get servo alarm by ID.
 
@@ -244,8 +245,10 @@ class AlarmI18n:
 
         Example:
             >>> print(i18n_manager.format_alarm(16))
-            ID 16 [Level 5]: The planned point is closed to the shoulder singularity point
-              Solution: Reselect the movement points or The joint interpolation command is used near the singularity point
+            ID 16 [Level 5]: The planned point is closed to the
+            shoulder singularity point
+              Solution: Reselect the movement points or The joint
+              interpolation command is used near the singularity point
         """
         alarm = self.get_alarm(alarm_id, alarm_type)
 
@@ -259,7 +262,7 @@ class AlarmI18n:
 
         return "\n".join(lines)
 
-    def enrich_alarm_data(self, alarm_data: Dict[str, Any]) -> Dict[str, Any]:
+    def enrich_alarm_data(self, alarm_data: dict[str, Any]) -> dict[str, Any]:
         """
         Enrich alarm data from robot with localized translations.
 
@@ -300,7 +303,7 @@ class AlarmI18n:
         return enriched
 
     @classmethod
-    def get_supported_languages(cls) -> List[str]:
+    def get_supported_languages(cls) -> list[str]:
         """
         Get list of supported language codes.
 

@@ -1,17 +1,16 @@
 """Composed dashboard command client for Dobot V4."""
 
 from ..base import DobotApi
-from ._serialization import _SerializationMixin
-from ._system_mixin import _SystemMixin
+from ._check_mixin import _CheckMixin
 from ._config_mixin import _ConfigMixin
+from ._conveyor_mixin import _ConveyorMixin
+from ._force_mixin import _ForceMixin
 from ._io_mixin import _IOMixin
 from ._modbus_mixin import _ModbusMixin
-from ._query_mixin import _QueryMixin
 from ._motion_mixin import _MotionMixin
-from ._force_mixin import _ForceMixin
-from ._conveyor_mixin import _ConveyorMixin
+from ._query_mixin import _QueryMixin
+from ._system_mixin import _SystemMixin
 from ._weld_mixin import _WeldMixin
-from ._check_mixin import _CheckMixin
 
 
 class DobotApiDashboard(

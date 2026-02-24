@@ -27,10 +27,10 @@ class _IOMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "DO({:d},{:d}".format(index, status)
+        string = f"DO({index:d},{status:d}"
         params = []
         if time != -1:
-            params.append("{:d}".format(time))
+            params.append(f"{time:d}")
         for ii in params:
             string = string + "," + ii
         string = string + ")"
@@ -48,7 +48,7 @@ class _IOMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "DOInstant({:d},{:d})".format(index, status)
+        string = f"DOInstant({index:d},{status:d})"
         return self.send_recv_msg(string)
 
     DOInstant = do_instant
@@ -62,7 +62,7 @@ class _IOMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "GetDO({:d})".format(index)
+        string = f"GetDO({index:d})"
         return self.send_recv_msg(string)
 
     GetDO = get_do
@@ -77,7 +77,7 @@ class _IOMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "DOGroup({:d}".format(index_value[0])
+        string = f"DOGroup({index_value[0]:d}"
         for ii in index_value[1:]:
             string = string + "," + str(ii)
         string = string + ")"
@@ -95,7 +95,7 @@ class _IOMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "GetDOGroup({:d}".format(index_value[0])
+        string = f"GetDOGroup({index_value[0]:d}"
         for ii in index_value[1:]:
             string = string + "," + str(ii)
         string = string + ")"
@@ -113,7 +113,7 @@ class _IOMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        return self.send_recv_msg("DOGroupDEC({:d},{:d})".format(group, value))
+        return self.send_recv_msg(f"DOGroupDEC({group:d},{value:d})")
 
     DOGroupDEC = do_group_dec
 
@@ -127,7 +127,7 @@ class _IOMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        return self.send_recv_msg("GetDOGroupDEC({:d},{:d})".format(group, value))
+        return self.send_recv_msg(f"GetDOGroupDEC({group:d},{value:d})")
 
     GetDOGroupDEC = get_do_group_dec
 
@@ -145,7 +145,7 @@ class _IOMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "ToolDO({:d},{:d})".format(index, status)
+        string = f"ToolDO({index:d},{status:d})"
         return self.send_recv_msg(string)
 
     ToolDO = tool_do
@@ -160,7 +160,7 @@ class _IOMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "ToolDOInstant({:d},{:d})".format(index, status)
+        string = f"ToolDOInstant({index:d},{status:d})"
         return self.send_recv_msg(string)
 
     ToolDOInstant = tool_do_instant
@@ -174,7 +174,7 @@ class _IOMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "GetToolDO({:d})".format(index)
+        string = f"GetToolDO({index:d})"
         return self.send_recv_msg(string)
 
     GetToolDO = get_tool_do
@@ -193,7 +193,7 @@ class _IOMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "AO({:d},{:f})".format(index, value)
+        string = f"AO({index:d},{value:f})"
         return self.send_recv_msg(string)
 
     AO = ao
@@ -208,7 +208,7 @@ class _IOMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "AOInstant({:d},{:f})".format(index, value)
+        string = f"AOInstant({index:d},{value:f})"
         return self.send_recv_msg(string)
 
     AOInstant = ao_instant
@@ -222,7 +222,7 @@ class _IOMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "GetAO({:d})".format(index)
+        string = f"GetAO({index:d})"
         return self.send_recv_msg(string)
 
     GetAO = get_ao
@@ -240,7 +240,7 @@ class _IOMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "DI({:d})".format(index)
+        string = f"DI({index:d})"
         return self.send_recv_msg(string)
 
     DI = di
@@ -256,7 +256,7 @@ class _IOMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "DIGroup({:d}".format(index_value[0])
+        string = f"DIGroup({index_value[0]:d}"
         for ii in index_value[1:]:
             string = string + "," + str(ii)
         string = string + ")"
@@ -274,7 +274,7 @@ class _IOMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        return self.send_recv_msg("DIGroupDEC({:d},{:d})".format(group, value))
+        return self.send_recv_msg(f"DIGroupDEC({group:d},{value:d})")
 
     DIGroupDEC = di_group_dec
 
@@ -291,7 +291,7 @@ class _IOMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "ToolDI({:d})".format(index)
+        string = f"ToolDI({index:d})"
         return self.send_recv_msg(string)
 
     ToolDI = tool_di
@@ -305,7 +305,7 @@ class _IOMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "AI({:d})".format(index)
+        string = f"AI({index:d})"
         return self.send_recv_msg(string)
 
     AI = ai
@@ -322,7 +322,7 @@ class _IOMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "ToolAI({:d})".format(index)
+        string = f"ToolAI({index:d})"
         return self.send_recv_msg(string)
 
     ToolAI = tool_ai
@@ -351,17 +351,17 @@ class _IOMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "SetTool485({:d}".format(baud)
+        string = f"SetTool485({baud:d}"
         params = []
         if parity != "":
             params.append(parity)
         if stopbit != -1:
-            params.append("{:d}".format(stopbit))
+            params.append(f"{stopbit:d}")
             if identify != -1:
-                params.append("{:d}".format(identify))
+                params.append(f"{identify:d}")
         else:
             if identify != -1:
-                params.append("1,{:d}".format(identify))
+                params.append(f"1,{identify:d}")
         for ii in params:
             string = string + "," + ii
         string = string + ")"
@@ -387,10 +387,10 @@ class _IOMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "SetToolPower({:d}".format(status)
+        string = f"SetToolPower({status:d}"
         params = []
         if identify != -1:
-            params.append("{:d}".format(identify))
+            params.append(f"{identify:d}")
         for ii in params:
             string = string + "," + ii
         string = string + ")"
@@ -398,7 +398,7 @@ class _IOMixin(_SerializationMixin):
 
     SetToolPower = set_tool_power
 
-    def set_tool_mode(self, mode: int, type: int, identify: int = -1) -> str:
+    def set_tool_mode(self, mode: int, type: int, identify: int = -1) -> str:  # noqa: A002
         """Set the mode of the end multiplex terminal.
 
         If the AI interface on the end of the robot arm is multiplexed with
@@ -418,10 +418,10 @@ class _IOMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "SetToolMode({:d},{:d}".format(mode, type)
+        string = f"SetToolMode({mode:d},{type:d}"
         params = []
         if identify != -1:
-            params.append("{:d}".format(identify))
+            params.append(f"{identify:d}")
         for ii in params:
             string = string + "," + ii
         string = string + ")"

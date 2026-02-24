@@ -7,10 +7,9 @@ import pytest
 from dobot_api_v4._forward import forward_to
 from dobot_api_v4.responses import (
     AckResponse,
+    ErrorIdResponse,
     IntResponse,
     PoseResponse,
-    ErrorIdResponse,
-    parse_response,
 )
 
 
@@ -104,12 +103,12 @@ class TestDobotRobotLifecycle:
         from dobot_api_v4.robot import DobotRobot
 
         with (
-            patch("dobot_api_v4.robot.DobotApiDashboard") as MockDash,
+            patch("dobot_api_v4.robot.DobotApiDashboard") as mock_dash,
             patch("dobot_api_v4.robot.RobotErrorMonitor"),
         ):
             robot = DobotRobot.__new__(DobotRobot)
             robot.ip = "127.0.0.1"
-            robot.dashboard = MockDash()
+            robot.dashboard = mock_dash()
             robot.errors = MagicMock()
             robot._language = "en"
             robot._feedback = None

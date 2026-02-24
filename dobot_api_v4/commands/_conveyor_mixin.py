@@ -23,7 +23,7 @@ class _ConveyorMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "CnvInit({:d})".format(index)
+        string = f"CnvInit({index:d})"
         return self.send_recv_msg(string)
 
     CnvInit = cnv_init
@@ -66,22 +66,20 @@ class _ConveyorMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "CnvMovL(pose={{{:f},{:f},{:f},{:f},{:f},{:f}}}".format(
-            j1, j2, j3, j4, j5, j6
-        )
+        string = f"CnvMovL(pose={{{j1:f},{j2:f},{j3:f},{j4:f},{j5:f},{j6:f}}}"
         params = []
         if user != -1:
-            params.append("user={:d}".format(user))
+            params.append(f"user={user:d}")
         if tool != -1:
-            params.append("tool={:d}".format(tool))
+            params.append(f"tool={tool:d}")
         if a != -1:
-            params.append("a={:d}".format(a))
+            params.append(f"a={a:d}")
         if v != -1:
-            params.append("v={:d}".format(v))
+            params.append(f"v={v:d}")
         if cp != -1:
-            params.append("cp={:d}".format(cp))
+            params.append(f"cp={cp:d}")
         if r != -1:
-            params.append("r={:d}".format(r))
+            params.append(f"r={r:d}")
         if params:
             string += "," + ",".join(params)
         string += ")"
@@ -137,24 +135,25 @@ class _ConveyorMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "CnvMovC(pose={{{:f},{:f},{:f},{:f},{:f},{:f}}},pose={{{:f},{:f},{:f},{:f},{:f},{:f}}}".format(
-            j1a, j2a, j3a, j4a, j5a, j6a, j1b, j2b, j3b, j4b, j5b, j6b
+        string = (
+            f"CnvMovC(pose={{{j1a:f},{j2a:f},{j3a:f},{j4a:f},{j5a:f},{j6a:f}}}"
+            + f",pose={{{j1b:f},{j2b:f},{j3b:f},{j4b:f},{j5b:f},{j6b:f}}}"
         )
         params = []
         if user != -1:
-            params.append("user={:d}".format(user))
+            params.append(f"user={user:d}")
         if tool != -1:
-            params.append("tool={:d}".format(tool))
+            params.append(f"tool={tool:d}")
         if a != -1:
-            params.append("a={:d}".format(a))
+            params.append(f"a={a:d}")
         if v != -1:
-            params.append("v={:d}".format(v))
+            params.append(f"v={v:d}")
         if cp != -1:
-            params.append("cp={:d}".format(cp))
+            params.append(f"cp={cp:d}")
         if r != -1:
-            params.append("r={:d}".format(r))
+            params.append(f"r={r:d}")
         if mode != 1:
-            params.append("mode={:d}".format(mode))
+            params.append(f"mode={mode:d}")
         if params:
             string += "," + ",".join(params)
         string += ")"
@@ -175,7 +174,7 @@ class _ConveyorMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        return self.send_recv_msg("GetCnvObject({:d})".format(obj_id))
+        return self.send_recv_msg(f"GetCnvObject({obj_id:d})")
 
     GetCnvObject = get_cnv_object
 
@@ -189,9 +188,7 @@ class _ConveyorMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        return self.send_recv_msg(
-            "SetCnvPointOffset({:f},{:f})".format(x_offset, y_offset)
-        )
+        return self.send_recv_msg(f"SetCnvPointOffset({x_offset:f},{y_offset:f})")
 
     SetCnvPointOffset = set_cnv_point_offset
 
@@ -204,7 +201,7 @@ class _ConveyorMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        return self.send_recv_msg("SetCnvTimeCompensation({:d})".format(time))
+        return self.send_recv_msg(f"SetCnvTimeCompensation({time:d})")
 
     SetCnvTimeCompensation = set_cnv_time_compensation
 

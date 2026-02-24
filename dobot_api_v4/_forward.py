@@ -1,7 +1,7 @@
 """Forward decorator for DobotRobot method delegation."""
 
 import functools
-from typing import Any, Callable, Type, TypeVar
+from typing import Any, Callable, TypeVar
 
 from .responses import parse_response
 
@@ -10,7 +10,7 @@ _ResponseT = TypeVar("_ResponseT")
 
 def forward_to(
     target_attr: str,
-    response_type: Type[_ResponseT],
+    response_type: type[_ResponseT],
 ) -> Callable[[Callable[..., Any]], Callable[..., _ResponseT]]:
     """Decorator that forwards a DobotRobot method to a sub-object.
 

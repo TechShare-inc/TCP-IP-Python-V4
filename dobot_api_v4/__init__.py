@@ -49,9 +49,15 @@ __all__ = [
 
 # Configure loguru
 logger.remove()
+_LOG_FMT = (
+    "<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> | "
+    "<level>{level: <8}</level> | "
+    "<cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - "
+    "<level>{message}</level>"
+)
 logger.add(
     sys.stderr,
-    format="<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>",
+    format=_LOG_FMT,
     level=os.environ.get("DOBOT_LOG_LEVEL", "INFO").upper(),
     colorize=True,
 )

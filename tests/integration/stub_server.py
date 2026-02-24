@@ -1,9 +1,10 @@
 """TCP echo/stub server for integration tests."""
 
+import contextlib
 import socket
 import threading
 import time
-from typing import Dict, Optional
+from typing import Optional
 
 
 class StubServer:
@@ -21,7 +22,7 @@ class StubServer:
         self,
         host: str = "127.0.0.1",
         port: int = 0,
-        response_map: Optional[Dict[str, str]] = None,
+        response_map: Optional[dict[str, str]] = None,
         default_response: str = "0,1,;",
     ) -> None:
         self.host = host
@@ -56,10 +57,8 @@ class StubServer:
         if self._thread is not None:
             self._thread.join(timeout=2.0)
         if self._server_socket is not None:
-            try:
+            with contextlib.suppress(OSError):
                 self._server_socket.close()
-            except OSError:
-                pass
 
     def __enter__(self) -> "StubServer":
         self.start()
@@ -94,10 +93,8 @@ class StubServer:
                 response = self._match_response(cmd)
                 conn.sendall(response.encode("utf-8"))
         finally:
-            try:
+            with contextlib.suppress(OSError):
                 conn.close()
-            except OSError:
-                pass
 
     def _match_response(self, cmd: str) -> str:
         """Find first matching response by prefix."""
@@ -114,7 +111,7 @@ class DelayedStubServer(StubServer):
         self,
         host: str = "127.0.0.1",
         port: int = 0,
-        response_map: Optional[Dict[str, str]] = None,
+        response_map: Optional[dict[str, str]] = None,
         default_response: str = "0,1,;",
         delay: float = 0.1,
     ) -> None:
@@ -146,10 +143,8 @@ class FragmentedStubServer(StubServer):
                     conn.sendall(bytes([byte]))
                     time.sleep(0.001)
         finally:
-            try:
+            with contextlib.suppress(OSError):
                 conn.close()
-            except OSError:
-                pass
 
 
 class GarbageStubServer(StubServer):

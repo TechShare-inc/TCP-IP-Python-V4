@@ -38,11 +38,11 @@ class _SystemMixin(_SerializationMixin):
         """
         string = "EnableRobot("
         if load != 0:
-            string = string + "{:f}".format(load)
+            string = string + f"{load:f}"
             if center_x != 0 or center_y != 0 or center_z != 0:
-                string = string + ",{:f},{:f},{:f}".format(center_x, center_y, center_z)
+                string = string + f",{center_x:f},{center_y:f},{center_z:f}"
                 if is_check != -1:
-                    string = string + ",{:d}".format(is_check)
+                    string = string + f",{is_check:d}"
         string = string + ")"
         return self.send_recv_msg(string)
 
@@ -97,7 +97,7 @@ class _SystemMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "RunScript({:s})".format(project_name)
+        string = f"RunScript({project_name:s})"
         return self.send_recv_msg(string)
 
     RunScript = run_script
@@ -147,7 +147,7 @@ class _SystemMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "EmergencyStop({:d})".format(mode)
+        string = f"EmergencyStop({mode:d})"
         return self.send_recv_msg(string)
 
     EmergencyStop = emergency_stop
@@ -167,7 +167,7 @@ class _SystemMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "BrakeControl({:d},{:d})".format(axis_id, value)
+        string = f"BrakeControl({axis_id:d},{value:d})"
         return self.send_recv_msg(string)
 
     BrakeControl = brake_control
@@ -205,7 +205,7 @@ class _SystemMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        return self.send_recv_msg('TcpSendAndParse("{:s}")'.format(cmd))
+        return self.send_recv_msg(f'TcpSendAndParse("{cmd:s}")')
 
     TcpSendAndParse = tcp_send_and_parse
 
@@ -218,6 +218,6 @@ class _SystemMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        return self.send_recv_msg("Sleep({:d})".format(count))
+        return self.send_recv_msg(f"Sleep({count:d})")
 
     Sleep = sleep

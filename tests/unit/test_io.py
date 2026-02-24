@@ -116,12 +116,12 @@ class TestIOMixin:
     def test_set_tool_power(self, mock_dashboard):
         dashboard, sent = mock_dashboard
         dashboard.set_tool_power(1)
-        assert "SetToolPower(1)" == sent[-1]
+        assert sent[-1] == "SetToolPower(1)"
 
     def test_set_tool_mode(self, mock_dashboard):
         dashboard, sent = mock_dashboard
         dashboard.set_tool_mode(1, 0, 0)
-        assert "SetToolMode(1,0,0)" == sent[-1]
+        assert sent[-1] == "SetToolMode(1,0,0)"
 
     # ------------------------------------------------------------------
     # Group DEC

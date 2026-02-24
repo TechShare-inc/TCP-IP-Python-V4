@@ -42,7 +42,7 @@ class TestForceMixin:
         dashboard, sent = mock_dashboard
         dashboard.force_drive_mode(1, 1, 1, 0, 0, 0, user=0)
         cmd = sent[-1]
-        assert "ForceDriveMode({1,1,1,0,0,0},0)" == cmd
+        assert cmd == "ForceDriveMode({1,1,1,0,0,0},0)"
 
     def test_force_drive_speed(self, mock_dashboard):
         dashboard, sent = mock_dashboard
@@ -96,7 +96,7 @@ class TestForceMixin:
     def test_fc_collision_switch(self, mock_dashboard):
         dashboard, sent = mock_dashboard
         dashboard.fc_collision_switch(1)
-        assert "FCCollisionSwitch(enable=1)" == sent[-1]
+        assert sent[-1] == "FCCollisionSwitch(enable=1)"
 
     def test_set_fc_collision(self, mock_dashboard):
         dashboard, sent = mock_dashboard

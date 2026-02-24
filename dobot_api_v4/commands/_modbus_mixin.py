@@ -29,10 +29,10 @@ class _ModbusMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "ModbusCreate({:s},{:d},{:d}".format(ip, port, slave_id)
+        string = f"ModbusCreate({ip:s},{port:d},{slave_id:d}"
         params = []
         if is_rtu != -1:
-            params.append("{:d}".format(is_rtu))
+            params.append(f"{is_rtu:d}")
         for ii in params:
             string = string + "," + ii
         string = string + ")"
@@ -63,14 +63,14 @@ class _ModbusMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "ModbusRTUCreate({:d},{:d}".format(slave_id, baud)
+        string = f"ModbusRTUCreate({slave_id:d},{baud:d}"
         params = []
         if parity != "":
-            params.append("{:s}".format(parity))
+            params.append(f"{parity:s}")
         if data_bit != 8:
-            params.append("{:d}".format(data_bit))
+            params.append(f"{data_bit:d}")
         if stop_bit != -1:
-            params.append("{:d}".format(stop_bit))
+            params.append(f"{stop_bit:d}")
         for ii in params:
             string = string + "," + ii
         string = string + ")"
@@ -87,7 +87,7 @@ class _ModbusMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "ModbusClose({:d})".format(index)
+        string = f"ModbusClose({index:d})"
         return self.send_recv_msg(string)
 
     ModbusClose = modbus_close
@@ -107,7 +107,7 @@ class _ModbusMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "GetInBits({:d},{:d},{:d})".format(index, addr, count)
+        string = f"GetInBits({index:d},{addr:d},{count:d})"
         return self.send_recv_msg(string)
 
     GetInBits = get_in_bits
@@ -125,10 +125,10 @@ class _ModbusMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "GetInRegs({:d},{:d},{:d}".format(index, addr, count)
+        string = f"GetInRegs({index:d},{addr:d},{count:d}"
         params = []
         if val_type != "":
-            params.append("{:s}".format(val_type))
+            params.append(f"{val_type:s}")
         for ii in params:
             string = string + "," + ii
         string = string + ")"
@@ -147,7 +147,7 @@ class _ModbusMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "GetCoils({:d},{:d},{:d})".format(index, addr, count)
+        string = f"GetCoils({index:d},{addr:d},{count:d})"
         return self.send_recv_msg(string)
 
     GetCoils = get_coils
@@ -164,7 +164,7 @@ class _ModbusMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "SetCoils({:d},{:d},{:d},{:s})".format(index, addr, count, val_tab)
+        string = f"SetCoils({index:d},{addr:d},{count:d},{val_tab:s})"
         return self.send_recv_msg(string)
 
     SetCoils = set_coils
@@ -184,10 +184,10 @@ class _ModbusMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "GetHoldRegs({:d},{:d},{:d}".format(index, addr, count)
+        string = f"GetHoldRegs({index:d},{addr:d},{count:d}"
         params = []
         if val_type != "":
-            params.append("{:s}".format(val_type))
+            params.append(f"{val_type:s}")
         for ii in params:
             string = string + "," + ii
         string = string + ")"
@@ -211,10 +211,10 @@ class _ModbusMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "SetHoldRegs({:d},{:d},{:d},{:s}".format(index, addr, count, val_tab)
+        string = f"SetHoldRegs({index:d},{addr:d},{count:d},{val_tab:s}"
         params = []
         if val_type != "":
-            params.append("{:s}".format(val_type))
+            params.append(f"{val_type:s}")
         for ii in params:
             string = string + "," + ii
         string = string + ")"
@@ -235,7 +235,7 @@ class _ModbusMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "GetInputBool({:d})".format(address)
+        string = f"GetInputBool({address:d})"
         return self.send_recv_msg(string)
 
     GetInputBool = get_input_bool
@@ -249,7 +249,7 @@ class _ModbusMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "GetInputInt({:d})".format(address)
+        string = f"GetInputInt({address:d})"
         return self.send_recv_msg(string)
 
     GetInputInt = get_input_int
@@ -263,7 +263,7 @@ class _ModbusMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "GetInputFloat({:d})".format(address)
+        string = f"GetInputFloat({address:d})"
         return self.send_recv_msg(string)
 
     GetInputFloat = get_input_float
@@ -281,7 +281,7 @@ class _ModbusMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "GetOutputBool({:d})".format(address)
+        string = f"GetOutputBool({address:d})"
         return self.send_recv_msg(string)
 
     GetOutputBool = get_output_bool
@@ -295,7 +295,7 @@ class _ModbusMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "GetOutputInt({:d})".format(address)
+        string = f"GetOutputInt({address:d})"
         return self.send_recv_msg(string)
 
     GetOutputInt = get_output_int
@@ -309,7 +309,7 @@ class _ModbusMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "GetOutputFloat({:d})".format(address)
+        string = f"GetOutputFloat({address:d})"
         return self.send_recv_msg(string)
 
     GetOutputFloat = get_output_float
@@ -324,7 +324,7 @@ class _ModbusMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "SetOutputBool({:d},{:d})".format(address, value)
+        string = f"SetOutputBool({address:d},{value:d})"
         return self.send_recv_msg(string)
 
     SetOutputBool = set_output_bool
@@ -339,7 +339,7 @@ class _ModbusMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "SetOutputInt({:d},{:d})".format(address, value)
+        string = f"SetOutputInt({address:d},{value:d})"
         return self.send_recv_msg(string)
 
     SetOutputInt = set_output_int
@@ -354,7 +354,7 @@ class _ModbusMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "SetOutputFloat({:d},{:d})".format(address, value)
+        string = f"SetOutputFloat({address:d},{value:d})"
         return self.send_recv_msg(string)
 
     SetOutputFloat = set_output_float

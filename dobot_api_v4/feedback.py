@@ -4,12 +4,13 @@ Feedback module for Dobot API V4
 This module provides real-time robot status feedback.
 """
 
-import numpy as np
 import time
-from .base import DobotApi
-from .dtypes import FeedbackDtype, FeedbackData
-from loguru import logger
 from typing import Optional
+
+import numpy as np
+
+from .base import DobotApi
+from .dtypes import FeedbackData, FeedbackDtype
 
 
 class DobotApiFeedback(DobotApi):
@@ -66,7 +67,7 @@ class DobotApiFeedback(DobotApi):
             if i >= 5:
                 raise Exception("Missing data packets, please check network")
 
-        interval = (
+        (
             current_recv_time - self.last_recv_time
         ) * 1000  # Convert to milliseconds
         self.last_recv_time = current_recv_time
@@ -80,7 +81,7 @@ class DobotApiFeedback(DobotApi):
         return self._feedback_dtype
 
     # Backward-compat alias
-    feedBackData = raw_feedback_data
+    feedBackData = raw_feedback_data  # noqa: N815
 
     def feedback_data(self) -> Optional[FeedbackData]:
         """Return robot status data as a typed ``FeedbackData`` dataclass.

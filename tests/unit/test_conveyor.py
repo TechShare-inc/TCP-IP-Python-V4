@@ -59,7 +59,7 @@ class TestConveyorMixin:
     def test_set_cnv_time_compensation(self, mock_dashboard):
         dashboard, sent = mock_dashboard
         dashboard.set_cnv_time_compensation(100)
-        assert "SetCnvTimeCompensation(100)" == sent[-1]
+        assert sent[-1] == "SetCnvTimeCompensation(100)"
 
     def test_start_sync_cnv(self, mock_dashboard):
         dashboard, sent = mock_dashboard

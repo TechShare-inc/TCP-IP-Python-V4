@@ -1,12 +1,11 @@
 """Unit tests for dobot_api_v4.feedback module."""
 
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock
 
-import numpy as np
 import pytest
 
-from dobot_api_v4.dtypes import FeedbackData, FeedbackDtype
-from dobot_api_v4.feedback import DobotApiFeedback, DobotApiFeedBack
+from dobot_api_v4.dtypes import FeedbackData
+from dobot_api_v4.feedback import DobotApiFeedBack, DobotApiFeedback
 
 
 @pytest.mark.unit

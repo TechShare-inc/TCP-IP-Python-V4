@@ -2,13 +2,15 @@
 
 import re
 from dataclasses import dataclass
-from typing import Type, TypeVar, Tuple, Optional
+from typing import TypeVar
 
 
 class DobotApiError(Exception):
     """Raised when robot returns non-zero error_code."""
 
-    def __init__(self, error_code: int, command_id: int, message: str, raw: str) -> None:
+    def __init__(
+        self, error_code: int, command_id: int, message: str, raw: str
+    ) -> None:
         self.error_code = error_code
         self.command_id = command_id
         self.message = message
@@ -18,13 +20,15 @@ class DobotApiError(Exception):
 
 @dataclass(frozen=True)
 class AckResponse:
-    """Simple acknowledgement – no payload beyond command_id."""
+    """Simple acknowledgement - no payload beyond command_id."""
+
     command_id: int
 
 
 @dataclass(frozen=True)
 class IntResponse:
     """Response carrying a single integer value."""
+
     command_id: int
     value: int
 
@@ -32,6 +36,7 @@ class IntResponse:
 @dataclass(frozen=True)
 class PoseResponse:
     """Response carrying a 6-DOF pose (x, y, z, rx, ry, rz)."""
+
     command_id: int
     x: float
     y: float
@@ -44,8 +49,9 @@ class PoseResponse:
 @dataclass(frozen=True)
 class ErrorIdResponse:
     """Response carrying a list of active error IDs."""
+
     command_id: int
-    error_ids: Tuple[int, ...]
+    error_ids: tuple[int, ...]
 
 
 _ResponseT = TypeVar(
@@ -59,7 +65,7 @@ _RE_3FIELD = re.compile(r"^(\d+),(\d+),(.*)$")
 _RE_BRACE = re.compile(r"^(\d+),\{(.*)\}$")
 
 
-def parse_response(raw: str, response_type: Type[_ResponseT]) -> _ResponseT:
+def parse_response(raw: str, response_type: type[_ResponseT]) -> _ResponseT:
     """Parse raw robot TCP response into a typed dataclass.
 
     Supports two formats:
@@ -90,7 +96,10 @@ def parse_response(raw: str, response_type: Type[_ResponseT]) -> _ResponseT:
             raise DobotApiError(
                 error_code=error_code,
                 command_id=command_id,
-                message=f"Robot returned error code {error_code} for command {command_id}: {payload}",
+                message=(
+                    f"Robot returned error code {error_code}"
+                    f" for command {command_id}: {payload}"
+                ),
                 raw=raw,
             )
 
@@ -118,7 +127,7 @@ def parse_response(raw: str, response_type: Type[_ResponseT]) -> _ResponseT:
 
 
 def _build_response(
-    response_type: Type[_ResponseT], command_id: int, payload: str
+    response_type: type[_ResponseT], command_id: int, payload: str
 ) -> _ResponseT:
     """Construct a response dataclass from parsed fields.
 
@@ -155,7 +164,7 @@ def _build_response(
 
     if response_type is ErrorIdResponse:
         if not payload.strip():
-            error_ids: Tuple[int, ...] = ()
+            error_ids: tuple[int, ...] = ()
         else:
             error_ids = tuple(
                 int(x.strip())

@@ -5,9 +5,9 @@ This module defines the numpy dtype for parsing binary feedback packets
 and a frozen dataclass for convenient typed access to feedback fields.
 """
 
-import numpy as np
 from dataclasses import dataclass
-from typing import Tuple
+
+import numpy as np
 
 # ---------------------------------------------------------------------------
 # Numpy dtype for the 1440-byte feedback packet
@@ -221,26 +221,26 @@ class FeedbackData:
     safety_o_out: int
 
     # 6-element float arrays
-    q_target: Tuple[float, ...]
-    qd_target: Tuple[float, ...]
-    qdd_target: Tuple[float, ...]
-    i_target: Tuple[float, ...]
-    m_target: Tuple[float, ...]
-    q_actual: Tuple[float, ...]
-    qd_actual: Tuple[float, ...]
-    i_actual: Tuple[float, ...]
-    actual_tcp_force: Tuple[float, ...]
-    tool_vector_actual: Tuple[float, ...]
-    tcp_speed_actual: Tuple[float, ...]
-    tcp_force: Tuple[float, ...]
-    tool_vector_target: Tuple[float, ...]
-    tcp_speed_target: Tuple[float, ...]
-    motor_temperatures: Tuple[float, ...]
-    joint_modes: Tuple[float, ...]
-    v_actual: Tuple[float, ...]
+    q_target: tuple[float, ...]
+    qd_target: tuple[float, ...]
+    qdd_target: tuple[float, ...]
+    i_target: tuple[float, ...]
+    m_target: tuple[float, ...]
+    q_actual: tuple[float, ...]
+    qd_actual: tuple[float, ...]
+    i_actual: tuple[float, ...]
+    actual_tcp_force: tuple[float, ...]
+    tool_vector_actual: tuple[float, ...]
+    tcp_speed_actual: tuple[float, ...]
+    tcp_force: tuple[float, ...]
+    tool_vector_target: tuple[float, ...]
+    tcp_speed_target: tuple[float, ...]
+    motor_temperatures: tuple[float, ...]
+    joint_modes: tuple[float, ...]
+    v_actual: tuple[float, ...]
 
     # Small scalars (byte-sized)
-    hand_type: Tuple[int, ...]
+    hand_type: tuple[int, ...]
     user: int
     tool: int
     run_queued_cmd: int
@@ -275,18 +275,18 @@ class FeedbackData:
     current_command_id: int
 
     # 6-element float arrays (continued)
-    m_actual: Tuple[float, ...]
+    m_actual: tuple[float, ...]
     load: float
     center_x: float
     center_y: float
     center_z: float
-    user_coords: Tuple[float, ...]
-    tool_coords: Tuple[float, ...]
-    six_force_value: Tuple[float, ...]
+    user_coords: tuple[float, ...]
+    tool_coords: tuple[float, ...]
+    six_force_value: tuple[float, ...]
 
     # 4-element float arrays (quaternions)
-    target_quaternion: Tuple[float, ...]
-    actual_quaternion: Tuple[float, ...]
+    target_quaternion: tuple[float, ...]
+    actual_quaternion: tuple[float, ...]
 
     # Final scalars
     auto_manual_mode: int

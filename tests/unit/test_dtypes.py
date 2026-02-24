@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from dobot_api_v4.dtypes import FeedbackData, FeedbackDtype, PROTOCOL_FIELD_MAP
+from dobot_api_v4.dtypes import PROTOCOL_FIELD_MAP, FeedbackData, FeedbackDtype
 
 
 @pytest.mark.unit

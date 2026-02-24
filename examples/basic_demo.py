@@ -1,108 +1,96 @@
-from dobot_api_v4 import DobotApiFeedBack, DobotApiDashboard
+#!/usr/bin/env python3
+"""Basic demo showing DobotRobot high-level façade usage.
+
+This example demonstrates:
+- Connecting via DobotRobot (unified entry point)
+- Enabling the robot
+- Reading feedback data in a background thread
+- Running simple motion commands
+"""
+
+import re
 import threading
 from time import sleep
-import re
+
+from dobot_api_v4 import DobotRobot
 
 
 class DobotDemo:
-    def __init__(self, ip):
+    """Simple demo wrapper around the V4 API."""
+
+    def __init__(self, ip: str) -> None:
         self.ip = ip
-        self.dashboardPort = 29999
-        self.feedPortFour = 30004
-        self.dashboard = None
-        self.feedInfo = []
-        self.__globalLockValue = threading.Lock()
+        self._lock = threading.Lock()
 
-        class item:
-            def __init__(self):
-                self.robotMode = -1
-                self.robotCurrentCommandID = 0
-                self.MessageSize = -1
-                self.DigitalInputs = -1
-                self.DigitalOutputs = -1
-                self.robotCurrentCommandID = -1
+        # Feedback snapshot values
+        self.robot_mode: int = -1
+        self.current_command_id: int = 0
+        self.digital_inputs: int = -1
+        self.digital_outputs: int = -1
 
-        self.feedData = item()
+    def start(self) -> None:
+        """Connect, enable, and begin the feedback loop."""
+        self.robot = DobotRobot(self.ip)
+        dashboard = self.robot.dashboard
 
-    def start(self):
-        self.dashboard = DobotApiDashboard(self.ip, self.dashboardPort)
-        self.feedFour = DobotApiFeedBack(self.ip, self.feedPortFour)
-        if self.parseResultId(self.dashboard.EnableRobot())[0] != 0:
+        result = dashboard.enable_robot()
+        if self.parse_result_id(result)[0] != 0:
             print("Enable failed: Check if port 29999 is occupied")
             return
         print("Enable successful")
 
-        feed_thread = threading.Thread(target=self.GetFeed)
-        feed_thread.daemon = True
+        feed_thread = threading.Thread(target=self._read_feedback, daemon=True)
         feed_thread.start()
 
-        point_a = [146.3759, -283.4321, 332.3956, 177.7879, -1.8540, 147.5821]
-        point_b = [146.3759, -283.4321, 432.3956, 177.7879, -1.8540, 147.5821]
 
         while True:
-            print(
-                "DI:",
-                self.feedData.DigitalInputs,
-                "2DI:",
-                bin(self.feedData.DigitalInputs),
-                "--16:",
-                hex(self.feedData.DigitalInputs),
-            )
-            print(
-                "DO:",
-                self.feedData.DigitalOutputs,
-                "2DO:",
-                bin(self.feedData.DigitalOutputs),
-                "--16:",
-                hex(self.feedData.DigitalOutputs),
-            )
-            print("robomode", self.feedData.robotMode)
+            with self._lock:
+                di = self.digital_inputs
+                do = self.digital_outputs
+                mode = self.robot_mode
+            print(f"DI: {di}  2DI: {bin(di)}  16: {hex(di)}")
+            print(f"DO: {do}  2DO: {bin(do)}  16: {hex(do)}")
+            print(f"robot mode: {mode}")
             sleep(2)
 
-    def GetFeed(self):
+    def _read_feedback(self) -> None:
+        """Background thread: continuously read feedback data."""
+        feedback = self.robot.feedback  # lazy connect to port 30004
         while True:
-            feedInfo = self.feedFour.feedBackData()
-            with self.__globalLockValue:
-                if feedInfo is not None:
-                    if hex((feedInfo["TestValue"][0])) == "0x123456789abcdef":
-                        self.feedData.MessageSize = feedInfo["len"][0]
-                        self.feedData.robotMode = feedInfo["RobotMode"][0]
-                        self.feedData.DigitalInputs = feedInfo["DigitalInputs"][0]
-                        self.feedData.DigitalOutputs = feedInfo["DigitalOutputs"][0]
-                        self.feedData.robotCurrentCommandID = feedInfo[
-                            "CurrentCommandId"
-                        ][0]
-                        """
-                        self.feedData.DigitalOutputs = int(feedInfo['DigitalOutputs'][0])
-                        self.feedData.RobotMode = int(feedInfo['RobotMode'][0])
-                        self.feedData.TimeStamp = int(feedInfo['TimeStamp'][0])
-                        """
+            data = feedback.raw_feedback_data()
+            if data is not None and hex(int(data["test_value"][0])) == "0x123456789abcdef":
+                with self._lock:
+                    self.robot_mode = int(data["robot_mode"][0])
+                    self.digital_inputs = int(data["digital_inputs"][0])
+                    self.digital_outputs = int(data["digital_outputs"][0])
+                    self.current_command_id = int(data["current_command_id"][0])
 
-    def RunPoint(self, point_list):
-        recvmovemess = self.dashboard.MovJ(
-            *point_list, coordinateMode=0
-        )
-        print("MovJ:", recvmovemess)
-        print(self.parseResultId(recvmovemess))
-        currentCommandID = self.parseResultId(recvmovemess)[1]
-        print("Command ID:", currentCommandID)
+    def run_point(self, point_list: list) -> None:
+        """Move to a point and wait for completion."""
+        result = self.robot.dashboard.mov_j(*point_list, coordinate_mode=0)
+        print(f"mov_j: {result}")
+        ids = self.parse_result_id(result)
+        print(ids)
+        current_id = ids[1]
+        print(f"Command ID: {current_id}")
+
         while True:
-
-            print(self.feedData.robotMode)
-            if (
-                self.feedData.robotMode == 5
-                and self.feedData.robotCurrentCommandID == currentCommandID
-            ):
+            with self._lock:
+                mode = self.robot_mode
+                cmd_id = self.current_command_id
+            if mode == 5 and cmd_id == current_id:
                 print("Motion completed")
                 break
             sleep(0.1)
 
-    def parseResultId(self, valueRecv):
-        if "Not Tcp" in valueRecv:
+    @staticmethod
+    def parse_result_id(value_recv) -> list:
+        """Parse integer values from a robot response string."""
+        if "Not Tcp" in str(value_recv):
             print("Control Mode Is Not Tcp")
             return [1]
-        return [int(num) for num in re.findall(r"-?\d+", valueRecv)] or [2]
+        return [int(num) for num in re.findall(r"-?\d+", str(value_recv))] or [2]
 
-    def __del__(self):
-        del self.dashboard
-        del self.feedFour
+    def close(self) -> None:
+        """Clean up connections."""
+        self.robot.close()

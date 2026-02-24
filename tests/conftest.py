@@ -1,7 +1,6 @@
 """Shared test fixtures for dobot_api_v4 tests."""
 
-import struct
-from typing import Callable, List, Tuple
+from typing import Callable
 from unittest.mock import MagicMock, patch
 
 import numpy as np
@@ -11,7 +10,6 @@ from dobot_api_v4.base import DobotApi
 from dobot_api_v4.commands.dashboard import DobotApiDashboard
 from dobot_api_v4.dtypes import FeedbackDtype
 from dobot_api_v4.feedback import DobotApiFeedback
-
 
 # ---------------------------------------------------------------------------
 # DobotApi with patched socket
@@ -40,13 +38,13 @@ def mock_base() -> DobotApi:
 
 
 @pytest.fixture()
-def mock_dashboard() -> Tuple[DobotApiDashboard, List[str]]:
+def mock_dashboard() -> tuple[DobotApiDashboard, list[str]]:
     """Return ``(dashboard, sent)`` where *sent* collects command strings.
 
     ``send_recv_msg`` is replaced with a spy that appends the command
     string to *sent* and returns a generic success response.
     """
-    sent: List[str] = []
+    sent: list[str] = []
 
     with patch.object(DobotApi, "__init__", lambda self, *a, **kw: None):
         dashboard = DobotApiDashboard.__new__(DobotApiDashboard)

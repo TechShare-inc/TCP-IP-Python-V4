@@ -23,7 +23,7 @@ class _ForceMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "EnableFTSensor({:d})".format(status)
+        string = f"EnableFTSensor({status:d})"
         return self.send_recv_msg(string)
 
     EnableFTSensor = enable_ft_sensor
@@ -48,10 +48,7 @@ class _ForceMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        if tool == -1:
-            string = "GetForce()"
-        else:
-            string = "GetForce({:d})".format(tool)
+        string = "GetForce()" if tool == -1 else f"GetForce({tool:d})"
         return self.send_recv_msg(string)
 
     GetForce = get_force
@@ -85,13 +82,10 @@ class _ForceMixin(_SerializationMixin):
             Raw response string from robot.
         """
         string = (
-            "ForceDriveMode("
-            + "{"
-            + "{:d},{:d},{:d},{:d},{:d},{:d}".format(x, y, z, rx, ry, rz)
-            + "}"
+            "ForceDriveMode(" + "{" + f"{x:d},{y:d},{z:d},{rx:d},{ry:d},{rz:d}" + "}"
         )
         if user != -1:
-            string = string + ",{:d}".format(user)
+            string = string + f",{user:d}"
         string = string + ")"
         return self.send_recv_msg(string)
 
@@ -106,7 +100,7 @@ class _ForceMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "ForceDriveSpeed({:d})".format(speed)
+        string = f"ForceDriveSpeed({speed:d})"
         return self.send_recv_msg(string)
 
     ForceDriveSpeed = force_drive_speed
@@ -148,19 +142,19 @@ class _ForceMixin(_SerializationMixin):
         string = (
             "FCForceMode("
             + "{"
-            + "{:d},{:d},{:d},{:d},{:d},{:d}".format(x, y, z, rx, ry, rz)
+            + f"{x:d},{y:d},{z:d},{rx:d},{ry:d},{rz:d}"
             + "},"
             + "{"
-            + "{:d},{:d},{:d},{:d},{:d},{:d}".format(fx, fy, fz, frx, fry, frz)
+            + f"{fx:d},{fy:d},{fz:d},{frx:d},{fry:d},{frz:d}"
             + "}"
         )
         params: list[str] = []
         if reference != -1:
-            params.append("reference={:d}".format(reference))
+            params.append(f"reference={reference:d}")
         if user != -1:
-            params.append("user={:d}".format(user))
+            params.append(f"user={user:d}")
         if tool != -1:
-            params.append("tool={:d}".format(tool))
+            params.append(f"tool={tool:d}")
         for ii in params:
             string = string + "," + ii
         string = string + ")"
@@ -188,13 +182,10 @@ class _ForceMixin(_SerializationMixin):
             Raw response string from robot.
         """
         string = (
-            "FCSetDeviation("
-            + "{"
-            + "{:d},{:d},{:d},{:d},{:d},{:d}".format(x, y, z, rx, ry, rz)
-            + "}"
+            "FCSetDeviation(" + "{" + f"{x:d},{y:d},{z:d},{rx:d},{ry:d},{rz:d}" + "}"
         )
         if control_type != -1:
-            string = string + ",{:d}".format(control_type)
+            string = string + f",{control_type:d}"
         string = string + ")"
         return self.send_recv_msg(string)
 
@@ -211,9 +202,7 @@ class _ForceMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "FCSetForceLimit(" + "{:d},{:d},{:d},{:d},{:d},{:d}".format(
-            x, y, z, rx, ry, rz
-        )
+        string = "FCSetForceLimit(" + f"{x:d},{y:d},{z:d},{rx:d},{ry:d},{rz:d}"
         string = string + ")"
         return self.send_recv_msg(string)
 
@@ -228,9 +217,7 @@ class _ForceMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "FCSetMass(" + "{:d},{:d},{:d},{:d},{:d},{:d}".format(
-            x, y, z, rx, ry, rz
-        )
+        string = "FCSetMass(" + f"{x:d},{y:d},{z:d},{rx:d},{ry:d},{rz:d}"
         string = string + ")"
         return self.send_recv_msg(string)
 
@@ -247,9 +234,7 @@ class _ForceMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "FCSetStiffness(" + "{:d},{:d},{:d},{:d},{:d},{:d}".format(
-            x, y, z, rx, ry, rz
-        )
+        string = "FCSetStiffness(" + f"{x:d},{y:d},{z:d},{rx:d},{ry:d},{rz:d}"
         string = string + ")"
         return self.send_recv_msg(string)
 
@@ -264,9 +249,7 @@ class _ForceMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "FCSetDamping(" + "{:d},{:d},{:d},{:d},{:d},{:d}".format(
-            x, y, z, rx, ry, rz
-        )
+        string = "FCSetDamping(" + f"{x:d},{y:d},{z:d},{rx:d},{ry:d},{rz:d}"
         string = string + ")"
         return self.send_recv_msg(string)
 
@@ -294,9 +277,7 @@ class _ForceMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "FCSetForceSpeedLimit(" + "{:d},{:d},{:d},{:d},{:d},{:d}".format(
-            x, y, z, rx, ry, rz
-        )
+        string = "FCSetForceSpeedLimit(" + f"{x:d},{y:d},{z:d},{rx:d},{ry:d},{rz:d}"
         string = string + ")"
         return self.send_recv_msg(string)
 
@@ -311,9 +292,7 @@ class _ForceMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "FCSetForce(" + "{:d},{:d},{:d},{:d},{:d},{:d}".format(
-            x, y, z, rx, ry, rz
-        )
+        string = "FCSetForce(" + f"{x:d},{y:d},{z:d},{rx:d},{ry:d},{rz:d}"
         string = string + ")"
         return self.send_recv_msg(string)
 
@@ -328,7 +307,7 @@ class _ForceMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        return self.send_recv_msg("FCCollisionSwitch(enable={:d})".format(enable))
+        return self.send_recv_msg(f"FCCollisionSwitch(enable={enable:d})")
 
     FCCollisionSwitch = fc_collision_switch
 
@@ -342,6 +321,6 @@ class _ForceMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        return self.send_recv_msg("SetFCCollision({:f},{:f})".format(force, torque))
+        return self.send_recv_msg(f"SetFCCollision({force:f},{torque:f})")
 
     SetFCCollision = set_fc_collision

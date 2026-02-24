@@ -3,14 +3,13 @@
 from typing import Optional
 
 import numpy as np
-from loguru import logger
 
+from ._forward import forward_to
 from .commands.dashboard import DobotApiDashboard
 from .dtypes import FeedbackData
 from .error_monitor import RobotErrorMonitor
 from .feedback import DobotApiFeedback
 from .responses import AckResponse, ErrorIdResponse, IntResponse, PoseResponse
-from ._forward import forward_to
 
 
 class DobotRobot:

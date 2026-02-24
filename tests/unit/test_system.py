@@ -15,19 +15,19 @@ class TestSystemMixin:
     def test_enable_robot_with_load(self, mock_dashboard):
         dashboard, sent = mock_dashboard
         dashboard.enable_robot(load=1.5)
-        assert "EnableRobot(1.500000)" == sent[-1]
+        assert sent[-1] == "EnableRobot(1.500000)"
 
     def test_enable_robot_with_load_and_center(self, mock_dashboard):
         dashboard, sent = mock_dashboard
         dashboard.enable_robot(load=2.0, center_x=0.1, center_y=0.2, center_z=0.3)
-        assert "EnableRobot(2.000000,0.100000,0.200000,0.300000)" == sent[-1]
+        assert sent[-1] == "EnableRobot(2.000000,0.100000,0.200000,0.300000)"
 
     def test_enable_robot_with_all_params(self, mock_dashboard):
         dashboard, sent = mock_dashboard
         dashboard.enable_robot(
             load=1.0, center_x=0.1, center_y=0.2, center_z=0.3, is_check=1
         )
-        assert "EnableRobot(1.000000,0.100000,0.200000,0.300000,1)" == sent[-1]
+        assert sent[-1] == "EnableRobot(1.000000,0.100000,0.200000,0.300000,1)"
 
     def test_disable_robot(self, mock_dashboard):
         dashboard, sent = mock_dashboard

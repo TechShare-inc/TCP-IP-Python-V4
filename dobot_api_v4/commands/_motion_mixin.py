@@ -1,6 +1,7 @@
 """Motion commands for Dobot V4 API."""
 
-from typing import List, Optional, Sequence, Tuple, Union
+from collections.abc import Sequence
+from typing import Optional, Union
 
 from loguru import logger
 
@@ -45,18 +46,14 @@ class _MotionMixin(_SerializationMixin):
         r: int,
     ) -> None:
         """Append v/speed and cp/r params with precedence rules."""
-        if v != -1 and speed != -1:
-            params.append("speed={:d}".format(speed))
-        elif speed != -1:
-            params.append("speed={:d}".format(speed))
+        if v != -1 and speed != -1 or speed != -1:
+            params.append(f"speed={speed:d}")
         elif v != -1:
-            params.append("v={:d}".format(v))
-        if cp != -1 and r != -1:
-            params.append("r={:d}".format(r))
-        elif r != -1:
-            params.append("r={:d}".format(r))
+            params.append(f"v={v:d}")
+        if cp != -1 and r != -1 or r != -1:
+            params.append(f"r={r:d}")
         elif cp != -1:
-            params.append("cp={:d}".format(cp))
+            params.append(f"cp={cp:d}")
 
     # ------------------------------------------------------------------
     # Basic Motion
@@ -93,20 +90,18 @@ class _MotionMixin(_SerializationMixin):
         """
         self._validate_coordinate_mode(coordinate_mode, "MovJ")
         kind = self._pose_or_joint(coordinate_mode)
-        string = "MovJ({:s}={{{:f},{:f},{:f},{:f},{:f},{:f}}}".format(
-            kind, a1, b1, c1, d1, e1, f1
-        )
+        string = f"MovJ({kind:s}={{{a1:f},{b1:f},{c1:f},{d1:f},{e1:f},{f1:f}}}"
         params: list[str] = []
         if user != -1:
-            params.append("user={:d}".format(user))
+            params.append(f"user={user:d}")
         if tool != -1:
-            params.append("tool={:d}".format(tool))
+            params.append(f"tool={tool:d}")
         if a != -1:
-            params.append("a={:d}".format(a))
+            params.append(f"a={a:d}")
         if v != -1:
-            params.append("v={:d}".format(v))
+            params.append(f"v={v:d}")
         if cp != -1:
-            params.append("cp={:d}".format(cp))
+            params.append(f"cp={cp:d}")
         for ii in params:
             string = string + "," + ii
         string = string + ")"
@@ -149,16 +144,14 @@ class _MotionMixin(_SerializationMixin):
         """
         self._validate_coordinate_mode(coordinate_mode, "MovL")
         kind = self._pose_or_joint(coordinate_mode)
-        string = "MovL({:s}={{{:f},{:f},{:f},{:f},{:f},{:f}}}".format(
-            kind, a1, b1, c1, d1, e1, f1
-        )
+        string = f"MovL({kind:s}={{{a1:f},{b1:f},{c1:f},{d1:f},{e1:f},{f1:f}}}"
         params: list[str] = []
         if user != -1:
-            params.append("user={:d}".format(user))
+            params.append(f"user={user:d}")
         if tool != -1:
-            params.append("tool={:d}".format(tool))
+            params.append(f"tool={tool:d}")
         if a != -1:
-            params.append("a={:d}".format(a))
+            params.append(f"a={a:d}")
         self._append_speed_params(params, v, speed, cp, r)
         for ii in params:
             string = string + "," + ii
@@ -194,14 +187,14 @@ class _MotionMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "ServoJ({:f},{:f},{:f},{:f},{:f},{:f}".format(j1, j2, j3, j4, j5, j6)
+        string = f"ServoJ({j1:f},{j2:f},{j3:f},{j4:f},{j5:f},{j6:f}"
         params: list[str] = []
         if t != -1:
-            params.append("t={:f}".format(t))
+            params.append(f"t={t:f}")
         if ahead_time != -1:
-            params.append("aheadtime={:f}".format(ahead_time))
+            params.append(f"aheadtime={ahead_time:f}")
         if gain != -1:
-            params.append("gain={:f}".format(gain))
+            params.append(f"gain={gain:f}")
         for ii in params:
             string = string + "," + ii
         string = string + ")"
@@ -232,14 +225,14 @@ class _MotionMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "ServoP({:f},{:f},{:f},{:f},{:f},{:f}".format(x, y, z, rx, ry, rz)
+        string = f"ServoP({x:f},{y:f},{z:f},{rx:f},{ry:f},{rz:f}"
         params: list[str] = []
         if t != -1:
-            params.append("t={:f}".format(t))
+            params.append(f"t={t:f}")
         if ahead_time != -1:
-            params.append("aheadtime={:f}".format(ahead_time))
+            params.append(f"aheadtime={ahead_time:f}")
         if gain != -1:
-            params.append("gain={:f}".format(gain))
+            params.append(f"gain={gain:f}")
         for ii in params:
             string = string + "," + ii
         string = string + ")"
@@ -296,16 +289,16 @@ class _MotionMixin(_SerializationMixin):
         self._validate_coordinate_mode(coordinate_mode, "MovLIO")
         kind = self._pose_or_joint(coordinate_mode)
         string = (
-            "MovLIO({:s}={{{:f},{:f},{:f},{:f},{:f},{:f}}},"
-            "{{{:d},{:d},{:d},{:d}}}"
-        ).format(kind, a1, b1, c1, d1, e1, f1, mode, distance, index, status)
+            f"MovLIO({kind:s}={{{a1:f},{b1:f},{c1:f},{d1:f},{e1:f},{f1:f}}},"
+            f"{{{mode:d},{distance:d},{index:d},{status:d}}}"
+        )
         params: list[str] = []
         if user != -1:
-            params.append("user={:d}".format(user))
+            params.append(f"user={user:d}")
         if tool != -1:
-            params.append("tool={:d}".format(tool))
+            params.append(f"tool={tool:d}")
         if a != -1:
-            params.append("a={:d}".format(a))
+            params.append(f"a={a:d}")
         self._append_speed_params(params, v, speed, cp, r)
         for ii in params:
             string = string + "," + ii
@@ -354,20 +347,20 @@ class _MotionMixin(_SerializationMixin):
         self._validate_coordinate_mode(coordinate_mode, "MovJIO")
         kind = self._pose_or_joint(coordinate_mode)
         string = (
-            "MovJIO({:s}={{{:f},{:f},{:f},{:f},{:f},{:f}}},"
-            "{{{:d},{:d},{:d},{:d}}}"
-        ).format(kind, a1, b1, c1, d1, e1, f1, mode, distance, index, status)
+            f"MovJIO({kind:s}={{{a1:f},{b1:f},{c1:f},{d1:f},{e1:f},{f1:f}}},"
+            f"{{{mode:d},{distance:d},{index:d},{status:d}}}"
+        )
         params: list[str] = []
         if user != -1:
-            params.append("user={:d}".format(user))
+            params.append(f"user={user:d}")
         if tool != -1:
-            params.append("tool={:d}".format(tool))
+            params.append(f"tool={tool:d}")
         if a != -1:
-            params.append("a={:d}".format(a))
+            params.append(f"a={a:d}")
         if v != -1:
-            params.append("v={:d}".format(v))
+            params.append(f"v={v:d}")
         if cp != -1:
-            params.append("cp={:d}".format(cp))
+            params.append(f"cp={cp:d}")
         for ii in params:
             string = string + "," + ii
         string = string + ")"
@@ -425,16 +418,16 @@ class _MotionMixin(_SerializationMixin):
         self._validate_coordinate_mode(coordinate_mode, "Arc")
         kind = self._pose_or_joint(coordinate_mode)
         string = (
-            "Arc({kind}={{{:f},{:f},{:f},{:f},{:f},{:f}}},"
-            "{kind}={{{:f},{:f},{:f},{:f},{:f},{:f}}}"
-        ).format(a1, b1, c1, d1, e1, f1, a2, b2, c2, d2, e2, f2, kind=kind)
+            f"Arc({kind}={{{a1:f},{b1:f},{c1:f},{d1:f},{e1:f},{f1:f}}},"
+            f"{kind}={{{a2:f},{b2:f},{c2:f},{d2:f},{e2:f},{f2:f}}}"
+        )
         params: list[str] = []
         if user != -1:
-            params.append("user={:d}".format(user))
+            params.append(f"user={user:d}")
         if tool != -1:
-            params.append("tool={:d}".format(tool))
+            params.append(f"tool={tool:d}")
         if a != -1:
-            params.append("a={:d}".format(a))
+            params.append(f"a={a:d}")
         self._append_speed_params(params, v, speed, cp, r)
         for ii in params:
             string = string + "," + ii
@@ -491,18 +484,16 @@ class _MotionMixin(_SerializationMixin):
         self._validate_coordinate_mode(coordinate_mode, "Circle")
         kind = self._pose_or_joint(coordinate_mode)
         string = (
-            "Circle({kind}={{{:f},{:f},{:f},{:f},{:f},{:f}}},"
-            "{kind}={{{:f},{:f},{:f},{:f},{:f},{:f}}},{:d}"
-        ).format(
-            a1, b1, c1, d1, e1, f1, a2, b2, c2, d2, e2, f2, count, kind=kind
+            f"Circle({kind}={{{a1:f},{b1:f},{c1:f},{d1:f},{e1:f},{f1:f}}},"
+            f"{kind}={{{a2:f},{b2:f},{c2:f},{d2:f},{e2:f},{f2:f}}},{count:d}"
         )
         params: list[str] = []
         if user != -1:
-            params.append("user={:d}".format(user))
+            params.append(f"user={user:d}")
         if tool != -1:
-            params.append("tool={:d}".format(tool))
+            params.append(f"tool={tool:d}")
         if a != -1:
-            params.append("a={:d}".format(a))
+            params.append(f"a={a:d}")
         self._append_speed_params(params, v, speed, cp, r)
         for ii in params:
             string = string + "," + ii
@@ -559,9 +550,9 @@ class _MotionMixin(_SerializationMixin):
         self._validate_coordinate_mode(coordinate_mode, "ArcIO")
         kind = self._pose_or_joint(coordinate_mode)
         string = (
-            "ArcIO({kind}={{{:f},{:f},{:f},{:f},{:f},{:f}}},"
-            "{kind}={{{:f},{:f},{:f},{:f},{:f},{:f}}}"
-        ).format(a1, b1, c1, d1, e1, f1, a2, b2, c2, d2, e2, f2, kind=kind)
+            f"ArcIO({kind}={{{a1:f},{b1:f},{c1:f},{d1:f},{e1:f},{f1:f}}},"
+            f"{kind}={{{a2:f},{b2:f},{c2:f},{d2:f},{e2:f},{f2:f}}}"
+        )
 
         for io_param in io_params:
             if isinstance(io_param, (list, tuple)) and len(io_param) == 4:
@@ -578,14 +569,14 @@ class _MotionMixin(_SerializationMixin):
 
         params: list[str] = []
         if user != -1:
-            params.append("user={:d}".format(user))
+            params.append(f"user={user:d}")
         if tool != -1:
-            params.append("tool={:d}".format(tool))
+            params.append(f"tool={tool:d}")
         if a != -1:
-            params.append("a={:d}".format(a))
+            params.append(f"a={a:d}")
         self._append_speed_params(params, v, speed, cp, r)
         if mode != -1:
-            params.append("mode={:d}".format(mode))
+            params.append(f"mode={mode:d}")
         for ii in params:
             string += "," + ii
         string += ")"
@@ -618,14 +609,14 @@ class _MotionMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "MoveJog({:s}".format(axis_id)
+        string = f"MoveJog({axis_id:s}"
         params: list[str] = []
         if coord_type != -1:
-            params.append("coordtype={:d}".format(coord_type))
+            params.append(f"coordtype={coord_type:d}")
         if user != -1:
-            params.append("user={:d}".format(user))
+            params.append(f"user={user:d}")
         if tool != -1:
-            params.append("tool={:d}".format(tool))
+            params.append(f"tool={tool:d}")
         for ii in params:
             string = string + "," + ii
         string = string + ")"
@@ -647,7 +638,7 @@ class _MotionMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "GetStartPose({:s})".format(trace_name)
+        string = f"GetStartPose({trace_name:s})"
         return self.send_recv_msg(string)
 
     GetStartPose = get_start_pose
@@ -673,16 +664,16 @@ class _MotionMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "StartPath({:s}".format(trace_name)
+        string = f"StartPath({trace_name:s}"
         params: list[str] = []
         if is_const != -1:
-            params.append("isConst={:d}".format(is_const))
+            params.append(f"isConst={is_const:d}")
         if multi != -1:
-            params.append("multi={:f}".format(multi))
+            params.append(f"multi={multi:f}")
         if user != -1:
-            params.append("user={:d}".format(user))
+            params.append(f"user={user:d}")
         if tool != -1:
-            params.append("tool={:d}".format(tool))
+            params.append(f"tool={tool:d}")
         for ii in params:
             string = string + "," + ii
         string = string + ")"
@@ -726,20 +717,21 @@ class _MotionMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "RelMovJTool({:f},{:f},{:f},{:f},{:f},{:f}".format(
-            offset_x, offset_y, offset_z, offset_rx, offset_ry, offset_rz
+        string = (
+            f"RelMovJTool({offset_x:f},{offset_y:f},{offset_z:f},"
+            f"{offset_rx:f},{offset_ry:f},{offset_rz:f}"
         )
         params: list[str] = []
         if user != -1:
-            params.append("user={:d}".format(user))
+            params.append(f"user={user:d}")
         if tool != -1:
-            params.append("tool={:d}".format(tool))
+            params.append(f"tool={tool:d}")
         if a != -1:
-            params.append("a={:d}".format(a))
+            params.append(f"a={a:d}")
         if v != -1:
-            params.append("v={:d}".format(v))
+            params.append(f"v={v:d}")
         if cp != -1:
-            params.append("cp={:d}".format(cp))
+            params.append(f"cp={cp:d}")
         for ii in params:
             string = string + "," + ii
         string = string + ")"
@@ -785,16 +777,17 @@ class _MotionMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "RelMovLTool({:f},{:f},{:f},{:f},{:f},{:f}".format(
-            offset_x, offset_y, offset_z, offset_rx, offset_ry, offset_rz
+        string = (
+            f"RelMovLTool({offset_x:f},{offset_y:f},{offset_z:f},"
+            f"{offset_rx:f},{offset_ry:f},{offset_rz:f}"
         )
         params: list[str] = []
         if user != -1:
-            params.append("user={:d}".format(user))
+            params.append(f"user={user:d}")
         if tool != -1:
-            params.append("tool={:d}".format(tool))
+            params.append(f"tool={tool:d}")
         if a != -1:
-            params.append("a={:d}".format(a))
+            params.append(f"a={a:d}")
         self._append_speed_params(params, v, speed, cp, r)
         for ii in params:
             string = string + "," + ii
@@ -835,20 +828,21 @@ class _MotionMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "RelMovJUser({:f},{:f},{:f},{:f},{:f},{:f}".format(
-            offset_x, offset_y, offset_z, offset_rx, offset_ry, offset_rz
+        string = (
+            f"RelMovJUser({offset_x:f},{offset_y:f},{offset_z:f},"
+            f"{offset_rx:f},{offset_ry:f},{offset_rz:f}"
         )
         params: list[str] = []
         if user != -1:
-            params.append("user={:d}".format(user))
+            params.append(f"user={user:d}")
         if tool != -1:
-            params.append("tool={:d}".format(tool))
+            params.append(f"tool={tool:d}")
         if a != -1:
-            params.append("a={:d}".format(a))
+            params.append(f"a={a:d}")
         if v != -1:
-            params.append("v={:d}".format(v))
+            params.append(f"v={v:d}")
         if cp != -1:
-            params.append("cp={:d}".format(cp))
+            params.append(f"cp={cp:d}")
         for ii in params:
             string = string + "," + ii
         string = string + ")"
@@ -892,16 +886,17 @@ class _MotionMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "RelMovLUser({:f},{:f},{:f},{:f},{:f},{:f}".format(
-            offset_x, offset_y, offset_z, offset_rx, offset_ry, offset_rz
+        string = (
+            f"RelMovLUser({offset_x:f},{offset_y:f},{offset_z:f},"
+            f"{offset_rx:f},{offset_ry:f},{offset_rz:f}"
         )
         params: list[str] = []
         if user != -1:
-            params.append("user={:d}".format(user))
+            params.append(f"user={user:d}")
         if tool != -1:
-            params.append("tool={:d}".format(tool))
+            params.append(f"tool={tool:d}")
         if a != -1:
-            params.append("a={:d}".format(a))
+            params.append(f"a={a:d}")
         self._append_speed_params(params, v, speed, cp, r)
         for ii in params:
             string = string + "," + ii
@@ -933,16 +928,17 @@ class _MotionMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "RelJointMovJ({:f},{:f},{:f},{:f},{:f},{:f}".format(
-            offset1, offset2, offset3, offset4, offset5, offset6
+        string = (
+            f"RelJointMovJ({offset1:f},{offset2:f},{offset3:f},"
+            f"{offset4:f},{offset5:f},{offset6:f}"
         )
         params: list[str] = []
         if a != -1:
-            params.append("a={:d}".format(a))
+            params.append(f"a={a:d}")
         if v != -1:
-            params.append("v={:d}".format(v))
+            params.append(f"v={v:d}")
         if cp != -1:
-            params.append("cp={:d}".format(cp))
+            params.append(f"cp={cp:d}")
         for ii in params:
             string = string + "," + ii
         string = string + ")"
@@ -977,13 +973,11 @@ class _MotionMixin(_SerializationMixin):
             Raw response string from robot.
         """
         kind = self._pose_or_joint(coordinate_mode)
-        string = "RelPointTool({:s}={{{:f},{:f},{:f},{:f},{:f},{:f}}},".format(
-            kind, a1, b1, c1, d1, e1, f1
-        )
+        string = f"RelPointTool({kind:s}={{{a1:f},{b1:f},{c1:f},{d1:f},{e1:f},{f1:f}}},"
         string = (
             string
             + "{"
-            + "{:f},{:f},{:f},{:f},{:f},{:f}".format(x, y, z, rx, ry, rz)
+            + f"{x:f},{y:f},{z:f},{rx:f},{ry:f},{rz:f}"
             + "}"
         )
         string = string + ")"
@@ -1018,13 +1012,11 @@ class _MotionMixin(_SerializationMixin):
             Raw response string from robot.
         """
         kind = self._pose_or_joint(coordinate_mode)
-        string = "RelPointUser({:s}={{{:f},{:f},{:f},{:f},{:f},{:f}}},".format(
-            kind, a1, b1, c1, d1, e1, f1
-        )
+        string = f"RelPointUser({kind:s}={{{a1:f},{b1:f},{c1:f},{d1:f},{e1:f},{f1:f}}},"
         string = (
             string
             + "{"
-            + "{:f},{:f},{:f},{:f},{:f},{:f}".format(x, y, z, rx, ry, rz)
+            + f"{x:f},{y:f},{z:f},{rx:f},{ry:f},{rz:f}"
             + "}"
         )
         string = string + ")"
@@ -1057,11 +1049,8 @@ class _MotionMixin(_SerializationMixin):
             Raw response string from robot.
         """
         string = (
-            "RelJoint({:f},{:f},{:f},{:f},{:f},{:f},"
-            "{{{:f},{:f},{:f},{:f},{:f},{:f}}})"
-        ).format(
-            j1, j2, j3, j4, j5, j6,
-            offset1, offset2, offset3, offset4, offset5, offset6,
+            f"RelJoint({j1:f},{j2:f},{j3:f},{j4:f},{j5:f},{j6:f},"
+            f"{{{offset1:f},{offset2:f},{offset3:f},{offset4:f},{offset5:f},{offset6:f}}})"
         )
         return self.send_recv_msg(string)
 
@@ -1102,16 +1091,14 @@ class _MotionMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "MoveL(pose={{{:f},{:f},{:f},{:f},{:f},{:f}}}".format(
-            a1, b1, c1, d1, e1, f1
-        )
+        string = f"MoveL(pose={{{a1:f},{b1:f},{c1:f},{d1:f},{e1:f},{f1:f}}}"
         params: list[str] = []
         if user != -1:
-            params.append("user={:d}".format(user))
+            params.append(f"user={user:d}")
         if tool != -1:
-            params.append("tool={:d}".format(tool))
+            params.append(f"tool={tool:d}")
         if a != -1:
-            params.append("a={:d}".format(a))
+            params.append(f"a={a:d}")
         self._append_speed_params(params, v, speed, cp, r)
         for ii in params:
             string += "," + ii
@@ -1156,7 +1143,7 @@ class _MotionMixin(_SerializationMixin):
         """
         string = "MovS("
         if file is not None:
-            string += "file={:s}".format(file)
+            string += f"file={file:s}"
         elif points is not None and coordinate_mode != -1:
             pts_str = []
             for pt in points:
@@ -1181,19 +1168,17 @@ class _MotionMixin(_SerializationMixin):
 
         params: list[str] = []
         if user != -1:
-            params.append("user={:d}".format(user))
+            params.append(f"user={user:d}")
         if tool != -1:
-            params.append("tool={:d}".format(tool))
-        if v != -1 and speed != -1:
-            params.append("speed={:d}".format(speed))
-        elif speed != -1:
-            params.append("speed={:d}".format(speed))
+            params.append(f"tool={tool:d}")
+        if v != -1 and speed != -1 or speed != -1:
+            params.append(f"speed={speed:d}")
         elif v != -1:
-            params.append("v={:d}".format(v))
+            params.append(f"v={v:d}")
         if a != -1:
-            params.append("a={:d}".format(a))
+            params.append(f"a={a:d}")
         if freq != -1:
-            params.append("freq={:d}".format(freq))
+            params.append(f"freq={freq:d}")
 
         if len(params) > 0:
             if file is not None or (points is not None and len(points) > 0):
@@ -1237,13 +1222,9 @@ class _MotionMixin(_SerializationMixin):
             Raw response string from robot.
         """
         if move_type == 0:
-            string = "RunTo(pose={{{:f},{:f},{:f},{:f},{:f},{:f}}},moveType=0".format(
-                a1, b1, c1, d1, e1, f1
-            )
+            string = f"RunTo(pose={{{a1:f},{b1:f},{c1:f},{d1:f},{e1:f},{f1:f}}},moveType=0"
         elif move_type == 1:
-            string = "RunTo(joint={{{:f},{:f},{:f},{:f},{:f},{:f}}},moveType=1".format(
-                a1, b1, c1, d1, e1, f1
-            )
+            string = f"RunTo(joint={{{a1:f},{b1:f},{c1:f},{d1:f},{e1:f},{f1:f}}},moveType=1"
         else:
             logger.error(
                 f"Invalid moveType parameter: {move_type}. "
@@ -1256,13 +1237,13 @@ class _MotionMixin(_SerializationMixin):
 
         params: list[str] = []
         if user != -1:
-            params.append("user={:d}".format(user))
+            params.append(f"user={user:d}")
         if tool != -1:
-            params.append("tool={:d}".format(tool))
+            params.append(f"tool={tool:d}")
         if a != -1:
-            params.append("a={:d}".format(a))
+            params.append(f"a={a:d}")
         if v != -1:
-            params.append("v={:d}".format(v))
+            params.append(f"v={v:d}")
         for ii in params:
             string += "," + ii
         string += ")"

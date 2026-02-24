@@ -22,7 +22,7 @@ class _ConfigMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "SpeedFactor({:d})".format(speed)
+        string = f"SpeedFactor({speed:d})"
         return self.send_recv_msg(string)
 
     SpeedFactor = speed_factor
@@ -38,7 +38,7 @@ class _ConfigMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "AccJ({:d})".format(speed)
+        string = f"AccJ({speed:d})"
         return self.send_recv_msg(string)
 
     AccJ = acc_j
@@ -54,7 +54,7 @@ class _ConfigMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "AccL({:d})".format(speed)
+        string = f"AccL({speed:d})"
         return self.send_recv_msg(string)
 
     AccL = acc_l
@@ -70,7 +70,7 @@ class _ConfigMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "VelJ({:d})".format(speed)
+        string = f"VelJ({speed:d})"
         return self.send_recv_msg(string)
 
     VelJ = vel_j
@@ -86,7 +86,7 @@ class _ConfigMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "VelL({:d})".format(speed)
+        string = f"VelL({speed:d})"
         return self.send_recv_msg(string)
 
     VelL = vel_l
@@ -105,7 +105,7 @@ class _ConfigMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "CP({:d})".format(ratio)
+        string = f"CP({ratio:d})"
         return self.send_recv_msg(string)
 
     CP = cp
@@ -121,7 +121,7 @@ class _ConfigMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "User({:d})".format(index)
+        string = f"User({index:d})"
         return self.send_recv_msg(string)
 
     User = user
@@ -136,7 +136,7 @@ class _ConfigMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "SetUser({:d},{:s})".format(index, table)
+        string = f"SetUser({index:d},{table:s})"
         return self.send_recv_msg(string)
 
     SetUser = set_user
@@ -153,7 +153,7 @@ class _ConfigMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "CalcUser({:d},{:d},{:s})".format(index, matrix_direction, table)
+        string = f"CalcUser({index:d},{matrix_direction:d},{table:s})"
         return self.send_recv_msg(string)
 
     CalcUser = calc_user
@@ -169,7 +169,7 @@ class _ConfigMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "Tool({:d})".format(index)
+        string = f"Tool({index:d})"
         return self.send_recv_msg(string)
 
     Tool = tool
@@ -184,7 +184,7 @@ class _ConfigMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "SetTool({:d},{:s})".format(index, table)
+        string = f"SetTool({index:d},{table:s})"
         return self.send_recv_msg(string)
 
     SetTool = set_tool
@@ -201,7 +201,7 @@ class _ConfigMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "CalcTool({:d},{:d},{:s})".format(index, matrix_direction, table)
+        string = f"CalcTool({index:d},{matrix_direction:d},{table:s})"
         return self.send_recv_msg(string)
 
     CalcTool = calc_tool
@@ -232,12 +232,12 @@ class _ConfigMixin(_SerializationMixin):
         """
         string = "SetPayload("
         if name != "F":
-            string = string + "{:s}".format(name)
+            string = string + f"{name:s}"
         else:
             if load != 0:
-                string = string + "{:f}".format(load)
+                string = string + f"{load:f}"
                 if x != 0 or y != 0 or z != 0:
-                    string = string + ",{:f},{:f},{:f}".format(x, y, z)
+                    string = string + f",{x:f},{y:f},{z:f}"
         string = string + ")"
         return self.send_recv_msg(string)
 
@@ -252,7 +252,7 @@ class _ConfigMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "SetCollisionLevel({:d})".format(level)
+        string = f"SetCollisionLevel({level:d})"
         return self.send_recv_msg(string)
 
     SetCollisionLevel = set_collision_level
@@ -266,7 +266,7 @@ class _ConfigMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "SetBackDistance({:d})".format(distance)
+        string = f"SetBackDistance({distance:d})"
         return self.send_recv_msg(string)
 
     SetBackDistance = set_back_distance
@@ -280,7 +280,7 @@ class _ConfigMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "SetPostCollisionMode({:d})".format(mode)
+        string = f"SetPostCollisionMode({mode:d})"
         return self.send_recv_msg(string)
 
     SetPostCollisionMode = set_post_collision_mode
@@ -295,7 +295,7 @@ class _ConfigMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "DragSensivity({:d},{:d})".format(index, value)
+        string = f"DragSensivity({index:d},{value:d})"
         return self.send_recv_msg(string)
 
     DragSensivity = drag_sensitivity
@@ -311,7 +311,7 @@ class _ConfigMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "EnableSafeSkin({:d})".format(status)
+        string = f"EnableSafeSkin({status:d})"
         return self.send_recv_msg(string)
 
     EnableSafeSkin = enable_safe_skin
@@ -328,7 +328,7 @@ class _ConfigMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "SetSafeSkin({:d},{:d})".format(part, status)
+        string = f"SetSafeSkin({part:d},{status:d})"
         return self.send_recv_msg(string)
 
     SetSafeSkin = set_safe_skin
@@ -343,7 +343,7 @@ class _ConfigMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "SetSafeWallEnable({:d},{:d})".format(index, value)
+        string = f"SetSafeWallEnable({index:d},{value:d})"
         return self.send_recv_msg(string)
 
     SetSafeWallEnable = set_safe_wall_enable
@@ -358,7 +358,7 @@ class _ConfigMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "SetWorkZoneEnable({:d},{:d})".format(index, value)
+        string = f"SetWorkZoneEnable({index:d},{value:d})"
         return self.send_recv_msg(string)
 
     SetWorkZoneEnable = set_work_zone_enable
@@ -379,7 +379,7 @@ class _ConfigMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "OffsetPara({:f},{:f},{:f},{:f},{:f},{:f})".format(x, y, z, rx, ry, rz)
+        string = f"OffsetPara({x:f},{y:f},{z:f},{rx:f},{ry:f},{rz:f})"
         return self.send_recv_msg(string)
 
     OffsetPara = offset_para
@@ -393,7 +393,7 @@ class _ConfigMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "SetResumeOffset({:f})".format(distance)
+        string = f"SetResumeOffset({distance:f})"
         return self.send_recv_msg(string)
 
     SetResumeOffset = set_resume_offset

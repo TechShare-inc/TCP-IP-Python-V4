@@ -1,6 +1,6 @@
 """Weld and weave commands for Dobot V4 API."""
 
-from typing import Sequence
+from collections.abc import Sequence
 
 from ._serialization import _SerializationMixin
 
@@ -52,15 +52,13 @@ class _WeldMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "ArcTrackParams({:d},{:d},{:f},{:f},{:f},{:f},{:f},{:f})".format(
-            sample_time,
-            coordinate_type,
-            up_down_compensation_min,
-            up_down_compensation_max,
-            up_down_compensation_offset,
-            left_right_compensation_min,
-            left_right_compensation_max,
-            left_right_compensation_offset,
+        string = (
+            f"ArcTrackParams({sample_time:d},{coordinate_type:d},"
+            f"{up_down_compensation_min:f},{up_down_compensation_max:f},"
+            f"{up_down_compensation_offset:f},"
+            f"{left_right_compensation_min:f},"
+            f"{left_right_compensation_max:f},"
+            f"{left_right_compensation_offset:f})"
         )
         return self.send_recv_msg(string)
 
@@ -98,8 +96,10 @@ class _WeldMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "SetArcTrackOffset({{{:f},{:f},{:f},{:f},{:f},{:f}}})".format(
-            offset_x, offset_y, offset_z, offset_rx, offset_ry, offset_rz
+        string = (
+            f"SetArcTrackOffset({{{offset_x:f},{offset_y:f},"
+            f"{offset_z:f},{offset_rx:f},"
+            f"{offset_ry:f},{offset_rz:f}}})"
         )
         return self.send_recv_msg(string)
 
@@ -137,28 +137,9 @@ class _WeldMixin(_SerializationMixin):
         """
         string = (
             "RelPointWeldLine("
-            "{:f},{:f},{:f},{:f},{:f},{:f},"
-            "{{{:f},{:f},{:f},{:f},{:f},{:f}}},"
-            "{{{:f},{:f},{:f},{:f},{:f},{:f}}})"
-        ).format(
-            start_x,
-            end_x,
-            y,
-            z,
-            work_angle,
-            travel_angle,
-            p1[0],
-            p1[1],
-            p1[2],
-            p1[3],
-            p1[4],
-            p1[5],
-            p2[0],
-            p2[1],
-            p2[2],
-            p2[3],
-            p2[4],
-            p2[5],
+            f"{start_x:f},{end_x:f},{y:f},{z:f},{work_angle:f},{travel_angle:f},"
+            f"{{{p1[0]:f},{p1[1]:f},{p1[2]:f},{p1[3]:f},{p1[4]:f},{p1[5]:f}}},"
+            f"{{{p2[0]:f},{p2[1]:f},{p2[2]:f},{p2[3]:f},{p2[4]:f},{p2[5]:f}}})"
         )
         return self.send_recv_msg(string)
 
@@ -194,35 +175,10 @@ class _WeldMixin(_SerializationMixin):
         """
         string = (
             "RelPointWeldArc("
-            "{:f},{:f},{:f},{:f},{:f},{:f},"
-            "{{{:f},{:f},{:f},{:f},{:f},{:f}}},"
-            "{{{:f},{:f},{:f},{:f},{:f},{:f}}},"
-            "{{{:f},{:f},{:f},{:f},{:f},{:f}}})"
-        ).format(
-            start_x,
-            end_x,
-            y,
-            z,
-            work_angle,
-            travel_angle,
-            p1[0],
-            p1[1],
-            p1[2],
-            p1[3],
-            p1[4],
-            p1[5],
-            p2[0],
-            p2[1],
-            p2[2],
-            p2[3],
-            p2[4],
-            p2[5],
-            p3[0],
-            p3[1],
-            p3[2],
-            p3[3],
-            p3[4],
-            p3[5],
+            f"{start_x:f},{end_x:f},{y:f},{z:f},{work_angle:f},{travel_angle:f},"
+            f"{{{p1[0]:f},{p1[1]:f},{p1[2]:f},{p1[3]:f},{p1[4]:f},{p1[5]:f}}},"
+            f"{{{p2[0]:f},{p2[1]:f},{p2[2]:f},{p2[3]:f},{p2[4]:f},{p2[5]:f}}},"
+            f"{{{p3[0]:f},{p3[1]:f},{p3[2]:f},{p3[3]:f},{p3[4]:f},{p3[5]:f}}})"
         )
         return self.send_recv_msg(string)
 
@@ -278,23 +234,17 @@ class _WeldMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "WeaveParams({:d},{:f},{:f},{:f},{:d},{:d},{:d},{:d},{:d},{:d},{:f},{:f}".format(
-            weld_type,
-            frequency,
-            left_amplitude,
-            right_amplitude,
-            direction,
-            stop_mode,
-            stop_time1,
-            stop_time2,
-            stop_time3,
-            stop_time4,
-            radius,
-            radian,
+        string = (
+            f"WeaveParams({weld_type:d},{frequency:f},"
+            f"{left_amplitude:f},{right_amplitude:f},"
+            f"{direction:d},{stop_mode:d},"
+            f"{stop_time1:d},{stop_time2:d},"
+            f"{stop_time3:d},{stop_time4:d},"
+            f"{radius:f},{radian:f}"
         )
         if kwargs:
             for key, value in kwargs.items():
-                string += ",{}={}".format(key, value)
+                string += f",{key}={value}"
         string += ")"
         return self.send_recv_msg(string)
 
@@ -333,7 +283,7 @@ class _WeldMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        return self.send_recv_msg("WeldArcSpeed({:f})".format(speed))
+        return self.send_recv_msg(f"WeldArcSpeed({speed:f})")
 
     WeldArcSpeed = weld_arc_speed
 
@@ -381,19 +331,13 @@ class _WeldMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = "WeldWeaveStart({:d},{:f},{:f},{:f},{:d},{:d},{:d},{:d},{:d},{:d},{:f},{:f})".format(
-            weld_type,
-            frequency,
-            left_amplitude,
-            right_amplitude,
-            direction,
-            stop_mode,
-            stop_time1,
-            stop_time2,
-            stop_time3,
-            stop_time4,
-            radius,
-            radian,
+        string = (
+            f"WeldWeaveStart({weld_type:d},{frequency:f},"
+            f"{left_amplitude:f},{right_amplitude:f},"
+            f"{direction:d},{stop_mode:d},"
+            f"{stop_time1:d},{stop_time2:d},"
+            f"{stop_time3:d},{stop_time4:d},"
+            f"{radius:f},{radian:f})"
         )
         return self.send_recv_msg(string)
 

@@ -6,13 +6,13 @@ Feedback data structures are defined in dtypes.py and re-exported here.
 """
 
 import socket
-import numpy as np
 import threading
 from time import sleep
 from typing import Any, Optional
+
 from loguru import logger
 
-from .dtypes import FeedbackDtype, FeedbackData, PROTOCOL_FIELD_MAP
+from .dtypes import FeedbackDtype
 
 # Backward-compat alias
 MyType = FeedbackDtype
@@ -58,7 +58,7 @@ class DobotApi:
             self.socket_dobot = socket.socket()
             self.socket_dobot.connect((self.ip, self.port))
             self.socket_dobot.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, 144000)
-        except socket.error as e:
+        except OSError as e:
             raise ConnectionError(
                 f"Unable to establish socket connection to {self.ip}:{self.port}. "
                 f"Error: {e}"
@@ -113,9 +113,8 @@ class DobotApi:
         except Exception as e:
             logger.error(f"Receive error: {e}. Attempting reconnection...")
             self.socket_dobot = self.reconnect(self.ip, self.port)
-        finally:
-            data_str = str(data, encoding="utf-8") if data else ""
-            return data_str
+        data_str = str(data, encoding="utf-8") if data else ""
+        return data_str
 
     def close(self) -> None:
         """Close the TCP socket connection."""
@@ -123,7 +122,7 @@ class DobotApi:
             try:
                 self.socket_dobot.shutdown(socket.SHUT_RDWR)
                 self.socket_dobot.close()
-            except socket.error as e:
+            except OSError as e:
                 logger.warning(f"Error while closing socket: {e}")
 
     # ------------------------------------------------------------------
@@ -146,7 +145,7 @@ class DobotApi:
             return recv_data
 
     # Backward-compat alias (temporary, until all callers migrated)
-    sendRecvMsg = send_recv_msg
+    sendRecvMsg = send_recv_msg  # noqa: N815
 
     # ------------------------------------------------------------------
     # Reconnection
@@ -177,7 +176,7 @@ class DobotApi:
                 sleep(1)
 
     # Backward-compat alias
-    reConnect = reconnect
+    reConnect = reconnect  # noqa: N815
 
     def __del__(self) -> None:
         """Clean up socket connection on object destruction."""

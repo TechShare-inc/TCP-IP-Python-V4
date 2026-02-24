@@ -1,79 +1,80 @@
-"""
-Robot Error Monitor Module
+"""Robot error monitor via HTTP interface (port 22000).
 
-This module provides the RobotErrorMonitor class for monitoring robot alarm information
-via HTTP interface (port 22000), separate from the TCP/IP command interface.
-
-The error monitoring system uses HTTP REST API calls to retrieve structured alarm
-information with multi-language support.
+This module provides the ``RobotErrorMonitor`` class for monitoring robot alarm
+information via the robot's HTTP REST API, separate from the TCP/IP command
+interface.  Alarm data is enriched with localized translations from the i18n
+system.
 """
 
 import json
 import time
-import urllib.request
 import urllib.error
+import urllib.request
+from typing import Any, Optional
+
 from loguru import logger
+
 from .i18n_manager import AlarmI18n
 
 
 class RobotErrorMonitor:
-    """
-    Robot Error Monitor Class
-    A class for monitoring robot alarm information via HTTP interface.
+    """Monitor robot alarms via the HTTP REST API on port 22000.
 
-    This monitor uses the robot's HTTP REST API (port 22000) to retrieve error
-    information with multi-language support.
+    Retrieves structured alarm information and enriches it with
+    multi-language translations managed by :class:`AlarmI18n`.
 
     Attributes:
-        robot_ip (str): Robot IP address
+        robot_ip: Robot IP address.
+        i18n: Alarm internationalisation manager instance.
     """
 
-    def __init__(self, robot_ip="192.168.200.1"):
-        """
-        Initialize the error monitor.
+    def __init__(self, robot_ip: str = "192.168.200.1") -> None:
+        """Initialize the error monitor.
 
         Args:
-            robot_ip (str): Robot IP address
+            robot_ip: Robot IP address.
         """
-        self.robot_ip = robot_ip
-        self.i18n = AlarmI18n(default_language="en")  # Initialize i18n manager
+        self.robot_ip: str = robot_ip
+        self.i18n: AlarmI18n = AlarmI18n(default_language="en")
 
-    def get_error_info(self, language="zh_CN"):
-        """
-        Get robot alarm information via HTTP interface with local translations.
+    def get_error_info(self, language: str = "zh_CN") -> Optional[dict[str, Any]]:
+        """Get robot alarm information via HTTP with local translations.
 
-        This method retrieves alarm IDs from the robot via HTTP (port 22000) and
-        enriches them with localized translations from the i18n system.
+        Retrieves alarm IDs from the robot via HTTP (port 22000) and enriches
+        them with localized translations from the i18n system.
 
         Args:
-            language (str): Language setting, default is "zh_CN"
-                           Supported languages: en, zh_CN, zh_Hant, ja, de, ko, vi, es, ru, fr
-                           Also accepts: zh_cn, kr (auto-normalized)
+            language: Language code.  Supported: ``en``, ``zh_CN``,
+                ``zh_Hant``, ``ja``, ``de``, ``ko``, ``vi``, ``es``,
+                ``ru``, ``fr``.  Also accepts ``zh_cn``, ``kr``
+                (auto-normalised).
 
         Returns:
-            dict or None: Returns alarm information dictionary on success, None on error.
-                         Alarm information format:
-                         {
-                             "errMsg": [
-                                 {
-                                     "id": int,              # Error ID
-                                     "type": str,            # "controller" or "servo"
-                                     "level": int,           # Error level
-                                     "description": str,     # Error description (localized)
-                                     "cause": str,           # Error cause (localized)
-                                     "solution": str,        # Solution suggestion (localized)
-                                     "mode": str,            # Error mode (from robot)
-                                     "date": str,            # Error date (from robot)
-                                     "time": str             # Error time (from robot)
-                                 }
-                             ]
-                         }
+            Alarm information dictionary on success, ``None`` on error.
+            The dictionary has the form::
 
-        Example:
-            error_info = monitor.get_error_info("en")
-            if error_info and "errMsg" in error_info:
-                for error in error_info["errMsg"]:
-                    print(f"ID: {error['id']}, Description: {error['description']}")
+                {
+                    "errMsg": [
+                        {
+                            "id": int,
+                            "type": str,
+                            "level": int,
+                            "description": str,
+                            "cause": str,
+                            "solution": str,
+                            "mode": str,
+                            "date": str,
+                            "time": str,
+                        }
+                    ]
+                }
+
+        Example::
+
+            info = monitor.get_error_info("en")
+            if info and "errMsg" in info:
+                for err in info["errMsg"]:
+                    print(f"ID: {err['id']}, Desc: {err['description']}")
         """
         try:
             self.i18n.set_language(language)
@@ -83,10 +84,10 @@ class RobotErrorMonitor:
 
             with urllib.request.urlopen(alarm_req, timeout=5) as response:
                 alarm_data = response.read().decode("utf-8")
-                robot_response = json.loads(alarm_data)
+                robot_response: dict[str, Any] = json.loads(alarm_data)
 
             if robot_response and "errMsg" in robot_response:
-                enriched_alarms = []
+                enriched_alarms: list[dict[str, Any]] = []
                 for alarm in robot_response["errMsg"]:
                     enriched = self.i18n.enrich_alarm_data(alarm)
                     enriched_alarms.append(enriched)
@@ -95,27 +96,26 @@ class RobotErrorMonitor:
             return robot_response
 
         except urllib.error.HTTPError as e:
-            logger.error(f"GetError: HTTP error {e.code} - {e.reason}")
+            logger.error("GetError: HTTP error {} - {}", e.code, e.reason)
             return None
         except urllib.error.URLError as e:
-            logger.error(f"GetError: Network error - {e}")
+            logger.error("GetError: Network error - {}", e)
             return None
         except json.JSONDecodeError as e:
-            logger.error(f"GetError: JSON parsing error - {e}")
+            logger.error("GetError: JSON parsing error - {}", e)
             return None
         except Exception as e:
-            logger.error(f"GetError: Unexpected error - {e}")
+            logger.error("GetError: Unexpected error - {}", e)
             return None
 
-    def check_errors(self, language="zh_cn"):
-        """
-        Check and display current error information.
+    def check_errors(self, language: str = "zh_cn") -> bool:
+        """Check and display current error information.
 
         Args:
-            language (str): Display language
+            language: Display language code.
 
         Returns:
-            bool: True means there are errors, False means no errors
+            ``True`` if errors are present, ``False`` otherwise.
         """
         error_info = self.get_error_info(language)
 
@@ -123,37 +123,42 @@ class RobotErrorMonitor:
             logger.warning("Failed to get error information")
             return False
 
-        errors = error_info["errMsg"]
+        errors: list[dict[str, Any]] = error_info["errMsg"]
 
         if not errors:
             logger.info("Robot status normal, no error information")
             return False
 
-        logger.warning(f"Found {len(errors)} error(s)")
+        logger.warning("Found {} error(s)", len(errors))
 
         for i, error in enumerate(errors, 1):
             logger.error(
-                f"Error {i}: ID={error.get('id', 'N/A')}, "
-                f"Level={error.get('level', 'N/A')}, "
-                f"Description={error.get('description', 'N/A')}, "
-                f"Solution={error.get('solution', 'N/A')}, "
-                f"Mode={error.get('mode', 'N/A')}, "
-                f"Date={error.get('date', 'N/A')}, "
-                f"Time={error.get('time', 'N/A')}"
+                "Error {}: ID={}, Level={}, Description={}, "
+                "Solution={}, Mode={}, Date={}, Time={}",
+                i,
+                error.get("id", "N/A"),
+                error.get("level", "N/A"),
+                error.get("description", "N/A"),
+                error.get("solution", "N/A"),
+                error.get("mode", "N/A"),
+                error.get("date", "N/A"),
+                error.get("time", "N/A"),
             )
 
         return True
 
-    def monitor_errors(self, interval=5, language="zh_cn"):
-        """
-        Continuously monitor error information.
+    def monitor_errors(self, interval: int = 5, language: str = "zh_cn") -> None:
+        """Continuously monitor error information.
+
+        Blocks until interrupted with ``Ctrl+C``.
 
         Args:
-            interval (int): Check interval (seconds)
-            language (str): Display language
+            interval: Check interval in seconds.
+            language: Display language code.
         """
         logger.info(
-            f"Start monitoring robot error information (check every {interval} seconds)"
+            "Start monitoring robot error information (check every {} seconds)",
+            interval,
         )
         logger.info("Press Ctrl+C to stop monitoring")
 
@@ -170,16 +175,17 @@ class RobotErrorMonitor:
         except KeyboardInterrupt:
             logger.info("Monitoring stopped")
 
-    def save_error_log(self, filename=None, language="zh_cn"):
-        """
-        Save error information to file.
+    def save_error_log(
+        self, filename: Optional[str] = None, language: str = "zh_cn"
+    ) -> None:
+        """Save error information to a JSON file.
 
         Args:
-            filename (str): Save filename, default is current timestamp
-            language (str): Language setting
+            filename: Destination path.  Defaults to a timestamped name.
+            language: Language code for translations.
         """
         if filename is None:
-            filename = f"robot_errors_{time.strftime('%Y%m%d_%H%M%S')}.json"
+            filename = "robot_errors_{}.json".format(time.strftime("%Y%m%d_%H%M%S"))
 
         error_info = self.get_error_info(language)
 
@@ -187,8 +193,8 @@ class RobotErrorMonitor:
             try:
                 with open(filename, "w", encoding="utf-8") as f:
                     json.dump(error_info, f, ensure_ascii=False, indent=2)
-                logger.info(f"Error information saved to: {filename}")
+                logger.info("Error information saved to: {}", filename)
             except Exception as e:
-                logger.error(f"Failed to save file: {e}")
+                logger.error("Failed to save file: {}", e)
         else:
             logger.warning("Unable to get error information")

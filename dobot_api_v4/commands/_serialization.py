@@ -23,9 +23,9 @@ class _SerializationMixin:
         if isinstance(value, (list, tuple)):
             return "{" + ",".join(self._fmt(x) for x in value) + "}"
         if isinstance(value, float):
-            return "{:f}".format(value)
+            return f"{value:f}"
         if isinstance(value, int):
-            return "{:d}".format(value)
+            return f"{value:d}"
         return str(value)
 
     def _build_cmd(self, name: str, *args: object, **kwargs: object) -> str:

@@ -25,15 +25,15 @@ class _CheckMixin(_SerializationMixin):
     ) -> None:
         """Append optional named parameters for check commands."""
         if user != -1:
-            params.append("user={:d}".format(user))
+            params.append(f"user={user:d}")
         if tool != -1:
-            params.append("tool={:d}".format(tool))
+            params.append(f"tool={tool:d}")
         if a != -1:
-            params.append("a={:d}".format(a))
+            params.append(f"a={a:d}")
         if v != -1:
-            params.append("v={:d}".format(v))
+            params.append(f"v={v:d}")
         if cp != -1:
-            params.append("cp={:d}".format(cp))
+            params.append(f"cp={cp:d}")
 
     # ------------------------------------------------------------------
     # Standard Check Commands
@@ -97,28 +97,9 @@ class _CheckMixin(_SerializationMixin):
         """
         string = (
             "CheckMovC("
-            "joint={{{:f},{:f},{:f},{:f},{:f},{:f}}},"
-            "joint={{{:f},{:f},{:f},{:f},{:f},{:f}}},"
-            "joint={{{:f},{:f},{:f},{:f},{:f},{:f}}}"
-        ).format(
-            j1a,
-            j2a,
-            j3a,
-            j4a,
-            j5a,
-            j6a,
-            j1b,
-            j2b,
-            j3b,
-            j4b,
-            j5b,
-            j6b,
-            j1c,
-            j2c,
-            j3c,
-            j4c,
-            j5c,
-            j6c,
+            f"joint={{{j1a:f},{j2a:f},{j3a:f},{j4a:f},{j5a:f},{j6a:f}}},"
+            f"joint={{{j1b:f},{j2b:f},{j3b:f},{j4b:f},{j5b:f},{j6b:f}}},"
+            f"joint={{{j1c:f},{j2c:f},{j3c:f},{j4c:f},{j5c:f},{j6c:f}}}"
         )
         params = []
         self._append_check_params(params, user, tool, a, v, cp)
@@ -175,21 +156,8 @@ class _CheckMixin(_SerializationMixin):
         """
         string = (
             "CheckMovJ("
-            "joint={{{:f},{:f},{:f},{:f},{:f},{:f}}},"
-            "joint={{{:f},{:f},{:f},{:f},{:f},{:f}}}"
-        ).format(
-            j1a,
-            j2a,
-            j3a,
-            j4a,
-            j5a,
-            j6a,
-            j1b,
-            j2b,
-            j3b,
-            j4b,
-            j5b,
-            j6b,
+            f"joint={{{j1a:f},{j2a:f},{j3a:f},{j4a:f},{j5a:f},{j6a:f}}},"
+            f"joint={{{j1b:f},{j2b:f},{j3b:f},{j4b:f},{j5b:f},{j6b:f}}}"
         )
         params = []
         self._append_check_params(params, user, tool, a, v, cp)
@@ -246,21 +214,8 @@ class _CheckMixin(_SerializationMixin):
         """
         string = (
             "CheckMovL("
-            "joint={{{:f},{:f},{:f},{:f},{:f},{:f}}},"
-            "joint={{{:f},{:f},{:f},{:f},{:f},{:f}}}"
-        ).format(
-            j1a,
-            j2a,
-            j3a,
-            j4a,
-            j5a,
-            j6a,
-            j1b,
-            j2b,
-            j3b,
-            j4b,
-            j5b,
-            j6b,
+            f"joint={{{j1a:f},{j2a:f},{j3a:f},{j4a:f},{j5a:f},{j6a:f}}},"
+            f"joint={{{j1b:f},{j2b:f},{j3b:f},{j4b:f},{j5b:f},{j6b:f}}}"
         )
         params = []
         self._append_check_params(params, user, tool, a, v, cp)
@@ -333,28 +288,9 @@ class _CheckMixin(_SerializationMixin):
         """
         string = (
             "CheckOddMovC("
-            "joint={{{:f},{:f},{:f},{:f},{:f},{:f}}},"
-            "joint={{{:f},{:f},{:f},{:f},{:f},{:f}}},"
-            "joint={{{:f},{:f},{:f},{:f},{:f},{:f}}}"
-        ).format(
-            j1a,
-            j2a,
-            j3a,
-            j4a,
-            j5a,
-            j6a,
-            j1b,
-            j2b,
-            j3b,
-            j4b,
-            j5b,
-            j6b,
-            j1c,
-            j2c,
-            j3c,
-            j4c,
-            j5c,
-            j6c,
+            f"joint={{{j1a:f},{j2a:f},{j3a:f},{j4a:f},{j5a:f},{j6a:f}}},"
+            f"joint={{{j1b:f},{j2b:f},{j3b:f},{j4b:f},{j5b:f},{j6b:f}}},"
+            f"joint={{{j1c:f},{j2c:f},{j3c:f},{j4c:f},{j5c:f},{j6c:f}}}"
         )
         params = []
         self._append_check_params(params, user, tool, a, v, cp)
@@ -411,21 +347,8 @@ class _CheckMixin(_SerializationMixin):
         """
         string = (
             "CheckOddMovJ("
-            "joint={{{:f},{:f},{:f},{:f},{:f},{:f}}},"
-            "joint={{{:f},{:f},{:f},{:f},{:f},{:f}}}"
-        ).format(
-            j1a,
-            j2a,
-            j3a,
-            j4a,
-            j5a,
-            j6a,
-            j1b,
-            j2b,
-            j3b,
-            j4b,
-            j5b,
-            j6b,
+            f"joint={{{j1a:f},{j2a:f},{j3a:f},{j4a:f},{j5a:f},{j6a:f}}},"
+            f"joint={{{j1b:f},{j2b:f},{j3b:f},{j4b:f},{j5b:f},{j6b:f}}}"
         )
         params = []
         self._append_check_params(params, user, tool, a, v, cp)
@@ -482,21 +405,8 @@ class _CheckMixin(_SerializationMixin):
         """
         string = (
             "CheckOddMovL("
-            "joint={{{:f},{:f},{:f},{:f},{:f},{:f}}},"
-            "joint={{{:f},{:f},{:f},{:f},{:f},{:f}}}"
-        ).format(
-            j1a,
-            j2a,
-            j3a,
-            j4a,
-            j5a,
-            j6a,
-            j1b,
-            j2b,
-            j3b,
-            j4b,
-            j5b,
-            j6b,
+            f"joint={{{j1a:f},{j2a:f},{j3a:f},{j4a:f},{j5a:f},{j6a:f}}},"
+            f"joint={{{j1b:f},{j2b:f},{j3b:f},{j4b:f},{j5b:f},{j6b:f}}}"
         )
         params = []
         self._append_check_params(params, user, tool, a, v, cp)
