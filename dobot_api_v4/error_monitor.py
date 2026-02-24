@@ -13,7 +13,6 @@ import time
 import urllib.request
 import urllib.error
 from loguru import logger
-from .dashboard import DobotApiDashboard
 from .i18n_manager import AlarmI18n
 
 
@@ -23,53 +22,21 @@ class RobotErrorMonitor:
     A class for monitoring robot alarm information via HTTP interface.
 
     This monitor uses the robot's HTTP REST API (port 22000) to retrieve error
-    information, which is fundamentally different from the TCP/IP command protocol
-    (port 29999) used by DobotApiDashboard.
+    information with multi-language support.
 
     Attributes:
         robot_ip (str): Robot IP address
-        dashboard_port (int): Dashboard TCP port (default: 29999)
-        dashboard (DobotApiDashboard): TCP command interface (optional)
     """
 
-    def __init__(self, robot_ip="192.168.200.1", dashboard_port=29999):
+    def __init__(self, robot_ip="192.168.200.1"):
         """
         Initialize the error monitor.
 
         Args:
             robot_ip (str): Robot IP address
-            dashboard_port (int): Dashboard TCP port for control commands
         """
         self.robot_ip = robot_ip
-        self.dashboard_port = dashboard_port
-        self.dashboard = None
         self.i18n = AlarmI18n(default_language="en")  # Initialize i18n manager
-
-    def connect(self):
-        """
-        Connect to robot TCP/IP interface.
-
-        Note: The HTTP error monitoring doesn't require connection, but this
-        establishes the TCP interface for control commands if needed.
-
-        Returns:
-            bool: True if connection successful, False otherwise
-        """
-        try:
-            self.dashboard = DobotApiDashboard(self.robot_ip, self.dashboard_port)
-            logger.info(
-                f"Successfully connected to robot: {self.robot_ip}:{self.dashboard_port}"
-            )
-            return True
-        except Exception as e:
-            logger.error(f"Failed to connect to robot: {e}")
-            return False
-
-    def disconnect(self):
-        """Disconnect from robot TCP interface."""
-        if self.dashboard:
-            self.dashboard.close()
-            logger.info("Disconnected from robot")
 
     def get_error_info(self, language="zh_CN"):
         """
