@@ -795,7 +795,7 @@ class DobotApiDashboard(DobotApi):
         params = []
         if parity != "":
             params.append(parity)
-        if string != -1:
+        if stopbit != -1:
             params.append("{:d}".format(stopbit))
             if identify != -1:
                 params.append("{:d}".format(identify))
@@ -1123,7 +1123,7 @@ class DobotApiDashboard(DobotApi):
         Parameter name     Type     Description
         address     int     register address, range: [0-23]
         """
-        string = "GetInputFloat({:d})".format(address)
+        string = "GetOutputFloat({:d})".format(address)
         return self.sendRecvMsg(string)
 
     def SetOutputBool(self, address, value):
@@ -1134,7 +1134,7 @@ class DobotApiDashboard(DobotApi):
         address     int     register address, range: [0-63]
         value     int     value to be set (0 or 1)
         """
-        string = "GetInputFloat({:d},{:d})".format(address, value)
+        string = "SetOutputBool({:d},{:d})".format(address, value)
         return self.sendRecvMsg(string)
 
     def SetOutputInt(self, address, value):
