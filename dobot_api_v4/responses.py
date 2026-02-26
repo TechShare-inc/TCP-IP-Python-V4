@@ -59,18 +59,23 @@ _ResponseT = TypeVar(
 )
 
 # Regex for standard 3-field format: "error_code,command_id,payload;"
-_RE_3FIELD = re.compile(r"^(\d+),(\d+),(.*)$")
+_RE_3FIELD = re.compile(r"^(-?\d+),(\d+),(.*)$")
 
-# Regex for brace-payload format: "error_code,{payload};"
-_RE_BRACE = re.compile(r"^(\d+),\{(.*)\}$")
+# Regex for V4 brace format: "error_code,{payload},CommandName();"
+# The payload data lives inside the braces; the trailing part is a command echo.
+_RE_BRACE_CMD = re.compile(r"^(-?\d+),\{([^}]*)\},(.+)$")
+
+# Regex for legacy brace-payload format: "error_code,{payload};"
+_RE_BRACE = re.compile(r"^(-?\d+),\{(.*)\}$")
 
 
 def parse_response(raw: str, response_type: type[_ResponseT]) -> _ResponseT:
     """Parse raw robot TCP response into a typed dataclass.
 
-    Supports two formats:
-    - 3-field: ``"error_code,command_id,payload;"``
-    - 2-field (brace): ``"error_code,{brace_payload};"``
+    Supports three formats:
+    - V4 brace: ``"error_code,{payload},CommandName();"``
+    - 3-field:  ``"error_code,command_id,payload;"``
+    - Legacy brace: ``"error_code,{brace_payload};"``
 
     Args:
         raw: Raw response string from robot.
@@ -85,7 +90,28 @@ def parse_response(raw: str, response_type: type[_ResponseT]) -> _ResponseT:
     """
     cleaned = raw.strip().rstrip(";").strip()
 
-    # Try 3-field format first
+    # Try V4 brace format first: "error_code,{payload},CommandName()"
+    m = _RE_BRACE_CMD.match(cleaned)
+    if m:
+        error_code = int(m.group(1))
+        payload = m.group(2)   # data lives inside the braces
+        cmd_echo = m.group(3)  # e.g. "EnableRobot()" or "GetPose()"
+        command_id = 0         # V4 brace format has no command_id
+
+        if error_code != 0:
+            raise DobotApiError(
+                error_code=error_code,
+                command_id=command_id,
+                message=(
+                    f"Robot returned error code {error_code}"
+                    f" for {cmd_echo}: {payload}"
+                ),
+                raw=raw,
+            )
+
+        return _build_response(response_type, command_id, payload)
+
+    # Try 3-field format: "error_code,command_id,payload"
     m = _RE_3FIELD.match(cleaned)
     if m:
         error_code = int(m.group(1))
@@ -105,12 +131,11 @@ def parse_response(raw: str, response_type: type[_ResponseT]) -> _ResponseT:
 
         return _build_response(response_type, command_id, payload)
 
-    # Try brace format
+    # Try legacy brace format: "error_code,{payload}"
     m = _RE_BRACE.match(cleaned)
     if m:
         error_code = int(m.group(1))
         payload = m.group(2)
-        # Brace format has no explicit command_id; use 0
         command_id = 0
 
         if error_code != 0:
