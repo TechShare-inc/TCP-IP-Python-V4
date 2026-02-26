@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -34,7 +34,14 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "pytest-mock>=3.10",
     "mypy>=1.0",
+]
+docs = [
+    "sphinx>=7.3.0",
+    "myst-parser>=2.0.0",
+    "sphinx-markdown-builder>=0.6.6",
 ]
 
 [project.urls]
@@ -47,4 +54,42 @@ Issues = "https://github.com/Dobot-Arm/TCP-IP-Python-V4/issues"
 include = ["dobot_api_v4*"]
 
 [tool.setuptools.package-data]
-dobot_api_v4 = ["locales/*.yml"]
+dobot_api_v4 = ["py.typed", "locales/*.yml"]
+
+[tool.ruff]
+target-version = "py39"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "A", "SIM"]
+
+[tool.mypy]
+python_version = "3.9"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+warn_unused_ignores = true
+no_implicit_reexport = true
+
+[[tool.mypy.overrides]]
+module = "numpy.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "i18n.*"
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--strict-markers --import-mode=importlib"
+markers = [
+    "unit: fast unit tests (no network, no hardware)",
+    "integration: loopback integration tests using a local TCP stub server",
+    "hil: hardware-in-the-loop tests (requires a real Dobot robot)",
+]
+
+[tool.coverage.run]
+source = ["dobot_api_v4"]
+
+[tool.coverage.report]
+exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:", "raise NotImplementedError"]
