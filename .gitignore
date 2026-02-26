@@ -146,3 +146,9 @@ Desktop.ini
 *.bak
 *.tmp
 *.temp
+
+# Documentation
+docs/.vitepress/dist/
+docs/.vitepress/cache/
+docs/reference/api/
+node_modules/

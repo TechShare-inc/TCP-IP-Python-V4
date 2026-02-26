@@ -19,16 +19,17 @@ class AlarmI18n:
     Provides easy access to translated alarm descriptions, causes,
     and solutions with automatic fallback to English for missing translations.
 
-    Example:
-        >>> i18n_manager = AlarmI18n(default_language='en')
-        >>> alarm = i18n_manager.get_controller_alarm(16)
-        >>> print(alarm['description'])
-        'The planned point is closed to the shoulder singularity point'
+    Usage::
 
-        >>> i18n_manager.set_language('zh_CN')
-        >>> alarm = i18n_manager.get_controller_alarm(16)
-        >>> print(alarm['description'])
-        '规划位置接近肩奇异点'
+        i18n_manager = AlarmI18n(default_language='en')
+        alarm = i18n_manager.get_controller_alarm(16)
+        print(alarm['description'])
+        # 'The planned point is closed to the shoulder singularity point'
+
+        i18n_manager.set_language('zh_CN')
+        alarm = i18n_manager.get_controller_alarm(16)
+        print(alarm['description'])
+        # '规划位置接近肩奇异点'
     """
 
     SUPPORTED_LANGUAGES = [
@@ -99,10 +100,11 @@ class AlarmI18n:
         Raises:
             ValueError: If language is not supported
 
-        Example:
-            >>> i18n_manager.set_language('zh_CN')  # Standard format
-            >>> i18n_manager.set_language('zh_cn')  # Auto-normalized to zh_CN
-            >>> i18n_manager.set_language('kr')     # Auto-converted to ko
+        Usage::
+
+            i18n_manager.set_language('zh_CN')  # Standard format
+            i18n_manager.set_language('zh_cn')  # Auto-normalized to zh_CN
+            i18n_manager.set_language('kr')     # Auto-converted to ko
         """
         original_language = language
         language = self.LANGUAGE_ALIASES.get(language.lower(), language)
@@ -143,19 +145,21 @@ class AlarmI18n:
                    If None, returns all fields
 
         Returns:
-            Dictionary with alarm information. Example:
-            {
-                'id': 16,
-                'description': 'The planned point is closed to the shoulder singularity point',
-                'cause': '',
-                'solution': 'Reselect the movement points...',
-                'level': 5
-            }
+            Dictionary with alarm information. Example::
 
-        Example:
-            >>> alarm = i18n_manager.get_alarm(16)  # Auto-detects controller type
-            >>> alarm = i18n_manager.get_alarm(8752, alarm_type='servo')
-            >>> desc = i18n_manager.get_alarm(16, field='description')
+                {
+                    'id': 16,
+                    'description': 'The planned point is closed to the shoulder singularity point',
+                    'cause': '',
+                    'solution': 'Reselect the movement points...',
+                    'level': 5
+                }
+
+        Usage::
+
+            alarm = i18n_manager.get_alarm(16)  # Auto-detects controller type
+            alarm = i18n_manager.get_alarm(8752, alarm_type='servo')
+            desc = i18n_manager.get_alarm(16, field='description')
         """
         if alarm_type is None:
             alarm_type = "servo" if alarm_id >= self.SERVO_ID_MIN else "controller"
@@ -202,9 +206,10 @@ class AlarmI18n:
         Returns:
             Dictionary with alarm information
 
-        Example:
-            >>> alarm = i18n_manager.get_controller_alarm(16)
-            >>> print(alarm['description'])
+        Usage::
+
+            alarm = i18n_manager.get_controller_alarm(16)
+            print(alarm['description'])
         """
         return self.get_alarm(alarm_id, alarm_type="controller")
 
@@ -220,9 +225,10 @@ class AlarmI18n:
         Returns:
             Dictionary with alarm information
 
-        Example:
-            >>> alarm = i18n_manager.get_servo_alarm(8752)
-            >>> print(alarm['description'])
+        Usage::
+
+            alarm = i18n_manager.get_servo_alarm(8752)
+            print(alarm['description'])
         """
         return self.get_alarm(alarm_id, alarm_type="servo")
 
@@ -243,12 +249,13 @@ class AlarmI18n:
         Returns:
             Formatted multi-line string
 
-        Example:
-            >>> print(i18n_manager.format_alarm(16))
-            ID 16 [Level 5]: The planned point is closed to the
-            shoulder singularity point
-              Solution: Reselect the movement points or The joint
-              interpolation command is used near the singularity point
+        Usage::
+
+            print(i18n_manager.format_alarm(16))
+            # ID 16 [Level 5]: The planned point is closed to the
+            # shoulder singularity point
+            #   Solution: Reselect the movement points or The joint
+            #   interpolation command is used near the singularity point
         """
         alarm = self.get_alarm(alarm_id, alarm_type)
 
@@ -275,21 +282,22 @@ class AlarmI18n:
         Returns:
             Enriched dictionary with translation fields added
 
-        Example:
-            >>> robot_alarm = {'id': 16, 'mode': 'error', 'date': '2026-02-09', 'time': '10:30:00'}
-            >>> enriched = i18n_manager.enrich_alarm_data(robot_alarm)
-            >>> print(enriched)
-            {
-                'id': 16,
-                'mode': 'error',
-                'date': '2026-02-09',
-                'time': '10:30:00',
-                'description': 'The planned point is closed...',
-                'cause': '',
-                'solution': 'Reselect the movement points...',
-                'level': 5,
-                'type': 'controller'
-            }
+        Usage::
+
+            robot_alarm = {'id': 16, 'mode': 'error', 'date': '2026-02-09', 'time': '10:30:00'}
+            enriched = i18n_manager.enrich_alarm_data(robot_alarm)
+            print(enriched)
+            # {
+            #     'id': 16,
+            #     'mode': 'error',
+            #     'date': '2026-02-09',
+            #     'time': '10:30:00',
+            #     'description': 'The planned point is closed...',
+            #     'cause': '',
+            #     'solution': 'Reselect the movement points...',
+            #     'level': 5,
+            #     'type': 'controller'
+            # }
         """
         alarm_id = alarm_data.get("id")
         if alarm_id is None:
@@ -310,10 +318,11 @@ class AlarmI18n:
         Returns:
             List of language codes
 
-        Example:
-            >>> langs = AlarmI18n.get_supported_languages()
-            >>> print(langs)
-            ['en', 'zh_CN', 'zh_Hant', 'ja', 'de', 'ko', 'vi', 'es', 'ru', 'fr']
+        Usage::
+
+            langs = AlarmI18n.get_supported_languages()
+            print(langs)
+            # ['en', 'zh_CN', 'zh_Hant', 'ja', 'de', 'ko', 'vi', 'es', 'ru', 'fr']
         """
         return cls.SUPPORTED_LANGUAGES.copy()
 
@@ -331,11 +340,10 @@ class AlarmI18n:
         Raises:
             ValueError: If language is not recognized
 
-        Example:
-            >>> AlarmI18n.normalize_language_code('zh_cn')
-            'zh_CN'
-            >>> AlarmI18n.normalize_language_code('kr')
-            'ko'
+        Usage::
+
+            AlarmI18n.normalize_language_code('zh_cn')   # -> 'zh_CN'
+            AlarmI18n.normalize_language_code('kr')       # -> 'ko'
         """
         normalized = cls.LANGUAGE_ALIASES.get(language.lower(), language)
 
