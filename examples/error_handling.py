@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Updated for V4.0.0: Compatible with new package structure
+Updated for V4.1.0: Compatible with new package structure
 
 RobotErrorMonitor Usage Example
 Demonstrates how to use the RobotErrorMonitor class for robot alarm monitoring.
@@ -10,8 +9,9 @@ Note: RobotErrorMonitor uses logger for all output. Configure DOBOT_LOG_LEVEL
 environment variable to control verbosity (DEBUG, INFO, WARNING, ERROR).
 """
 
-from dobot_api_v4 import RobotErrorMonitor
 import json
+
+from dobot_api_v4 import RobotErrorMonitor
 
 
 def main():

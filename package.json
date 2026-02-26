@@ -1,0 +1,19 @@
+{
+    "name": "dobot-api-v4-docs",
+    "version": "4.0.0-alpha.1",
+    "private": true,
+    "type": "module",
+    "description": "Documentation site for Dobot V4 Python SDK",
+    "scripts": {
+        "docs:dev": "vitepress dev docs",
+        "docs:build": "vitepress build docs",
+        "docs:preview": "vitepress preview docs",
+        "docs:check": "vitepress build docs --strict"
+    },
+    "devDependencies": {
+        "mermaid": "^11.12.3",
+        "vitepress": "^1.6.0",
+        "vitepress-plugin-mermaid": "^2.0.17",
+        "vue": "^3.5.0"
+    }
+}
