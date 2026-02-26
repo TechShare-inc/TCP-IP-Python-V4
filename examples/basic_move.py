@@ -71,10 +71,10 @@ def main() -> None:
         print("Robot enabled.")
 
         # Configure speed / acceleration
-        robot.speed_factor(10)
-        robot.acc_j(10)
-        robot.vel_j(10)
-        print("Speed factor=10, AccJ=10, VelJ=10")
+        robot.speed_factor(50)
+        robot.acc_j(50)
+        robot.vel_j(50)
+        print("Speed factor=50, AccJ=50, VelJ=50")
 
         # -- Read current joint state --------------------------------------
         data = robot.feedback_data()

@@ -94,6 +94,25 @@ class TestForwardTo:
         assert isinstance(result, ErrorIdResponse)
         assert result.error_ids == (101, 202)
 
+    def test_forwards_queued_motion_v4_brace(self):
+        """Queued motion commands return queue ID in V4 brace format."""
+
+        class FakeTarget:
+            def mov_l(self, *a, **kw):
+                return "0,{1},MovL(pose={-500.0,100.0,200.0,150.0,0.0,90.0});"
+
+        class FakeRobot:
+            def __init__(self):
+                self.dashboard = FakeTarget()
+
+            @forward_to("dashboard", IntResponse)
+            def mov_l(self, *a, **kw) -> IntResponse: ...
+
+        robot = FakeRobot()
+        result = robot.mov_l()
+        assert isinstance(result, IntResponse)
+        assert result.value == 1
+
 
 @pytest.mark.unit
 class TestDobotRobotLifecycle:

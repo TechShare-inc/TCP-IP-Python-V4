@@ -153,6 +153,22 @@ class TestV4BraceFormat:
         resp = parse_response("0,{},EnableRobot();", AckResponse)
         assert resp.command_id == 0
 
+    def test_queued_command_returns_queue_id_as_value(self):
+        """Queued commands like MovL return queue ID inside braces.
+
+        The {1} is the return value (queue ID), so callers should use
+        IntResponse to capture it, not AckResponse.
+        """
+        resp = parse_response(
+            "0,{1},MovL(pose={-500,100,200,150,0,90});", IntResponse
+        )
+        assert resp.value == 1
+
+    def test_queued_command_large_queue_id(self):
+        """Queue ID can be any positive integer."""
+        resp = parse_response("0,{42},JointMovJ();", IntResponse)
+        assert resp.value == 42
+
     def test_negative_error_code_raises(self):
         with pytest.raises(DobotApiError) as exc_info:
             parse_response("-1,{},EnableRobot();", AckResponse)
