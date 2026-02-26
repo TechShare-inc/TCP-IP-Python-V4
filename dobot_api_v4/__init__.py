@@ -25,7 +25,7 @@ from .responses import (
 )
 from .robot import DobotRobot
 
-__version__ = "4.1.0"
+__version__ = "4.0.0a1"
 
 __all__ = [
     "DobotRobot",
