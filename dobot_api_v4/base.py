@@ -5,6 +5,7 @@ This module contains the core TCP communication class.
 Feedback data structures are defined in dtypes.py and re-exported here.
 """
 
+import contextlib
 import socket
 import threading
 from time import sleep
@@ -119,11 +120,11 @@ class DobotApi:
     def close(self) -> None:
         """Close the TCP socket connection."""
         if self.socket_dobot is not None:
-            try:
+            with contextlib.suppress(OSError):
                 self.socket_dobot.shutdown(socket.SHUT_RDWR)
+            with contextlib.suppress(OSError):
                 self.socket_dobot.close()
-            except OSError as e:
-                logger.warning(f"Error while closing socket: {e}")
+            self.socket_dobot = None
 
     # ------------------------------------------------------------------
     # Send + receive (thread-safe)

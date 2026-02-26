@@ -97,7 +97,7 @@ class TestErrorIdResponse:
 
 @pytest.mark.unit
 class TestBraceFormat:
-    """Tests for the 2-field brace format."""
+    """Tests for the legacy 2-field brace format."""
 
     def test_brace_ack(self):
         resp = parse_response("0,{};", AckResponse)
@@ -106,6 +106,75 @@ class TestBraceFormat:
     def test_brace_error_ids(self):
         resp = parse_response("0,{101,202};", ErrorIdResponse)
         assert resp.error_ids == (101, 202)
+
+@pytest.mark.unit
+class TestV4BraceFormat:
+    """Tests for V4 brace format: error_code,{payload},CommandName();"""
+
+    def test_enable_robot_ack(self):
+        resp = parse_response("0,{},EnableRobot();", AckResponse)
+        assert isinstance(resp, AckResponse)
+        assert resp.command_id == 0
+
+    def test_enable_robot_no_semicolon(self):
+        resp = parse_response("0,{},EnableRobot()", AckResponse)
+        assert resp.command_id == 0
+
+    def test_int_value_in_braces(self):
+        resp = parse_response("0,{5},RobotMode();", IntResponse)
+        assert resp.command_id == 0
+        assert resp.value == 5
+
+    def test_pose_in_braces(self):
+        raw = "0,{-280.9191,-211.0103,380.6188,-175.6129,2.9980,135.5864},GetPose();"
+        resp = parse_response(raw, PoseResponse)
+        assert isinstance(resp, PoseResponse)
+        assert abs(resp.x - (-280.9191)) < 1e-4
+        assert abs(resp.y - (-211.0103)) < 1e-4
+        assert abs(resp.z - 380.6188) < 1e-4
+        assert abs(resp.rx - (-175.6129)) < 1e-4
+        assert abs(resp.ry - 2.9980) < 1e-4
+        assert abs(resp.rz - 135.5864) < 1e-4
+
+    def test_pose_positive_values(self):
+        raw = "0,{100.5,200.3,300.1,0.0,90.0,45.0},GetPose();"
+        resp = parse_response(raw, PoseResponse)
+        assert abs(resp.x - 100.5) < 1e-9
+        assert abs(resp.rz - 45.0) < 1e-9
+
+    def test_error_ids_in_braces(self):
+        resp = parse_response(
+            "0,{101,202,303},GetErrorID();", ErrorIdResponse
+        )
+        assert resp.error_ids == (101, 202, 303)
+
+    def test_empty_payload_ack(self):
+        """EnableRobot() with empty braces is a valid ack."""
+        resp = parse_response("0,{},EnableRobot();", AckResponse)
+        assert resp.command_id == 0
+
+    def test_queued_command_returns_queue_id_as_value(self):
+        """Queued commands like MovL return queue ID inside braces.
+
+        The {1} is the return value (queue ID), so callers should use
+        IntResponse to capture it, not AckResponse.
+        """
+        resp = parse_response(
+            "0,{1},MovL(pose={-500,100,200,150,0,90});", IntResponse
+        )
+        assert resp.value == 1
+
+    def test_queued_command_large_queue_id(self):
+        """Queue ID can be any positive integer."""
+        resp = parse_response("0,{42},JointMovJ();", IntResponse)
+        assert resp.value == 42
+
+    def test_negative_error_code_raises(self):
+        with pytest.raises(DobotApiError) as exc_info:
+            parse_response("-1,{},EnableRobot();", AckResponse)
+        err = exc_info.value
+        assert err.error_code == -1
+        assert err.command_id == 0
 
 
 @pytest.mark.unit
@@ -121,12 +190,17 @@ class TestDobotApiError:
         assert "1,10,some error;" in err.raw
 
     def test_error_attributes(self):
-        # The regex uses \d+ so negative error codes don't match the 3-field
-        # format.  Use a positive non-zero error code instead.
         with pytest.raises(DobotApiError) as exc_info:
             parse_response("3,5,fail;", AckResponse)
         err = exc_info.value
         assert err.error_code == 3
+        assert err.command_id == 5
+
+    def test_negative_error_code_3field(self):
+        with pytest.raises(DobotApiError) as exc_info:
+            parse_response("-1,5,fail;", AckResponse)
+        err = exc_info.value
+        assert err.error_code == -1
         assert err.command_id == 5
 
     def test_brace_error(self):

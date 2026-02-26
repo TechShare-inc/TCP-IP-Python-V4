@@ -258,7 +258,7 @@ class DobotRobot:
     # Forwarded motion commands
     # ------------------------------------------------------------------
 
-    @forward_to("dashboard", AckResponse)
+    @forward_to("dashboard", IntResponse)
     def mov_j(
         self,
         a1: float,
@@ -273,11 +273,15 @@ class DobotRobot:
         a: int = -1,
         v: int = -1,
         cp: int = -1,
-    ) -> AckResponse:
-        """Joint motion to target position."""
+    ) -> IntResponse:
+        """Joint motion to target position.
+
+        Returns:
+            IntResponse whose ``value`` is the motion queue ID.
+        """
         ...
 
-    @forward_to("dashboard", AckResponse)
+    @forward_to("dashboard", IntResponse)
     def mov_l(
         self,
         a1: float,
@@ -294,11 +298,15 @@ class DobotRobot:
         speed: int = -1,
         cp: int = -1,
         r: int = -1,
-    ) -> AckResponse:
-        """Linear motion to target position."""
+    ) -> IntResponse:
+        """Linear motion to target position.
+
+        Returns:
+            IntResponse whose ``value`` is the motion queue ID.
+        """
         ...
 
-    @forward_to("dashboard", AckResponse)
+    @forward_to("dashboard", IntResponse)
     def servo_j(
         self,
         j1: float,
@@ -310,11 +318,15 @@ class DobotRobot:
         t: float = 0.008,
         ahead_time: float = 30,
         gain: float = 0,
-    ) -> AckResponse:
-        """Servo joint motion."""
+    ) -> IntResponse:
+        """Servo joint motion.
+
+        Returns:
+            IntResponse whose ``value`` is the motion queue ID.
+        """
         ...
 
-    @forward_to("dashboard", AckResponse)
+    @forward_to("dashboard", IntResponse)
     def servo_p(
         self,
         x: float,
@@ -326,8 +338,12 @@ class DobotRobot:
         t: float = 0.008,
         ahead_time: float = 30,
         gain: float = 0,
-    ) -> AckResponse:
-        """Servo Cartesian motion."""
+    ) -> IntResponse:
+        """Servo Cartesian motion.
+
+        Returns:
+            IntResponse whose ``value`` is the motion queue ID.
+        """
         ...
 
     @forward_to("dashboard", AckResponse)
