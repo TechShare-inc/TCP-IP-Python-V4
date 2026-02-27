@@ -15,7 +15,9 @@ class TestDobotApiFeedback:
         mock_feedback.socket_dobot = None
         assert mock_feedback.raw_feedback_data() is None
 
-    def test_raw_feedback_data_parses_valid_buffer(self, mock_feedback, feedback_buffer_factory):
+    def test_raw_feedback_data_parses_valid_buffer(
+        self, mock_feedback, feedback_buffer_factory
+    ):
         buf = feedback_buffer_factory(robot_mode=5, speed_scaling=80.0)
         assert len(buf) == 1440
 
@@ -28,7 +30,9 @@ class TestDobotApiFeedback:
         assert result["robot_mode"][0] == 5
         assert result["speed_scaling"][0] == 80.0
 
-    def test_feedback_data_returns_dataclass(self, mock_feedback, feedback_buffer_factory):
+    def test_feedback_data_returns_dataclass(
+        self, mock_feedback, feedback_buffer_factory
+    ):
         buf = feedback_buffer_factory(robot_mode=7, load=2.5)
         mock_feedback.socket_dobot.recv.return_value = buf
         mock_feedback.socket_dobot.setblocking = MagicMock()
@@ -53,17 +57,3 @@ class TestDobotApiFeedback:
         # We can't assert the exact value, but it should have changed
         # since old_time was 0.0
         assert mock_feedback.last_recv_time != old_time or old_time == 0.0
-
-
-@pytest.mark.unit
-class TestFeedbackBackwardCompat:
-    """Verify backward-compat aliases."""
-
-    def test_feedbackdata_alias_exists(self, mock_feedback, feedback_buffer_factory):
-        buf = feedback_buffer_factory()
-        mock_feedback.socket_dobot.recv.return_value = buf
-        mock_feedback.socket_dobot.setblocking = MagicMock()
-
-        # feedBackData should be an alias for raw_feedback_data
-        result = mock_feedback.feedBackData()
-        assert result is not None
