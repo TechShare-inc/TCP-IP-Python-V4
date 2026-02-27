@@ -30,9 +30,8 @@ robot = DobotRobot("192.168.1.6")
 ## Step 2 — Enable and Configure
 
 ```python
-# Enable the robot (returns AckResponse with command_id)
-ack = robot.enable_robot()
-print(f"Enable command ID: {ack.command_id}")
+# Enable the robot (returns None on success)
+robot.enable_robot()
 
 # Set global speed to 30%
 robot.speed_factor(30)
@@ -41,12 +40,6 @@ robot.speed_factor(30)
 robot.acc_j(50)
 robot.vel_j(50)
 ```
-
-**Expected Output:**
-
-> ```
-> Enable command ID: 1
-> ```
 
 ## Step 3 — Start a Feedback Thread
 
@@ -96,13 +89,12 @@ waypoints = [
 ]
 
 for i, wp in enumerate(waypoints):
-    result = robot.mov_j(*wp, coordinate_mode=0)
-    target_id = result.command_id
-    print(f"Waypoint {i+1}: command ID {target_id}, moving...")
+    command_id = robot.mov_j(*wp, coordinate_mode=0)
+    print(f"Waypoint {i+1}: command ID {command_id}, moving...")
 
     # Wait for motion to complete
     while True:
-        if current_mode == 5 and current_cmd_id >= target_id:
+        if current_mode == 5 and current_cmd_id >= command_id:
             break
         sleep(0.1)
 
@@ -196,9 +188,9 @@ def main() -> None:
             (0, 0, 0, 0, 0, 0),
         ]
         for i, wp in enumerate(waypoints):
-            result = robot.mov_j(*wp, coordinate_mode=0)
-            print(f"Waypoint {i+1}: moving (cmd {result.command_id})...")
-            wait_for_command(result.command_id)
+            command_id = robot.mov_j(*wp, coordinate_mode=0)
+            print(f"Waypoint {i+1}: moving (cmd {command_id})...")
+            wait_for_command(command_id)
             print(f"Waypoint {i+1}: reached.")
 
         # Final pose

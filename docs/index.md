@@ -25,13 +25,13 @@ features:
     details: Read joint angles, TCP pose, forces, and 60+ fields at 8 ms resolution via binary feedback ports.
   - icon: 🔧
     title: 10 Command Categories
-    details: System, Config, Motion, I/O, Query, Force, Modbus, Conveyor, Weld, and Check — all with typed responses.
+    details: System, Config, Motion, I/O, Query, Force, Modbus, Conveyor, Weld, and Check — all with snake_case methods.
   - icon: 🌍
     title: Multi-Language Alarms
     details: Alarm descriptions in 10 languages (EN, ZH, JA, KO, DE, FR, ES, RU, VI) with automatic detection.
   - icon: 🛡️
-    title: Type-Safe Responses
-    details: Every command returns typed dataclasses — AckResponse, IntResponse, PoseResponse, ErrorIdResponse.
+    title: Type-Safe Returns
+    details: DobotRobot methods return typed Python values — None, int, Pose, or tuple — not raw strings.
   - icon: ⚡
     title: Python 3.9+
     details: Modern Python with full type annotations, Google-style docstrings, and loguru logging.

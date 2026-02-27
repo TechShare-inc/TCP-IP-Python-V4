@@ -46,7 +46,7 @@ block-beta
     columns 1
     block:L3["Layer 3 — DobotRobot (facade)"]:1
         columns 2
-        A["enable_robot() → AckResponse"] B["get_pose() → PoseResponse"]
+        A["enable_robot() → None"] B["get_pose() → Pose"]
     end
     block:L2["Layer 2 — DobotApiDashboard (10 mixins)"]:1
         columns 2
@@ -93,19 +93,19 @@ Each mixin method builds a protocol command string (e.g., `"EnableRobot()"`) and
 
 It exposes a subset of dashboard commands via the `@forward_to` decorator, which automatically:
 1. Delegates the call to the dashboard method
-2. Parses the raw string response
-3. Returns a typed dataclass (`AckResponse`, `PoseResponse`, etc.)
+2. Returns the typed result (`None`, `int`, `Pose`, or `tuple`)
 
-## Response Types
+## Return Types
 
-All `DobotRobot` methods return frozen dataclasses:
+`DobotRobot` methods return typed Python values:
 
-| Response Type     | Fields                                      | Used By                |
-| ----------------- | ------------------------------------------- | ---------------------- |
-| `AckResponse`     | `command_id`                                | Most commands          |
-| `IntResponse`     | `command_id`, `value`                       | `robot_mode()`         |
-| `PoseResponse`    | `command_id`, `x`, `y`, `z`, `rx`, `ry`, `rz` | `get_pose()`        |
-| `ErrorIdResponse` | `command_id`, `error_ids`                   | `get_error_id()`       |
+| Pattern           | Python Type       | Used By                |
+| ----------------- | ----------------- | ---------------------- |
+| Ack-only          | `None`            | Most commands          |
+| Command ID        | `int`             | `mov_j()`, `mov_l()`  |
+| Scalar value      | `int`             | `robot_mode()`         |
+| Pose              | `Pose`            | `get_pose()`           |
+| Error IDs         | `tuple[int, ...]` | `get_error_id()`       |
 
 ## Backward Compatibility
 

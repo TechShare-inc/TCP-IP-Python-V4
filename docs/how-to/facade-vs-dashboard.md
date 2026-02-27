@@ -8,24 +8,24 @@ The SDK offers two levels of API. Choose based on your needs.
 
 ## DobotRobot — High-Level Facade
 
-**Use when:** You want typed responses, automatic resource management, and a simple interface.
+**Use when:** You want typed return values, automatic resource management, and a simple interface.
 
 ```python
 from dobot_api_v4 import DobotRobot
 
 with DobotRobot("192.168.1.6") as robot:
-    robot.enable_robot()               # → AckResponse
-    pose = robot.get_pose()            # → PoseResponse
-    mode = robot.robot_mode()          # → IntResponse
+    robot.enable_robot()               # → None
+    pose = robot.get_pose()            # → Pose
+    mode = robot.robot_mode()          # → int
 
     print(f"x={pose.x}, y={pose.y}")   # Typed field access
-    print(f"mode={mode.value}")
+    print(f"mode={mode}")
 ```
 
 **Advantages:**
 
 - Context manager for automatic cleanup
-- Methods return typed dataclasses (`AckResponse`, `PoseResponse`, etc.)
+- Methods return typed Python values (`None`, `int`, `Pose`, `tuple`)
 - Lazy feedback connections (only created when accessed)
 - Built-in error monitor via HTTP
 - Convenience methods: `check_errors()`, `clear_robot_error()`, `feedback_data()`

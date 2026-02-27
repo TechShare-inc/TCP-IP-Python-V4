@@ -3,7 +3,7 @@
 **Modern Python API for Dobot CR-series robots with comprehensive i18n support**
 
 [![Python Version](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
-[![Version](https://img.shields.io/badge/version-4.1.0-green.svg)](https://github.com/TechShare-inc/TCP-IP-Python-V4)
+[![Version](https://img.shields.io/badge/version-4.0.0--alpha.2-green.svg)](https://github.com/TechShare-inc/TCP-IP-Python-V4)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 > **Note**: This repository is a clone from [Dobot-Arm/TCP-IP-Python-V4](https://github.com/Dobot-Arm/TCP-IP-Python-V4) and is modified and maintained by TechShare Corp.
@@ -32,41 +32,77 @@ cd TCP-IP-Python-V4
 pip install -e .
 ```
 
-### Basic Example
+### Basic Example (Recommended — `DobotRobot` façade)
 
 ```python
-from dobot_api_v4 import DobotApiDashboard, DobotApiFeedBack
+from dobot_api_v4 import DobotRobot
 
-# Connect to robot
+with DobotRobot("192.168.1.6") as robot:
+    robot.enable_robot()
+    robot.clear_error()
+    robot.speed_factor(50)       # global speed 50%
+
+    # Move (Cartesian coordinates)
+    robot.mov_j(300, 0, 200, 0, 90, 0)
+
+    # Read real-time feedback
+    data = robot.feedback_data()
+    if data:
+        print(f"Joint positions: {data.q_actual}")
+        print(f"Robot mode:      {data.robot_mode}")
+
+    robot.disable_robot()
+```
+
+<details>
+<summary>Legacy API (PascalCase / direct dashboard)</summary>
+
+```python
+from dobot_api_v4 import DobotApiDashboard, DobotApiFeedback
+
 dashboard = DobotApiDashboard("192.168.1.6", 29999)
-feed = DobotApiFeedBack("192.168.1.6", 30004)
+feed = DobotApiFeedback("192.168.1.6", 30004)
 
-# Enable and configure robot
 dashboard.EnableRobot()
 dashboard.ClearError()
-dashboard.VelL(50)  # Set linear velocity to 50%
-
-# Move to position (Cartesian coordinates)
+dashboard.VelL(50)
 dashboard.MovJ(300, 0, 200, 0, 90, 0, coordinateMode=0)
 
-# Read feedback
-data = feed.feedBackData()
+data = feed.feedback_data()
 if data:
-    print(f"Joint positions: {data['QActual']}")
-    print(f"Robot mode: {data['RobotMode']}")
+    print(f"Joint positions: {data.q_actual}")
 
-# Cleanup
 dashboard.DisableRobot()
 dashboard.close()
 feed.close()
 ```
 
+</details>
+
 ---
 
 ## Core Components
 
-### 1. DobotApiDashboard
-Main control interface for robot operations.
+### 1. DobotRobot (Recommended)
+Unified high-level façade. Eagerly creates the dashboard (port 29999) and error
+monitor (HTTP 22000). Feedback connections are created lazily.
+
+```python
+from dobot_api_v4 import DobotRobot
+
+with DobotRobot("192.168.1.6") as robot:
+    robot.enable_robot()            # → None
+    pose = robot.get_pose()         # → Pose(x, y, z, rx, ry, rz)
+    mode = robot.robot_mode()       # → int
+    qid  = robot.mov_j(...)         # → int (command ID)
+    data = robot.feedback_data()    # → FeedbackData | None
+
+    # Access the full dashboard for commands not forwarded:
+    robot.dashboard.set_payload(5.0)
+```
+
+### 2. DobotApiDashboard
+Low-level control interface with the complete command set.
 
 **Connection & Control**
 ```python
@@ -207,7 +243,7 @@ error_info = dashboard.GetError(language="en")
 ```
 
 ### 4. AlarmI18n
-Local internationalization for alarm messages (NEW in v4.1.0).
+Local internationalization for alarm messages.
 
 ```python
 from dobot_api_v4 import AlarmI18n
@@ -303,27 +339,37 @@ except ValueError as e:
 
 ```
 TCP-IP-Python-V4/
-├── dobot_api/                  # Core API package
+├── dobot_api_v4/               # Core API package
 │   ├── __init__.py            # Package exports
-│   ├── base.py                # Base communication class
-│   ├── dashboard.py           # Robot control commands
-│   ├── feedback.py            # Real-time feedback
-│   ├── error_monitor.py       # HTTP error monitoring
-│   ├── i18n_manager.py        # Multi-language support (NEW)
-│   ├── utils.py               # Utility functions
-│   └── locales/               # Translation files (NEW)
-│       ├── alarms.en.yml
-│       ├── alarms.zh_CN.yml
-│       ├── alarms.ja.yml
-│       └── ...
+│   ├── base.py                # Base TCP communication class
+│   ├── robot.py               # DobotRobot high-level façade
+│   ├── _forward.py            # @forward_to decorator
+│   ├── feedback.py            # Real-time feedback (30004/5/6)
+│   ├── error_monitor.py       # HTTP error monitoring (22000)
+│   ├── i18n_manager.py        # Multi-language alarm support
+│   ├── dtypes.py              # Pose, FeedbackData, FeedbackDtype
+│   ├── utils.py               # Type aliases
+│   ├── commands/              # Mixin-based dashboard commands
+│   │   ├── dashboard.py       # Composed DobotApiDashboard
+│   │   ├── _system_mixin.py   # enable/disable/reset/power
+│   │   ├── _config_mixin.py   # speed/acc/coords/safety
+│   │   ├── _motion_mixin.py   # MovJ/MovL/Arc/Servo/Jog
+│   │   ├── _io_mixin.py       # Digital & analog I/O
+│   │   ├── _query_mixin.py    # Mode/pose/error/drag/kin
+│   │   ├── _force_mixin.py    # Force/torque sensor & FC
+│   │   ├── _modbus_mixin.py   # Modbus TCP & RTU
+│   │   ├── _conveyor_mixin.py # Conveyor tracking
+│   │   ├── _weld_mixin.py     # Arc/weave welding
+│   │   ├── _check_mixin.py    # Motion-check dry-run
+│   │   ├── _parse.py          # Response parsing & errors
+│   │   └── _serialization.py  # Command-string builder
+│   └── locales/               # YAML alarm translations (10 langs)
 ├── examples/                   # Example programs
-│   ├── basic_demo.py          # Basic usage
-│   ├── error_handling.py      # Error monitoring demo
-│   ├── i18n_demo.py           # I18n features demo (NEW)
-│   └── main.py                # Main entry point
+├── tests/                      # pytest unit / integration / HIL
+├── docs/                       # VitePress documentation site
+├── _sphinx/                    # Sphinx autodoc → Markdown
 ├── pyproject.toml             # Package configuration
-├── README.md                  # This file
-└── LICENSE                    # MIT License
+└── README.md
 ```
 
 ---
@@ -522,20 +568,21 @@ if match and int(match.group(1)) == 0:
 
 ## Version History
 
-### v4.1.0 (Current)
-- ✨ Added `AlarmI18n` class for local multi-language alarm translation
-- ✨ YAML-based translation files (10 languages)
-- ✨ Enhanced `RobotErrorMonitor` with local i18n
-- 🗑️ Removed deprecated `alarmAlarmJsonFile()` function
-- 📦 Updated dependencies (python-i18n, pyyaml)
-- 🐛 Improved error handling and logging
+### v4.0.0-alpha.2 (Current)
+- 📖 Documentation overhauled — removed phantom response-type references, all examples match real API
+- 📖 README modernized to use `DobotRobot` façade as primary interface
+- 🔢 Version aligned across all sources (`pyproject.toml`, `package.json`, `__init__.py`, Sphinx)
+- 📖 Added `_SerializationMixin` to Sphinx API reference
+- 📖 Created CHANGELOG.md
 
-### v4.0.0
-- 🏗️ Modular package architecture
-- 📦 Pip installable package
-- 🔧 Type hints and improved error handling
+### v4.0.0-alpha.1
+- 🏗️ Mixin-based dashboard architecture (10 command mixins)
+- ✨ `DobotRobot` high-level façade with `@forward_to` decorator
+- ✨ `AlarmI18n` class for local multi-language alarm translation (10 languages)
+- ✨ `RobotErrorMonitor` with HTTP-based alarm retrieval
+- 📦 Pip-installable package with type hints (Python 3.9+)
 - 📝 Comprehensive logging with loguru
-- 🌐 HTTP-based error monitoring
+- 🧪 Full unit test suite for all mixins
 
 ---
 
@@ -552,4 +599,4 @@ MIT License - See [LICENSE](LICENSE) file for details.
 
 ---
 
-**Modified and maintained by TechShare Corp.** | Version 4.1.0 | Last Updated: February 2026
+**Modified and maintained by TechShare Corp.** | Version 4.0.0-alpha.2 | Last Updated: February 2026
