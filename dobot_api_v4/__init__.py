@@ -21,7 +21,7 @@ from .feedback import DobotApiFeedback
 from .i18n_manager import AlarmI18n
 from .robot import DobotRobot
 
-__version__ = "4.0.0a1"
+__version__ = "4.0.0a2"
 
 __all__ = [
     "DobotRobot",

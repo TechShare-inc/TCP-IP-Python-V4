@@ -22,4 +22,5 @@ dobot_api_v4 API Reference
    dobot_api_v4.error_monitor
    dobot_api_v4.i18n_manager
    dobot_api_v4.commands._parse
+   dobot_api_v4.commands._serialization
    dobot_api_v4.dtypes

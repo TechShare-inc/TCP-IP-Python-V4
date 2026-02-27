@@ -91,7 +91,7 @@ block-beta
     columns 1
     block:L3["Layer 3 — DobotRobot (facade)"]:1
         columns 2
-        A["Owns dashboard + monitors"] B["@forward_to for parsing"]
+        A["Owns dashboard + monitors"] B["@forward_to for delegation"]
     end
     block:L2["Layer 2 — DobotApiDashboard (mixins)"]:1
         columns 2
@@ -114,7 +114,7 @@ block-beta
 
 **Layer 3 (`DobotRobot`)** adds:
 - Automatic resource management (context manager)
-- Response parsing into typed dataclasses
+- Pure delegation to dashboard methods (which return typed values)
 - Lazy feedback and error monitor lifecycle
 - Convenience methods combining multiple operations
 

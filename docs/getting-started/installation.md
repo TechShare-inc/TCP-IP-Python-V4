@@ -51,7 +51,7 @@ python -c "import dobot_api_v4; print(dobot_api_v4.__version__)"
 **Expected Output:**
 
 > ```
-> 4.1.0
+> 4.0.0a2
 > ```
 
 ## Logging Configuration

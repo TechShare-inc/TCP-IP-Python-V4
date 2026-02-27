@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.abspath(".."))
 project = "dobot_api_v4"
 copyright = "2024-2026, Dobot / TechShare Corp."  # noqa: A001
 author = "Dobot"
-release = "4.1.0"
+release = "4.0.0a2"
 
 # -- General configuration ---------------------------------------------
 
