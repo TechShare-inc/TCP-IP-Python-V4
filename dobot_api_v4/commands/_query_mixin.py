@@ -37,8 +37,6 @@ class _QueryMixin(_SerializationMixin):
         string = "RobotMode()"
         return self.send_recv_msg(string)
 
-    RobotMode = robot_mode
-
     # ------------------------------------------------------------------
     # Pose / Angle Queries
     # ------------------------------------------------------------------
@@ -51,8 +49,6 @@ class _QueryMixin(_SerializationMixin):
         """
         string = "GetAngle()"
         return self.send_recv_msg(string)
-
-    GetAngle = get_angle
 
     def get_pose(self, user: int = -1, tool: int = -1) -> str:
         """Get Cartesian coordinates of the current posture.
@@ -89,8 +85,6 @@ class _QueryMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    GetPose = get_pose
-
     # ------------------------------------------------------------------
     # Error Query
     # ------------------------------------------------------------------
@@ -103,8 +97,6 @@ class _QueryMixin(_SerializationMixin):
         """
         string = "GetErrorID()"
         return self.send_recv_msg(string)
-
-    GetErrorID = get_error_id
 
     # ------------------------------------------------------------------
     # Kinematics
@@ -146,8 +138,6 @@ class _QueryMixin(_SerializationMixin):
             string = string + "," + ii
         string = string + ")"
         return self.send_recv_msg(string)
-
-    PositiveKin = positive_kin
 
     def inverse_kin(
         self,
@@ -200,8 +190,6 @@ class _QueryMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    InverseKin = inverse_kin
-
     def inverse_solution(
         self,
         x: float,
@@ -243,8 +231,6 @@ class _QueryMixin(_SerializationMixin):
         string += ")"
         return self.send_recv_msg(string)
 
-    InverseSolution = inverse_solution
-
     # ------------------------------------------------------------------
     # Command Queue / Path Recovery
     # ------------------------------------------------------------------
@@ -260,8 +246,6 @@ class _QueryMixin(_SerializationMixin):
         string = "GetCurrentCommandID()"
         return self.send_recv_msg(string)
 
-    GetCurrentCommandID = get_current_command_id
-
     def path_recovery(self) -> str:
         """Start path recovery.
 
@@ -270,8 +254,6 @@ class _QueryMixin(_SerializationMixin):
         """
         string = "PathRecovery()"
         return self.send_recv_msg(string)
-
-    PathRecovery = path_recovery
 
     def path_recovery_stop(self) -> str:
         """Stop path recovery.
@@ -282,8 +264,6 @@ class _QueryMixin(_SerializationMixin):
         string = "PathRecoveryStop()"
         return self.send_recv_msg(string)
 
-    PathRecoveryStop = path_recovery_stop
-
     def path_recovery_status(self) -> str:
         """Get path recovery status.
 
@@ -292,8 +272,6 @@ class _QueryMixin(_SerializationMixin):
         """
         string = "PathRecoveryStatus()"
         return self.send_recv_msg(string)
-
-    PathRecoveryStatus = path_recovery_status
 
     # ------------------------------------------------------------------
     # Log Export
@@ -311,8 +289,6 @@ class _QueryMixin(_SerializationMixin):
         string = f"LogExportUSB({range:d})"
         return self.send_recv_msg(string)
 
-    LogExportUSB = log_export_usb
-
     def get_export_status(self) -> str:
         """Get the status of a log export operation.
 
@@ -321,8 +297,6 @@ class _QueryMixin(_SerializationMixin):
         """
         string = "GetExportStatus()"
         return self.send_recv_msg(string)
-
-    GetExportStatus = get_export_status
 
     # ------------------------------------------------------------------
     # Drag Mode
@@ -339,8 +313,6 @@ class _QueryMixin(_SerializationMixin):
         string = "StartDrag()"
         return self.send_recv_msg(string)
 
-    StartDrag = start_drag
-
     def stop_drag(self) -> str:
         """Exit drag (freedrive) mode.
 
@@ -349,8 +321,6 @@ class _QueryMixin(_SerializationMixin):
         """
         string = "StopDrag()"
         return self.send_recv_msg(string)
-
-    StopDrag = stop_drag
 
     # ------------------------------------------------------------------
     # Tray Operations
@@ -370,8 +340,6 @@ class _QueryMixin(_SerializationMixin):
         """
         return self.send_recv_msg(self._build_cmd("CreateTray", *args, **kwargs))
 
-    CreateTray = create_tray
-
     def get_tray_point(self, *args: object, **kwargs: object) -> str:
         """Get a point from a tray (pallet) pattern.
 
@@ -386,4 +354,3 @@ class _QueryMixin(_SerializationMixin):
         """
         return self.send_recv_msg(self._build_cmd("GetTrayPoint", *args, **kwargs))
 
-    GetTrayPoint = get_tray_point

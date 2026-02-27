@@ -5,15 +5,11 @@ import sys
 
 from loguru import logger
 
-# Backward-compat alias
-from .base import (
-    DobotApi,
-    MyType,  # noqa: F401
-)
+from .base import DobotApi
 from .commands.dashboard import DobotApiDashboard
 from .dtypes import PROTOCOL_FIELD_MAP, FeedbackData, FeedbackDtype
 from .error_monitor import RobotErrorMonitor
-from .feedback import DobotApiFeedBack, DobotApiFeedback
+from .feedback import DobotApiFeedback
 from .i18n_manager import AlarmI18n
 from .responses import (
     AckResponse,
@@ -32,7 +28,6 @@ __all__ = [
     "DobotApi",
     "DobotApiDashboard",
     "DobotApiFeedback",
-    "DobotApiFeedBack",
     "RobotErrorMonitor",
     "FeedbackData",
     "FeedbackDtype",

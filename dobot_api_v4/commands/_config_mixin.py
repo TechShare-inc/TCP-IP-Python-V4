@@ -25,8 +25,6 @@ class _ConfigMixin(_SerializationMixin):
         string = f"SpeedFactor({speed:d})"
         return self.send_recv_msg(string)
 
-    SpeedFactor = speed_factor
-
     def acc_j(self, speed: int) -> str:
         """Set acceleration ratio of joint motion.
 
@@ -40,8 +38,6 @@ class _ConfigMixin(_SerializationMixin):
         """
         string = f"AccJ({speed:d})"
         return self.send_recv_msg(string)
-
-    AccJ = acc_j
 
     def acc_l(self, speed: int) -> str:
         """Set acceleration ratio of linear and arc motion.
@@ -57,8 +53,6 @@ class _ConfigMixin(_SerializationMixin):
         string = f"AccL({speed:d})"
         return self.send_recv_msg(string)
 
-    AccL = acc_l
-
     def vel_j(self, speed: int) -> str:
         """Set speed ratio of joint motion.
 
@@ -73,8 +67,6 @@ class _ConfigMixin(_SerializationMixin):
         string = f"VelJ({speed:d})"
         return self.send_recv_msg(string)
 
-    VelJ = vel_j
-
     def vel_l(self, speed: int) -> str:
         """Set speed ratio of linear and arc motion.
 
@@ -88,8 +80,6 @@ class _ConfigMixin(_SerializationMixin):
         """
         string = f"VelL({speed:d})"
         return self.send_recv_msg(string)
-
-    VelL = vel_l
 
     def cp(self, ratio: int) -> str:
         """Set the continuous path (CP) ratio.
@@ -108,8 +98,6 @@ class _ConfigMixin(_SerializationMixin):
         string = f"CP({ratio:d})"
         return self.send_recv_msg(string)
 
-    CP = cp
-
     def user(self, index: int) -> str:
         """Set the global user coordinate system.
 
@@ -124,8 +112,6 @@ class _ConfigMixin(_SerializationMixin):
         string = f"User({index:d})"
         return self.send_recv_msg(string)
 
-    User = user
-
     def set_user(self, index: int, table: str) -> str:
         """Modify the specified user coordinate system.
 
@@ -138,8 +124,6 @@ class _ConfigMixin(_SerializationMixin):
         """
         string = f"SetUser({index:d},{table:s})"
         return self.send_recv_msg(string)
-
-    SetUser = set_user
 
     def calc_user(self, index: int, matrix_direction: int, table: str) -> str:
         """Calculate the user coordinate system.
@@ -156,8 +140,6 @@ class _ConfigMixin(_SerializationMixin):
         string = f"CalcUser({index:d},{matrix_direction:d},{table:s})"
         return self.send_recv_msg(string)
 
-    CalcUser = calc_user
-
     def tool(self, index: int) -> str:
         """Set the global tool coordinate system.
 
@@ -172,8 +154,6 @@ class _ConfigMixin(_SerializationMixin):
         string = f"Tool({index:d})"
         return self.send_recv_msg(string)
 
-    Tool = tool
-
     def set_tool(self, index: int, table: str) -> str:
         """Modify the specified tool coordinate system.
 
@@ -186,8 +166,6 @@ class _ConfigMixin(_SerializationMixin):
         """
         string = f"SetTool({index:d},{table:s})"
         return self.send_recv_msg(string)
-
-    SetTool = set_tool
 
     def calc_tool(self, index: int, matrix_direction: int, table: str) -> str:
         """Calculate the tool coordinate system.
@@ -203,8 +181,6 @@ class _ConfigMixin(_SerializationMixin):
         """
         string = f"CalcTool({index:d},{matrix_direction:d},{table:s})"
         return self.send_recv_msg(string)
-
-    CalcTool = calc_tool
 
     def set_payload(
         self,
@@ -241,8 +217,6 @@ class _ConfigMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    SetPayload = set_payload
-
     def set_collision_level(self, level: int) -> str:
         """Set the collision detection level.
 
@@ -254,8 +228,6 @@ class _ConfigMixin(_SerializationMixin):
         """
         string = f"SetCollisionLevel({level:d})"
         return self.send_recv_msg(string)
-
-    SetCollisionLevel = set_collision_level
 
     def set_back_distance(self, distance: int) -> str:
         """Set the backoff distance after collision detection.
@@ -269,8 +241,6 @@ class _ConfigMixin(_SerializationMixin):
         string = f"SetBackDistance({distance:d})"
         return self.send_recv_msg(string)
 
-    SetBackDistance = set_back_distance
-
     def set_post_collision_mode(self, mode: int) -> str:
         """Set the post-collision processing mode.
 
@@ -282,8 +252,6 @@ class _ConfigMixin(_SerializationMixin):
         """
         string = f"SetPostCollisionMode({mode:d})"
         return self.send_recv_msg(string)
-
-    SetPostCollisionMode = set_post_collision_mode
 
     def drag_sensitivity(self, index: int, value: int) -> str:
         """Set the drag sensitivity.
@@ -298,8 +266,6 @@ class _ConfigMixin(_SerializationMixin):
         string = f"DragSensivity({index:d},{value:d})"
         return self.send_recv_msg(string)
 
-    DragSensivity = drag_sensitivity
-
     def enable_safe_skin(self, status: int) -> str:
         """Switch on or off the SafeSkin.
 
@@ -313,8 +279,6 @@ class _ConfigMixin(_SerializationMixin):
         """
         string = f"EnableSafeSkin({status:d})"
         return self.send_recv_msg(string)
-
-    EnableSafeSkin = enable_safe_skin
 
     def set_safe_skin(self, part: int, status: int) -> str:
         """Set sensitivity for each part of the SafeSkin.
@@ -331,8 +295,6 @@ class _ConfigMixin(_SerializationMixin):
         string = f"SetSafeSkin({part:d},{status:d})"
         return self.send_recv_msg(string)
 
-    SetSafeSkin = set_safe_skin
-
     def set_safe_wall_enable(self, index: int, value: int) -> str:
         """Switch on/off the specified safety wall.
 
@@ -346,8 +308,6 @@ class _ConfigMixin(_SerializationMixin):
         string = f"SetSafeWallEnable({index:d},{value:d})"
         return self.send_recv_msg(string)
 
-    SetSafeWallEnable = set_safe_wall_enable
-
     def set_work_zone_enable(self, index: int, value: int) -> str:
         """Switch on/off the specified interference area.
 
@@ -360,8 +320,6 @@ class _ConfigMixin(_SerializationMixin):
         """
         string = f"SetWorkZoneEnable({index:d},{value:d})"
         return self.send_recv_msg(string)
-
-    SetWorkZoneEnable = set_work_zone_enable
 
     def offset_para(
         self, x: float, y: float, z: float, rx: float, ry: float, rz: float
@@ -382,8 +340,6 @@ class _ConfigMixin(_SerializationMixin):
         string = f"OffsetPara({x:f},{y:f},{z:f},{rx:f},{ry:f},{rz:f})"
         return self.send_recv_msg(string)
 
-    OffsetPara = offset_para
-
     def set_resume_offset(self, distance: float) -> str:
         """Set the resume offset distance.
 
@@ -396,8 +352,6 @@ class _ConfigMixin(_SerializationMixin):
         string = f"SetResumeOffset({distance:f})"
         return self.send_recv_msg(string)
 
-    SetResumeOffset = set_resume_offset
-
     def start_rt_offset(self) -> str:
         """Start real-time offset.
 
@@ -405,8 +359,6 @@ class _ConfigMixin(_SerializationMixin):
             Raw response string from robot.
         """
         return self.send_recv_msg("StartRTOffset()")
-
-    StartRTOffset = start_rt_offset
 
     def end_rt_offset(self) -> str:
         """End real-time offset.
@@ -416,4 +368,3 @@ class _ConfigMixin(_SerializationMixin):
         """
         return self.send_recv_msg("EndRTOffset()")
 
-    EndRTOffset = end_rt_offset

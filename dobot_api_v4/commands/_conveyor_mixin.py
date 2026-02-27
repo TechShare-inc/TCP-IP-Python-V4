@@ -26,8 +26,6 @@ class _ConveyorMixin(_SerializationMixin):
         string = f"CnvInit({index:d})"
         return self.send_recv_msg(string)
 
-    CnvInit = cnv_init
-
     # ------------------------------------------------------------------
     # Conveyor Motion
     # ------------------------------------------------------------------
@@ -84,8 +82,6 @@ class _ConveyorMixin(_SerializationMixin):
             string += "," + ",".join(params)
         string += ")"
         return self.send_recv_msg(string)
-
-    CnvMovL = cnv_mov_l
 
     def cnv_mov_c(
         self,
@@ -159,8 +155,6 @@ class _ConveyorMixin(_SerializationMixin):
         string += ")"
         return self.send_recv_msg(string)
 
-    CnvMovC = cnv_mov_c
-
     # ------------------------------------------------------------------
     # Object & Offset
     # ------------------------------------------------------------------
@@ -176,8 +170,6 @@ class _ConveyorMixin(_SerializationMixin):
         """
         return self.send_recv_msg(f"GetCnvObject({obj_id:d})")
 
-    GetCnvObject = get_cnv_object
-
     def set_cnv_point_offset(self, x_offset: float, y_offset: float) -> str:
         """Set conveyor point offset.
 
@@ -190,8 +182,6 @@ class _ConveyorMixin(_SerializationMixin):
         """
         return self.send_recv_msg(f"SetCnvPointOffset({x_offset:f},{y_offset:f})")
 
-    SetCnvPointOffset = set_cnv_point_offset
-
     def set_cnv_time_compensation(self, time: int) -> str:
         """Set conveyor time compensation.
 
@@ -202,8 +192,6 @@ class _ConveyorMixin(_SerializationMixin):
             Raw response string from robot.
         """
         return self.send_recv_msg(f"SetCnvTimeCompensation({time:d})")
-
-    SetCnvTimeCompensation = set_cnv_time_compensation
 
     # ------------------------------------------------------------------
     # Sync Start / Stop
@@ -217,8 +205,6 @@ class _ConveyorMixin(_SerializationMixin):
         """
         return self.send_recv_msg("StartSyncCnv()")
 
-    StartSyncCnv = start_sync_cnv
-
     def stop_sync_cnv(self) -> str:
         """Stop synchronous conveyor tracking.
 
@@ -227,4 +213,3 @@ class _ConveyorMixin(_SerializationMixin):
         """
         return self.send_recv_msg("StopSyncCnv()")
 
-    StopSyncCnv = stop_sync_cnv

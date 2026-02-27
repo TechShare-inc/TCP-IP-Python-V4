@@ -13,11 +13,6 @@ from typing import Any, Optional
 
 from loguru import logger
 
-from .dtypes import FeedbackDtype
-
-# Backward-compat alias
-MyType = FeedbackDtype
-
 
 class DobotApi:
     """
@@ -145,9 +140,6 @@ class DobotApi:
             recv_data = self.wait_reply()
             return recv_data
 
-    # Backward-compat alias (temporary, until all callers migrated)
-    sendRecvMsg = send_recv_msg  # noqa: N815
-
     # ------------------------------------------------------------------
     # Reconnection
     # ------------------------------------------------------------------
@@ -175,9 +167,6 @@ class DobotApi:
                 return socket_dobot
             except Exception:
                 sleep(1)
-
-    # Backward-compat alias
-    reConnect = reconnect  # noqa: N815
 
     def __del__(self) -> None:
         """Clean up socket connection on object destruction."""

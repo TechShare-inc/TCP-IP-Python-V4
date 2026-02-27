@@ -38,8 +38,6 @@ class _ModbusMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    ModbusCreate = modbus_create
-
     def modbus_rtu_create(
         self,
         slave_id: int,
@@ -76,8 +74,6 @@ class _ModbusMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    ModbusRTUCreate = modbus_rtu_create
-
     def modbus_close(self, index: int) -> str:
         """Disconnect from Modbus slave and release the master.
 
@@ -89,8 +85,6 @@ class _ModbusMixin(_SerializationMixin):
         """
         string = f"ModbusClose({index:d})"
         return self.send_recv_msg(string)
-
-    ModbusClose = modbus_close
 
     # ------------------------------------------------------------------
     # Modbus Registers
@@ -109,8 +103,6 @@ class _ModbusMixin(_SerializationMixin):
         """
         string = f"GetInBits({index:d},{addr:d},{count:d})"
         return self.send_recv_msg(string)
-
-    GetInBits = get_in_bits
 
     def get_in_regs(self, index: int, addr: int, count: int, val_type: str = "") -> str:
         """Read input register values from Modbus slave.
@@ -134,8 +126,6 @@ class _ModbusMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    GetInRegs = get_in_regs
-
     def get_coils(self, index: int, addr: int, count: int) -> str:
         """Read coil register values from Modbus slave.
 
@@ -149,8 +139,6 @@ class _ModbusMixin(_SerializationMixin):
         """
         string = f"GetCoils({index:d},{addr:d},{count:d})"
         return self.send_recv_msg(string)
-
-    GetCoils = get_coils
 
     def set_coils(self, index: int, addr: int, count: int, val_tab: str) -> str:
         """Write values to coil registers on Modbus slave.
@@ -166,8 +154,6 @@ class _ModbusMixin(_SerializationMixin):
         """
         string = f"SetCoils({index:d},{addr:d},{count:d},{val_tab:s})"
         return self.send_recv_msg(string)
-
-    SetCoils = set_coils
 
     def get_hold_regs(
         self, index: int, addr: int, count: int, val_type: str = ""
@@ -192,8 +178,6 @@ class _ModbusMixin(_SerializationMixin):
             string = string + "," + ii
         string = string + ")"
         return self.send_recv_msg(string)
-
-    GetHoldRegs = get_hold_regs
 
     def set_hold_regs(
         self, index: int, addr: int, count: int, val_tab: str, val_type: str = ""
@@ -220,8 +204,6 @@ class _ModbusMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    SetHoldRegs = set_hold_regs
-
     # ------------------------------------------------------------------
     # Internal Registers (Input)
     # ------------------------------------------------------------------
@@ -238,8 +220,6 @@ class _ModbusMixin(_SerializationMixin):
         string = f"GetInputBool({address:d})"
         return self.send_recv_msg(string)
 
-    GetInputBool = get_input_bool
-
     def get_input_int(self, address: int) -> str:
         """Get int value from the specified input register address.
 
@@ -252,8 +232,6 @@ class _ModbusMixin(_SerializationMixin):
         string = f"GetInputInt({address:d})"
         return self.send_recv_msg(string)
 
-    GetInputInt = get_input_int
-
     def get_input_float(self, address: int) -> str:
         """Get float value from the specified input register address.
 
@@ -265,8 +243,6 @@ class _ModbusMixin(_SerializationMixin):
         """
         string = f"GetInputFloat({address:d})"
         return self.send_recv_msg(string)
-
-    GetInputFloat = get_input_float
 
     # ------------------------------------------------------------------
     # Internal Registers (Output)
@@ -284,8 +260,6 @@ class _ModbusMixin(_SerializationMixin):
         string = f"GetOutputBool({address:d})"
         return self.send_recv_msg(string)
 
-    GetOutputBool = get_output_bool
-
     def get_output_int(self, address: int) -> str:
         """Get int value from the specified output register address.
 
@@ -298,8 +272,6 @@ class _ModbusMixin(_SerializationMixin):
         string = f"GetOutputInt({address:d})"
         return self.send_recv_msg(string)
 
-    GetOutputInt = get_output_int
-
     def get_output_float(self, address: int) -> str:
         """Get float value from the specified output register address.
 
@@ -311,8 +283,6 @@ class _ModbusMixin(_SerializationMixin):
         """
         string = f"GetOutputFloat({address:d})"
         return self.send_recv_msg(string)
-
-    GetOutputFloat = get_output_float
 
     def set_output_bool(self, address: int, value: int) -> str:
         """Set bool value at the specified output register address.
@@ -327,8 +297,6 @@ class _ModbusMixin(_SerializationMixin):
         string = f"SetOutputBool({address:d},{value:d})"
         return self.send_recv_msg(string)
 
-    SetOutputBool = set_output_bool
-
     def set_output_int(self, address: int, value: int) -> str:
         """Set int value at the specified output register address.
 
@@ -341,8 +309,6 @@ class _ModbusMixin(_SerializationMixin):
         """
         string = f"SetOutputInt({address:d},{value:d})"
         return self.send_recv_msg(string)
-
-    SetOutputInt = set_output_int
 
     def set_output_float(self, address: int, value: float) -> str:
         """Set float value at the specified output register address.
@@ -357,4 +323,3 @@ class _ModbusMixin(_SerializationMixin):
         string = f"SetOutputFloat({address:d},{value:d})"
         return self.send_recv_msg(string)
 
-    SetOutputFloat = set_output_float

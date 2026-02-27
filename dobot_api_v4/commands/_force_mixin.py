@@ -26,8 +26,6 @@ class _ForceMixin(_SerializationMixin):
         string = f"EnableFTSensor({status:d})"
         return self.send_recv_msg(string)
 
-    EnableFTSensor = enable_ft_sensor
-
     def six_force_home(self) -> str:
         """Zero (home) the six-axis force sensor.
 
@@ -36,8 +34,6 @@ class _ForceMixin(_SerializationMixin):
         """
         string = "SixForceHome()"
         return self.send_recv_msg(string)
-
-    SixForceHome = six_force_home
 
     def get_force(self, tool: int = -1) -> str:
         """Get current force/torque sensor readings.
@@ -50,8 +46,6 @@ class _ForceMixin(_SerializationMixin):
         """
         string = "GetForce()" if tool == -1 else f"GetForce({tool:d})"
         return self.send_recv_msg(string)
-
-    GetForce = get_force
 
     # ------------------------------------------------------------------
     # Force Drive Mode
@@ -89,8 +83,6 @@ class _ForceMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    ForceDriveMode = force_drive_mode
-
     def force_drive_speed(self, speed: int) -> str:
         """Set the force-drive speed.
 
@@ -102,8 +94,6 @@ class _ForceMixin(_SerializationMixin):
         """
         string = f"ForceDriveSpeed({speed:d})"
         return self.send_recv_msg(string)
-
-    ForceDriveSpeed = force_drive_speed
 
     # ------------------------------------------------------------------
     # Force Compliance (FC) Mode
@@ -160,8 +150,6 @@ class _ForceMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    FCForceMode = fc_force_mode
-
     def fc_set_deviation(
         self,
         x: int,
@@ -189,8 +177,6 @@ class _ForceMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    FCSetDeviation = fc_set_deviation
-
     def fc_set_force_limit(
         self, x: int, y: int, z: int, rx: int, ry: int, rz: int
     ) -> str:
@@ -206,8 +192,6 @@ class _ForceMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    FCSetForceLimit = fc_set_force_limit
-
     def fc_set_mass(self, x: int, y: int, z: int, rx: int, ry: int, rz: int) -> str:
         """Set virtual mass for force-compliance mode.
 
@@ -220,8 +204,6 @@ class _ForceMixin(_SerializationMixin):
         string = "FCSetMass(" + f"{x:d},{y:d},{z:d},{rx:d},{ry:d},{rz:d}"
         string = string + ")"
         return self.send_recv_msg(string)
-
-    FCSetMass = fc_set_mass
 
     def fc_set_stiffness(
         self, x: int, y: int, z: int, rx: int, ry: int, rz: int
@@ -238,8 +220,6 @@ class _ForceMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    FCSetStiffness = fc_set_stiffness
-
     def fc_set_damping(self, x: int, y: int, z: int, rx: int, ry: int, rz: int) -> str:
         """Set damping for force-compliance mode.
 
@@ -253,8 +233,6 @@ class _ForceMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    FCSetDamping = fc_set_damping
-
     def fc_off(self) -> str:
         """Turn off force-compliance mode.
 
@@ -263,8 +241,6 @@ class _ForceMixin(_SerializationMixin):
         """
         string = "FCOff()"
         return self.send_recv_msg(string)
-
-    FCOff = fc_off
 
     def fc_set_force_speed_limit(
         self, x: int, y: int, z: int, rx: int, ry: int, rz: int
@@ -281,8 +257,6 @@ class _ForceMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    FCSetForceSpeedLimit = fc_set_force_speed_limit
-
     def fc_set_force(self, x: int, y: int, z: int, rx: int, ry: int, rz: int) -> str:
         """Set target force for force-compliance mode.
 
@@ -296,8 +270,6 @@ class _ForceMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    FCSetForce = fc_set_force
-
     def fc_collision_switch(self, enable: int) -> str:
         """Enable or disable force-compliance collision detection.
 
@@ -308,8 +280,6 @@ class _ForceMixin(_SerializationMixin):
             Raw response string from robot.
         """
         return self.send_recv_msg(f"FCCollisionSwitch(enable={enable:d})")
-
-    FCCollisionSwitch = fc_collision_switch
 
     def set_fc_collision(self, force: float, torque: float) -> str:
         """Set force-compliance collision detection thresholds.
@@ -323,4 +293,3 @@ class _ForceMixin(_SerializationMixin):
         """
         return self.send_recv_msg(f"SetFCCollision({force:f},{torque:f})")
 
-    SetFCCollision = set_fc_collision

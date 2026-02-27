@@ -7,9 +7,9 @@ class _SerializationMixin:
     The real ``send_recv_msg`` is inherited from ``DobotApi`` via MRO.
     """
 
-    # def send_recv_msg(self, string: str) -> str:
-    #     """Stub — real implementation from DobotApi via MRO."""
-    #     raise NotImplementedError
+    def send_recv_msg(self, string: str) -> str:
+        """Stub — real implementation from DobotApi via MRO."""
+        raise NotImplementedError
 
     def _fmt(self, value: object) -> str:
         """Format one argument into protocol text.

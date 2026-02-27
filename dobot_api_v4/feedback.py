@@ -67,9 +67,6 @@ class DobotApiFeedback(DobotApi):
             if i >= 5:
                 raise Exception("Missing data packets, please check network")
 
-        (
-            current_recv_time - self.last_recv_time
-        ) * 1000  # Convert to milliseconds
         self.last_recv_time = current_recv_time
 
         data = temp[0:1440]
@@ -79,9 +76,6 @@ class DobotApiFeedback(DobotApi):
             self._feedback_dtype = np.frombuffer(data, dtype=FeedbackDtype)
 
         return self._feedback_dtype
-
-    # Backward-compat alias
-    feedBackData = raw_feedback_data  # noqa: N815
 
     def feedback_data(self) -> Optional[FeedbackData]:
         """Return robot status data as a typed ``FeedbackData`` dataclass.
@@ -96,7 +90,3 @@ class DobotApiFeedback(DobotApi):
         if arr is None:
             return None
         return FeedbackData.from_numpy(arr)
-
-
-# Backward-compat alias
-DobotApiFeedBack = DobotApiFeedback

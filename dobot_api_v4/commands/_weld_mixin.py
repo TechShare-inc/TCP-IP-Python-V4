@@ -24,8 +24,6 @@ class _WeldMixin(_SerializationMixin):
         """
         return self.send_recv_msg("ArcTrackStart()")
 
-    ArcTrackStart = arc_track_start
-
     def arc_track_params(
         self,
         sample_time: int,
@@ -62,8 +60,6 @@ class _WeldMixin(_SerializationMixin):
         )
         return self.send_recv_msg(string)
 
-    ArcTrackParams = arc_track_params
-
     def arc_track_end(self) -> str:
         """End arc tracking.
 
@@ -71,8 +67,6 @@ class _WeldMixin(_SerializationMixin):
             Raw response string from robot.
         """
         return self.send_recv_msg("ArcTrackEnd()")
-
-    ArcTrackEnd = arc_track_end
 
     def set_arc_track_offset(
         self,
@@ -102,8 +96,6 @@ class _WeldMixin(_SerializationMixin):
             f"{offset_ry:f},{offset_rz:f}}})"
         )
         return self.send_recv_msg(string)
-
-    SetArcTrackOffset = set_arc_track_offset
 
     # ------------------------------------------------------------------
     # Relative Point Weld
@@ -143,8 +135,6 @@ class _WeldMixin(_SerializationMixin):
         )
         return self.send_recv_msg(string)
 
-    RelPointWeldLine = rel_point_weld_line
-
     def rel_point_weld_arc(
         self,
         start_x: float,
@@ -182,8 +172,6 @@ class _WeldMixin(_SerializationMixin):
         )
         return self.send_recv_msg(string)
 
-    RelPointWeldArc = rel_point_weld_arc
-
     # ------------------------------------------------------------------
     # Weave
     # ------------------------------------------------------------------
@@ -195,8 +183,6 @@ class _WeldMixin(_SerializationMixin):
             Raw response string from robot.
         """
         return self.send_recv_msg("WeaveStart()")
-
-    WeaveStart = weave_start
 
     def weave_params(
         self,
@@ -248,8 +234,6 @@ class _WeldMixin(_SerializationMixin):
         string += ")"
         return self.send_recv_msg(string)
 
-    WeaveParams = weave_params
-
     def weave_end(self) -> str:
         """End weave motion.
 
@@ -257,8 +241,6 @@ class _WeldMixin(_SerializationMixin):
             Raw response string from robot.
         """
         return self.send_recv_msg("WeaveEnd()")
-
-    WeaveEnd = weave_end
 
     # ------------------------------------------------------------------
     # Weld Arc Speed
@@ -272,8 +254,6 @@ class _WeldMixin(_SerializationMixin):
         """
         return self.send_recv_msg("WeldArcSpeedStart()")
 
-    WeldArcSpeedStart = weld_arc_speed_start
-
     def weld_arc_speed(self, speed: float) -> str:
         """Set weld arc speed.
 
@@ -285,8 +265,6 @@ class _WeldMixin(_SerializationMixin):
         """
         return self.send_recv_msg(f"WeldArcSpeed({speed:f})")
 
-    WeldArcSpeed = weld_arc_speed
-
     def weld_arc_speed_end(self) -> str:
         """End weld arc speed mode.
 
@@ -294,8 +272,6 @@ class _WeldMixin(_SerializationMixin):
             Raw response string from robot.
         """
         return self.send_recv_msg("WeldArcSpeedEnd()")
-
-    WeldArcSpeedEnd = weld_arc_speed_end
 
     def weld_weave_start(
         self,
@@ -341,4 +317,3 @@ class _WeldMixin(_SerializationMixin):
         )
         return self.send_recv_msg(string)
 
-    WeldWeaveStart = weld_weave_start

@@ -108,8 +108,6 @@ class _CheckMixin(_SerializationMixin):
         string += ")"
         return self.send_recv_msg(string)
 
-    CheckMovC = check_mov_c
-
     def check_mov_j(
         self,
         j1a: float,
@@ -166,8 +164,6 @@ class _CheckMixin(_SerializationMixin):
         string += ")"
         return self.send_recv_msg(string)
 
-    CheckMovJ = check_mov_j
-
     def check_mov_l(
         self,
         j1a: float,
@@ -223,8 +219,6 @@ class _CheckMixin(_SerializationMixin):
             string += "," + ",".join(params)
         string += ")"
         return self.send_recv_msg(string)
-
-    CheckMovL = check_mov_l
 
     # ------------------------------------------------------------------
     # Odd (7-axis / Redundant) Check Commands
@@ -299,8 +293,6 @@ class _CheckMixin(_SerializationMixin):
         string += ")"
         return self.send_recv_msg(string)
 
-    CheckOddMovC = check_odd_mov_c
-
     def check_odd_mov_j(
         self,
         j1a: float,
@@ -356,8 +348,6 @@ class _CheckMixin(_SerializationMixin):
             string += "," + ",".join(params)
         string += ")"
         return self.send_recv_msg(string)
-
-    CheckOddMovJ = check_odd_mov_j
 
     def check_odd_mov_l(
         self,
@@ -415,4 +405,3 @@ class _CheckMixin(_SerializationMixin):
         string += ")"
         return self.send_recv_msg(string)
 
-    CheckOddMovL = check_odd_mov_l

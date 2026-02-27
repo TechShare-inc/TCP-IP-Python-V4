@@ -46,9 +46,6 @@ class _SystemMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    # Backward-compat alias
-    EnableRobot = enable_robot
-
     def disable_robot(self) -> str:
         """Disable the robot.
 
@@ -57,8 +54,6 @@ class _SystemMixin(_SerializationMixin):
         """
         string = "DisableRobot()"
         return self.send_recv_msg(string)
-
-    DisableRobot = disable_robot
 
     def clear_error(self) -> str:
         """Clear controller alarm information.
@@ -72,8 +67,6 @@ class _SystemMixin(_SerializationMixin):
         string = "ClearError()"
         return self.send_recv_msg(string)
 
-    ClearError = clear_error
-
     def power_on(self) -> str:
         """Power on the robot.
 
@@ -85,8 +78,6 @@ class _SystemMixin(_SerializationMixin):
         """
         string = "PowerOn()"
         return self.send_recv_msg(string)
-
-    PowerOn = power_on
 
     def run_script(self, project_name: str) -> str:
         """Run a script file.
@@ -100,8 +91,6 @@ class _SystemMixin(_SerializationMixin):
         string = f"RunScript({project_name:s})"
         return self.send_recv_msg(string)
 
-    RunScript = run_script
-
     def stop_script(self) -> str:
         """Stop the delivered motion command queue or RunScript command.
 
@@ -110,8 +99,6 @@ class _SystemMixin(_SerializationMixin):
         """
         string = "Stop()"
         return self.send_recv_msg(string)
-
-    Stop = stop_script
 
     def pause_script(self) -> str:
         """Pause the delivered motion command queue or RunScript command.
@@ -122,8 +109,6 @@ class _SystemMixin(_SerializationMixin):
         string = "Pause()"
         return self.send_recv_msg(string)
 
-    Pause = pause_script
-
     def resume(self) -> str:
         """Continue the paused motion command queue or RunScript command.
 
@@ -132,8 +117,6 @@ class _SystemMixin(_SerializationMixin):
         """
         string = "Continue()"
         return self.send_recv_msg(string)
-
-    Continue = resume
 
     def emergency_stop(self, mode: int) -> str:
         """Emergency stop the robot.
@@ -149,8 +132,6 @@ class _SystemMixin(_SerializationMixin):
         """
         string = f"EmergencyStop({mode:d})"
         return self.send_recv_msg(string)
-
-    EmergencyStop = emergency_stop
 
     def brake_control(self, axis_id: int, value: int) -> str:
         """Control the brake of a specified joint.
@@ -170,8 +151,6 @@ class _SystemMixin(_SerializationMixin):
         string = f"BrakeControl({axis_id:d},{value:d})"
         return self.send_recv_msg(string)
 
-    BrakeControl = brake_control
-
     def request_control(self) -> str:
         """Request control of the robot.
 
@@ -184,8 +163,6 @@ class _SystemMixin(_SerializationMixin):
         string = "RequestControl()"
         return self.send_recv_msg(string)
 
-    RequestControl = request_control
-
     def reset_robot(self) -> str:
         """Reset the robot.
 
@@ -193,8 +170,6 @@ class _SystemMixin(_SerializationMixin):
             Raw response string from robot.
         """
         return self.send_recv_msg("ResetRobot()")
-
-    ResetRobot = reset_robot
 
     def tcp_send_and_parse(self, cmd: str) -> str:
         """Send a raw TCP command and parse the response.
@@ -207,8 +182,6 @@ class _SystemMixin(_SerializationMixin):
         """
         return self.send_recv_msg(f'TcpSendAndParse("{cmd:s}")')
 
-    TcpSendAndParse = tcp_send_and_parse
-
     def sleep(self, count: int) -> str:
         """Sleep (delay) command in the motion queue.
 
@@ -220,4 +193,3 @@ class _SystemMixin(_SerializationMixin):
         """
         return self.send_recv_msg(f"Sleep({count:d})")
 
-    Sleep = sleep

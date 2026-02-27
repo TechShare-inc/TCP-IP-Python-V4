@@ -36,8 +36,6 @@ class _IOMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    DO = do_output
-
     def do_instant(self, index: int, status: int) -> str:
         """Set the status of digital output port (immediate command).
 
@@ -51,8 +49,6 @@ class _IOMixin(_SerializationMixin):
         string = f"DOInstant({index:d},{status:d})"
         return self.send_recv_msg(string)
 
-    DOInstant = do_instant
-
     def get_do(self, index: int) -> str:
         """Get the status of digital output port.
 
@@ -64,8 +60,6 @@ class _IOMixin(_SerializationMixin):
         """
         string = f"GetDO({index:d})"
         return self.send_recv_msg(string)
-
-    GetDO = get_do
 
     def do_group(self, *index_value: int) -> str:
         """Set the status of multiple digital output ports (queue command).
@@ -83,8 +77,6 @@ class _IOMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    DOGroup = do_group
-
     def get_do_group(self, *index_value: int) -> str:
         """Get the status of multiple digital output ports.
 
@@ -101,8 +93,6 @@ class _IOMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    GetDOGroup = get_do_group
-
     def do_group_dec(self, group: int, value: int) -> str:
         """Set digital output group using decimal encoding.
 
@@ -115,8 +105,6 @@ class _IOMixin(_SerializationMixin):
         """
         return self.send_recv_msg(f"DOGroupDEC({group:d},{value:d})")
 
-    DOGroupDEC = do_group_dec
-
     def get_do_group_dec(self, group: int, value: int) -> str:
         """Get digital output group status using decimal encoding.
 
@@ -128,8 +116,6 @@ class _IOMixin(_SerializationMixin):
             Raw response string from robot.
         """
         return self.send_recv_msg(f"GetDOGroupDEC({group:d},{value:d})")
-
-    GetDOGroupDEC = get_do_group_dec
 
     # ------------------------------------------------------------------
     # Tool Digital Output
@@ -148,8 +134,6 @@ class _IOMixin(_SerializationMixin):
         string = f"ToolDO({index:d},{status:d})"
         return self.send_recv_msg(string)
 
-    ToolDO = tool_do
-
     def tool_do_instant(self, index: int, status: int) -> str:
         """Set the status of tool digital output port (immediate command).
 
@@ -163,8 +147,6 @@ class _IOMixin(_SerializationMixin):
         string = f"ToolDOInstant({index:d},{status:d})"
         return self.send_recv_msg(string)
 
-    ToolDOInstant = tool_do_instant
-
     def get_tool_do(self, index: int) -> str:
         """Get the status of tool digital output port.
 
@@ -176,8 +158,6 @@ class _IOMixin(_SerializationMixin):
         """
         string = f"GetToolDO({index:d})"
         return self.send_recv_msg(string)
-
-    GetToolDO = get_tool_do
 
     # ------------------------------------------------------------------
     # Analog Output
@@ -196,8 +176,6 @@ class _IOMixin(_SerializationMixin):
         string = f"AO({index:d},{value:f})"
         return self.send_recv_msg(string)
 
-    AO = ao
-
     def ao_instant(self, index: int, value: float) -> str:
         """Set the value of analog output port (immediate command).
 
@@ -211,8 +189,6 @@ class _IOMixin(_SerializationMixin):
         string = f"AOInstant({index:d},{value:f})"
         return self.send_recv_msg(string)
 
-    AOInstant = ao_instant
-
     def get_ao(self, index: int) -> str:
         """Get the value of analog output port.
 
@@ -224,8 +200,6 @@ class _IOMixin(_SerializationMixin):
         """
         string = f"GetAO({index:d})"
         return self.send_recv_msg(string)
-
-    GetAO = get_ao
 
     # ------------------------------------------------------------------
     # Digital Input
@@ -242,8 +216,6 @@ class _IOMixin(_SerializationMixin):
         """
         string = f"DI({index:d})"
         return self.send_recv_msg(string)
-
-    DI = di
 
     def di_group(self, *index_value: int) -> str:
         """Get the status of multiple digital input ports.
@@ -262,8 +234,6 @@ class _IOMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    DIGroup = di_group
-
     def di_group_dec(self, group: int, value: int) -> str:
         """Get digital input group status using decimal encoding.
 
@@ -275,8 +245,6 @@ class _IOMixin(_SerializationMixin):
             Raw response string from robot.
         """
         return self.send_recv_msg(f"DIGroupDEC({group:d},{value:d})")
-
-    DIGroupDEC = di_group_dec
 
     # ------------------------------------------------------------------
     # Tool Digital / Analog Input
@@ -294,8 +262,6 @@ class _IOMixin(_SerializationMixin):
         string = f"ToolDI({index:d})"
         return self.send_recv_msg(string)
 
-    ToolDI = tool_di
-
     def ai(self, index: int) -> str:
         """Get the value of analog input port.
 
@@ -307,8 +273,6 @@ class _IOMixin(_SerializationMixin):
         """
         string = f"AI({index:d})"
         return self.send_recv_msg(string)
-
-    AI = ai
 
     def tool_ai(self, index: int) -> str:
         """Get the value of tool analog input port.
@@ -324,8 +288,6 @@ class _IOMixin(_SerializationMixin):
         """
         string = f"ToolAI({index:d})"
         return self.send_recv_msg(string)
-
-    ToolAI = tool_ai
 
     # ------------------------------------------------------------------
     # Tool RS485 / Power / Mode
@@ -367,8 +329,6 @@ class _IOMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    SetTool485 = set_tool_485
-
     def set_tool_power(self, status: int, identify: int = -1) -> str:
         """Set the power status of the end tool.
 
@@ -395,8 +355,6 @@ class _IOMixin(_SerializationMixin):
             string = string + "," + ii
         string = string + ")"
         return self.send_recv_msg(string)
-
-    SetToolPower = set_tool_power
 
     def set_tool_mode(self, mode: int, type: int, identify: int = -1) -> str:  # noqa: A002
         """Set the mode of the end multiplex terminal.
@@ -427,4 +385,3 @@ class _IOMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    SetToolMode = set_tool_mode

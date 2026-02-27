@@ -107,8 +107,6 @@ class _MotionMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    MovJ = mov_j
-
     def mov_l(
         self,
         a1: float,
@@ -158,8 +156,6 @@ class _MotionMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    MovL = mov_l
-
     # ------------------------------------------------------------------
     # Servo
     # ------------------------------------------------------------------
@@ -200,8 +196,6 @@ class _MotionMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    ServoJ = servo_j
-
     def servo_p(
         self,
         x: float,
@@ -237,8 +231,6 @@ class _MotionMixin(_SerializationMixin):
             string = string + "," + ii
         string = string + ")"
         return self.send_recv_msg(string)
-
-    ServoP = servo_p
 
     # ------------------------------------------------------------------
     # Motion with IO
@@ -305,8 +297,6 @@ class _MotionMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    MovLIO = mov_l_io
-
     def mov_j_io(
         self,
         a1: float,
@@ -365,8 +355,6 @@ class _MotionMixin(_SerializationMixin):
             string = string + "," + ii
         string = string + ")"
         return self.send_recv_msg(string)
-
-    MovJIO = mov_j_io
 
     # ------------------------------------------------------------------
     # Arc / Circle
@@ -434,8 +422,6 @@ class _MotionMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    Arc = arc
-
     def circle(
         self,
         a1: float,
@@ -499,8 +485,6 @@ class _MotionMixin(_SerializationMixin):
             string = string + "," + ii
         string = string + ")"
         return self.send_recv_msg(string)
-
-    Circle = circle
 
     def arc_io(
         self,
@@ -582,8 +566,6 @@ class _MotionMixin(_SerializationMixin):
         string += ")"
         return self.send_recv_msg(string)
 
-    ArcIO = arc_io
-
     # ------------------------------------------------------------------
     # Jog
     # ------------------------------------------------------------------
@@ -622,8 +604,6 @@ class _MotionMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    MoveJog = move_jog
-
     # ------------------------------------------------------------------
     # Trajectory Playback
     # ------------------------------------------------------------------
@@ -640,8 +620,6 @@ class _MotionMixin(_SerializationMixin):
         """
         string = f"GetStartPose({trace_name:s})"
         return self.send_recv_msg(string)
-
-    GetStartPose = get_start_pose
 
     def start_path(
         self,
@@ -678,8 +656,6 @@ class _MotionMixin(_SerializationMixin):
             string = string + "," + ii
         string = string + ")"
         return self.send_recv_msg(string)
-
-    StartPath = start_path
 
     # ------------------------------------------------------------------
     # Relative Motion (Tool / User / Joint)
@@ -737,8 +713,6 @@ class _MotionMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    RelMovJTool = rel_mov_j_tool
-
     def rel_mov_l_tool(
         self,
         offset_x: float,
@@ -794,8 +768,6 @@ class _MotionMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    RelMovLTool = rel_mov_l_tool
-
     def rel_mov_j_user(
         self,
         offset_x: float,
@@ -847,8 +819,6 @@ class _MotionMixin(_SerializationMixin):
             string = string + "," + ii
         string = string + ")"
         return self.send_recv_msg(string)
-
-    RelMovJUser = rel_mov_j_user
 
     def rel_mov_l_user(
         self,
@@ -903,8 +873,6 @@ class _MotionMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    RelMovLUser = rel_mov_l_user
-
     def rel_joint_mov_j(
         self,
         offset1: float,
@@ -944,8 +912,6 @@ class _MotionMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    RelJointMovJ = rel_joint_mov_j
-
     def rel_point_tool(
         self,
         coordinate_mode: int,
@@ -982,8 +948,6 @@ class _MotionMixin(_SerializationMixin):
         )
         string = string + ")"
         return self.send_recv_msg(string)
-
-    RelPointTool = rel_point_tool
 
     def rel_point_user(
         self,
@@ -1022,8 +986,6 @@ class _MotionMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    RelPointUser = rel_point_user
-
     def rel_joint(
         self,
         j1: float,
@@ -1053,8 +1015,6 @@ class _MotionMixin(_SerializationMixin):
             f"{{{offset1:f},{offset2:f},{offset3:f},{offset4:f},{offset5:f},{offset6:f}}})"
         )
         return self.send_recv_msg(string)
-
-    RelJoint = rel_joint
 
     # ------------------------------------------------------------------
     # MoveL (pose-only variant)
@@ -1104,8 +1064,6 @@ class _MotionMixin(_SerializationMixin):
             string += "," + ii
         string += ")"
         return self.send_recv_msg(string)
-
-    MoveL = move_l
 
     # ------------------------------------------------------------------
     # Spline (MovS)
@@ -1188,8 +1146,6 @@ class _MotionMixin(_SerializationMixin):
         string += ")"
         return self.send_recv_msg(string)
 
-    MovS = mov_s
-
     # ------------------------------------------------------------------
     # RunTo
     # ------------------------------------------------------------------
@@ -1249,4 +1205,3 @@ class _MotionMixin(_SerializationMixin):
         string += ")"
         return self.send_recv_msg(string)
 
-    RunTo = run_to
