@@ -81,28 +81,3 @@ class TestQueryMixin:
         dashboard, sent = mock_dashboard
         dashboard.get_export_status()
         assert sent[-1] == "GetExportStatus()"
-
-
-@pytest.mark.unit
-class TestQueryMixinBackwardCompat:
-    """Verify PascalCase aliases exist."""
-
-    def test_robot_mode_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.RobotMode()
-        assert sent[-1] == "RobotMode()"
-
-    def test_get_angle_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.GetAngle()
-        assert sent[-1] == "GetAngle()"
-
-    def test_get_pose_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.GetPose()
-        assert sent[-1] == "GetPose()"
-
-    def test_get_error_id_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.GetErrorID()
-        assert sent[-1] == "GetErrorID()"

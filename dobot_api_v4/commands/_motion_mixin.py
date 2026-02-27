@@ -5,6 +5,8 @@ from typing import Optional, Union
 
 from loguru import logger
 
+from ..dtypes import Pose
+from ._parse import parse_ack, parse_int, parse_pose
 from ._serialization import _SerializationMixin
 
 
@@ -73,7 +75,7 @@ class _MotionMixin(_SerializationMixin):
         a: int = -1,
         v: int = -1,
         cp: int = -1,
-    ) -> str:
+    ) -> int:
         """Move to target position through joint motion.
 
         Args:
@@ -86,7 +88,7 @@ class _MotionMixin(_SerializationMixin):
             cp: Continuous path ratio. Range: [0, 100]. -1 = not set.
 
         Returns:
-            Raw response string from robot.
+            int: Motion queue ID.
         """
         self._validate_coordinate_mode(coordinate_mode, "MovJ")
         kind = self._pose_or_joint(coordinate_mode)
@@ -105,7 +107,7 @@ class _MotionMixin(_SerializationMixin):
         for ii in params:
             string = string + "," + ii
         string = string + ")"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     def mov_l(
         self,
@@ -123,7 +125,7 @@ class _MotionMixin(_SerializationMixin):
         speed: int = -1,
         cp: int = -1,
         r: int = -1,
-    ) -> str:
+    ) -> int:
         """Move to target position in linear mode.
 
         Args:
@@ -138,7 +140,7 @@ class _MotionMixin(_SerializationMixin):
             r: Continuous path radius (mm), takes precedence over *cp*.
 
         Returns:
-            Raw response string from robot.
+            int: Motion queue ID.
         """
         self._validate_coordinate_mode(coordinate_mode, "MovL")
         kind = self._pose_or_joint(coordinate_mode)
@@ -154,7 +156,7 @@ class _MotionMixin(_SerializationMixin):
         for ii in params:
             string = string + "," + ii
         string = string + ")"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     # ------------------------------------------------------------------
     # Servo
@@ -171,7 +173,7 @@ class _MotionMixin(_SerializationMixin):
         t: float = -1.0,
         ahead_time: float = -1.0,
         gain: float = -1.0,
-    ) -> str:
+    ) -> int:
         """Dynamic servo joint motion.
 
         Args:
@@ -181,7 +183,7 @@ class _MotionMixin(_SerializationMixin):
             gain: Proportional gain (P-like PID). Range: [200.0, 1000.0]. Default: 500.
 
         Returns:
-            Raw response string from robot.
+            int: Motion queue ID.
         """
         string = f"ServoJ({j1:f},{j2:f},{j3:f},{j4:f},{j5:f},{j6:f}"
         params: list[str] = []
@@ -194,7 +196,7 @@ class _MotionMixin(_SerializationMixin):
         for ii in params:
             string = string + "," + ii
         string = string + ")"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     def servo_p(
         self,
@@ -207,7 +209,7 @@ class _MotionMixin(_SerializationMixin):
         t: float = -1.0,
         ahead_time: float = -1.0,
         gain: float = -1.0,
-    ) -> str:
+    ) -> int:
         """Dynamic servo Cartesian motion.
 
         Args:
@@ -217,7 +219,7 @@ class _MotionMixin(_SerializationMixin):
             gain: Proportional gain (P-like PID). Range: [200.0, 1000.0]. Default: 500.
 
         Returns:
-            Raw response string from robot.
+            int: Motion queue ID.
         """
         string = f"ServoP({x:f},{y:f},{z:f},{rx:f},{ry:f},{rz:f}"
         params: list[str] = []
@@ -230,7 +232,7 @@ class _MotionMixin(_SerializationMixin):
         for ii in params:
             string = string + "," + ii
         string = string + ")"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     # ------------------------------------------------------------------
     # Motion with IO
@@ -256,7 +258,7 @@ class _MotionMixin(_SerializationMixin):
         speed: int = -1,
         cp: int = -1,
         r: int = -1,
-    ) -> str:
+    ) -> int:
         """Linear motion with digital-output triggering.
 
         Args:
@@ -276,7 +278,7 @@ class _MotionMixin(_SerializationMixin):
             r: Continuous path radius (mm), takes precedence over *cp*.
 
         Returns:
-            Raw response string from robot.
+            int: Motion queue ID.
         """
         self._validate_coordinate_mode(coordinate_mode, "MovLIO")
         kind = self._pose_or_joint(coordinate_mode)
@@ -295,7 +297,7 @@ class _MotionMixin(_SerializationMixin):
         for ii in params:
             string = string + "," + ii
         string = string + ")"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     def mov_j_io(
         self,
@@ -315,7 +317,7 @@ class _MotionMixin(_SerializationMixin):
         a: int = -1,
         v: int = -1,
         cp: int = -1,
-    ) -> str:
+    ) -> int:
         """Joint motion with digital-output triggering.
 
         Args:
@@ -332,7 +334,7 @@ class _MotionMixin(_SerializationMixin):
             cp: Continuous path ratio. -1 = not set.
 
         Returns:
-            Raw response string from robot.
+            int: Motion queue ID.
         """
         self._validate_coordinate_mode(coordinate_mode, "MovJIO")
         kind = self._pose_or_joint(coordinate_mode)
@@ -354,7 +356,7 @@ class _MotionMixin(_SerializationMixin):
         for ii in params:
             string = string + "," + ii
         string = string + ")"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     # ------------------------------------------------------------------
     # Arc / Circle
@@ -382,7 +384,7 @@ class _MotionMixin(_SerializationMixin):
         speed: int = -1,
         cp: int = -1,
         r: int = -1,
-    ) -> str:
+    ) -> int:
         """Arc interpolated motion through two points.
 
         The current position, through-point P1, and target-point P2 define the
@@ -401,7 +403,7 @@ class _MotionMixin(_SerializationMixin):
             r: Continuous path radius (mm), takes precedence over *cp*.
 
         Returns:
-            Raw response string from robot.
+            int: Motion queue ID.
         """
         self._validate_coordinate_mode(coordinate_mode, "Arc")
         kind = self._pose_or_joint(coordinate_mode)
@@ -420,7 +422,7 @@ class _MotionMixin(_SerializationMixin):
         for ii in params:
             string = string + "," + ii
         string = string + ")"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     def circle(
         self,
@@ -445,7 +447,7 @@ class _MotionMixin(_SerializationMixin):
         speed: int = -1,
         cp: int = -1,
         r: int = -1,
-    ) -> str:
+    ) -> int:
         """Full-circle interpolated motion.
 
         The current position, P1, and P2 define the circle. They must not
@@ -465,7 +467,7 @@ class _MotionMixin(_SerializationMixin):
             r: Continuous path radius (mm), takes precedence over *cp*.
 
         Returns:
-            Raw response string from robot.
+            int: Motion queue ID.
         """
         self._validate_coordinate_mode(coordinate_mode, "Circle")
         kind = self._pose_or_joint(coordinate_mode)
@@ -484,7 +486,7 @@ class _MotionMixin(_SerializationMixin):
         for ii in params:
             string = string + "," + ii
         string = string + ")"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     def arc_io(
         self,
@@ -510,7 +512,7 @@ class _MotionMixin(_SerializationMixin):
         cp: int = -1,
         r: int = -1,
         mode: int = -1,
-    ) -> str:
+    ) -> int:
         """Arc motion with digital-output triggering.
 
         Args:
@@ -529,7 +531,7 @@ class _MotionMixin(_SerializationMixin):
             mode: Arc mode. -1 = not set.
 
         Returns:
-            Raw response string from robot.
+            int: Motion queue ID.
         """
         self._validate_coordinate_mode(coordinate_mode, "ArcIO")
         kind = self._pose_or_joint(coordinate_mode)
@@ -564,7 +566,7 @@ class _MotionMixin(_SerializationMixin):
         for ii in params:
             string += "," + ii
         string += ")"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     # ------------------------------------------------------------------
     # Jog
@@ -576,7 +578,7 @@ class _MotionMixin(_SerializationMixin):
         coord_type: int = -1,
         user: int = -1,
         tool: int = -1,
-    ) -> str:
+    ) -> None:
         """Start or stop joint jog motion.
 
         Call with an ``axis_id`` to start jogging, or with an empty string
@@ -588,8 +590,8 @@ class _MotionMixin(_SerializationMixin):
             user: User coordinate index. -1 = not set.
             tool: Tool coordinate index. -1 = not set.
 
-        Returns:
-            Raw response string from robot.
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
         """
         string = f"MoveJog({axis_id:s}"
         params: list[str] = []
@@ -602,13 +604,13 @@ class _MotionMixin(_SerializationMixin):
         for ii in params:
             string = string + "," + ii
         string = string + ")"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
     # ------------------------------------------------------------------
     # Trajectory Playback
     # ------------------------------------------------------------------
 
-    def get_start_pose(self, trace_name: str) -> str:
+    def get_start_pose(self, trace_name: str) -> Pose:
         """Get the start point of a trajectory file.
 
         Args:
@@ -616,10 +618,10 @@ class _MotionMixin(_SerializationMixin):
                 ``/dobot/userdata/project/process/trajectory/``.
 
         Returns:
-            Raw response string from robot.
+            Pose: Start pose of the trajectory.
         """
         string = f"GetStartPose({trace_name:s})"
-        return self.send_recv_msg(string)
+        return parse_pose(self.send_recv_msg(string))
 
     def start_path(
         self,
@@ -628,7 +630,7 @@ class _MotionMixin(_SerializationMixin):
         multi: float = -1.0,
         user: int = -1,
         tool: int = -1,
-    ) -> str:
+    ) -> int:
         """Play back a recorded trajectory.
 
         Args:
@@ -640,7 +642,7 @@ class _MotionMixin(_SerializationMixin):
             tool: Tool coordinate system index. -1 = use file value.
 
         Returns:
-            Raw response string from robot.
+            int: Motion queue ID.
         """
         string = f"StartPath({trace_name:s}"
         params: list[str] = []
@@ -655,7 +657,7 @@ class _MotionMixin(_SerializationMixin):
         for ii in params:
             string = string + "," + ii
         string = string + ")"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     # ------------------------------------------------------------------
     # Relative Motion (Tool / User / Joint)
@@ -674,7 +676,7 @@ class _MotionMixin(_SerializationMixin):
         a: int = -1,
         v: int = -1,
         cp: int = -1,
-    ) -> str:
+    ) -> int:
         """Relative joint motion along the tool coordinate system.
 
         Args:
@@ -691,7 +693,7 @@ class _MotionMixin(_SerializationMixin):
             cp: Continuous path ratio. -1 = not set.
 
         Returns:
-            Raw response string from robot.
+            int: Motion queue ID.
         """
         string = (
             f"RelMovJTool({offset_x:f},{offset_y:f},{offset_z:f},"
@@ -711,7 +713,7 @@ class _MotionMixin(_SerializationMixin):
         for ii in params:
             string = string + "," + ii
         string = string + ")"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     def rel_mov_l_tool(
         self,
@@ -728,7 +730,7 @@ class _MotionMixin(_SerializationMixin):
         speed: int = -1,
         cp: int = -1,
         r: int = -1,
-    ) -> str:
+    ) -> int:
         """Relative linear motion along the tool coordinate system.
 
         For 6-axis robots.
@@ -749,7 +751,7 @@ class _MotionMixin(_SerializationMixin):
             r: Continuous path radius (mm), takes precedence over *cp*.
 
         Returns:
-            Raw response string from robot.
+            int: Motion queue ID.
         """
         string = (
             f"RelMovLTool({offset_x:f},{offset_y:f},{offset_z:f},"
@@ -766,7 +768,7 @@ class _MotionMixin(_SerializationMixin):
         for ii in params:
             string = string + "," + ii
         string = string + ")"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     def rel_mov_j_user(
         self,
@@ -781,7 +783,7 @@ class _MotionMixin(_SerializationMixin):
         a: int = -1,
         v: int = -1,
         cp: int = -1,
-    ) -> str:
+    ) -> int:
         """Relative joint motion along the user coordinate system.
 
         Args:
@@ -798,7 +800,7 @@ class _MotionMixin(_SerializationMixin):
             cp: Continuous path ratio. -1 = not set.
 
         Returns:
-            Raw response string from robot.
+            int: Motion queue ID.
         """
         string = (
             f"RelMovJUser({offset_x:f},{offset_y:f},{offset_z:f},"
@@ -818,7 +820,7 @@ class _MotionMixin(_SerializationMixin):
         for ii in params:
             string = string + "," + ii
         string = string + ")"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     def rel_mov_l_user(
         self,
@@ -835,7 +837,7 @@ class _MotionMixin(_SerializationMixin):
         speed: int = -1,
         cp: int = -1,
         r: int = -1,
-    ) -> str:
+    ) -> int:
         """Relative linear motion along the user coordinate system.
 
         Args:
@@ -854,7 +856,7 @@ class _MotionMixin(_SerializationMixin):
             r: Continuous path radius (mm), takes precedence over *cp*.
 
         Returns:
-            Raw response string from robot.
+            int: Motion queue ID.
         """
         string = (
             f"RelMovLUser({offset_x:f},{offset_y:f},{offset_z:f},"
@@ -871,7 +873,7 @@ class _MotionMixin(_SerializationMixin):
         for ii in params:
             string = string + "," + ii
         string = string + ")"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     def rel_joint_mov_j(
         self,
@@ -884,7 +886,7 @@ class _MotionMixin(_SerializationMixin):
         a: int = -1,
         v: int = -1,
         cp: int = -1,
-    ) -> str:
+    ) -> int:
         """Relative joint motion along the joint coordinate system.
 
         Args:
@@ -894,7 +896,7 @@ class _MotionMixin(_SerializationMixin):
             cp: Continuous path ratio. -1 = not set.
 
         Returns:
-            Raw response string from robot.
+            int: Motion queue ID.
         """
         string = (
             f"RelJointMovJ({offset1:f},{offset2:f},{offset3:f},"
@@ -910,7 +912,7 @@ class _MotionMixin(_SerializationMixin):
         for ii in params:
             string = string + "," + ii
         string = string + ")"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     def rel_point_tool(
         self,
@@ -927,7 +929,7 @@ class _MotionMixin(_SerializationMixin):
         rx: float,
         ry: float,
         rz: float,
-    ) -> str:
+    ) -> int:
         """Relative point motion in tool coordinate system.
 
         Args:
@@ -936,18 +938,13 @@ class _MotionMixin(_SerializationMixin):
             x..rz: Offset values (6 values).
 
         Returns:
-            Raw response string from robot.
+            int: Motion queue ID.
         """
         kind = self._pose_or_joint(coordinate_mode)
         string = f"RelPointTool({kind:s}={{{a1:f},{b1:f},{c1:f},{d1:f},{e1:f},{f1:f}}},"
-        string = (
-            string
-            + "{"
-            + f"{x:f},{y:f},{z:f},{rx:f},{ry:f},{rz:f}"
-            + "}"
-        )
+        string = string + "{" + f"{x:f},{y:f},{z:f},{rx:f},{ry:f},{rz:f}" + "}"
         string = string + ")"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     def rel_point_user(
         self,
@@ -964,7 +961,7 @@ class _MotionMixin(_SerializationMixin):
         rx: float,
         ry: float,
         rz: float,
-    ) -> str:
+    ) -> int:
         """Relative point motion in user coordinate system.
 
         Args:
@@ -973,18 +970,13 @@ class _MotionMixin(_SerializationMixin):
             x..rz: Offset values (6 values).
 
         Returns:
-            Raw response string from robot.
+            int: Motion queue ID.
         """
         kind = self._pose_or_joint(coordinate_mode)
         string = f"RelPointUser({kind:s}={{{a1:f},{b1:f},{c1:f},{d1:f},{e1:f},{f1:f}}},"
-        string = (
-            string
-            + "{"
-            + f"{x:f},{y:f},{z:f},{rx:f},{ry:f},{rz:f}"
-            + "}"
-        )
+        string = string + "{" + f"{x:f},{y:f},{z:f},{rx:f},{ry:f},{rz:f}" + "}"
         string = string + ")"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     def rel_joint(
         self,
@@ -1000,7 +992,7 @@ class _MotionMixin(_SerializationMixin):
         offset4: float,
         offset5: float,
         offset6: float,
-    ) -> str:
+    ) -> int:
         """Relative joint motion from a reference joint configuration.
 
         Args:
@@ -1008,13 +1000,13 @@ class _MotionMixin(_SerializationMixin):
             offset1..offset6: Joint offsets.
 
         Returns:
-            Raw response string from robot.
+            int: Motion queue ID.
         """
         string = (
             f"RelJoint({j1:f},{j2:f},{j3:f},{j4:f},{j5:f},{j6:f},"
             f"{{{offset1:f},{offset2:f},{offset3:f},{offset4:f},{offset5:f},{offset6:f}}})"
         )
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     # ------------------------------------------------------------------
     # MoveL (pose-only variant)
@@ -1035,7 +1027,7 @@ class _MotionMixin(_SerializationMixin):
         speed: int = -1,
         cp: int = -1,
         r: int = -1,
-    ) -> str:
+    ) -> int:
         """Linear motion to target pose (pose-only, no coordinate_mode).
 
         Args:
@@ -1049,7 +1041,7 @@ class _MotionMixin(_SerializationMixin):
             r: Continuous path radius (mm), takes precedence over *cp*.
 
         Returns:
-            Raw response string from robot.
+            int: Motion queue ID.
         """
         string = f"MoveL(pose={{{a1:f},{b1:f},{c1:f},{d1:f},{e1:f},{f1:f}}}"
         params: list[str] = []
@@ -1063,7 +1055,7 @@ class _MotionMixin(_SerializationMixin):
         for ii in params:
             string += "," + ii
         string += ")"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     # ------------------------------------------------------------------
     # Spline (MovS)
@@ -1080,7 +1072,7 @@ class _MotionMixin(_SerializationMixin):
         speed: int = -1,
         a: int = -1,
         freq: int = -1,
-    ) -> str:
+    ) -> int:
         """Spline motion through multiple points or from a file.
 
         Either *file* or both *points* + *coordinate_mode* must be provided.
@@ -1097,7 +1089,7 @@ class _MotionMixin(_SerializationMixin):
             freq: Frequency parameter. -1 = not set.
 
         Returns:
-            Raw response string from robot.
+            int: Motion queue ID.
         """
         string = "MovS("
         if file is not None:
@@ -1106,9 +1098,7 @@ class _MotionMixin(_SerializationMixin):
             pts_str = []
             for pt in points:
                 if coordinate_mode == 0:
-                    pts_str.append(
-                        "pose={{{:f},{:f},{:f},{:f},{:f},{:f}}}".format(*pt)
-                    )
+                    pts_str.append("pose={{{:f},{:f},{:f},{:f},{:f},{:f}}}".format(*pt))
                 elif coordinate_mode == 1:
                     pts_str.append(
                         "joint={{{:f},{:f},{:f},{:f},{:f},{:f}}}".format(*pt)
@@ -1144,7 +1134,7 @@ class _MotionMixin(_SerializationMixin):
             string += ",".join(params)
 
         string += ")"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     # ------------------------------------------------------------------
     # RunTo
@@ -1163,7 +1153,7 @@ class _MotionMixin(_SerializationMixin):
         tool: int = -1,
         a: int = -1,
         v: int = -1,
-    ) -> str:
+    ) -> None:
         """Move to a target point for single-step execution.
 
         Args:
@@ -1174,13 +1164,17 @@ class _MotionMixin(_SerializationMixin):
             a: Acceleration ratio. -1 = not set.
             v: Velocity ratio. -1 = not set.
 
-        Returns:
-            Raw response string from robot.
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
         """
         if move_type == 0:
-            string = f"RunTo(pose={{{a1:f},{b1:f},{c1:f},{d1:f},{e1:f},{f1:f}}},moveType=0"
+            string = (
+                f"RunTo(pose={{{a1:f},{b1:f},{c1:f},{d1:f},{e1:f},{f1:f}}},moveType=0"
+            )
         elif move_type == 1:
-            string = f"RunTo(joint={{{a1:f},{b1:f},{c1:f},{d1:f},{e1:f},{f1:f}}},moveType=1"
+            string = (
+                f"RunTo(joint={{{a1:f},{b1:f},{c1:f},{d1:f},{e1:f},{f1:f}}},moveType=1"
+            )
         else:
             logger.error(
                 f"Invalid moveType parameter: {move_type}. "
@@ -1203,5 +1197,4 @@ class _MotionMixin(_SerializationMixin):
         for ii in params:
             string += "," + ii
         string += ")"
-        return self.send_recv_msg(string)
-
+        return parse_ack(self.send_recv_msg(string))

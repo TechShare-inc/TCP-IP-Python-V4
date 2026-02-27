@@ -1,5 +1,6 @@
 """Modbus and register commands for Dobot V4 API."""
 
+from ._parse import parse_ack, parse_int
 from ._serialization import _SerializationMixin
 
 
@@ -14,7 +15,7 @@ class _ModbusMixin(_SerializationMixin):
     # Modbus Connection
     # ------------------------------------------------------------------
 
-    def modbus_create(self, ip: str, port: int, slave_id: int, is_rtu: int = -1) -> str:
+    def modbus_create(self, ip: str, port: int, slave_id: int, is_rtu: int = -1) -> int:
         """Create Modbus master and establish connection with the slave.
 
         Supports connecting to at most 5 devices.
@@ -27,7 +28,7 @@ class _ModbusMixin(_SerializationMixin):
                 1: ModbusRTU. -1 means not set.
 
         Returns:
-            Raw response string from robot.
+            Parsed integer value from robot response.
         """
         string = f"ModbusCreate({ip:s},{port:d},{slave_id:d}"
         params = []
@@ -36,7 +37,7 @@ class _ModbusMixin(_SerializationMixin):
         for ii in params:
             string = string + "," + ii
         string = string + ")"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     def modbus_rtu_create(
         self,
@@ -45,7 +46,7 @@ class _ModbusMixin(_SerializationMixin):
         parity: str = "",
         data_bit: int = 8,
         stop_bit: int = -1,
-    ) -> str:
+    ) -> int:
         """Create Modbus RTU master via RS485 and connect to slave.
 
         Supports connecting to at most 5 devices.
@@ -59,7 +60,7 @@ class _ModbusMixin(_SerializationMixin):
             stop_bit: Stop bit length. Range: {1, 2}. -1 means not set.
 
         Returns:
-            Raw response string from robot.
+            Parsed integer value from robot response.
         """
         string = f"ModbusRTUCreate({slave_id:d},{baud:d}"
         params = []
@@ -72,19 +73,16 @@ class _ModbusMixin(_SerializationMixin):
         for ii in params:
             string = string + "," + ii
         string = string + ")"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
-    def modbus_close(self, index: int) -> str:
+    def modbus_close(self, index: int) -> None:
         """Disconnect from Modbus slave and release the master.
 
         Args:
             index: Master index.
-
-        Returns:
-            Raw response string from robot.
         """
         string = f"ModbusClose({index:d})"
-        return self.send_recv_msg(string)
+        parse_ack(self.send_recv_msg(string))
 
     # ------------------------------------------------------------------
     # Modbus Registers
@@ -140,7 +138,7 @@ class _ModbusMixin(_SerializationMixin):
         string = f"GetCoils({index:d},{addr:d},{count:d})"
         return self.send_recv_msg(string)
 
-    def set_coils(self, index: int, addr: int, count: int, val_tab: str) -> str:
+    def set_coils(self, index: int, addr: int, count: int, val_tab: str) -> None:
         """Write values to coil registers on Modbus slave.
 
         Args:
@@ -148,12 +146,9 @@ class _ModbusMixin(_SerializationMixin):
             addr: Starting address of the coil register.
             count: Number of values to write. Range: [1, 16].
             val_tab: Values to write, e.g. ``"{1,0,1}"``.
-
-        Returns:
-            Raw response string from robot.
         """
         string = f"SetCoils({index:d},{addr:d},{count:d},{val_tab:s})"
-        return self.send_recv_msg(string)
+        parse_ack(self.send_recv_msg(string))
 
     def get_hold_regs(
         self, index: int, addr: int, count: int, val_type: str = ""
@@ -181,7 +176,7 @@ class _ModbusMixin(_SerializationMixin):
 
     def set_hold_regs(
         self, index: int, addr: int, count: int, val_tab: str, val_type: str = ""
-    ) -> str:
+    ) -> None:
         """Write values to holding registers on Modbus slave.
 
         Args:
@@ -191,9 +186,6 @@ class _ModbusMixin(_SerializationMixin):
             val_tab: Values to write, e.g. ``"{6000,300}"``.
             val_type: Data type. ``"U16"``, ``"U32"``, ``"F32"``, ``"F64"``.
                 Default: ``"U16"`` if omitted.
-
-        Returns:
-            Raw response string from robot.
         """
         string = f"SetHoldRegs({index:d},{addr:d},{count:d},{val_tab:s}"
         params = []
@@ -202,35 +194,35 @@ class _ModbusMixin(_SerializationMixin):
         for ii in params:
             string = string + "," + ii
         string = string + ")"
-        return self.send_recv_msg(string)
+        parse_ack(self.send_recv_msg(string))
 
     # ------------------------------------------------------------------
     # Internal Registers (Input)
     # ------------------------------------------------------------------
 
-    def get_input_bool(self, address: int) -> str:
+    def get_input_bool(self, address: int) -> int:
         """Get bool value from the specified input register address.
 
         Args:
             address: Register address. Range: [0, 63].
 
         Returns:
-            Raw response string from robot.
+            Parsed integer value from robot response.
         """
         string = f"GetInputBool({address:d})"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
-    def get_input_int(self, address: int) -> str:
+    def get_input_int(self, address: int) -> int:
         """Get int value from the specified input register address.
 
         Args:
             address: Register address. Range: [0, 23].
 
         Returns:
-            Raw response string from robot.
+            Parsed integer value from robot response.
         """
         string = f"GetInputInt({address:d})"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     def get_input_float(self, address: int) -> str:
         """Get float value from the specified input register address.
@@ -248,29 +240,29 @@ class _ModbusMixin(_SerializationMixin):
     # Internal Registers (Output)
     # ------------------------------------------------------------------
 
-    def get_output_bool(self, address: int) -> str:
+    def get_output_bool(self, address: int) -> int:
         """Get bool value from the specified output register address.
 
         Args:
             address: Register address. Range: [0, 63].
 
         Returns:
-            Raw response string from robot.
+            Parsed integer value from robot response.
         """
         string = f"GetOutputBool({address:d})"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
-    def get_output_int(self, address: int) -> str:
+    def get_output_int(self, address: int) -> int:
         """Get int value from the specified output register address.
 
         Args:
             address: Register address. Range: [0, 23].
 
         Returns:
-            Raw response string from robot.
+            Parsed integer value from robot response.
         """
         string = f"GetOutputInt({address:d})"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     def get_output_float(self, address: int) -> str:
         """Get float value from the specified output register address.
@@ -284,42 +276,32 @@ class _ModbusMixin(_SerializationMixin):
         string = f"GetOutputFloat({address:d})"
         return self.send_recv_msg(string)
 
-    def set_output_bool(self, address: int, value: int) -> str:
+    def set_output_bool(self, address: int, value: int) -> None:
         """Set bool value at the specified output register address.
 
         Args:
             address: Register address. Range: [0, 63].
             value: Value to set (0 or 1).
-
-        Returns:
-            Raw response string from robot.
         """
         string = f"SetOutputBool({address:d},{value:d})"
-        return self.send_recv_msg(string)
+        parse_ack(self.send_recv_msg(string))
 
-    def set_output_int(self, address: int, value: int) -> str:
+    def set_output_int(self, address: int, value: int) -> None:
         """Set int value at the specified output register address.
 
         Args:
             address: Register address. Range: [0, 23].
             value: Integer value to set.
-
-        Returns:
-            Raw response string from robot.
         """
         string = f"SetOutputInt({address:d},{value:d})"
-        return self.send_recv_msg(string)
+        parse_ack(self.send_recv_msg(string))
 
-    def set_output_float(self, address: int, value: float) -> str:
+    def set_output_float(self, address: int, value: float) -> None:
         """Set float value at the specified output register address.
 
         Args:
             address: Register address. Range: [0, 23].
             value: Float value to set.
-
-        Returns:
-            Raw response string from robot.
         """
         string = f"SetOutputFloat({address:d},{value:d})"
-        return self.send_recv_msg(string)
-
+        parse_ack(self.send_recv_msg(string))

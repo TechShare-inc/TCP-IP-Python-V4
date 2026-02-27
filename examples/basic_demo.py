@@ -16,12 +16,12 @@ ROBOT_IP = "192.168.5.1"
 def main() -> None:
     with DobotRobot(ROBOT_IP) as robot:
         # Enable the robot (blocks until servo is ready)
-        ack = robot.enable_robot()
-        print(f"enable_robot → command_id={ack.command_id}")
+        robot.enable_robot()
+        print("enable_robot → OK")
 
         # Query current robot mode (5 = IDLE after enable)
         mode = robot.robot_mode()
-        print(f"robot_mode   → {mode.value}")
+        print(f"robot_mode   → {mode}")
 
         # Query current TCP pose
         pose = robot.get_pose()
@@ -33,9 +33,11 @@ def main() -> None:
         # Read one feedback packet (port 30004, 8 ms cycle)
         data = robot.feedback_data()
         if data is not None:
-            print(f"feedback     → enable={data.enable_status}, "
-                  f"mode={data.robot_mode}, "
-                  f"q_actual={tuple(round(q, 2) for q in data.q_actual)}")
+            print(
+                f"feedback     → enable={data.enable_status}, "
+                f"mode={data.robot_mode}, "
+                f"q_actual={tuple(round(q, 2) for q in data.q_actual)}"
+            )
 
         # Disable when finished
         robot.disable_robot()

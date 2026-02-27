@@ -4,114 +4,67 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from dobot_api_v4._forward import forward_to
-from dobot_api_v4.responses import (
-    AckResponse,
-    ErrorIdResponse,
-    IntResponse,
-    PoseResponse,
-)
+from dobot_api_v4.robot import DobotRobot
 
 
 @pytest.mark.unit
-class TestForwardTo:
-    """Tests for the @forward_to decorator."""
+class TestDobotRobotDelegation:
+    """Tests for __getattr__-based delegation to dashboard."""
 
-    def test_forwards_to_target_and_parses(self):
-        """@forward_to should call the method on the target attr and parse."""
+    def _make_robot(self) -> DobotRobot:
+        """Create a DobotRobot with mocked connections."""
+        with (
+            patch("dobot_api_v4.robot.DobotApiDashboard") as mock_dash,
+            patch("dobot_api_v4.robot.RobotErrorMonitor"),
+        ):
+            robot = DobotRobot.__new__(DobotRobot)
+            robot.ip = "127.0.0.1"
+            robot.dashboard = mock_dash()
+            robot.errors = MagicMock()
+            robot._language = "en"
+            robot._feedback = None
+            robot._feedback_30005 = None
+            robot._feedback_30006 = None
+        return robot
 
-        class FakeTarget:
-            def my_method(self):
-                return "0,1,;"
+    def test_delegates_to_dashboard(self):
+        """robot.enable_robot should call dashboard.enable_robot."""
+        robot = self._make_robot()
+        robot.dashboard.enable_robot = MagicMock(return_value=None)
+        robot.enable_robot()
+        robot.dashboard.enable_robot.assert_called_once()
 
-        class FakeRobot:
-            def __init__(self):
-                self.dashboard = FakeTarget()
+    def test_delegates_args_and_kwargs(self):
+        """Arguments should pass through to dashboard."""
+        robot = self._make_robot()
+        robot.dashboard.mov_j = MagicMock(return_value=42)
+        result = robot.mov_j(1, 2, 3, 4, 5, 6, coordinate_mode=0)
+        robot.dashboard.mov_j.assert_called_once_with(
+            1, 2, 3, 4, 5, 6, coordinate_mode=0
+        )
+        assert result == 42
 
-            @forward_to("dashboard", AckResponse)
-            def my_method(self) -> AckResponse: ...
+    def test_private_attrs_raise_attribute_error(self):
+        """Underscore-prefixed names should not delegate."""
+        robot = self._make_robot()
+        with pytest.raises(AttributeError):
+            _ = robot._nonexistent
 
-        robot = FakeRobot()
-        result = robot.my_method()
-        assert isinstance(result, AckResponse)
-        assert result.command_id == 1
+    def test_own_methods_take_priority(self):
+        """Methods defined on DobotRobot should not delegate."""
+        robot = self._make_robot()
+        # close() is defined on DobotRobot, not delegated
+        assert callable(robot.close)
+        # check that it's the real method, not a dashboard attr
+        assert "close" in type(robot).__dict__
 
-    def test_forwards_args(self):
-        """@forward_to should pass args and kwargs through."""
-
-        class FakeTarget:
-            def method_with_args(self, x, y=0):
-                return f"0,1,{x + y};"
-
-        class FakeRobot:
-            def __init__(self):
-                self.target = FakeTarget()
-
-            @forward_to("target", IntResponse)
-            def method_with_args(self, x, y=0) -> IntResponse: ...
-
-        robot = FakeRobot()
-        result = robot.method_with_args(3, y=7)
-        assert isinstance(result, IntResponse)
-        assert result.value == 10
-
-    def test_forwards_pose_response(self):
-        """@forward_to should parse PoseResponse correctly."""
-
-        class FakeTarget:
-            def get_pose(self):
-                return "0,1,100.0,200.0,300.0,0.0,90.0,45.0;"
-
-        class FakeRobot:
-            def __init__(self):
-                self.dashboard = FakeTarget()
-
-            @forward_to("dashboard", PoseResponse)
-            def get_pose(self) -> PoseResponse: ...
-
-        robot = FakeRobot()
-        result = robot.get_pose()
-        assert isinstance(result, PoseResponse)
-        assert result.x == 100.0
-        assert result.ry == 90.0
-
-    def test_forwards_error_id_response(self):
-        """@forward_to should parse ErrorIdResponse correctly."""
-
-        class FakeTarget:
-            def get_error_id(self):
-                return "0,1,101,202,0;"
-
-        class FakeRobot:
-            def __init__(self):
-                self.dashboard = FakeTarget()
-
-            @forward_to("dashboard", ErrorIdResponse)
-            def get_error_id(self) -> ErrorIdResponse: ...
-
-        robot = FakeRobot()
-        result = robot.get_error_id()
-        assert isinstance(result, ErrorIdResponse)
-        assert result.error_ids == (101, 202)
-
-    def test_forwards_queued_motion_v4_brace(self):
-        """Queued motion commands return queue ID in V4 brace format."""
-
-        class FakeTarget:
-            def mov_l(self, *a, **kw):
-                return "0,{1},MovL(pose={-500.0,100.0,200.0,150.0,0.0,90.0});"
-
-        class FakeRobot:
-            def __init__(self):
-                self.dashboard = FakeTarget()
-
-            @forward_to("dashboard", IntResponse)
-            def mov_l(self, *a, **kw) -> IntResponse: ...
-
-        robot = FakeRobot()
-        result = robot.mov_l()
-        assert isinstance(result, IntResponse)
-        assert result.value == 1
+    def test_nonexistent_dashboard_attr_raises(self):
+        """Non-existent dashboard method should raise AttributeError."""
+        robot = self._make_robot()
+        robot.dashboard.totally_nonexistent = None
+        del robot.dashboard.totally_nonexistent
+        with pytest.raises(AttributeError):
+            robot.totally_nonexistent()
 
 
 @pytest.mark.unit
@@ -216,19 +169,7 @@ class TestDobotRobotMRO:
         # Check
         assert hasattr(DobotApiDashboard, "check_mov_j")
 
-    def test_backward_compat_aliases_present(self):
-        from dobot_api_v4.commands.dashboard import DobotApiDashboard
-
-        assert hasattr(DobotApiDashboard, "EnableRobot")
-        assert hasattr(DobotApiDashboard, "DisableRobot")
-        assert hasattr(DobotApiDashboard, "SpeedFactor")
-        assert hasattr(DobotApiDashboard, "MovJ")
-        assert hasattr(DobotApiDashboard, "MovL")
-        assert hasattr(DobotApiDashboard, "RobotMode")
-        assert hasattr(DobotApiDashboard, "GetPose")
-        assert hasattr(DobotApiDashboard, "GetErrorID")
-
-    def test_method_count_at_least_160(self):
+    def test_method_count_at_least_80(self):
         from dobot_api_v4.commands.dashboard import DobotApiDashboard
 
         methods = [
@@ -236,4 +177,4 @@ class TestDobotRobotMRO:
             for m in dir(DobotApiDashboard)
             if not m.startswith("_") and callable(getattr(DobotApiDashboard, m))
         ]
-        assert len(methods) >= 160, f"Expected >= 160 methods, got {len(methods)}"
+        assert len(methods) >= 80, f"Expected >= 80 methods, got {len(methods)}"

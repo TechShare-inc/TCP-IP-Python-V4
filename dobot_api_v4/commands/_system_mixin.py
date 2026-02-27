@@ -1,5 +1,6 @@
 """System and lifecycle commands for Dobot V4 API."""
 
+from ._parse import parse_ack
 from ._serialization import _SerializationMixin
 
 
@@ -17,7 +18,7 @@ class _SystemMixin(_SerializationMixin):
         center_y: float = 0.0,
         center_z: float = 0.0,
         is_check: int = -1,
-    ) -> str:
+    ) -> None:
         """Enable the robot.
 
         The number of parameters sent depends on which are non-default:
@@ -33,8 +34,8 @@ class _SystemMixin(_SerializationMixin):
             center_z: Z-direction eccentric distance (mm). Range: [-999, 999].
             is_check: Check load after enable. 1=check, 0=no check, -1=omit.
 
-        Returns:
-            Raw response string from robot.
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
         """
         string = "EnableRobot("
         if load != 0:
@@ -44,81 +45,81 @@ class _SystemMixin(_SerializationMixin):
                 if is_check != -1:
                     string = string + f",{is_check:d}"
         string = string + ")"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
-    def disable_robot(self) -> str:
+    def disable_robot(self) -> None:
         """Disable the robot.
 
-        Returns:
-            Raw response string from robot.
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
         """
         string = "DisableRobot()"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
-    def clear_error(self) -> str:
+    def clear_error(self) -> None:
         """Clear controller alarm information.
 
         After clearing, check ``robot_mode()`` to confirm alarm is resolved.
         Some alarms require resolving the cause or restarting the controller.
 
-        Returns:
-            Raw response string from robot.
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
         """
         string = "ClearError()"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
-    def power_on(self) -> str:
+    def power_on(self) -> None:
         """Power on the robot.
 
         Note:
             It takes about 10 seconds for the robot to be enabled after power on.
 
-        Returns:
-            Raw response string from robot.
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
         """
         string = "PowerOn()"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
-    def run_script(self, project_name: str) -> str:
+    def run_script(self, project_name: str) -> None:
         """Run a script file.
 
         Args:
             project_name: Script file name.
 
-        Returns:
-            Raw response string from robot.
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
         """
         string = f"RunScript({project_name:s})"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
-    def stop_script(self) -> str:
+    def stop_script(self) -> None:
         """Stop the delivered motion command queue or RunScript command.
 
-        Returns:
-            Raw response string from robot.
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
         """
         string = "Stop()"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
-    def pause_script(self) -> str:
+    def pause_script(self) -> None:
         """Pause the delivered motion command queue or RunScript command.
 
-        Returns:
-            Raw response string from robot.
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
         """
         string = "Pause()"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
-    def resume(self) -> str:
+    def resume(self) -> None:
         """Continue the paused motion command queue or RunScript command.
 
-        Returns:
-            Raw response string from robot.
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
         """
         string = "Continue()"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
-    def emergency_stop(self, mode: int) -> str:
+    def emergency_stop(self, mode: int) -> None:
         """Emergency stop the robot.
 
         After emergency stop, the robot arm will be disabled and alarm.
@@ -127,13 +128,13 @@ class _SystemMixin(_SerializationMixin):
         Args:
             mode: E-Stop operation mode. 1=press E-Stop, 0=release E-Stop.
 
-        Returns:
-            Raw response string from robot.
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
         """
         string = f"EmergencyStop({mode:d})"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
-    def brake_control(self, axis_id: int, value: int) -> str:
+    def brake_control(self, axis_id: int, value: int) -> None:
         """Control the brake of a specified joint.
 
         Joints automatically brake when stationary. Use this to switch on
@@ -145,31 +146,31 @@ class _SystemMixin(_SerializationMixin):
             axis_id: Joint ID. 1=J1, 2=J2, ... 6=J6.
             value: Brake status. 0=switch off (no drag), 1=switch on (draggable).
 
-        Returns:
-            Raw response string from robot.
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
         """
         string = f"BrakeControl({axis_id:d},{value:d})"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
-    def request_control(self) -> str:
+    def request_control(self) -> None:
         """Request control of the robot.
 
         Note:
             The request may be approved or denied.
 
-        Returns:
-            Raw response string from robot.
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
         """
         string = "RequestControl()"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
-    def reset_robot(self) -> str:
+    def reset_robot(self) -> None:
         """Reset the robot.
 
-        Returns:
-            Raw response string from robot.
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
         """
-        return self.send_recv_msg("ResetRobot()")
+        return parse_ack(self.send_recv_msg("ResetRobot()"))
 
     def tcp_send_and_parse(self, cmd: str) -> str:
         """Send a raw TCP command and parse the response.
@@ -182,14 +183,13 @@ class _SystemMixin(_SerializationMixin):
         """
         return self.send_recv_msg(f'TcpSendAndParse("{cmd:s}")')
 
-    def sleep(self, count: int) -> str:
+    def sleep(self, count: int) -> None:
         """Sleep (delay) command in the motion queue.
 
         Args:
             count: Sleep duration in milliseconds.
 
-        Returns:
-            Raw response string from robot.
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
         """
-        return self.send_recv_msg(f"Sleep({count:d})")
-
+        return parse_ack(self.send_recv_msg(f"Sleep({count:d})"))

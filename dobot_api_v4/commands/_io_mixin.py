@@ -1,5 +1,6 @@
 """Digital and analog I/O commands for Dobot V4 API."""
 
+from ._parse import parse_ack, parse_int
 from ._serialization import _SerializationMixin
 
 
@@ -14,7 +15,7 @@ class _IOMixin(_SerializationMixin):
     # Digital Output
     # ------------------------------------------------------------------
 
-    def do_output(self, index: int, status: int, time: int = -1) -> str:
+    def do_output(self, index: int, status: int, time: int = -1) -> None:
         """Set the status of digital output port (queue command).
 
         Args:
@@ -34,9 +35,9 @@ class _IOMixin(_SerializationMixin):
         for ii in params:
             string = string + "," + ii
         string = string + ")"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
-    def do_instant(self, index: int, status: int) -> str:
+    def do_instant(self, index: int, status: int) -> None:
         """Set the status of digital output port (immediate command).
 
         Args:
@@ -47,9 +48,9 @@ class _IOMixin(_SerializationMixin):
             Raw response string from robot.
         """
         string = f"DOInstant({index:d},{status:d})"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
-    def get_do(self, index: int) -> str:
+    def get_do(self, index: int) -> int:
         """Get the status of digital output port.
 
         Args:
@@ -59,9 +60,9 @@ class _IOMixin(_SerializationMixin):
             Raw response string from robot.
         """
         string = f"GetDO({index:d})"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
-    def do_group(self, *index_value: int) -> str:
+    def do_group(self, *index_value: int) -> None:
         """Set the status of multiple digital output ports (queue command).
 
         Args:
@@ -75,7 +76,7 @@ class _IOMixin(_SerializationMixin):
         for ii in index_value[1:]:
             string = string + "," + str(ii)
         string = string + ")"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
     def get_do_group(self, *index_value: int) -> str:
         """Get the status of multiple digital output ports.
@@ -93,7 +94,7 @@ class _IOMixin(_SerializationMixin):
         string = string + ")"
         return self.send_recv_msg(string)
 
-    def do_group_dec(self, group: int, value: int) -> str:
+    def do_group_dec(self, group: int, value: int) -> None:
         """Set digital output group using decimal encoding.
 
         Args:
@@ -103,7 +104,7 @@ class _IOMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        return self.send_recv_msg(f"DOGroupDEC({group:d},{value:d})")
+        return parse_ack(self.send_recv_msg(f"DOGroupDEC({group:d},{value:d})"))
 
     def get_do_group_dec(self, group: int, value: int) -> str:
         """Get digital output group status using decimal encoding.
@@ -121,7 +122,7 @@ class _IOMixin(_SerializationMixin):
     # Tool Digital Output
     # ------------------------------------------------------------------
 
-    def tool_do(self, index: int, status: int) -> str:
+    def tool_do(self, index: int, status: int) -> None:
         """Set the status of tool digital output port (queue command).
 
         Args:
@@ -132,9 +133,9 @@ class _IOMixin(_SerializationMixin):
             Raw response string from robot.
         """
         string = f"ToolDO({index:d},{status:d})"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
-    def tool_do_instant(self, index: int, status: int) -> str:
+    def tool_do_instant(self, index: int, status: int) -> None:
         """Set the status of tool digital output port (immediate command).
 
         Args:
@@ -145,9 +146,9 @@ class _IOMixin(_SerializationMixin):
             Raw response string from robot.
         """
         string = f"ToolDOInstant({index:d},{status:d})"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
-    def get_tool_do(self, index: int) -> str:
+    def get_tool_do(self, index: int) -> int:
         """Get the status of tool digital output port.
 
         Args:
@@ -157,13 +158,13 @@ class _IOMixin(_SerializationMixin):
             Raw response string from robot.
         """
         string = f"GetToolDO({index:d})"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     # ------------------------------------------------------------------
     # Analog Output
     # ------------------------------------------------------------------
 
-    def ao(self, index: int, value: float) -> str:
+    def ao(self, index: int, value: float) -> None:
         """Set the value of analog output port (queue command).
 
         Args:
@@ -174,9 +175,9 @@ class _IOMixin(_SerializationMixin):
             Raw response string from robot.
         """
         string = f"AO({index:d},{value:f})"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
-    def ao_instant(self, index: int, value: float) -> str:
+    def ao_instant(self, index: int, value: float) -> None:
         """Set the value of analog output port (immediate command).
 
         Args:
@@ -187,7 +188,7 @@ class _IOMixin(_SerializationMixin):
             Raw response string from robot.
         """
         string = f"AOInstant({index:d},{value:f})"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
     def get_ao(self, index: int) -> str:
         """Get the value of analog output port.
@@ -205,7 +206,7 @@ class _IOMixin(_SerializationMixin):
     # Digital Input
     # ------------------------------------------------------------------
 
-    def di(self, index: int) -> str:
+    def di(self, index: int) -> int:
         """Get the status of digital input port.
 
         Args:
@@ -215,7 +216,7 @@ class _IOMixin(_SerializationMixin):
             Raw response string from robot.
         """
         string = f"DI({index:d})"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     def di_group(self, *index_value: int) -> str:
         """Get the status of multiple digital input ports.
@@ -250,7 +251,7 @@ class _IOMixin(_SerializationMixin):
     # Tool Digital / Analog Input
     # ------------------------------------------------------------------
 
-    def tool_di(self, index: int) -> str:
+    def tool_di(self, index: int) -> int:
         """Get the status of tool digital input port.
 
         Args:
@@ -260,9 +261,9 @@ class _IOMixin(_SerializationMixin):
             Raw response string from robot.
         """
         string = f"ToolDI({index:d})"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
-    def ai(self, index: int) -> str:
+    def ai(self, index: int) -> int:
         """Get the value of analog input port.
 
         Args:
@@ -272,9 +273,9 @@ class _IOMixin(_SerializationMixin):
             Raw response string from robot.
         """
         string = f"AI({index:d})"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
-    def tool_ai(self, index: int) -> str:
+    def tool_ai(self, index: int) -> int:
         """Get the value of tool analog input port.
 
         Note:
@@ -287,7 +288,7 @@ class _IOMixin(_SerializationMixin):
             Raw response string from robot.
         """
         string = f"ToolAI({index:d})"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     # ------------------------------------------------------------------
     # Tool RS485 / Power / Mode
@@ -299,7 +300,7 @@ class _IOMixin(_SerializationMixin):
         parity: str = "",
         stopbit: int = -1,
         identify: int = -1,
-    ) -> str:
+    ) -> None:
         """Set RS485 interface parameters for the end tool.
 
         Args:
@@ -327,9 +328,9 @@ class _IOMixin(_SerializationMixin):
         for ii in params:
             string = string + "," + ii
         string = string + ")"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
-    def set_tool_power(self, status: int, identify: int = -1) -> str:
+    def set_tool_power(self, status: int, identify: int = -1) -> None:
         """Set the power status of the end tool.
 
         Generally used for restarting end power (e.g., re-powering and
@@ -354,9 +355,11 @@ class _IOMixin(_SerializationMixin):
         for ii in params:
             string = string + "," + ii
         string = string + ")"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
-    def set_tool_mode(self, mode: int, type: int, identify: int = -1) -> str:  # noqa: A002
+    def set_tool_mode(
+        self, mode: int, type: int, identify: int = -1
+    ) -> None:  # noqa: A002
         """Set the mode of the end multiplex terminal.
 
         If the AI interface on the end of the robot arm is multiplexed with
@@ -383,5 +386,4 @@ class _IOMixin(_SerializationMixin):
         for ii in params:
             string = string + "," + ii
         string = string + ")"
-        return self.send_recv_msg(string)
-
+        return parse_ack(self.send_recv_msg(string))

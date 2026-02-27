@@ -141,28 +141,3 @@ class TestIOMixin:
         dashboard, sent = mock_dashboard
         dashboard.di_group_dec(1, 2)
         assert "DIGroupDEC(" in sent[-1]
-
-
-@pytest.mark.unit
-class TestIOMixinBackwardCompat:
-    """Verify PascalCase aliases exist."""
-
-    def test_do_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.DO(1, 0)
-        assert sent[-1] == "DO(1,0)"
-
-    def test_di_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.DI(2)
-        assert sent[-1] == "DI(2)"
-
-    def test_ao_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.AO(1, 1.0)
-        assert "AO(1," in sent[-1]
-
-    def test_ai_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.AI(1)
-        assert sent[-1] == "AI(1)"

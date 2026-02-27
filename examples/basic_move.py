@@ -6,7 +6,7 @@ Demonstrates:
 - Computing waypoints as small offsets from the current pose
 - Joint (MovJ) and linear (MovL) motion commands
 - Polling feedback to detect motion completion
-- Using typed ``AckResponse`` return values
+- Using typed return values from motion commands
 """
 
 import time
@@ -19,7 +19,9 @@ ROBOT_IP = "192.168.5.1"
 J1_OFFSET = 5.0
 
 
-def wait_for_command(robot: DobotRobot, command_id: int = 0, timeout: float = 30.0) -> bool:
+def wait_for_command(
+    robot: DobotRobot, command_id: int = 0, timeout: float = 30.0
+) -> bool:
     """Block until the robot finishes the current motion.
 
     Waits for the robot to enter a running state (RUNNING=7 or
@@ -40,11 +42,11 @@ def wait_for_command(robot: DobotRobot, command_id: int = 0, timeout: float = 30
         data = robot.feedback_data()
         if data is not None:
             mode = data.robot_mode
-            if mode in (7, 8):          # RUNNING / SINGLE_MOVE
+            if mode in (7, 8):  # RUNNING / SINGLE_MOVE
                 saw_running = True
             elif saw_running and mode == 5:  # back to ENABLE (idle)
                 return True
-            elif mode == 9:             # ERROR
+            elif mode == 9:  # ERROR
                 print(f"Robot entered ERROR state (mode=9)")
                 return False
         time.sleep(0.05)
@@ -81,25 +83,25 @@ def main() -> None:
         assert data is not None, "Failed to read feedback data"
         current_joints = data.q_actual  # tuple of 6 floats (degrees)
         j1, j2, j3, j4, j5, j6 = current_joints
-        print(f"Current joints: J1={j1:.2f}, J2={j2:.2f}, J3={j3:.2f}, "
-              f"J4={j4:.2f}, J5={j5:.2f}, J6={j6:.2f}")
+        print(
+            f"Current joints: J1={j1:.2f}, J2={j2:.2f}, J3={j3:.2f}, "
+            f"J4={j4:.2f}, J5={j5:.2f}, J6={j6:.2f}"
+        )
 
         # -- MovJ: offset J1 by +J1_OFFSET degrees -------------------------
-        ack = robot.mov_j(j1 + J1_OFFSET, j2, j3, j4, j5, j6,
-                          coordinate_mode=1)
-        print(f"MovJ → J1+{J1_OFFSET}°  (cmd={ack.command_id})")
-        assert wait_for_command(robot, ack.command_id), "Timeout waiting for J1+"
+        qid = robot.mov_j(j1 + J1_OFFSET, j2, j3, j4, j5, j6, coordinate_mode=1)
+        print(f"MovJ → J1+{J1_OFFSET}°  (queue_id={qid})")
+        assert wait_for_command(robot, qid), "Timeout waiting for J1+"
 
         # -- MovJ: offset J1 by -J1_OFFSET degrees -------------------------
-        ack = robot.mov_j(j1 - J1_OFFSET, j2, j3, j4, j5, j6,
-                          coordinate_mode=1)
-        print(f"MovJ → J1-{J1_OFFSET}°  (cmd={ack.command_id})")
-        assert wait_for_command(robot, ack.command_id), "Timeout waiting for J1-"
+        qid = robot.mov_j(j1 - J1_OFFSET, j2, j3, j4, j5, j6, coordinate_mode=1)
+        print(f"MovJ → J1-{J1_OFFSET}°  (queue_id={qid})")
+        assert wait_for_command(robot, qid), "Timeout waiting for J1-"
 
         # -- Return to original pose ----------------------------------------
-        ack = robot.mov_j(j1, j2, j3, j4, j5, j6, coordinate_mode=1)
-        print(f"MovJ → original  (cmd={ack.command_id})")
-        assert wait_for_command(robot, ack.command_id), "Timeout waiting for home"
+        qid = robot.mov_j(j1, j2, j3, j4, j5, j6, coordinate_mode=1)
+        print(f"MovJ → original  (queue_id={qid})")
+        assert wait_for_command(robot, qid), "Timeout waiting for home"
 
         robot.disable_robot()
         print("Motion sequence complete. Robot disabled.")

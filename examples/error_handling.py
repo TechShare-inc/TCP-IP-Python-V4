@@ -2,7 +2,7 @@
 """Error handling demo — DobotApiError, error checking, and reconnection.
 
 Demonstrates:
-- Catching ``DobotApiError`` raised by ``@forward_to`` methods
+- Catching ``DobotApiError`` raised by dashboard methods
 - Querying active error IDs via ``get_error_id()``
 - Using ``check_errors()`` / ``clear_robot_error()`` helpers
 - Saving an error log to disk
@@ -18,7 +18,7 @@ def demo_catch_api_error(robot: DobotRobot) -> None:
     """Show how to catch and inspect a DobotApiError."""
     print("--- DobotApiError handling ---")
     try:
-        # Any forwarded method may raise DobotApiError if the robot
+        # Any dashboard method may raise DobotApiError if the robot
         # returns a non-zero error code.
         robot.enable_robot()
     except DobotApiError as exc:
@@ -33,9 +33,9 @@ def demo_catch_api_error(robot: DobotRobot) -> None:
 def demo_query_errors(robot: DobotRobot) -> None:
     """Query and display active error IDs."""
     print("\n--- Active error IDs ---")
-    err = robot.get_error_id()
-    if err.error_ids:
-        print(f"  {len(err.error_ids)} error(s): {err.error_ids}")
+    error_ids = robot.get_error_id()
+    if error_ids:
+        print(f"  {len(error_ids)} error(s): {error_ids}")
     else:
         print("  No active errors.")
 
@@ -66,7 +66,7 @@ def demo_reconnect(robot: DobotRobot) -> None:
     print("  Reconnected successfully.")
 
     mode = robot.robot_mode()
-    print(f"  robot_mode after reconnect → {mode.value}")
+    print(f"  robot_mode after reconnect → {mode}")
 
 
 def main() -> None:

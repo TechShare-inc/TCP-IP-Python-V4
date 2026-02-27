@@ -245,28 +245,3 @@ class TestMotionMixin:
         )
         cmd = sent[-1]
         assert cmd.startswith("MovJIO(pose={")
-
-
-@pytest.mark.unit
-class TestMotionMixinBackwardCompat:
-    """Verify PascalCase aliases exist."""
-
-    def test_mov_j_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.MovJ(0, 0, 0, 0, 0, 0, 0)
-        assert "MovJ(" in sent[-1]
-
-    def test_mov_l_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.MovL(0, 0, 0, 0, 0, 0, 0)
-        assert "MovL(" in sent[-1]
-
-    def test_move_jog_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.MoveJog()
-        assert sent[-1] == "MoveJog()"
-
-    def test_servo_j_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.ServoJ(0, 0, 0, 0, 0, 0)
-        assert "ServoJ(" in sent[-1]

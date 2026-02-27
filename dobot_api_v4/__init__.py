@@ -7,7 +7,7 @@ from loguru import logger
 
 from .base import DobotApi
 from .commands.dashboard import DobotApiDashboard
-from .dtypes import PROTOCOL_FIELD_MAP, FeedbackData, FeedbackDtype
+from .dtypes import PROTOCOL_FIELD_MAP, FeedbackData, FeedbackDtype, Pose
 from .error_monitor import RobotErrorMonitor
 from .feedback import DobotApiFeedback
 from .i18n_manager import AlarmI18n
@@ -31,6 +31,7 @@ __all__ = [
     "RobotErrorMonitor",
     "FeedbackData",
     "FeedbackDtype",
+    "Pose",
     "PROTOCOL_FIELD_MAP",
     "AlarmI18n",
     "logger",

@@ -93,33 +93,3 @@ class TestSystemMixin:
         dashboard, sent = mock_dashboard
         dashboard.sleep(1000)
         assert sent[-1] == "Sleep(1000)"
-
-
-@pytest.mark.unit
-class TestSystemMixinBackwardCompat:
-    """Verify PascalCase aliases exist."""
-
-    def test_enable_robot_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.EnableRobot()
-        assert sent[-1] == "EnableRobot()"
-
-    def test_disable_robot_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.DisableRobot()
-        assert sent[-1] == "DisableRobot()"
-
-    def test_clear_error_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.ClearError()
-        assert sent[-1] == "ClearError()"
-
-    def test_stop_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.Stop()
-        assert sent[-1] == "Stop()"
-
-    def test_continue_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.Continue()
-        assert sent[-1] == "Continue()"

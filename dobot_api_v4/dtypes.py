@@ -1,13 +1,40 @@
 """
-Feedback data types for Dobot V4 protocol.
+Data types for Dobot V4 protocol.
 
-This module defines the numpy dtype for parsing binary feedback packets
-and a frozen dataclass for convenient typed access to feedback fields.
+This module defines domain-level data types used across the SDK:
+- ``Pose``: 6-DOF Cartesian or joint pose returned by robot queries.
+- ``FeedbackData`` / ``FeedbackDtype``: binary feedback packet types.
 """
 
 from dataclasses import dataclass
 
 import numpy as np
+
+
+# ---------------------------------------------------------------------------
+# Domain data types
+# ---------------------------------------------------------------------------
+
+
+@dataclass(frozen=True, slots=True)
+class Pose:
+    """6-DOF pose (Cartesian or joint angles).
+
+    Used as return type for :pymeth:`DobotRobot.get_pose`,
+    :pymeth:`DobotRobot.get_angle`, :pymeth:`DobotRobot.positive_kin`,
+    :pymeth:`DobotRobot.inverse_kin`, :pymeth:`DobotRobot.get_force`, etc.
+
+    Fields represent either ``(x, y, z, rx, ry, rz)`` in Cartesian space or
+    ``(j1, j2, j3, j4, j5, j6)`` in joint space, depending on the command.
+    """
+
+    x: float
+    y: float
+    z: float
+    rx: float
+    ry: float
+    rz: float
+
 
 # ---------------------------------------------------------------------------
 # Numpy dtype for the 1440-byte feedback packet

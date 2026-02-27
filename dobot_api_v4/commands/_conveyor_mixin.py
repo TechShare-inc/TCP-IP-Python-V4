@@ -1,5 +1,6 @@
 """Conveyor tracking commands for Dobot V4 API."""
 
+from ._parse import parse_ack, parse_int
 from ._serialization import _SerializationMixin
 
 
@@ -14,7 +15,7 @@ class _ConveyorMixin(_SerializationMixin):
     # Initialization
     # ------------------------------------------------------------------
 
-    def cnv_init(self, index: int) -> str:
+    def cnv_init(self, index: int) -> None:
         """Initialize the conveyor.
 
         Args:
@@ -24,7 +25,7 @@ class _ConveyorMixin(_SerializationMixin):
             Raw response string from robot.
         """
         string = f"CnvInit({index:d})"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
     # ------------------------------------------------------------------
     # Conveyor Motion
@@ -44,7 +45,7 @@ class _ConveyorMixin(_SerializationMixin):
         v: int = -1,
         cp: int = -1,
         r: int = -1,
-    ) -> str:
+    ) -> int:
         """Conveyor-synchronized linear motion.
 
         Args:
@@ -81,7 +82,7 @@ class _ConveyorMixin(_SerializationMixin):
         if params:
             string += "," + ",".join(params)
         string += ")"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     def cnv_mov_c(
         self,
@@ -104,7 +105,7 @@ class _ConveyorMixin(_SerializationMixin):
         cp: int = -1,
         r: int = -1,
         mode: int = 1,
-    ) -> str:
+    ) -> int:
         """Conveyor-synchronized circular motion.
 
         Args:
@@ -153,7 +154,7 @@ class _ConveyorMixin(_SerializationMixin):
         if params:
             string += "," + ",".join(params)
         string += ")"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
     # ------------------------------------------------------------------
     # Object & Offset
@@ -170,7 +171,7 @@ class _ConveyorMixin(_SerializationMixin):
         """
         return self.send_recv_msg(f"GetCnvObject({obj_id:d})")
 
-    def set_cnv_point_offset(self, x_offset: float, y_offset: float) -> str:
+    def set_cnv_point_offset(self, x_offset: float, y_offset: float) -> None:
         """Set conveyor point offset.
 
         Args:
@@ -180,9 +181,11 @@ class _ConveyorMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        return self.send_recv_msg(f"SetCnvPointOffset({x_offset:f},{y_offset:f})")
+        return parse_ack(
+            self.send_recv_msg(f"SetCnvPointOffset({x_offset:f},{y_offset:f})")
+        )
 
-    def set_cnv_time_compensation(self, time: int) -> str:
+    def set_cnv_time_compensation(self, time: int) -> None:
         """Set conveyor time compensation.
 
         Args:
@@ -191,25 +194,24 @@ class _ConveyorMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        return self.send_recv_msg(f"SetCnvTimeCompensation({time:d})")
+        return parse_ack(self.send_recv_msg(f"SetCnvTimeCompensation({time:d})"))
 
     # ------------------------------------------------------------------
     # Sync Start / Stop
     # ------------------------------------------------------------------
 
-    def start_sync_cnv(self) -> str:
+    def start_sync_cnv(self) -> None:
         """Start synchronous conveyor tracking.
 
         Returns:
             Raw response string from robot.
         """
-        return self.send_recv_msg("StartSyncCnv()")
+        return parse_ack(self.send_recv_msg("StartSyncCnv()"))
 
-    def stop_sync_cnv(self) -> str:
+    def stop_sync_cnv(self) -> None:
         """Stop synchronous conveyor tracking.
 
         Returns:
             Raw response string from robot.
         """
-        return self.send_recv_msg("StopSyncCnv()")
-
+        return parse_ack(self.send_recv_msg("StopSyncCnv()"))

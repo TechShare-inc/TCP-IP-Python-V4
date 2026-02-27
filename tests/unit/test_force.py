@@ -104,23 +104,3 @@ class TestForceMixin:
         assert "SetFCCollision(" in sent[-1]
         assert "1.000000" in sent[-1]
         assert "50.000000" in sent[-1]
-
-
-@pytest.mark.unit
-class TestForceMixinBackwardCompat:
-    """Verify PascalCase aliases exist."""
-
-    def test_enable_ft_sensor_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.EnableFTSensor(1)
-        assert sent[-1] == "EnableFTSensor(1)"
-
-    def test_fc_off_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.FCOff()
-        assert sent[-1] == "FCOff()"
-
-    def test_get_force_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.GetForce()
-        assert sent[-1] == "GetForce()"
