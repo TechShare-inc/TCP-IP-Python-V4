@@ -357,9 +357,7 @@ class _IOMixin(_SerializationMixin):
         string = string + ")"
         return parse_ack(self.send_recv_msg(string))
 
-    def set_tool_mode(
-        self, mode: int, type: int, identify: int = -1
-    ) -> None:  # noqa: A002
+    def set_tool_mode(self, mode: int, port_type: int, identify: int = -1) -> None:
         """Set the mode of the end multiplex terminal.
 
         If the AI interface on the end of the robot arm is multiplexed with
@@ -370,7 +368,7 @@ class _IOMixin(_SerializationMixin):
 
         Args:
             mode: Mode of the multiplex terminal. 1: 485 mode, 2: AI mode.
-            type: When mode is 1, this is invalid. When mode is 2, sets AI mode.
+            port_type: When mode is 1, this is invalid. When mode is 2, sets AI mode.
                 Single digit = AI1 mode, tens digit = AI2 mode.
                 Mode values: 0 = 0-10V voltage, 1 = current, 2 = 0-5V voltage.
             identify: Aviation socket selector for multi-socket robots.
@@ -379,7 +377,7 @@ class _IOMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = f"SetToolMode({mode:d},{type:d}"
+        string = f"SetToolMode({mode:d},{port_type:d}"
         params = []
         if identify != -1:
             params.append(f"{identify:d}")

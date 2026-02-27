@@ -56,8 +56,7 @@ class DobotApi:
             self.socket_dobot.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, 144000)
         except OSError as e:
             raise ConnectionError(
-                f"Unable to establish socket connection to {self.ip}:{self.port}. "
-                f"Error: {e}"
+                f"Unable to establish socket connection to {self.ip}:{self.port}. Error: {e}"
             ) from e
 
     # ------------------------------------------------------------------

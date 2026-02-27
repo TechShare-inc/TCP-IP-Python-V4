@@ -19,9 +19,7 @@ ROBOT_IP = "192.168.5.1"
 J1_OFFSET = 5.0
 
 
-def wait_for_command(
-    robot: DobotRobot, command_id: int = 0, timeout: float = 30.0
-) -> bool:
+def wait_for_command(robot: DobotRobot, command_id: int = 0, timeout: float = 30.0) -> bool:
     """Block until the robot finishes the current motion.
 
     Waits for the robot to enter a running state (RUNNING=7 or
@@ -47,7 +45,7 @@ def wait_for_command(
             elif saw_running and mode == 5:  # back to ENABLE (idle)
                 return True
             elif mode == 9:  # ERROR
-                print(f"Robot entered ERROR state (mode=9)")
+                print("Robot entered ERROR state (mode=9)")
                 return False
         time.sleep(0.05)
     return False

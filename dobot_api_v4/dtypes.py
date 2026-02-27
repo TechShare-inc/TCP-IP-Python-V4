@@ -10,7 +10,6 @@ from dataclasses import dataclass
 
 import numpy as np
 
-
 # ---------------------------------------------------------------------------
 # Domain data types
 # ---------------------------------------------------------------------------
@@ -128,9 +127,9 @@ FeedbackDtype = np.dtype(
     ]
 )
 
-assert (
-    FeedbackDtype.itemsize == 1440
-), f"FeedbackDtype size mismatch: expected 1440, got {FeedbackDtype.itemsize}"
+assert FeedbackDtype.itemsize == 1440, (
+    f"FeedbackDtype size mismatch: expected 1440, got {FeedbackDtype.itemsize}"
+)
 
 
 # ---------------------------------------------------------------------------

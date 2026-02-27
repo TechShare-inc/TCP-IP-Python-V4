@@ -340,9 +340,7 @@ class _QueryMixin(_SerializationMixin):
         Returns:
             None
         """
-        return parse_ack(
-            self.send_recv_msg(self._build_cmd("CreateTray", *args, **kwargs))
-        )
+        return parse_ack(self.send_recv_msg(self._build_cmd("CreateTray", *args, **kwargs)))
 
     def get_tray_point(self, *args: object, **kwargs: object) -> Pose:
         """Get a point from a tray (pallet) pattern.
@@ -356,6 +354,4 @@ class _QueryMixin(_SerializationMixin):
         Returns:
             Pose: Tray point as a Pose.
         """
-        return parse_pose(
-            self.send_recv_msg(self._build_cmd("GetTrayPoint", *args, **kwargs))
-        )
+        return parse_pose(self.send_recv_msg(self._build_cmd("GetTrayPoint", *args, **kwargs)))

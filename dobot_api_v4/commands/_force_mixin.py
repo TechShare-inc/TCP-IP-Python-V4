@@ -1,8 +1,8 @@
 """Force control commands for Dobot V4 API."""
 
+from ..dtypes import Pose
 from ._parse import parse_ack, parse_pose
 from ._serialization import _SerializationMixin
-from ..dtypes import Pose
 
 
 class _ForceMixin(_SerializationMixin):
@@ -77,9 +77,7 @@ class _ForceMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = (
-            "ForceDriveMode(" + "{" + f"{x:d},{y:d},{z:d},{rx:d},{ry:d},{rz:d}" + "}"
-        )
+        string = "ForceDriveMode(" + "{" + f"{x:d},{y:d},{z:d},{rx:d},{ry:d},{rz:d}" + "}"
         if user != -1:
             string = string + f",{user:d}"
         string = string + ")"
@@ -171,17 +169,13 @@ class _ForceMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        string = (
-            "FCSetDeviation(" + "{" + f"{x:d},{y:d},{z:d},{rx:d},{ry:d},{rz:d}" + "}"
-        )
+        string = "FCSetDeviation(" + "{" + f"{x:d},{y:d},{z:d},{rx:d},{ry:d},{rz:d}" + "}"
         if control_type != -1:
             string = string + f",{control_type:d}"
         string = string + ")"
         return parse_ack(self.send_recv_msg(string))
 
-    def fc_set_force_limit(
-        self, x: int, y: int, z: int, rx: int, ry: int, rz: int
-    ) -> None:
+    def fc_set_force_limit(self, x: int, y: int, z: int, rx: int, ry: int, rz: int) -> None:
         """Set force limits for force-compliance mode.
 
         Args:
@@ -207,9 +201,7 @@ class _ForceMixin(_SerializationMixin):
         string = string + ")"
         return parse_ack(self.send_recv_msg(string))
 
-    def fc_set_stiffness(
-        self, x: int, y: int, z: int, rx: int, ry: int, rz: int
-    ) -> None:
+    def fc_set_stiffness(self, x: int, y: int, z: int, rx: int, ry: int, rz: int) -> None:
         """Set stiffness for force-compliance mode.
 
         Args:
@@ -244,9 +236,7 @@ class _ForceMixin(_SerializationMixin):
         string = "FCOff()"
         return parse_ack(self.send_recv_msg(string))
 
-    def fc_set_force_speed_limit(
-        self, x: int, y: int, z: int, rx: int, ry: int, rz: int
-    ) -> None:
+    def fc_set_force_speed_limit(self, x: int, y: int, z: int, rx: int, ry: int, rz: int) -> None:
         """Set speed limits under force-compliance mode.
 
         Args:

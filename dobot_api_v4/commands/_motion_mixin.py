@@ -545,12 +545,10 @@ class _MotionMixin(_SerializationMixin):
                 string += ",{{{:d},{:d},{:d},{:d}}}".format(*io_param)
             else:
                 logger.error(
-                    f"Invalid io_param format: {io_param}. "
-                    "Expected list or tuple with 4 elements"
+                    f"Invalid io_param format: {io_param}. Expected list or tuple with 4 elements"
                 )
                 raise ValueError(
-                    f"Invalid io_param format: {io_param}. "
-                    "Expected list or tuple with 4 elements"
+                    f"Invalid io_param format: {io_param}. Expected list or tuple with 4 elements"
                 )
 
         params: list[str] = []
@@ -899,8 +897,7 @@ class _MotionMixin(_SerializationMixin):
             int: Motion queue ID.
         """
         string = (
-            f"RelJointMovJ({offset1:f},{offset2:f},{offset3:f},"
-            f"{offset4:f},{offset5:f},{offset6:f}"
+            f"RelJointMovJ({offset1:f},{offset2:f},{offset3:f},{offset4:f},{offset5:f},{offset6:f}"
         )
         params: list[str] = []
         if a != -1:
@@ -1100,9 +1097,7 @@ class _MotionMixin(_SerializationMixin):
                 if coordinate_mode == 0:
                     pts_str.append("pose={{{:f},{:f},{:f},{:f},{:f},{:f}}}".format(*pt))
                 elif coordinate_mode == 1:
-                    pts_str.append(
-                        "joint={{{:f},{:f},{:f},{:f},{:f},{:f}}}".format(*pt)
-                    )
+                    pts_str.append("joint={{{:f},{:f},{:f},{:f},{:f},{:f}}}".format(*pt))
             string += ",".join(pts_str)
         else:
             logger.error(
@@ -1168,21 +1163,13 @@ class _MotionMixin(_SerializationMixin):
             DobotApiError: If the robot returned a non-zero error code.
         """
         if move_type == 0:
-            string = (
-                f"RunTo(pose={{{a1:f},{b1:f},{c1:f},{d1:f},{e1:f},{f1:f}}},moveType=0"
-            )
+            string = f"RunTo(pose={{{a1:f},{b1:f},{c1:f},{d1:f},{e1:f},{f1:f}}},moveType=0"
         elif move_type == 1:
-            string = (
-                f"RunTo(joint={{{a1:f},{b1:f},{c1:f},{d1:f},{e1:f},{f1:f}}},moveType=1"
-            )
+            string = f"RunTo(joint={{{a1:f},{b1:f},{c1:f},{d1:f},{e1:f},{f1:f}}},moveType=1"
         else:
-            logger.error(
-                f"Invalid moveType parameter: {move_type}. "
-                "Expected 0 (pose) or 1 (joint)"
-            )
+            logger.error(f"Invalid moveType parameter: {move_type}. Expected 0 (pose) or 1 (joint)")
             raise ValueError(
-                f"Invalid moveType parameter: {move_type}. "
-                "Expected 0 (pose) or 1 (joint)"
+                f"Invalid moveType parameter: {move_type}. Expected 0 (pose) or 1 (joint)"
             )
 
         params: list[str] = []

@@ -24,9 +24,7 @@ class TestSystemMixin:
 
     def test_enable_robot_with_all_params(self, mock_dashboard):
         dashboard, sent = mock_dashboard
-        dashboard.enable_robot(
-            load=1.0, center_x=0.1, center_y=0.2, center_z=0.3, is_check=1
-        )
+        dashboard.enable_robot(load=1.0, center_x=0.1, center_y=0.2, center_z=0.3, is_check=1)
         assert sent[-1] == "EnableRobot(1.000000,0.100000,0.200000,0.300000,1)"
 
     def test_disable_robot(self, mock_dashboard):

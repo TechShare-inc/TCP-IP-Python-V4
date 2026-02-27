@@ -181,9 +181,7 @@ class _ConveyorMixin(_SerializationMixin):
         Returns:
             Raw response string from robot.
         """
-        return parse_ack(
-            self.send_recv_msg(f"SetCnvPointOffset({x_offset:f},{y_offset:f})")
-        )
+        return parse_ack(self.send_recv_msg(f"SetCnvPointOffset({x_offset:f},{y_offset:f})"))
 
     def set_cnv_time_compensation(self, time: int) -> None:
         """Set conveyor time compensation.

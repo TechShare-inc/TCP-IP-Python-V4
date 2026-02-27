@@ -39,9 +39,7 @@ class TestDobotRobotDelegation:
         robot = self._make_robot()
         robot.dashboard.mov_j = MagicMock(return_value=42)
         result = robot.mov_j(1, 2, 3, 4, 5, 6, coordinate_mode=0)
-        robot.dashboard.mov_j.assert_called_once_with(
-            1, 2, 3, 4, 5, 6, coordinate_mode=0
-        )
+        robot.dashboard.mov_j.assert_called_once_with(1, 2, 3, 4, 5, 6, coordinate_mode=0)
         assert result == 42
 
     def test_private_attrs_raise_attribute_error(self):

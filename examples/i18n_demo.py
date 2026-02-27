@@ -17,6 +17,7 @@ ROBOT_IP = "192.168.5.1"
 # Offline demos (no robot connection required)
 # --------------------------------------------------------------------------
 
+
 def demo_basic_lookup() -> None:
     """Look up a controller and servo alarm in English."""
     print("--- Basic alarm lookup (English) ---")
@@ -34,8 +35,13 @@ def demo_language_switching() -> None:
     print("\n--- Alarm #16 in multiple languages ---")
     i18n = AlarmI18n("en")
 
-    for code, name in [("en", "English"), ("zh_CN", "中文"), ("ja", "日本語"),
-                       ("de", "Deutsch"), ("ko", "한국어")]:
+    for code, name in [
+        ("en", "English"),
+        ("zh_CN", "中文"),
+        ("ja", "日本語"),
+        ("de", "Deutsch"),
+        ("ko", "한국어"),
+    ]:
         i18n.set_language(code)
         alarm = i18n.get_controller_alarm(16)
         print(f"  [{name:7s}] {alarm['description']}")
@@ -61,6 +67,7 @@ def demo_supported_languages() -> None:
 # --------------------------------------------------------------------------
 # Live demo (requires robot connection)
 # --------------------------------------------------------------------------
+
 
 def demo_live_error_check() -> None:
     """Connect to the robot and check errors in two languages."""

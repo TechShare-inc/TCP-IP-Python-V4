@@ -322,9 +322,7 @@ class _ConfigMixin(_SerializationMixin):
         string = f"SetWorkZoneEnable({index:d},{value:d})"
         return parse_ack(self.send_recv_msg(string))
 
-    def offset_para(
-        self, x: float, y: float, z: float, rx: float, ry: float, rz: float
-    ) -> None:
+    def offset_para(self, x: float, y: float, z: float, rx: float, ry: float, rz: float) -> None:
         """Set offset parameters.
 
         Args:

@@ -150,9 +150,7 @@ class _ModbusMixin(_SerializationMixin):
         string = f"SetCoils({index:d},{addr:d},{count:d},{val_tab:s})"
         parse_ack(self.send_recv_msg(string))
 
-    def get_hold_regs(
-        self, index: int, addr: int, count: int, val_type: str = ""
-    ) -> str:
+    def get_hold_regs(self, index: int, addr: int, count: int, val_type: str = "") -> str:
         """Read holding register values from Modbus slave.
 
         Args:
