@@ -121,23 +121,3 @@ class TestWeldMixin:
         )
         cmd = sent[-1]
         assert cmd.startswith("RelPointWeldArc(")
-
-
-@pytest.mark.unit
-class TestWeldMixinBackwardCompat:
-    """Verify PascalCase aliases exist."""
-
-    def test_arc_track_start_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.ArcTrackStart()
-        assert sent[-1] == "ArcTrackStart()"
-
-    def test_weave_start_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.WeaveStart()
-        assert sent[-1] == "WeaveStart()"
-
-    def test_weave_end_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.WeaveEnd()
-        assert sent[-1] == "WeaveEnd()"

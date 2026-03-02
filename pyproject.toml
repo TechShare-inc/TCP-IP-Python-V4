@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dobot_api_v4"
-version = "4.0.0a1"
+version = "4.0.0a2"
 description = "Dobot Robot API V4 for TCP/IP communication with modular architecture and i18n support"
 readme = "README.md"
 authors = [

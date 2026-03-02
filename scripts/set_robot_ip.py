@@ -22,9 +22,7 @@ def set_static_ip(interface_name="Ethernet", ip="192.168.5.10", subnet="255.255.
     cmd = f'netsh interface ip set address name="{interface_name}" static {ip} {subnet}'
 
     try:
-        result = subprocess.run(
-            cmd, shell=True, check=True, capture_output=True, text=True
-        )
+        result = subprocess.run(cmd, shell=True, check=True, capture_output=True, text=True)
         print("Successfully set static IP.")
         if result.stdout.strip():
             print(result.stdout)
@@ -44,9 +42,7 @@ def set_dhcp(interface_name="Ethernet"):
     cmd = f'netsh interface ip set address name="{interface_name}" source=dhcp'
 
     try:
-        result = subprocess.run(
-            cmd, shell=True, check=True, capture_output=True, text=True
-        )
+        result = subprocess.run(cmd, shell=True, check=True, capture_output=True, text=True)
         print("Successfully set to DHCP.")
         if result.stdout.strip():
             print(result.stdout)
@@ -113,9 +109,7 @@ if __name__ == "__main__":
         set_dhcp(interface_name=args.interface)
     else:
         set_static_ip(interface_name=args.interface, ip=args.ip, subnet=args.subnet)
-        print(
-            "\nTip: Run this script with '--dhcp' to revert to automatic IP assignment."
-        )
+        print("\nTip: Run this script with '--dhcp' to revert to automatic IP assignment.")
 
     # Pause so the user can read the output in the new console window
     input("\nPress Enter to exit...")

@@ -29,17 +29,16 @@ These are composed via multiple inheritance into `DobotApiDashboard`:
 
 ```python
 class DobotApiDashboard(
-    _CheckMixin,
-    _WeldMixin,
-    _ConveyorMixin,
-    _ModbusMixin,
-    _ForceMixin,
-    _QueryMixin,
-    _IOMixin,
-    _MotionMixin,
-    _ConfigMixin,
     _SystemMixin,
-    _SerializationMixin,
+    _ConfigMixin,
+    _IOMixin,
+    _ModbusMixin,
+    _QueryMixin,
+    _MotionMixin,
+    _ForceMixin,
+    _ConveyorMixin,
+    _WeldMixin,
+    _CheckMixin,
     DobotApi,
 ):
     ...
@@ -91,11 +90,11 @@ block-beta
     columns 1
     block:L3["Layer 3 — DobotRobot (facade)"]:1
         columns 2
-        A["Owns dashboard + monitors"] B["@forward_to for parsing"]
+        A["Owns dashboard + monitors"] B["@forward_to for delegation"]
     end
     block:L2["Layer 2 — DobotApiDashboard (mixins)"]:1
         columns 2
-        C["10 command mixins"] D["Returns raw strings"]
+        C["10 command mixins"] D["Returns typed Python values"]
     end
     block:L1["Layer 1 — DobotApi (base TCP)"]:1
         columns 2
@@ -110,11 +109,11 @@ block-beta
 
 **Layer 1 (`DobotApi`)** handles raw TCP: connect, send bytes, receive bytes, reconnect.
 
-**Layer 2 (`DobotApiDashboard`)** builds protocol command strings and returns raw response strings. This layer knows the Dobot protocol grammar but doesn't interpret responses.
+**Layer 2 (`DobotApiDashboard`)** builds protocol command strings and parses responses into typed Python values (`None`, `int`, `Pose`, `tuple`). Each mixin method knows the Dobot protocol grammar and uses `parse_ack`, `parse_int`, `parse_pose`, or `parse_error_ids` to convert raw replies.
 
 **Layer 3 (`DobotRobot`)** adds:
 - Automatic resource management (context manager)
-- Response parsing into typed dataclasses
+- Pure delegation to dashboard methods (which return typed values)
 - Lazy feedback and error monitor lifecycle
 - Convenience methods combining multiple operations
 

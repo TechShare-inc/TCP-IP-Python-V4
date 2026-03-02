@@ -133,14 +133,14 @@ All public APIs use **Google-style docstrings** with these sections
 (when applicable): `Args:`, `Returns:`, `Raises:`, `Example:` / `Usage::`.
 
 ```python
-def speed_factor(self, speed: int) -> str:
+def speed_factor(self, speed: int) -> None:
     """Set global speed factor.
 
     Args:
         speed: Rate value in range 1-100.
 
-    Returns:
-        Raw response string from robot.
+    Raises:
+        DobotApiError: If the robot returned a non-zero error code.
 
     Usage::
 

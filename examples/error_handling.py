@@ -1,64 +1,83 @@
 #!/usr/bin/env python3
+"""Error handling demo — DobotApiError, error checking, and reconnection.
+
+Demonstrates:
+- Catching ``DobotApiError`` raised by dashboard methods
+- Querying active error IDs via ``get_error_id()``
+- Using ``check_errors()`` / ``clear_robot_error()`` helpers
+- Saving an error log to disk
+- Reconnecting after a connection loss
 """
-Updated for V4.1.0: Compatible with new package structure
 
-RobotErrorMonitor Usage Example
-Demonstrates how to use the RobotErrorMonitor class for robot alarm monitoring.
+from dobot_api_v4 import DobotApiError, DobotRobot
 
-Note: RobotErrorMonitor uses logger for all output. Configure DOBOT_LOG_LEVEL
-environment variable to control verbosity (DEBUG, INFO, WARNING, ERROR).
-"""
-
-import json
-
-from dobot_api_v4 import RobotErrorMonitor
+ROBOT_IP = "192.168.5.1"
 
 
-def main():
-    """Main function - Demonstrate various usage methods"""
-
-    print("=== RobotErrorMonitor Usage Example ===")
-    print("Note: Error information is logged. Check console for logger output.\\n")
-
-    monitor = RobotErrorMonitor(robot_ip="192.168.200.1")
-
+def demo_catch_api_error(robot: DobotRobot) -> None:
+    """Show how to catch and inspect a DobotApiError."""
+    print("--- DobotApiError handling ---")
     try:
-        print("1. Checking current error information...")
-        has_errors = monitor.check_errors("zh_cn")
-        print(f"   Check completed. Errors found: {has_errors}\\n")
+        # Any dashboard method may raise DobotApiError if the robot
+        # returns a non-zero error code.
+        robot.enable_robot()
+    except DobotApiError as exc:
+        print(f"  error_code : {exc.error_code}")
+        print(f"  command_id : {exc.command_id}")
+        print(f"  message    : {exc.message}")
+        print(f"  raw        : {exc.raw}")
+    else:
+        print("  Robot enabled without errors.")
 
-        print("2. Multi-language support demonstration:")
-        languages = {
-            "zh_cn": "Simplified Chinese",
-            "en": "English",
-            "ja": "Japanese",
-        }
 
-        for lang_code, lang_name in languages.items():
-            print(f"   Checking in {lang_name} ({lang_code})...")
-            monitor.check_errors(lang_code)
+def demo_query_errors(robot: DobotRobot) -> None:
+    """Query and display active error IDs."""
+    print("\n--- Active error IDs ---")
+    error_ids = robot.get_error_id()
+    if error_ids:
+        print(f"  {len(error_ids)} error(s): {error_ids}")
+    else:
+        print("  No active errors.")
 
-        print()
 
-        print("3. Saving error log to file...")
-        monitor.save_error_log()
-        print()
+def demo_check_and_clear(robot: DobotRobot) -> None:
+    """Use the convenience helpers on DobotRobot."""
+    print("\n--- check_errors / clear_robot_error ---")
 
-        print("4. Getting raw JSON data:")
-        raw_data = monitor.get_error_info("zh_cn")
-        if raw_data:
-            print("   Raw data retrieved successfully:")
-            print(json.dumps(raw_data, ensure_ascii=False, indent=2))
-        else:
-            print("   No data retrieved or connection failed.")
-        print()
+    has_errors = robot.check_errors()
+    print(f"  Errors present: {has_errors}")
 
-        print("5. Continuous monitoring available (commented out by default)")
-        print("   Uncomment the following lines to enable:")
-        print("   # monitor.monitor_errors(interval=10, language='zh_cn')")
+    if has_errors:
+        still_has = robot.clear_robot_error()
+        print(f"  After clear, errors remain: {still_has}")
 
-    finally:
-        print("\\nExample completed.")
+
+def demo_error_log(robot: DobotRobot) -> None:
+    """Save the current error log to a JSON file."""
+    print("\n--- Error log ---")
+    robot.errors.save_error_log()
+    print("  Error log saved (see working directory).")
+
+
+def demo_reconnect(robot: DobotRobot) -> None:
+    """Demonstrate reconnecting all active connections."""
+    print("\n--- Reconnect ---")
+    robot.reconnect()
+    print("  Reconnected successfully.")
+
+    mode = robot.robot_mode()
+    print(f"  robot_mode after reconnect → {mode}")
+
+
+def main() -> None:
+    with DobotRobot(ROBOT_IP) as robot:
+        demo_catch_api_error(robot)
+        demo_query_errors(robot)
+        demo_check_and_clear(robot)
+        demo_error_log(robot)
+        demo_reconnect(robot)
+
+    print("\nAll error-handling demos complete.")
 
 
 if __name__ == "__main__":

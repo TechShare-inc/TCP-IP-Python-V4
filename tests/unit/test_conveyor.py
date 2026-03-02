@@ -70,18 +70,3 @@ class TestConveyorMixin:
         dashboard, sent = mock_dashboard
         dashboard.stop_sync_cnv()
         assert sent[-1] == "StopSyncCnv()"
-
-
-@pytest.mark.unit
-class TestConveyorMixinBackwardCompat:
-    """Verify PascalCase aliases exist."""
-
-    def test_cnv_init_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.CnvInit(0)
-        assert sent[-1] == "CnvInit(0)"
-
-    def test_cnv_mov_l_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.CnvMovL(0, 0, 0, 0, 0, 0)
-        assert "CnvMovL(" in sent[-1]

@@ -53,7 +53,7 @@ Key terms and abbreviations used throughout this documentation.
 : Binary data packets streamed by the robot at fixed intervals (8 ms, 200 ms, or configurable) containing the full robot state.
 
 **Forward Decorator (`@forward_to`)**
-: A Python decorator used in `DobotRobot` that delegates method calls to the dashboard and parses raw string responses into typed dataclasses.
+: A Python decorator used in `DobotRobot` that delegates method calls to the dashboard. It performs pure delegation — no additional parsing is done by the decorator itself.
 
 ## I
 

@@ -169,8 +169,8 @@ export default withMermaid(defineConfig({
               link: "/reference/api/dobot_api_v4.i18n_manager",
             },
             {
-              text: "Response Types",
-              link: "/reference/api/dobot_api_v4.responses",
+              text: "Parse / Error Types",
+              link: "/reference/api/dobot_api_v4.commands._parse",
             },
             {
               text: "Data Types",

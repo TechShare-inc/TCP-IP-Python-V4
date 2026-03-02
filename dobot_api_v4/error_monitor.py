@@ -133,8 +133,7 @@ class RobotErrorMonitor:
 
         for i, error in enumerate(errors, 1):
             logger.error(
-                "Error {}: ID={}, Level={}, Description={}, "
-                "Solution={}, Mode={}, Date={}, Time={}",
+                "Error {}: ID={}, Level={}, Description={}, Solution={}, Mode={}, Date={}, Time={}",
                 i,
                 error.get("id", "N/A"),
                 error.get("level", "N/A"),
@@ -175,9 +174,7 @@ class RobotErrorMonitor:
         except KeyboardInterrupt:
             logger.info("Monitoring stopped")
 
-    def save_error_log(
-        self, filename: Optional[str] = None, language: str = "zh_cn"
-    ) -> None:
+    def save_error_log(self, filename: Optional[str] = None, language: str = "zh_cn") -> None:
         """Save error information to a JSON file.
 
         Args:

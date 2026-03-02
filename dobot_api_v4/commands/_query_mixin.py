@@ -1,5 +1,7 @@
 """Status query and utility commands for Dobot V4 API."""
 
+from ..dtypes import Pose
+from ._parse import parse_ack, parse_error_ids, parse_int, parse_pose
 from ._serialization import _SerializationMixin
 
 
@@ -15,7 +17,7 @@ class _QueryMixin(_SerializationMixin):
     # Robot Status
     # ------------------------------------------------------------------
 
-    def robot_mode(self) -> str:
+    def robot_mode(self) -> int:
         """Get the current status of the robot.
 
         Robot mode values:
@@ -32,29 +34,25 @@ class _QueryMixin(_SerializationMixin):
             11: COLLISION — Collision status
 
         Returns:
-            Raw response string from robot.
+            int: Current robot mode value.
         """
         string = "RobotMode()"
-        return self.send_recv_msg(string)
-
-    RobotMode = robot_mode
+        return parse_int(self.send_recv_msg(string))
 
     # ------------------------------------------------------------------
     # Pose / Angle Queries
     # ------------------------------------------------------------------
 
-    def get_angle(self) -> str:
+    def get_angle(self) -> Pose:
         """Get the joint coordinates of the current posture.
 
         Returns:
-            Raw response string from robot.
+            Pose: Joint coordinates as a Pose.
         """
         string = "GetAngle()"
-        return self.send_recv_msg(string)
+        return parse_pose(self.send_recv_msg(string))
 
-    GetAngle = get_angle
-
-    def get_pose(self, user: int = -1, tool: int = -1) -> str:
+    def get_pose(self, user: int = -1, tool: int = -1) -> Pose:
         """Get Cartesian coordinates of the current posture.
 
         Both ``user`` and ``tool`` must be set together, or neither.
@@ -65,7 +63,7 @@ class _QueryMixin(_SerializationMixin):
             tool: Index of the calibrated tool coordinate system. -1 = not set.
 
         Returns:
-            Raw response string from robot.
+            Pose: Current Cartesian pose (x, y, z, rx, ry, rz).
         """
         string = "GetPose("
         params = []
@@ -77,34 +75,30 @@ class _QueryMixin(_SerializationMixin):
             params.append(f"tool={tool:d}")
             state = not state
         if not state:
-            return (
-                "need to be set or not set at the same time. "
+            raise ValueError(
+                "user and tool must be set or not set at the same time. "
                 "They are global user coordinate system and global "
-                "tool coordinate system if not set"
+                "tool coordinate system if not set."
             )
 
         for i, param in enumerate(params):
             string = string + param if i == len(params) - 1 else string + param + ","
 
         string = string + ")"
-        return self.send_recv_msg(string)
-
-    GetPose = get_pose
+        return parse_pose(self.send_recv_msg(string))
 
     # ------------------------------------------------------------------
     # Error Query
     # ------------------------------------------------------------------
 
-    def get_error_id(self) -> str:
+    def get_error_id(self) -> tuple[int, ...]:
         """Get current error IDs from the robot controller.
 
         Returns:
-            Raw response string from robot.
+            tuple[int, ...]: Active error IDs (may be empty).
         """
         string = "GetErrorID()"
-        return self.send_recv_msg(string)
-
-    GetErrorID = get_error_id
+        return parse_error_ids(self.send_recv_msg(string))
 
     # ------------------------------------------------------------------
     # Kinematics
@@ -120,7 +114,7 @@ class _QueryMixin(_SerializationMixin):
         j6: float,
         user: int = -1,
         tool: int = -1,
-    ) -> str:
+    ) -> Pose:
         """Forward kinematics — calculate Cartesian pose from joint angles.
 
         Args:
@@ -134,7 +128,7 @@ class _QueryMixin(_SerializationMixin):
             tool: Index of tool coordinate system. -1 = global.
 
         Returns:
-            Raw response string from robot.
+            Pose: Calculated Cartesian pose.
         """
         string = f"PositiveKin({j1:f},{j2:f},{j3:f},{j4:f},{j5:f},{j6:f}"
         params = []
@@ -145,9 +139,7 @@ class _QueryMixin(_SerializationMixin):
         for ii in params:
             string = string + "," + ii
         string = string + ")"
-        return self.send_recv_msg(string)
-
-    PositiveKin = positive_kin
+        return parse_pose(self.send_recv_msg(string))
 
     def inverse_kin(
         self,
@@ -161,7 +153,7 @@ class _QueryMixin(_SerializationMixin):
         tool: int = -1,
         use_joint_near: int = -1,
         joint_near: str = "",
-    ) -> str:
+    ) -> Pose:
         """Inverse kinematics — calculate joint angles from Cartesian pose.
 
         As one Cartesian pose can correspond to multiple joint solutions,
@@ -183,7 +175,7 @@ class _QueryMixin(_SerializationMixin):
                 Format: ``"{j1,j2,j3,j4,j5,j6}"``.
 
         Returns:
-            Raw response string from robot.
+            Pose: Calculated joint angles as a Pose.
         """
         string = f"InverseKin({x:f},{y:f},{z:f},{rx:f},{ry:f},{rz:f}"
         params = []
@@ -198,9 +190,7 @@ class _QueryMixin(_SerializationMixin):
         for ii in params:
             string = string + "," + ii
         string = string + ")"
-        return self.send_recv_msg(string)
-
-    InverseKin = inverse_kin
+        return parse_pose(self.send_recv_msg(string))
 
     def inverse_solution(
         self,
@@ -213,7 +203,7 @@ class _QueryMixin(_SerializationMixin):
         user: int = -1,
         tool: int = -1,
         is_joint: int = 0,
-    ) -> str:
+    ) -> Pose:
         """Compute inverse solution for the given Cartesian pose.
 
         Args:
@@ -228,7 +218,7 @@ class _QueryMixin(_SerializationMixin):
             is_joint: Whether to return joint angles. 0 = Cartesian, 1 = joint.
 
         Returns:
-            Raw response string from robot.
+            Pose: Computed inverse solution.
         """
         string = f"InverseSolution(pose={{{x:f},{y:f},{z:f},{rx:f},{ry:f},{rz:f}}}"
         params = []
@@ -241,122 +231,104 @@ class _QueryMixin(_SerializationMixin):
         for ii in params:
             string += "," + ii
         string += ")"
-        return self.send_recv_msg(string)
-
-    InverseSolution = inverse_solution
+        return parse_pose(self.send_recv_msg(string))
 
     # ------------------------------------------------------------------
     # Command Queue / Path Recovery
     # ------------------------------------------------------------------
 
-    def get_current_command_id(self) -> str:
+    def get_current_command_id(self) -> int:
         """Get the algorithm queue ID of the currently executed command.
 
         Can be used to determine which command the robot is currently executing.
 
         Returns:
-            Raw response string from robot.
+            int: Algorithm queue ID.
         """
         string = "GetCurrentCommandID()"
-        return self.send_recv_msg(string)
+        return parse_int(self.send_recv_msg(string))
 
-    GetCurrentCommandID = get_current_command_id
-
-    def path_recovery(self) -> str:
+    def path_recovery(self) -> None:
         """Start path recovery.
 
         Returns:
-            Raw response string from robot.
+            None
         """
         string = "PathRecovery()"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
-    PathRecovery = path_recovery
-
-    def path_recovery_stop(self) -> str:
+    def path_recovery_stop(self) -> None:
         """Stop path recovery.
 
         Returns:
-            Raw response string from robot.
+            None
         """
         string = "PathRecoveryStop()"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
-    PathRecoveryStop = path_recovery_stop
-
-    def path_recovery_status(self) -> str:
+    def path_recovery_status(self) -> int:
         """Get path recovery status.
 
         Returns:
-            Raw response string from robot.
+            int: Path recovery status code.
         """
         string = "PathRecoveryStatus()"
-        return self.send_recv_msg(string)
-
-    PathRecoveryStatus = path_recovery_status
+        return parse_int(self.send_recv_msg(string))
 
     # ------------------------------------------------------------------
     # Log Export
     # ------------------------------------------------------------------
 
-    def log_export_usb(self, range: int) -> str:  # noqa: A002
+    def log_export_usb(self, range: int) -> None:  # noqa: A002
         """Export logs to USB storage.
 
         Args:
             range: Log export range specifier.
 
         Returns:
-            Raw response string from robot.
+            None
         """
         string = f"LogExportUSB({range:d})"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
-    LogExportUSB = log_export_usb
-
-    def get_export_status(self) -> str:
+    def get_export_status(self) -> int:
         """Get the status of a log export operation.
 
         Returns:
-            Raw response string from robot.
+            int: Export status code.
         """
         string = "GetExportStatus()"
-        return self.send_recv_msg(string)
-
-    GetExportStatus = get_export_status
+        return parse_int(self.send_recv_msg(string))
 
     # ------------------------------------------------------------------
     # Drag Mode
     # ------------------------------------------------------------------
 
-    def start_drag(self) -> str:
+    def start_drag(self) -> None:
         """Enter drag (freedrive) mode.
 
         The robot cannot enter drag mode if it is in error status.
 
         Returns:
-            Raw response string from robot.
+            None
         """
         string = "StartDrag()"
-        return self.send_recv_msg(string)
+        return parse_ack(self.send_recv_msg(string))
 
-    StartDrag = start_drag
-
-    def stop_drag(self) -> str:
+    def stop_drag(self) -> None:
         """Exit drag (freedrive) mode.
 
         Returns:
-            Raw response string from robot.
+            None
         """
         string = "StopDrag()"
-        return self.send_recv_msg(string)
-
-    StopDrag = stop_drag
+        return parse_ack(self.send_recv_msg(string))
 
     # ------------------------------------------------------------------
     # Tray Operations
     # ------------------------------------------------------------------
 
-    def create_tray(self, *args: object, **kwargs: object) -> str:
+    def create_tray(self, *args: object, **kwargs: object) -> None:
         """Create a tray (pallet) pattern.
 
         Due to flexible parameter sets, this method accepts dynamic arguments.
@@ -366,13 +338,11 @@ class _QueryMixin(_SerializationMixin):
             **kwargs: Keyword arguments forwarded to the protocol command.
 
         Returns:
-            Raw response string from robot.
+            None
         """
-        return self.send_recv_msg(self._build_cmd("CreateTray", *args, **kwargs))
+        return parse_ack(self.send_recv_msg(self._build_cmd("CreateTray", *args, **kwargs)))
 
-    CreateTray = create_tray
-
-    def get_tray_point(self, *args: object, **kwargs: object) -> str:
+    def get_tray_point(self, *args: object, **kwargs: object) -> Pose:
         """Get a point from a tray (pallet) pattern.
 
         Due to flexible parameter sets, this method accepts dynamic arguments.
@@ -382,8 +352,6 @@ class _QueryMixin(_SerializationMixin):
             **kwargs: Keyword arguments forwarded to the protocol command.
 
         Returns:
-            Raw response string from robot.
+            Pose: Tray point as a Pose.
         """
-        return self.send_recv_msg(self._build_cmd("GetTrayPoint", *args, **kwargs))
-
-    GetTrayPoint = get_tray_point
+        return parse_pose(self.send_recv_msg(self._build_cmd("GetTrayPoint", *args, **kwargs)))

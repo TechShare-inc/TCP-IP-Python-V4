@@ -8,24 +8,24 @@ The SDK offers two levels of API. Choose based on your needs.
 
 ## DobotRobot — High-Level Facade
 
-**Use when:** You want typed responses, automatic resource management, and a simple interface.
+**Use when:** You want typed return values, automatic resource management, and a simple interface.
 
 ```python
 from dobot_api_v4 import DobotRobot
 
 with DobotRobot("192.168.1.6") as robot:
-    robot.enable_robot()               # → AckResponse
-    pose = robot.get_pose()            # → PoseResponse
-    mode = robot.robot_mode()          # → IntResponse
+    robot.enable_robot()               # → None
+    pose = robot.get_pose()            # → Pose
+    mode = robot.robot_mode()          # → int
 
     print(f"x={pose.x}, y={pose.y}")   # Typed field access
-    print(f"mode={mode.value}")
+    print(f"mode={mode}")
 ```
 
 **Advantages:**
 
 - Context manager for automatic cleanup
-- Methods return typed dataclasses (`AckResponse`, `PoseResponse`, etc.)
+- Methods return typed Python values (`None`, `int`, `Pose`, `tuple`)
 - Lazy feedback connections (only created when accessed)
 - Built-in error monitor via HTTP
 - Convenience methods: `check_errors()`, `clear_robot_error()`, `feedback_data()`
@@ -44,10 +44,10 @@ from dobot_api_v4 import DobotApiDashboard
 
 dashboard = DobotApiDashboard("192.168.1.6", 29999)
 
-result = dashboard.enable_robot()      # → raw string
-result = dashboard.get_pose()          # → raw string "0,1,350.0,0.0,300.0,..."
-result = dashboard.cnv_init()          # → raw string (not available on DobotRobot)
-result = dashboard.modbus_create(...)  # → raw string (not available on DobotRobot)
+result = dashboard.enable_robot()      # → None
+result = dashboard.get_pose()          # → Pose(x=350.0, y=0.0, ...)
+result = dashboard.cnv_init()          # → None (not available on DobotRobot)
+result = dashboard.modbus_create(...)  # → None (not available on DobotRobot)
 
 dashboard.close()
 ```
@@ -60,7 +60,7 @@ dashboard.close()
 
 **Limitations:**
 
-- Returns raw strings — you must parse responses yourself
+- Returns typed Python values (`None`, `int`, `Pose`, `tuple`)
 - No automatic resource management (no context manager)
 - No feedback or error monitor — you must create those separately
 
@@ -72,11 +72,11 @@ The best approach is often to use `DobotRobot` as the main entry point and acces
 from dobot_api_v4 import DobotRobot
 
 with DobotRobot("192.168.1.6") as robot:
-    # High-level: typed responses
+    # Forwarded commands via DobotRobot
     robot.enable_robot()
     pose = robot.get_pose()
 
-    # Low-level: access any dashboard command
+    # Access any dashboard command directly
     robot.dashboard.modbus_create("192.168.1.100", 502, 1)
     robot.dashboard.cnv_init()
     robot.dashboard.set_collision_level(3)
@@ -89,7 +89,7 @@ with DobotRobot("192.168.1.6") as robot:
 
 | Criterion                    | DobotRobot          | DobotApiDashboard       |
 | ---------------------------- | -------------------- | ----------------------- |
-| Typed responses              | Yes                  | No (raw strings)        |
+| Typed responses              | Yes                  | Yes                     |
 | Command coverage             | ~25 common commands  | All ~155 commands       |
 | Context manager              | Yes                  | No                      |
 | Feedback integration         | Built-in (lazy)      | Separate class needed   |

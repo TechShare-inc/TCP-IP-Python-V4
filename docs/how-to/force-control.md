@@ -18,10 +18,10 @@ dashboard.enable_ft_sensor(1)
 dashboard.enable_ft_sensor(0)
 ```
 
-Or via the high-level facade:
+Or via the high-level facade (through the dashboard):
 
 ```python
-robot.enable_ft_sensor(1)
+robot.dashboard.enable_ft_sensor(1)
 ```
 
 ## Read Force/Torque Values

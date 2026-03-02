@@ -158,11 +158,11 @@ i18n = AlarmI18n("en")
 
 with DobotRobot("192.168.1.6") as robot:
     # Get error IDs from the robot
-    error_resp = robot.get_error_id()
+    error_ids = robot.get_error_id()
 
-    if error_resp.error_ids:
-        print(f"Found {len(error_resp.error_ids)} error(s):")
-        for eid in error_resp.error_ids:
+    if error_ids:
+        print(f"Found {len(error_ids)} error(s):")
+        for eid in error_ids:
             alarm = i18n.get_alarm(eid)
             print(f"  [{alarm['type']}] #{eid}: {alarm['description']}")
             print(f"    Solution: {alarm['solution']}")

@@ -51,10 +51,11 @@ Similar backward-compat aliases exist at the class level:
 | ------------------- | ------------------------ | --------------------------------- |
 | `DobotApiFeedback`  | `DobotApiFeedBack`       | Old SDK used inconsistent casing  |
 
-Both names are exported from `dobot_api_v4.__init__`:
+Both names are available in the `dobot_api_v4.feedback` module. The primary name `DobotApiFeedback` is exported in `__init__.__all__`:
 
 ```python
-from .feedback import DobotApiFeedBack, DobotApiFeedback
+from dobot_api_v4 import DobotApiFeedback         # primary
+from dobot_api_v4.feedback import DobotApiFeedBack  # alias (not in __all__)
 ```
 
 ## Method Name Mapping

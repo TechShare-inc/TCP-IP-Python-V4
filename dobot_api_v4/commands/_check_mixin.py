@@ -1,5 +1,6 @@
 """Motion check commands for Dobot V4 API."""
 
+from ._parse import parse_ack
 from ._serialization import _SerializationMixin
 
 
@@ -64,7 +65,7 @@ class _CheckMixin(_SerializationMixin):
         a: int = -1,
         v: int = -1,
         cp: int = -1,
-    ) -> str:
+    ) -> None:
         """Pre-check a circular (MovC) motion for reachability/collision.
 
         Args:
@@ -106,9 +107,7 @@ class _CheckMixin(_SerializationMixin):
         if params:
             string += "," + ",".join(params)
         string += ")"
-        return self.send_recv_msg(string)
-
-    CheckMovC = check_mov_c
+        return parse_ack(self.send_recv_msg(string))
 
     def check_mov_j(
         self,
@@ -129,7 +128,7 @@ class _CheckMixin(_SerializationMixin):
         a: int = -1,
         v: int = -1,
         cp: int = -1,
-    ) -> str:
+    ) -> None:
         """Pre-check a joint (MovJ) motion for reachability/collision.
 
         Args:
@@ -164,9 +163,7 @@ class _CheckMixin(_SerializationMixin):
         if params:
             string += "," + ",".join(params)
         string += ")"
-        return self.send_recv_msg(string)
-
-    CheckMovJ = check_mov_j
+        return parse_ack(self.send_recv_msg(string))
 
     def check_mov_l(
         self,
@@ -187,7 +184,7 @@ class _CheckMixin(_SerializationMixin):
         a: int = -1,
         v: int = -1,
         cp: int = -1,
-    ) -> str:
+    ) -> None:
         """Pre-check a linear (MovL) motion for reachability/collision.
 
         Args:
@@ -222,9 +219,7 @@ class _CheckMixin(_SerializationMixin):
         if params:
             string += "," + ",".join(params)
         string += ")"
-        return self.send_recv_msg(string)
-
-    CheckMovL = check_mov_l
+        return parse_ack(self.send_recv_msg(string))
 
     # ------------------------------------------------------------------
     # Odd (7-axis / Redundant) Check Commands
@@ -255,7 +250,7 @@ class _CheckMixin(_SerializationMixin):
         a: int = -1,
         v: int = -1,
         cp: int = -1,
-    ) -> str:
+    ) -> None:
         """Pre-check an odd-axis circular (MovC) motion.
 
         Args:
@@ -297,9 +292,7 @@ class _CheckMixin(_SerializationMixin):
         if params:
             string += "," + ",".join(params)
         string += ")"
-        return self.send_recv_msg(string)
-
-    CheckOddMovC = check_odd_mov_c
+        return parse_ack(self.send_recv_msg(string))
 
     def check_odd_mov_j(
         self,
@@ -320,7 +313,7 @@ class _CheckMixin(_SerializationMixin):
         a: int = -1,
         v: int = -1,
         cp: int = -1,
-    ) -> str:
+    ) -> None:
         """Pre-check an odd-axis joint (MovJ) motion.
 
         Args:
@@ -355,9 +348,7 @@ class _CheckMixin(_SerializationMixin):
         if params:
             string += "," + ",".join(params)
         string += ")"
-        return self.send_recv_msg(string)
-
-    CheckOddMovJ = check_odd_mov_j
+        return parse_ack(self.send_recv_msg(string))
 
     def check_odd_mov_l(
         self,
@@ -378,7 +369,7 @@ class _CheckMixin(_SerializationMixin):
         a: int = -1,
         v: int = -1,
         cp: int = -1,
-    ) -> str:
+    ) -> None:
         """Pre-check an odd-axis linear (MovL) motion.
 
         Args:
@@ -413,6 +404,4 @@ class _CheckMixin(_SerializationMixin):
         if params:
             string += "," + ",".join(params)
         string += ")"
-        return self.send_recv_msg(string)
-
-    CheckOddMovL = check_odd_mov_l
+        return parse_ack(self.send_recv_msg(string))

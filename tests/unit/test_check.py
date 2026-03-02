@@ -183,18 +183,3 @@ class TestCheckMixin:
         )
         cmd = sent[-1]
         assert cmd.startswith("CheckOddMovL(joint={")
-
-
-@pytest.mark.unit
-class TestCheckMixinBackwardCompat:
-    """Verify PascalCase aliases exist."""
-
-    def test_check_mov_j_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.CheckMovJ(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        assert "CheckMovJ(" in sent[-1]
-
-    def test_check_mov_l_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.CheckMovL(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        assert "CheckMovL(" in sent[-1]

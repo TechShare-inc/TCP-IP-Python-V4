@@ -40,7 +40,7 @@ This adds `pytest`, `pytest-cov`, `pytest-mock`, and `mypy`.
 pip install -e ".[docs]"
 ```
 
-This adds `sphinx`, `myst-parser`, `sphinx-autodoc2`, and `sphinx-markdown-builder`.
+This adds `sphinx`, `myst-parser`, and `sphinx-markdown-builder`.
 
 ## Verify Installation
 
@@ -51,7 +51,7 @@ python -c "import dobot_api_v4; print(dobot_api_v4.__version__)"
 **Expected Output:**
 
 > ```
-> 4.1.0
+> 4.0.0a2
 > ```
 
 ## Logging Configuration

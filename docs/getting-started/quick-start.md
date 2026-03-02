@@ -31,15 +31,10 @@ This creates a TCP connection to port 29999 (dashboard) and an HTTP connection t
 ## Step 2 — Enable the Robot
 
 ```python
-result = robot.enable_robot()
-print(result)
+robot.enable_robot()
 ```
 
-**Expected Output:**
-
-> ```
-> AckResponse(command_id=1)
-> ```
+`enable_robot()` returns `None` on success. If the robot reports an error, a `DobotApiError` is raised.
 
 ## Step 3 — Set Speed and Read Pose
 
@@ -64,8 +59,8 @@ The actual values depend on your robot's current position.
 
 ```python
 # Joint motion to a target position (joint coordinates, coordinate_mode=0)
-result = robot.mov_j(0, 30, -30, 0, 0, 0, coordinate_mode=0)
-print(f"Motion started, command ID: {result.command_id}")
+command_id = robot.mov_j(0, 30, -30, 0, 0, 0, coordinate_mode=0)
+print(f"Motion started, command ID: {command_id}")
 ```
 
 **Expected Output:**
@@ -115,8 +110,8 @@ with DobotRobot("192.168.1.6") as robot:
     print(f"Current pose: ({pose.x:.1f}, {pose.y:.1f}, {pose.z:.1f})")
 
     # Move
-    result = robot.mov_j(0, 30, -30, 0, 0, 0, coordinate_mode=0)
-    print(f"Motion command ID: {result.command_id}")
+    command_id = robot.mov_j(0, 30, -30, 0, 0, 0, coordinate_mode=0)
+    print(f"Motion command ID: {command_id}")
 
     # Read feedback
     data = robot.feedback_data()
