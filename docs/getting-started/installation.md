@@ -40,7 +40,7 @@ This adds `pytest`, `pytest-cov`, `pytest-mock`, and `mypy`.
 pip install -e ".[docs]"
 ```
 
-This adds `sphinx`, `myst-parser`, `sphinx-autodoc2`, and `sphinx-markdown-builder`.
+This adds `sphinx`, `myst-parser`, and `sphinx-markdown-builder`.
 
 ## Verify Installation
 

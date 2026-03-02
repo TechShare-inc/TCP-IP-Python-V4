@@ -16,24 +16,24 @@ Or via the dashboard command:
 
 ```python
 mode = robot.robot_mode()
-print(f"Mode: {mode.value}")
+print(f"Mode: {mode}")
 ```
 
 ## Mode Values
 
 | Value | Name             | Description                                         |
 | ----- | ---------------- | --------------------------------------------------- |
-| 1     | **INIT**         | Initializing — controller is starting up            |
-| 2     | **BRAKE_OPEN**   | Brakes are being released                           |
-| 3     | **DISABLED**     | Robot is disabled (powered but not enabled)          |
-| 4     | **ENABLE**       | Robot is being enabled (transition state)            |
-| 5     | **IDLE**         | Robot is enabled and idle — ready for commands       |
-| 6     | **DRAG**         | Drag teach mode active                              |
-| 7     | **RUNNING**      | Executing a motion command                          |
-| 8     | **PAUSE**        | Motion is paused (can be resumed)                    |
-| 9     | **ERROR**        | Error/fault state — check alarms                     |
-| 10    | **JOG**          | Jog mode active                                     |
-| 11    | **EMERGENCY_STOP** | Emergency stop triggered                          |
+| 1     | **INIT**         | Initialized — controller is starting up             |
+| 2     | **BRAKE_OPEN**   | Brake switched on                                   |
+| 3     | **POWEROFF**     | Power-off status                                    |
+| 4     | **DISABLED**     | Disabled (no brake switched on)                     |
+| 5     | **ENABLE**       | Enabled and idle — ready for commands               |
+| 6     | **BACKDRIVE**    | Drag teach mode active                              |
+| 7     | **RUNNING**      | Running status (project, TCP queue)                 |
+| 8     | **SINGLE_MOVE**  | Single motion status (jog, RunTo)                   |
+| 9     | **ERROR**        | Uncleared alarms (highest priority)                 |
+| 10    | **PAUSE**        | Pause status                                        |
+| 11    | **COLLISION**    | Collision status                                    |
 
 ## Common Patterns
 
@@ -44,8 +44,7 @@ The most common pattern is to wait for the robot to return to IDLE (mode 5) afte
 ```python
 from time import sleep
 
-result = robot.mov_j(0, 30, -30, 0, 0, 0, coordinate_mode=0)
-target_id = result.command_id
+target_id = robot.mov_j(0, 30, -30, 0, 0, 0, coordinate_mode=0)
 
 while True:
     data = robot.feedback_data()

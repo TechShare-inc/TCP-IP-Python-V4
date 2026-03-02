@@ -42,7 +42,7 @@ A user coordinate system defines a reference frame for Cartesian motions.
 dashboard = robot.dashboard
 
 # Define user coordinate 1 with origin at (400, 100, 0) and no rotation
-dashboard.set_user(1, 400, 100, 0, 0, 0, 0)
+dashboard.set_user(1, "{400,100,0,0,0,0}")
 
 # Activate user coordinate 1
 dashboard.user(1)
@@ -53,11 +53,9 @@ To calculate a user coordinate from three points:
 ```python
 # Calibrate user coordinate from three reference points
 dashboard.calc_user(
-    1,                        # User index
-    0,                        # Method (0 = three-point)
-    400, 100, 0, 0, 0, 0,    # Point 1 (origin)
-    500, 100, 0, 0, 0, 0,    # Point 2 (X-axis direction)
-    400, 200, 0, 0, 0, 0,    # Point 3 (XY-plane)
+    1,                                   # User index
+    0,                                   # Method (0 = right multiply)
+    "{400,100,0,0,0,0}",                 # Offset (x, y, z, rx, ry, rz)
 )
 ```
 
@@ -67,7 +65,7 @@ A tool coordinate system defines the Tool Center Point (TCP).
 
 ```python
 # Define tool coordinate 1
-dashboard.set_tool(1, 0, 0, 100, 0, 0, 0)
+dashboard.set_tool(1, "{0,0,100,0,0,0}")
 
 # Activate tool coordinate 1
 dashboard.tool(1)
