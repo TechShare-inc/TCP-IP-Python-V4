@@ -81,7 +81,7 @@ The base class manages a single TCP socket. It provides `send_recv_msg(command)`
 - **`_WeldMixin`** — arc welding, weave patterns
 - **`_CheckMixin`** — motion pre-checking for reachability
 
-Each mixin method builds a protocol command string (e.g., `"EnableRobot()"`) and calls `self.send_recv_msg()` to send it. Methods return raw response strings.
+Each mixin method builds a protocol command string (e.g., `"EnableRobot()"`) and calls `self.send_recv_msg()` to send it. Responses are parsed internally into typed Python values (`None`, `int`, `Pose`, `tuple[int, ...]`).
 
 ### Layer 3: `DobotRobot` — High-Level Facade
 
