@@ -124,33 +124,3 @@ class TestModbusMixin:
         dashboard, sent = mock_dashboard
         dashboard.set_output_float(0, 3)
         assert "SetOutputFloat(0," in sent[-1]
-
-
-@pytest.mark.unit
-class TestModbusMixinBackwardCompat:
-    """Verify PascalCase aliases exist."""
-
-    def test_modbus_create_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.ModbusCreate("10.0.0.1", 502, 1)
-        assert "ModbusCreate(" in sent[-1]
-
-    def test_modbus_close_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.ModbusClose(0)
-        assert sent[-1] == "ModbusClose(0)"
-
-    def test_get_input_float_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.GetInputFloat(5)
-        assert sent[-1] == "GetInputFloat(5)"
-
-    def test_get_output_float_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.GetOutputFloat(3)
-        assert sent[-1] == "GetOutputFloat(3)"
-
-    def test_set_output_bool_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.SetOutputBool(1, 0)
-        assert sent[-1] == "SetOutputBool(1,0)"

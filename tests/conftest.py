@@ -53,9 +53,26 @@ def mock_dashboard() -> tuple[DobotApiDashboard, list[str]]:
         dashboard.socket_dobot = MagicMock()
         dashboard._global_lock = __import__("threading").Lock()
 
+    # Commands whose mixin methods call parse_pose (need 6 floats).
+    _pose_commands = frozenset(
+        {
+            "GetPose",
+            "GetAngle",
+            "PositiveKin",
+            "InverseKin",
+            "InverseSolution",
+            "GetForce",
+            "GetStartPose",
+            "GetTrayPoint",
+        }
+    )
+
     def _fake_send_recv(string: str) -> str:
         sent.append(string)
-        return "0,1,;"
+        cmd_name = string.split("(", 1)[0]
+        if cmd_name in _pose_commands:
+            return "0,1,0.0,0.0,0.0,0.0,0.0,0.0;"
+        return "0,1,0;"
 
     dashboard.send_recv_msg = _fake_send_recv  # type: ignore[assignment]
     return dashboard, sent

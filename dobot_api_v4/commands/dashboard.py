@@ -41,5 +41,4 @@ class DobotApiDashboard(
     - Motion check commands (_CheckMixin)
     """
 
-    def __init__(self, ip: str, port: int, *args) -> None:
-        super().__init__(ip, port, *args)
+    ...

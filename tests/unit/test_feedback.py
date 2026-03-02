@@ -5,7 +5,6 @@ from unittest.mock import MagicMock
 import pytest
 
 from dobot_api_v4.dtypes import FeedbackData
-from dobot_api_v4.feedback import DobotApiFeedBack, DobotApiFeedback
 
 
 @pytest.mark.unit
@@ -58,20 +57,3 @@ class TestDobotApiFeedback:
         # We can't assert the exact value, but it should have changed
         # since old_time was 0.0
         assert mock_feedback.last_recv_time != old_time or old_time == 0.0
-
-
-@pytest.mark.unit
-class TestFeedbackBackwardCompat:
-    """Verify backward-compat aliases."""
-
-    def test_feedbackdata_alias_exists(self, mock_feedback, feedback_buffer_factory):
-        buf = feedback_buffer_factory()
-        mock_feedback.socket_dobot.recv.return_value = buf
-        mock_feedback.socket_dobot.setblocking = MagicMock()
-
-        # feedBackData should be an alias for raw_feedback_data
-        result = mock_feedback.feedBackData()
-        assert result is not None
-
-    def test_class_alias(self):
-        assert DobotApiFeedBack is DobotApiFeedback

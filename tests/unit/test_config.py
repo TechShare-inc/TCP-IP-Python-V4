@@ -96,23 +96,3 @@ class TestConfigMixin:
         dashboard, sent = mock_dashboard
         dashboard.set_safe_skin(1, 50)
         assert sent[-1] == "SetSafeSkin(1,50)"
-
-
-@pytest.mark.unit
-class TestConfigMixinBackwardCompat:
-    """Verify PascalCase aliases exist."""
-
-    def test_speed_factor_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.SpeedFactor(50)
-        assert sent[-1] == "SpeedFactor(50)"
-
-    def test_user_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.User(1)
-        assert sent[-1] == "User(1)"
-
-    def test_tool_alias(self, mock_dashboard):
-        dashboard, sent = mock_dashboard
-        dashboard.Tool(0)
-        assert sent[-1] == "Tool(0)"

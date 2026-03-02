@@ -5,24 +5,20 @@ import sys
 
 from loguru import logger
 
-# Backward-compat alias
-from .base import (
-    DobotApi,
-    MyType,  # noqa: F401
-)
-from .commands.dashboard import DobotApiDashboard
-from .dtypes import PROTOCOL_FIELD_MAP, FeedbackData, FeedbackDtype
-from .error_monitor import RobotErrorMonitor
-from .feedback import DobotApiFeedBack, DobotApiFeedback
-from .i18n_manager import AlarmI18n
-from .responses import (
-    AckResponse,
+from .base import DobotApi
+from .commands._parse import (
     DobotApiError,
-    ErrorIdResponse,
-    IntResponse,
-    PoseResponse,
+    parse_ack,
+    parse_error_ids,
+    parse_int,
+    parse_pose,
     parse_response,
 )
+from .commands.dashboard import DobotApiDashboard
+from .dtypes import PROTOCOL_FIELD_MAP, FeedbackData, FeedbackDtype, Pose
+from .error_monitor import RobotErrorMonitor
+from .feedback import DobotApiFeedback
+from .i18n_manager import AlarmI18n
 from .robot import DobotRobot
 
 __version__ = "4.0.0a2"
@@ -32,19 +28,19 @@ __all__ = [
     "DobotApi",
     "DobotApiDashboard",
     "DobotApiFeedback",
-    "DobotApiFeedBack",
     "RobotErrorMonitor",
     "FeedbackData",
     "FeedbackDtype",
+    "Pose",
     "PROTOCOL_FIELD_MAP",
     "AlarmI18n",
     "logger",
     "DobotApiError",
-    "AckResponse",
-    "IntResponse",
-    "PoseResponse",
-    "ErrorIdResponse",
     "parse_response",
+    "parse_ack",
+    "parse_int",
+    "parse_pose",
+    "parse_error_ids",
 ]
 
 # Configure loguru
