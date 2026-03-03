@@ -15,9 +15,7 @@ class TestDobotApiFeedback:
         mock_feedback.socket_dobot = None
         assert mock_feedback.raw_feedback_data() is None
 
-    def test_raw_feedback_data_parses_valid_buffer(
-        self, mock_feedback, feedback_buffer_factory
-    ):
+    def test_raw_feedback_data_parses_valid_buffer(self, mock_feedback, feedback_buffer_factory):
         buf = feedback_buffer_factory(robot_mode=5, speed_scaling=80.0)
         assert len(buf) == 1440
 
@@ -30,9 +28,7 @@ class TestDobotApiFeedback:
         assert result["robot_mode"][0] == 5
         assert result["speed_scaling"][0] == 80.0
 
-    def test_feedback_data_returns_dataclass(
-        self, mock_feedback, feedback_buffer_factory
-    ):
+    def test_feedback_data_returns_dataclass(self, mock_feedback, feedback_buffer_factory):
         buf = feedback_buffer_factory(robot_mode=7, load=2.5)
         mock_feedback.socket_dobot.recv.return_value = buf
         mock_feedback.socket_dobot.setblocking = MagicMock()
