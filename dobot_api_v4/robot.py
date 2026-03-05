@@ -71,83 +71,323 @@ class DobotRobot:
         center_z: float = 0.0,
         is_check: int = -1,
     ) -> None:
+        """Enable the robot.
+
+        The number of parameters sent depends on which are non-default:
+        - 0 params: no load/eccentric settings
+        - 1 param: load weight only
+        - 4 params: load weight + eccentric XYZ
+        - 5 params: load weight + eccentric XYZ + check flag
+
+        Args:
+            load: Load weight (kg). Must not exceed model limit.
+            center_x: X-direction eccentric distance (mm). Range: [-999, 999].
+            center_y: Y-direction eccentric distance (mm). Range: [-999, 999].
+            center_z: Z-direction eccentric distance (mm). Range: [-999, 999].
+            is_check: Check load after enable. 1=check, 0=no check, -1=omit.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.enable_robot(load, center_x, center_y, center_z, is_check)
 
     def disable_robot(self) -> None:
+        """Disable the robot.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.disable_robot()
 
     def clear_error(self) -> None:
+        """Clear controller alarm information.
+
+        After clearing, check ``robot_mode()`` to confirm alarm is resolved.
+        Some alarms require resolving the cause or restarting the controller.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.clear_error()
 
     def power_on(self) -> None:
+        """Power on the robot.
+
+        Note:
+            It takes about 10 seconds for the robot to be enabled after power on.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.power_on()
 
     def run_script(self, project_name: str) -> None:
+        """Run a script file.
+
+        Args:
+            project_name: Script file name.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.run_script(project_name)
 
     def stop_script(self) -> None:
+        """Stop the delivered motion command queue or RunScript command.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.stop_script()
 
     def pause_script(self) -> None:
+        """Pause the delivered motion command queue or RunScript command.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.pause_script()
 
     def resume(self) -> None:
+        """Continue the paused motion command queue or RunScript command.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.resume()
 
     def emergency_stop(self, mode: int) -> None:
+        """Emergency stop the robot.
+
+        After emergency stop, the robot arm will be disabled and alarm.
+        Release the E-Stop and clear alarms to re-enable.
+
+        Args:
+            mode: E-Stop operation mode. 1=press E-Stop, 0=release E-Stop.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.emergency_stop(mode)
 
     def brake_control(self, axis_id: int, value: int) -> None:
+        """Control the brake of a specified joint.
+
+        Joints automatically brake when stationary. Use this to switch on
+        the brake for manual dragging while disabled.
+
+        Can only be used when the robot arm is disabled.
+
+        Args:
+            axis_id: Joint ID. 1=J1, 2=J2, ... 6=J6.
+            value: Brake status. 0=switch off (no drag), 1=switch on (draggable).
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.brake_control(axis_id, value)
 
     def request_control(self) -> None:
+        """Request control of the robot.
+
+        Note:
+            The request may be approved or denied.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.request_control()
 
     def reset_robot(self) -> None:
+        """Reset the robot.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.reset_robot()
 
     def tcp_send_and_parse(self, cmd: str) -> str:
+        """Send a raw TCP command and parse the response.
+
+        Args:
+            cmd: Command string to send.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.tcp_send_and_parse(cmd)
 
     def sleep(self, count: int) -> None:
+        """Sleep (delay) command in the motion queue.
+
+        Args:
+            count: Sleep duration in milliseconds.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.sleep(count)
 
     # --- Config ---
 
     def speed_factor(self, speed: int) -> None:
+        """Set the global speed ratio.
+
+        Actual jog speed = jog setting * global speed ratio.
+        Actual playback speed = motion command ratio * playback setting * global speed ratio.
+
+        Args:
+            speed: Global speed ratio. Range: [1, 100].
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.speed_factor(speed)
 
     def acc_j(self, speed: int) -> None:
+        """Set acceleration ratio of joint motion.
+
+        Defaults to 100 if not set.
+
+        Args:
+            speed: Acceleration ratio. Range: [1, 100].
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.acc_j(speed)
 
     def acc_l(self, speed: int) -> None:
+        """Set acceleration ratio of linear and arc motion.
+
+        Defaults to 100 if not set.
+
+        Args:
+            speed: Acceleration ratio. Range: [1, 100].
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.acc_l(speed)
 
     def vel_j(self, speed: int) -> None:
+        """Set speed ratio of joint motion.
+
+        Defaults to 100 if not set.
+
+        Args:
+            speed: Speed ratio. Range: [1, 100].
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.vel_j(speed)
 
     def vel_l(self, speed: int) -> None:
+        """Set speed ratio of linear and arc motion.
+
+        Defaults to 100 if not set.
+
+        Args:
+            speed: Speed ratio. Range: [1, 100].
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.vel_l(speed)
 
     def cp(self, ratio: int) -> None:
+        """Set the continuous path (CP) ratio.
+
+        Controls whether the robot transitions at a right angle or curves
+        when passing through intermediate points in multi-point motion.
+
+        Defaults to 0 if not set.
+
+        Args:
+            ratio: Continuous path ratio. Range: [0, 100].
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.cp(ratio)
 
     def user(self, index: int) -> None:
+        """Set the global user coordinate system.
+
+        If not set, defaults to User coordinate system 0.
+
+        Args:
+            index: User coordinate system index.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.user(index)
 
     def set_user(self, index: int, table: str) -> None:
+        """Modify the specified user coordinate system.
+
+        Args:
+            index: User coordinate system index. Range: [0, 9].
+            table: Coordinate system value, format: ``{x, y, z, rx, ry, rz}``.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.set_user(index, table)
 
     def calc_user(self, index: int, matrix_direction: int, table: str) -> None:
+        """Calculate the user coordinate system.
+
+        Args:
+            index: User coordinate system index. Range: [0, 9].
+            matrix_direction: Calculation method. 1=left multiplication
+                (deflect along base), 0=right multiplication (deflect along self).
+            table: Coordinate system offset, format: ``{x, y, z, rx, ry, rz}``.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.calc_user(index, matrix_direction, table)
 
     def tool(self, index: int) -> None:
+        """Set the global tool coordinate system.
+
+        If not set, defaults to Tool coordinate system 0.
+
+        Args:
+            index: Tool coordinate system index.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.tool(index)
 
     def set_tool(self, index: int, table: str) -> None:
+        """Modify the specified tool coordinate system.
+
+        Args:
+            index: Tool coordinate system index. Range: [0, 9].
+            table: Coordinate system value, format: ``{x, y, z, rx, ry, rz}``.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.set_tool(index, table)
 
     def calc_tool(self, index: int, matrix_direction: int, table: str) -> None:
+        """Calculate the tool coordinate system.
+
+        Args:
+            index: Tool coordinate system index. Range: [0, 9].
+            matrix_direction: Calculation method. 1=left multiplication
+                (deflect along flange), 0=right multiplication (deflect along self).
+            table: Coordinate system offset, format: ``{x, y, z, rx, ry, rz}``.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.calc_tool(index, matrix_direction, table)
 
     def set_payload(
@@ -158,119 +398,472 @@ class DobotRobot:
         z: float = 0.0,
         name: str = "F",
     ) -> None:
+        """Set the load of the robot arm.
+
+        Two methods:
+        - Direct parameters: ``set_payload(load, x, y, z)``
+        - Preset name: ``set_payload(name="my_preset")``
+
+        Args:
+            load: Load weight (kg). Must not exceed model limit.
+            x: X-axis eccentric coordinate (mm). Range: [-500, 500].
+            y: Y-axis eccentric coordinate (mm). Range: [-500, 500].
+            z: Z-axis eccentric coordinate (mm). Range: [-500, 500].
+            name: Name of preset load parameter group. Default ``"F"`` means unused.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.set_payload(load, x, y, z, name)
 
     def set_collision_level(self, level: int) -> None:
+        """Set the collision detection level.
+
+        Args:
+            level: Collision detection level. 0=off, 1-5=sensitivity (higher=more sensitive).
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.set_collision_level(level)
 
     def set_back_distance(self, distance: int) -> None:
+        """Set the backoff distance after collision detection.
+
+        Args:
+            distance: Backoff distance (mm). Range: [0, 50].
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.set_back_distance(distance)
 
     def set_post_collision_mode(self, mode: int) -> None:
+        """Set the post-collision processing mode.
+
+        Args:
+            mode: 0=stop after collision, 1=pause after collision.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.set_post_collision_mode(mode)
 
     def drag_sensitivity(self, index: int, value: int) -> None:
+        """Set the drag sensitivity.
+
+        Args:
+            index: Axis ID. 1-6=J1-J6, 0=all axes.
+            value: Drag sensitivity. Smaller=more force needed. Range: [1, 90].
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.drag_sensitivity(index, value)
 
     def enable_safe_skin(self, status: int) -> None:
+        """Switch on or off the SafeSkin.
+
+        Valid only for robot arms equipped with SafeSkin.
+
+        Args:
+            status: SafeSkin switch. 0=off, 1=on.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.enable_safe_skin(status)
 
     def set_safe_skin(self, part: int, status: int) -> None:
+        """Set sensitivity for each part of the SafeSkin.
+
+        Valid only for robot arms equipped with SafeSkin.
+
+        Args:
+            part: Part to set. 3=forearm, 4-6=J4-J6.
+            status: Sensitivity. 0=off, 1=low, 2=middle, 3=high.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.set_safe_skin(part, status)
 
     def set_safe_wall_enable(self, index: int, value: int) -> None:
+        """Switch on/off the specified safety wall.
+
+        Args:
+            index: Safety wall index (must be added in software first). Range: [1, 8].
+            value: Switch. 0=off, 1=on.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.set_safe_wall_enable(index, value)
 
     def set_work_zone_enable(self, index: int, value: int) -> None:
+        """Switch on/off the specified interference area.
+
+        Args:
+            index: Interference area index (must be added in software first). Range: [1, 6].
+            value: Switch. 0=off, 1=on.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.set_work_zone_enable(index, value)
 
     def offset_para(
         self, x: float, y: float, z: float, rx: float, ry: float, rz: float
     ) -> None:
+        """Set offset parameters.
+
+        Args:
+            x: X offset (mm).
+            y: Y offset (mm).
+            z: Z offset (mm).
+            rx: RX offset (degrees).
+            ry: RY offset (degrees).
+            rz: RZ offset (degrees).
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.offset_para(x, y, z, rx, ry, rz)
 
     def set_resume_offset(self, distance: float) -> None:
+        """Set the resume offset distance.
+
+        Args:
+            distance: Resume offset distance.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.set_resume_offset(distance)
 
     def start_rt_offset(self) -> None:
+        """Start real-time offset.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.start_rt_offset()
 
     def end_rt_offset(self) -> None:
+        """End real-time offset.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.end_rt_offset()
 
     # --- I/O ---
 
     def do_output(self, index: int, status: int, time: int = -1) -> None:
+        """Set the status of digital output port (queue command).
+
+        Args:
+            index: DO index.
+            status: DO status. 1: ON, 0: OFF.
+            time: Continuous output time in ms. Range: [25, 60000].
+                If set, the system automatically inverts the DO after the
+                specified time. -1 means not set.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.do_output(index, status, time)
 
     def do_instant(self, index: int, status: int) -> None:
+        """Set the status of digital output port (immediate command).
+
+        Args:
+            index: DO index.
+            status: DO status. 1: ON, 0: OFF.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.do_instant(index, status)
 
     def get_do(self, index: int) -> int:
+        """Get the status of digital output port.
+
+        Args:
+            index: DO index.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.get_do(index)
 
     def do_group(self, *index_value: int) -> None:
+        """Set the status of multiple digital output ports (queue command).
+
+        Args:
+            *index_value: Alternating index and value pairs.
+                Example: ``do_group(4, 1, 6, 0)`` sets DO_4=ON, DO_6=OFF.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.do_group(*index_value)
 
     def get_do_group(self, *index_value: int) -> str:
+        """Get the status of multiple digital output ports.
+
+        Args:
+            *index_value: Indices of DO ports to query.
+                Example: ``get_do_group(1, 2)`` gets status of DO_1 and DO_2.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.get_do_group(*index_value)
 
     def do_group_dec(self, group: int, value: int) -> None:
+        """Set digital output group using decimal encoding.
+
+        Args:
+            group: DO group index.
+            value: Decimal-encoded value for the group.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.do_group_dec(group, value)
 
     def get_do_group_dec(self, group: int, value: int) -> str:
+        """Get digital output group status using decimal encoding.
+
+        Args:
+            group: DO group index.
+            value: Decimal-encoded query value.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.get_do_group_dec(group, value)
 
     def tool_do(self, index: int, status: int) -> None:
+        """Set the status of tool digital output port (queue command).
+
+        Args:
+            index: Tool DO index.
+            status: Tool DO status. 1: ON, 0: OFF.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.tool_do(index, status)
 
     def tool_do_instant(self, index: int, status: int) -> None:
+        """Set the status of tool digital output port (immediate command).
+
+        Args:
+            index: Tool DO index.
+            status: Tool DO status. 1: ON, 0: OFF.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.tool_do_instant(index, status)
 
     def get_tool_do(self, index: int) -> int:
+        """Get the status of tool digital output port.
+
+        Args:
+            index: Tool DO index.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.get_tool_do(index)
 
     def ao(self, index: int, value: float) -> None:
+        """Set the value of analog output port (queue command).
+
+        Args:
+            index: AO index.
+            value: AO output. Voltage range: [0, 10] V; current range: [4, 20] mA.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.ao(index, value)
 
     def ao_instant(self, index: int, value: float) -> None:
+        """Set the value of analog output port (immediate command).
+
+        Args:
+            index: AO index.
+            value: AO output. Voltage range: [0, 10] V; current range: [4, 20] mA.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.ao_instant(index, value)
 
     def get_ao(self, index: int) -> str:
+        """Get the value of analog output port.
+
+        Args:
+            index: AO index.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.get_ao(index)
 
     def di(self, index: int) -> int:
+        """Get the status of digital input port.
+
+        Args:
+            index: DI index.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.di(index)
 
     def di_group(self, *index_value: int) -> str:
+        """Get the status of multiple digital input ports.
+
+        Args:
+            *index_value: Indices of DI ports to query.
+                Example: ``di_group(4, 6, 2, 7)`` gets status of DI_4, DI_6,
+                DI_2, and DI_7.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.di_group(*index_value)
 
     def di_group_dec(self, group: int, value: int) -> str:
+        """Get digital input group status using decimal encoding.
+
+        Args:
+            group: DI group index.
+            value: Decimal-encoded query value.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.di_group_dec(group, value)
 
     def tool_di(self, index: int) -> int:
+        """Get the status of tool digital input port.
+
+        Args:
+            index: Tool DI index.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.tool_di(index)
 
     def ai(self, index: int) -> int:
+        """Get the value of analog input port.
+
+        Args:
+            index: AI index.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.ai(index)
 
     def tool_ai(self, index: int) -> int:
+        """Get the value of tool analog input port.
+
+        Note:
+            Set the port to analog-input mode via ``set_tool_mode()`` first.
+
+        Args:
+            index: Tool AI index.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.tool_ai(index)
 
     def set_tool_485(
         self, baud: int, parity: str = "", stopbit: int = -1, identify: int = -1
     ) -> None:
+        """Set RS485 interface parameters for the end tool.
+
+        Args:
+            baud: Baud rate of RS485 interface.
+            parity: Parity bit setting. ``"O"`` = odd, ``"E"`` = even,
+                ``"N"`` = none. Default ``"N"`` if omitted.
+            stopbit: Stop bit length. Range: {1, 2}. -1 means not set.
+            identify: Aviation socket selector for multi-socket robots.
+                1: aviation 1, 2: aviation 2. -1 means not set.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.set_tool_485(baud, parity, stopbit, identify)
 
     def set_tool_power(self, status: int, identify: int = -1) -> None:
+        """Set the power status of the end tool.
+
+        Generally used for restarting end power (e.g., re-powering and
+        re-initializing the gripper). If calling continuously, keep an
+        interval of at least 4 ms.
+
+        Note:
+            Not supported on Magician E6 robot.
+
+        Args:
+            status: Power status. 0: power off, 1: power on.
+            identify: Aviation socket selector for multi-socket robots.
+                1: aviation 1, 2: aviation 2. -1 means not set.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.set_tool_power(status, identify)
 
     def set_tool_mode(self, mode: int, port_type: int, identify: int = -1) -> None:
+        """Set the mode of the end multiplex terminal.
+
+        If the AI interface on the end of the robot arm is multiplexed with
+        the 485 interface, use this to switch modes. 485 mode by default.
+
+        Note:
+            Robots without tool RS485 interface are unaffected.
+
+        Args:
+            mode: Mode of the multiplex terminal. 1: 485 mode, 2: AI mode.
+            port_type: When mode is 1, this is invalid. When mode is 2, sets AI mode.
+                Single digit = AI1 mode, tens digit = AI2 mode.
+                Mode values: 0 = 0-10V voltage, 1 = current, 2 = 0-5V voltage.
+            identify: Aviation socket selector for multi-socket robots.
+                1: aviation 1, 2: aviation 2. -1 means not set.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.set_tool_mode(mode, port_type, identify)
 
     # --- Modbus ---
 
     def modbus_create(self, ip: str, port: int, slave_id: int, is_rtu: int = -1) -> int:
+        """Create Modbus master and establish connection with the slave.
+
+        Supports connecting to at most 5 devices.
+
+        Args:
+            ip: Slave IP address.
+            port: Slave port.
+            slave_id: Slave ID.
+            is_rtu: Communication mode. 0 or omitted: ModbusTCP,
+                1: ModbusRTU. -1 means not set.
+
+        Returns:
+            Parsed integer value from robot response.
+        """
         return self.dashboard.modbus_create(ip, port, slave_id, is_rtu)
 
     def modbus_rtu_create(
@@ -281,74 +874,262 @@ class DobotRobot:
         data_bit: int = 8,
         stop_bit: int = -1,
     ) -> int:
+        """Create Modbus RTU master via RS485 and connect to slave.
+
+        Supports connecting to at most 5 devices.
+
+        Args:
+            slave_id: Slave ID.
+            baud: Baud rate of RS485 interface.
+            parity: Parity bit. ``"O"`` = odd, ``"E"`` = even,
+                ``"N"`` = none. ``"E"`` by default if omitted.
+            data_bit: Data bit length. Default: 8.
+            stop_bit: Stop bit length. Range: {1, 2}. -1 means not set.
+
+        Returns:
+            Parsed integer value from robot response.
+        """
         return self.dashboard.modbus_rtu_create(
             slave_id, baud, parity, data_bit, stop_bit
         )
 
     def modbus_close(self, index: int) -> None:
+        """Disconnect from Modbus slave and release the master.
+
+        Args:
+            index: Master index.
+        """
         return self.dashboard.modbus_close(index)
 
     def get_in_bits(self, index: int, addr: int, count: int) -> str:
+        """Read discrete input (contact register) values from Modbus slave.
+
+        Args:
+            index: Master index.
+            addr: Starting address of the contact register.
+            count: Number of contact registers. Range: [1, 16].
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.get_in_bits(index, addr, count)
 
     def get_in_regs(self, index: int, addr: int, count: int, val_type: str = "") -> str:
+        """Read input register values from Modbus slave.
+
+        Args:
+            index: Master index.
+            addr: Starting address of the input register.
+            count: Number of input registers. Range: [1, 4].
+            val_type: Data type. ``"U16"``, ``"U32"``, ``"F32"``, ``"F64"``.
+                Default: ``"U16"`` if omitted.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.get_in_regs(index, addr, count, val_type)
 
     def get_coils(self, index: int, addr: int, count: int) -> str:
+        """Read coil register values from Modbus slave.
+
+        Args:
+            index: Master index.
+            addr: Starting address of the coil register.
+            count: Number of coil registers. Range: [1, 16].
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.get_coils(index, addr, count)
 
     def set_coils(self, index: int, addr: int, count: int, val_tab: str) -> None:
+        """Write values to coil registers on Modbus slave.
+
+        Args:
+            index: Master index.
+            addr: Starting address of the coil register.
+            count: Number of values to write. Range: [1, 16].
+            val_tab: Values to write, e.g. ``"{1,0,1}"``.
+        """
         return self.dashboard.set_coils(index, addr, count, val_tab)
 
     def get_hold_regs(
         self, index: int, addr: int, count: int, val_type: str = ""
     ) -> str:
+        """Read holding register values from Modbus slave.
+
+        Args:
+            index: Master index.
+            addr: Starting address of the holding register.
+            count: Number of holding registers. Range: [1, 4].
+            val_type: Data type. ``"U16"``, ``"U32"``, ``"F32"``, ``"F64"``.
+                Default: ``"U16"`` if omitted.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.get_hold_regs(index, addr, count, val_type)
 
     def set_hold_regs(
         self, index: int, addr: int, count: int, val_tab: str, val_type: str = ""
     ) -> None:
+        """Write values to holding registers on Modbus slave.
+
+        Args:
+            index: Master index.
+            addr: Starting address of the holding register.
+            count: Number of values to write. Range: [1, 4].
+            val_tab: Values to write, e.g. ``"{6000,300}"``.
+            val_type: Data type. ``"U16"``, ``"U32"``, ``"F32"``, ``"F64"``.
+                Default: ``"U16"`` if omitted.
+        """
         return self.dashboard.set_hold_regs(index, addr, count, val_tab, val_type)
 
     def get_input_bool(self, address: int) -> int:
+        """Get bool value from the specified input register address.
+
+        Args:
+            address: Register address. Range: [0, 63].
+
+        Returns:
+            Parsed integer value from robot response.
+        """
         return self.dashboard.get_input_bool(address)
 
     def get_input_int(self, address: int) -> int:
+        """Get int value from the specified input register address.
+
+        Args:
+            address: Register address. Range: [0, 23].
+
+        Returns:
+            Parsed integer value from robot response.
+        """
         return self.dashboard.get_input_int(address)
 
     def get_input_float(self, address: int) -> str:
+        """Get float value from the specified input register address.
+
+        Args:
+            address: Register address. Range: [0, 23].
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.get_input_float(address)
 
     def get_output_bool(self, address: int) -> int:
+        """Get bool value from the specified output register address.
+
+        Args:
+            address: Register address. Range: [0, 63].
+
+        Returns:
+            Parsed integer value from robot response.
+        """
         return self.dashboard.get_output_bool(address)
 
     def get_output_int(self, address: int) -> int:
+        """Get int value from the specified output register address.
+
+        Args:
+            address: Register address. Range: [0, 23].
+
+        Returns:
+            Parsed integer value from robot response.
+        """
         return self.dashboard.get_output_int(address)
 
     def get_output_float(self, address: int) -> str:
+        """Get float value from the specified output register address.
+
+        Args:
+            address: Register address. Range: [0, 23].
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.get_output_float(address)
 
     def set_output_bool(self, address: int, value: int) -> None:
+        """Set bool value at the specified output register address.
+
+        Args:
+            address: Register address. Range: [0, 63].
+            value: Value to set (0 or 1).
+        """
         return self.dashboard.set_output_bool(address, value)
 
     def set_output_int(self, address: int, value: int) -> None:
+        """Set int value at the specified output register address.
+
+        Args:
+            address: Register address. Range: [0, 23].
+            value: Integer value to set.
+        """
         return self.dashboard.set_output_int(address, value)
 
     def set_output_float(self, address: int, value: float) -> None:
+        """Set float value at the specified output register address.
+
+        Args:
+            address: Register address. Range: [0, 23].
+            value: Float value to set.
+        """
         return self.dashboard.set_output_float(address, value)
 
     # --- Query ---
 
     def robot_mode(self) -> int:
+        """Get the current status of the robot.
+
+        Robot mode values:
+            1: INIT — Initialized status
+            2: BRAKE_OPEN — Brake switched on
+            3: POWEROFF — Power-off status
+            4: DISABLED — Disabled (no brake switched on)
+            5: ENABLE — Enabled and idle
+            6: BACKDRIVE — Drag mode
+            7: RUNNING — Running status (project, TCP queue)
+            8: SINGLE_MOVE — Single motion status (jog, RunTo)
+            9: ERROR — Uncleared alarms (highest priority)
+            10: PAUSE — Pause status
+            11: COLLISION — Collision status
+
+        Returns:
+            int: Current robot mode value.
+        """
         return self.dashboard.robot_mode()
 
     def get_angle(self) -> Pose:
+        """Get the joint coordinates of the current posture.
+
+        Returns:
+            Pose: Joint coordinates as a Pose.
+        """
         return self.dashboard.get_angle()
 
     def get_pose(self, user: int = -1, tool: int = -1) -> Pose:
+        """Get Cartesian coordinates of the current posture.
+
+        Both ``user`` and ``tool`` must be set together, or neither.
+        If neither is set, the global user/tool coordinate systems are used.
+
+        Args:
+            user: Index of the calibrated user coordinate system. -1 = not set.
+            tool: Index of the calibrated tool coordinate system. -1 = not set.
+
+        Returns:
+            Pose: Current Cartesian pose (x, y, z, rx, ry, rz).
+        """
         return self.dashboard.get_pose(user, tool)
 
     def get_error_id(self) -> tuple[int, ...]:
+        """Get current error IDs from the robot controller.
+
+        Returns:
+            tuple[int, ...]: Active error IDs (may be empty).
+        """
         return self.dashboard.get_error_id()
 
     def positive_kin(
@@ -362,6 +1143,21 @@ class DobotRobot:
         user: int = -1,
         tool: int = -1,
     ) -> Pose:
+        """Forward kinematics — calculate Cartesian pose from joint angles.
+
+        Args:
+            j1: J1-axis position in degrees.
+            j2: J2-axis position in degrees.
+            j3: J3-axis position in degrees.
+            j4: J4-axis position in degrees.
+            j5: J5-axis position in degrees.
+            j6: J6-axis position in degrees.
+            user: Index of user coordinate system. -1 = global.
+            tool: Index of tool coordinate system. -1 = global.
+
+        Returns:
+            Pose: Calculated Cartesian pose.
+        """
         return self.dashboard.positive_kin(j1, j2, j3, j4, j5, j6, user, tool)
 
     def inverse_kin(
@@ -377,6 +1173,29 @@ class DobotRobot:
         use_joint_near: int = -1,
         joint_near: str = "",
     ) -> Pose:
+        """Inverse kinematics — calculate joint angles from Cartesian pose.
+
+        As one Cartesian pose can correspond to multiple joint solutions,
+        ``use_joint_near`` and ``joint_near`` can be used to select the
+        closest solution to a reference configuration.
+
+        Args:
+            x: X-axis position in mm.
+            y: Y-axis position in mm.
+            z: Z-axis position in mm.
+            rx: Rx-axis position in degrees.
+            ry: Ry-axis position in degrees.
+            rz: Rz-axis position in degrees.
+            user: Index of user coordinate system. -1 = global.
+            tool: Index of tool coordinate system. -1 = global.
+            use_joint_near: Whether ``joint_near`` is effective.
+                0 or -1: use current angles, 1: use ``joint_near`` data.
+            joint_near: Reference joint coordinates for solution selection.
+                Format: ``"{j1,j2,j3,j4,j5,j6}"``.
+
+        Returns:
+            Pose: Calculated joint angles as a Pose.
+        """
         return self.dashboard.inverse_kin(
             x, y, z, rx, ry, rz, user, tool, use_joint_near, joint_near
         )
@@ -393,38 +1212,123 @@ class DobotRobot:
         tool: int = -1,
         is_joint: int = 0,
     ) -> Pose:
+        """Compute inverse solution for the given Cartesian pose.
+
+        Args:
+            x: X-axis position in mm.
+            y: Y-axis position in mm.
+            z: Z-axis position in mm.
+            rx: Rx-axis position in degrees.
+            ry: Ry-axis position in degrees.
+            rz: Rz-axis position in degrees.
+            user: Index of user coordinate system. -1 = global.
+            tool: Index of tool coordinate system. -1 = global.
+            is_joint: Whether to return joint angles. 0 = Cartesian, 1 = joint.
+
+        Returns:
+            Pose: Computed inverse solution.
+        """
         return self.dashboard.inverse_solution(
             x, y, z, rx, ry, rz, user, tool, is_joint
         )
 
     def get_current_command_id(self) -> int:
+        """Get the algorithm queue ID of the currently executed command.
+
+        Can be used to determine which command the robot is currently executing.
+
+        Returns:
+            int: Algorithm queue ID.
+        """
         return self.dashboard.get_current_command_id()
 
     def path_recovery(self) -> None:
+        """Start path recovery.
+
+        Returns:
+            None
+        """
         return self.dashboard.path_recovery()
 
     def path_recovery_stop(self) -> None:
+        """Stop path recovery.
+
+        Returns:
+            None
+        """
         return self.dashboard.path_recovery_stop()
 
     def path_recovery_status(self) -> int:
+        """Get path recovery status.
+
+        Returns:
+            int: Path recovery status code.
+        """
         return self.dashboard.path_recovery_status()
 
     def log_export_usb(self, range: int) -> None:
+        """Export logs to USB storage.
+
+        Args:
+            range: Log export range specifier.
+
+        Returns:
+            None
+        """
         return self.dashboard.log_export_usb(range)
 
     def get_export_status(self) -> int:
+        """Get the status of a log export operation.
+
+        Returns:
+            int: Export status code.
+        """
         return self.dashboard.get_export_status()
 
     def start_drag(self) -> None:
+        """Enter drag (freedrive) mode.
+
+        The robot cannot enter drag mode if it is in error status.
+
+        Returns:
+            None
+        """
         return self.dashboard.start_drag()
 
     def stop_drag(self) -> None:
+        """Exit drag (freedrive) mode.
+
+        Returns:
+            None
+        """
         return self.dashboard.stop_drag()
 
     def create_tray(self, *args: object, **kwargs: object) -> None:
+        """Create a tray (pallet) pattern.
+
+        Due to flexible parameter sets, this method accepts dynamic arguments.
+
+        Args:
+            *args: Positional arguments forwarded to the protocol command.
+            **kwargs: Keyword arguments forwarded to the protocol command.
+
+        Returns:
+            None
+        """
         return self.dashboard.create_tray(*args, **kwargs)
 
     def get_tray_point(self, *args: object, **kwargs: object) -> Pose:
+        """Get a point from a tray (pallet) pattern.
+
+        Due to flexible parameter sets, this method accepts dynamic arguments.
+
+        Args:
+            *args: Positional arguments forwarded to the protocol command.
+            **kwargs: Keyword arguments forwarded to the protocol command.
+
+        Returns:
+            Pose: Tray point as a Pose.
+        """
         return self.dashboard.get_tray_point(*args, **kwargs)
 
     # --- Motion ---
@@ -444,6 +1348,20 @@ class DobotRobot:
         v: int = -1,
         cp: int = -1,
     ) -> int:
+        """Move to target position through joint motion.
+
+        Args:
+            a1..f1: Target point (6 values — joint angles or Cartesian pose).
+            coordinate_mode: 0 = pose, 1 = joint.
+            user: User coordinate system index. -1 = not set.
+            tool: Tool coordinate system index. -1 = not set.
+            a: Acceleration ratio. Range: (0, 100]. -1 = not set.
+            v: Velocity ratio. Range: (0, 100]. -1 = not set.
+            cp: Continuous path ratio. Range: [0, 100]. -1 = not set.
+
+        Returns:
+            int: Motion queue ID.
+        """
         return self.dashboard.mov_j(
             a1, b1, c1, d1, e1, f1, coordinate_mode, user, tool, a, v, cp
         )
@@ -465,6 +1383,22 @@ class DobotRobot:
         cp: int = -1,
         r: int = -1,
     ) -> int:
+        """Move to target position in linear mode.
+
+        Args:
+            a1..f1: Target point (6 values — joint angles or Cartesian pose).
+            coordinate_mode: 0 = pose, 1 = joint.
+            user: User coordinate system index. -1 = not set.
+            tool: Tool coordinate system index. -1 = not set.
+            a: Acceleration ratio. Range: (0, 100]. -1 = not set.
+            v: Velocity ratio, incompatible with *speed*. Range: (0, 100].
+            speed: Target speed (mm/s), takes precedence over *v*.
+            cp: Continuous path ratio, incompatible with *r*. Range: [0, 100].
+            r: Continuous path radius (mm), takes precedence over *cp*.
+
+        Returns:
+            int: Motion queue ID.
+        """
         return self.dashboard.mov_l(
             a1, b1, c1, d1, e1, f1, coordinate_mode, user, tool, a, v, speed, cp, r
         )
@@ -481,6 +1415,17 @@ class DobotRobot:
         ahead_time: float = -1.0,
         gain: float = -1.0,
     ) -> int:
+        """Dynamic servo joint motion.
+
+        Args:
+            j1..j6: Target joint variables.
+            t: Running time (s). Range: [0.02, 3600.0]. Default: 0.1.
+            ahead_time: Advance time (D-like PID). Range: [20.0, 100.0]. Default: 50.
+            gain: Proportional gain (P-like PID). Range: [200.0, 1000.0]. Default: 500.
+
+        Returns:
+            int: Motion queue ID.
+        """
         return self.dashboard.servo_j(j1, j2, j3, j4, j5, j6, t, ahead_time, gain)
 
     def servo_p(
@@ -495,6 +1440,17 @@ class DobotRobot:
         ahead_time: float = -1.0,
         gain: float = -1.0,
     ) -> int:
+        """Dynamic servo Cartesian motion.
+
+        Args:
+            x..rz: Target posture variables (global user/tool coordinate).
+            t: Running time (s). Range: [0.02, 3600.0]. Default: 0.1.
+            ahead_time: Advance time (D-like PID). Range: [20.0, 100.0]. Default: 50.
+            gain: Proportional gain (P-like PID). Range: [200.0, 1000.0]. Default: 500.
+
+        Returns:
+            int: Motion queue ID.
+        """
         return self.dashboard.servo_p(x, y, z, rx, ry, rz, t, ahead_time, gain)
 
     def mov_l_io(
@@ -518,6 +1474,27 @@ class DobotRobot:
         cp: int = -1,
         r: int = -1,
     ) -> int:
+        """Linear motion with digital-output triggering.
+
+        Args:
+            a1..f1: Target point (6 values).
+            coordinate_mode: 0 = pose, 1 = joint.
+            mode: Trigger mode. 0 = distance percentage, 1 = distance value.
+            distance: Trigger distance. Positive = from start, negative = from end.
+                If mode 0: percentage (0, 100]. If mode 1: mm.
+            index: DO index.
+            status: DO status. 0 = no signal, 1 = signal.
+            user: User coordinate system. -1 = not set.
+            tool: Tool coordinate system. -1 = not set.
+            a: Acceleration ratio. -1 = not set.
+            v: Velocity ratio, incompatible with *speed*. -1 = not set.
+            speed: Target speed (mm/s), takes precedence over *v*.
+            cp: Continuous path ratio, incompatible with *r*.
+            r: Continuous path radius (mm), takes precedence over *cp*.
+
+        Returns:
+            int: Motion queue ID.
+        """
         return self.dashboard.mov_l_io(
             a1,
             b1,
@@ -558,6 +1535,24 @@ class DobotRobot:
         v: int = -1,
         cp: int = -1,
     ) -> int:
+        """Joint motion with digital-output triggering.
+
+        Args:
+            a1..f1: Target point (6 values).
+            coordinate_mode: 0 = pose, 1 = joint.
+            mode: Trigger mode. 0 = distance percentage, 1 = distance value.
+            distance: Trigger distance (percentage or degrees).
+            index: DO index.
+            status: DO status. 0 = no signal, 1 = signal.
+            user: User coordinate system. -1 = not set.
+            tool: Tool coordinate system. -1 = not set.
+            a: Acceleration ratio. -1 = not set.
+            v: Velocity ratio. -1 = not set.
+            cp: Continuous path ratio. -1 = not set.
+
+        Returns:
+            int: Motion queue ID.
+        """
         return self.dashboard.mov_j_io(
             a1,
             b1,
@@ -600,6 +1595,26 @@ class DobotRobot:
         cp: int = -1,
         r: int = -1,
     ) -> int:
+        """Arc interpolated motion through two points.
+
+        The current position, through-point P1, and target-point P2 define the
+        arc. They must not be collinear.
+
+        Args:
+            a1..f1: Through point P1 (6 values).
+            a2..f2: Target point P2 (6 values).
+            coordinate_mode: 0 = pose, 1 = joint.
+            user: User coordinate system. -1 = not set.
+            tool: Tool coordinate system. -1 = not set.
+            a: Acceleration ratio. -1 = not set.
+            v: Velocity ratio, incompatible with *speed*.
+            speed: Target speed (mm/s), takes precedence over *v*.
+            cp: Continuous path ratio, incompatible with *r*.
+            r: Continuous path radius (mm), takes precedence over *cp*.
+
+        Returns:
+            int: Motion queue ID.
+        """
         return self.dashboard.arc(
             a1,
             b1,
@@ -647,6 +1662,27 @@ class DobotRobot:
         cp: int = -1,
         r: int = -1,
     ) -> int:
+        """Full-circle interpolated motion.
+
+        The current position, P1, and P2 define the circle. They must not
+        be collinear.
+
+        Args:
+            a1..f1: Through point P1 (6 values).
+            a2..f2: End point P2 (6 values).
+            coordinate_mode: 0 = pose, 1 = joint.
+            count: Number of full circles. Range: [1, 999].
+            user: User coordinate system. -1 = not set.
+            tool: Tool coordinate system. -1 = not set.
+            a: Acceleration ratio. -1 = not set.
+            v: Velocity ratio, incompatible with *speed*.
+            speed: Target speed (mm/s), takes precedence over *v*.
+            cp: Continuous path ratio, incompatible with *r*.
+            r: Continuous path radius (mm), takes precedence over *cp*.
+
+        Returns:
+            int: Motion queue ID.
+        """
         return self.dashboard.circle(
             a1,
             b1,
@@ -696,6 +1732,26 @@ class DobotRobot:
         r: int = -1,
         mode: int = -1,
     ) -> int:
+        """Arc motion with digital-output triggering.
+
+        Args:
+            a1..f1: Through point P1 (6 values).
+            a2..f2: Target point P2 (6 values).
+            coordinate_mode: 0 = pose, 1 = joint.
+            *io_params: IO trigger groups, each a 4-element list/tuple
+                ``(Mode, Distance, Index, Status)``.
+            user: User coordinate system. -1 = not set.
+            tool: Tool coordinate system. -1 = not set.
+            a: Acceleration ratio. -1 = not set.
+            v: Velocity ratio, incompatible with *speed*.
+            speed: Target speed (mm/s), takes precedence over *v*.
+            cp: Continuous path ratio, incompatible with *r*.
+            r: Continuous path radius (mm), takes precedence over *cp*.
+            mode: Arc mode. -1 = not set.
+
+        Returns:
+            int: Motion queue ID.
+        """
         return self.dashboard.arc_io(
             a1,
             b1,
@@ -724,9 +1780,32 @@ class DobotRobot:
     def move_jog(
         self, axis_id: str = "", coord_type: int = -1, user: int = -1, tool: int = -1
     ) -> None:
+        """Start or stop joint jog motion.
+
+        Call with an ``axis_id`` to start jogging, or with an empty string
+        to stop.
+
+        Args:
+            axis_id: Axis/direction string, e.g. ``"J1+"``, ``"X-"``, ``""``.
+            coord_type: 1 = user coordinate, 2 = tool coordinate. -1 = not set.
+            user: User coordinate index. -1 = not set.
+            tool: Tool coordinate index. -1 = not set.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.move_jog(axis_id, coord_type, user, tool)
 
     def get_start_pose(self, trace_name: str) -> Pose:
+        """Get the start point of a trajectory file.
+
+        Args:
+            trace_name: Trajectory file name (with suffix). Stored in
+                ``/dobot/userdata/project/process/trajectory/``.
+
+        Returns:
+            Pose: Start pose of the trajectory.
+        """
         return self.dashboard.get_start_pose(trace_name)
 
     def start_path(
@@ -737,6 +1816,19 @@ class DobotRobot:
         user: int = -1,
         tool: int = -1,
     ) -> int:
+        """Play back a recorded trajectory.
+
+        Args:
+            trace_name: Trajectory file name (with suffix).
+            is_const: Constant speed playback. 1 = constant speed at global
+                rate, 0 = original speed scaled by *multi*.
+            multi: Speed multiplier (valid when is_const=0). Range: [0.25, 2].
+            user: User coordinate system index. -1 = use file value.
+            tool: Tool coordinate system index. -1 = use file value.
+
+        Returns:
+            int: Motion queue ID.
+        """
         return self.dashboard.start_path(trace_name, is_const, multi, user, tool)
 
     def rel_mov_j_tool(
@@ -753,6 +1845,24 @@ class DobotRobot:
         v: int = -1,
         cp: int = -1,
     ) -> int:
+        """Relative joint motion along the tool coordinate system.
+
+        Args:
+            offset_x: X offset (mm).
+            offset_y: Y offset (mm).
+            offset_z: Z offset (mm).
+            offset_rx: Rx offset (degrees).
+            offset_ry: Ry offset (degrees).
+            offset_rz: Rz offset (degrees).
+            user: User coordinate system. -1 = not set.
+            tool: Tool coordinate system. -1 = not set.
+            a: Acceleration ratio. -1 = not set.
+            v: Velocity ratio. -1 = not set.
+            cp: Continuous path ratio. -1 = not set.
+
+        Returns:
+            int: Motion queue ID.
+        """
         return self.dashboard.rel_mov_j_tool(
             offset_x,
             offset_y,
@@ -783,6 +1893,28 @@ class DobotRobot:
         cp: int = -1,
         r: int = -1,
     ) -> int:
+        """Relative linear motion along the tool coordinate system.
+
+        For 6-axis robots.
+
+        Args:
+            offset_x: X offset (mm).
+            offset_y: Y offset (mm).
+            offset_z: Z offset (mm).
+            offset_rx: Rx offset (degrees).
+            offset_ry: Ry offset (degrees).
+            offset_rz: Rz offset (degrees).
+            user: User coordinate system. -1 = not set.
+            tool: Tool coordinate system. -1 = not set.
+            a: Acceleration ratio. -1 = not set.
+            v: Velocity ratio, incompatible with *speed*.
+            speed: Target speed (mm/s), takes precedence over *v*.
+            cp: Continuous path ratio, incompatible with *r*.
+            r: Continuous path radius (mm), takes precedence over *cp*.
+
+        Returns:
+            int: Motion queue ID.
+        """
         return self.dashboard.rel_mov_l_tool(
             offset_x,
             offset_y,
@@ -813,6 +1945,24 @@ class DobotRobot:
         v: int = -1,
         cp: int = -1,
     ) -> int:
+        """Relative joint motion along the user coordinate system.
+
+        Args:
+            offset_x: X offset (mm).
+            offset_y: Y offset (mm).
+            offset_z: Z offset (mm).
+            offset_rx: Rx offset (degrees).
+            offset_ry: Ry offset (degrees).
+            offset_rz: Rz offset (degrees).
+            user: User coordinate system. -1 = not set.
+            tool: Tool coordinate system. -1 = not set.
+            a: Acceleration ratio. -1 = not set.
+            v: Velocity ratio. -1 = not set.
+            cp: Continuous path ratio. -1 = not set.
+
+        Returns:
+            int: Motion queue ID.
+        """
         return self.dashboard.rel_mov_j_user(
             offset_x,
             offset_y,
@@ -843,6 +1993,26 @@ class DobotRobot:
         cp: int = -1,
         r: int = -1,
     ) -> int:
+        """Relative linear motion along the user coordinate system.
+
+        Args:
+            offset_x: X offset (mm).
+            offset_y: Y offset (mm).
+            offset_z: Z offset (mm).
+            offset_rx: Rx offset (degrees).
+            offset_ry: Ry offset (degrees).
+            offset_rz: Rz offset (degrees).
+            user: User coordinate system. -1 = not set.
+            tool: Tool coordinate system. -1 = not set.
+            a: Acceleration ratio. -1 = not set.
+            v: Velocity ratio, incompatible with *speed*.
+            speed: Target speed (mm/s), takes precedence over *v*.
+            cp: Continuous path ratio, incompatible with *r*.
+            r: Continuous path radius (mm), takes precedence over *cp*.
+
+        Returns:
+            int: Motion queue ID.
+        """
         return self.dashboard.rel_mov_l_user(
             offset_x,
             offset_y,
@@ -871,6 +2041,17 @@ class DobotRobot:
         v: int = -1,
         cp: int = -1,
     ) -> int:
+        """Relative joint motion along the joint coordinate system.
+
+        Args:
+            offset1..offset6: Joint axis offsets (degrees).
+            a: Acceleration ratio. -1 = not set.
+            v: Velocity ratio. -1 = not set.
+            cp: Continuous path ratio. -1 = not set.
+
+        Returns:
+            int: Motion queue ID.
+        """
         return self.dashboard.rel_joint_mov_j(
             offset1, offset2, offset3, offset4, offset5, offset6, a, v, cp
         )
@@ -891,6 +2072,16 @@ class DobotRobot:
         ry: float,
         rz: float,
     ) -> int:
+        """Relative point motion in tool coordinate system.
+
+        Args:
+            coordinate_mode: 0 = pose, 1 = joint.
+            a1..f1: Reference point (6 values).
+            x..rz: Offset values (6 values).
+
+        Returns:
+            int: Motion queue ID.
+        """
         return self.dashboard.rel_point_tool(
             coordinate_mode, a1, b1, c1, d1, e1, f1, x, y, z, rx, ry, rz
         )
@@ -911,6 +2102,16 @@ class DobotRobot:
         ry: float,
         rz: float,
     ) -> int:
+        """Relative point motion in user coordinate system.
+
+        Args:
+            coordinate_mode: 0 = pose, 1 = joint.
+            a1..f1: Reference point (6 values).
+            x..rz: Offset values (6 values).
+
+        Returns:
+            int: Motion queue ID.
+        """
         return self.dashboard.rel_point_user(
             coordinate_mode, a1, b1, c1, d1, e1, f1, x, y, z, rx, ry, rz
         )
@@ -930,6 +2131,15 @@ class DobotRobot:
         offset5: float,
         offset6: float,
     ) -> int:
+        """Relative joint motion from a reference joint configuration.
+
+        Args:
+            j1..j6: Reference joint angles.
+            offset1..offset6: Joint offsets.
+
+        Returns:
+            int: Motion queue ID.
+        """
         return self.dashboard.rel_joint(
             j1, j2, j3, j4, j5, j6, offset1, offset2, offset3, offset4, offset5, offset6
         )
@@ -950,6 +2160,21 @@ class DobotRobot:
         cp: int = -1,
         r: int = -1,
     ) -> int:
+        """Linear motion to target pose (pose-only, no coordinate_mode).
+
+        Args:
+            a1..f1: Target Cartesian pose (X, Y, Z, Rx, Ry, Rz).
+            user: User coordinate system. -1 = not set.
+            tool: Tool coordinate system. -1 = not set.
+            a: Acceleration ratio. -1 = not set.
+            v: Velocity ratio, incompatible with *speed*.
+            speed: Target speed (mm/s), takes precedence over *v*.
+            cp: Continuous path ratio, incompatible with *r*.
+            r: Continuous path radius (mm), takes precedence over *cp*.
+
+        Returns:
+            int: Motion queue ID.
+        """
         return self.dashboard.move_l(
             a1, b1, c1, d1, e1, f1, user, tool, a, v, speed, cp, r
         )
@@ -968,6 +2193,24 @@ class DobotRobot:
         a: int = -1,
         freq: int = -1,
     ) -> int:
+        """Spline motion through multiple points or from a file.
+
+        Either *file* or both *points* + *coordinate_mode* must be provided.
+
+        Args:
+            file: Spline data file name.
+            coordinate_mode: 0 = pose, 1 = joint (required with *points*).
+            points: Sequence of 6-element point lists.
+            user: User coordinate system. -1 = not set.
+            tool: Tool coordinate system. -1 = not set.
+            v: Velocity ratio, incompatible with *speed*.
+            speed: Target speed (mm/s), takes precedence over *v*.
+            a: Acceleration ratio. -1 = not set.
+            freq: Frequency parameter. -1 = not set.
+
+        Returns:
+            int: Motion queue ID.
+        """
         return self.dashboard.mov_s(
             file, coordinate_mode, points, user, tool, v, speed, a, freq
         )
@@ -986,6 +2229,19 @@ class DobotRobot:
         a: int = -1,
         v: int = -1,
     ) -> None:
+        """Move to a target point for single-step execution.
+
+        Args:
+            a1..f1: Target point (6 values).
+            move_type: 0 = pose (linear), 1 = joint.
+            user: User coordinate system. -1 = not set.
+            tool: Tool coordinate system. -1 = not set.
+            a: Acceleration ratio. -1 = not set.
+            v: Velocity ratio. -1 = not set.
+
+        Raises:
+            DobotApiError: If the robot returned a non-zero error code.
+        """
         return self.dashboard.run_to(
             a1, b1, c1, d1, e1, f1, move_type, user, tool, a, v
         )
@@ -993,20 +2249,63 @@ class DobotRobot:
     # --- Force ---
 
     def enable_ft_sensor(self, status: int) -> None:
+        """Enable or disable the force/torque sensor.
+
+        Args:
+            status: 0 = disable, 1 = enable.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.enable_ft_sensor(status)
 
     def six_force_home(self) -> None:
+        """Zero (home) the six-axis force sensor.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.six_force_home()
 
     def get_force(self, tool: int = -1) -> Pose:
+        """Get current force/torque sensor readings.
+
+        Args:
+            tool: Tool coordinate system index. -1 = not set (default frame).
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.get_force(tool)
 
     def force_drive_mode(
         self, x: int, y: int, z: int, rx: int, ry: int, rz: int, user: int = -1
     ) -> None:
+        """Set force-drive mode axes.
+
+        Args:
+            x: X-axis force drive flag.
+            y: Y-axis force drive flag.
+            z: Z-axis force drive flag.
+            rx: Rx-axis force drive flag.
+            ry: Ry-axis force drive flag.
+            rz: Rz-axis force drive flag.
+            user: User coordinate system. -1 = not set.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.force_drive_mode(x, y, z, rx, ry, rz, user)
 
     def force_drive_speed(self, speed: int) -> None:
+        """Set the force-drive speed.
+
+        Args:
+            speed: Force drive speed value.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.force_drive_speed(speed)
 
     def fc_force_mode(
@@ -1027,6 +2326,18 @@ class DobotRobot:
         user: int = -1,
         tool: int = -1,
     ) -> None:
+        """Set force-compliance mode parameters.
+
+        Args:
+            x..rz: Axis compliance flags (6 values).
+            fx..frz: Target force/torque values (6 values).
+            reference: Reference frame. -1 = not set.
+            user: User coordinate system. -1 = not set.
+            tool: Tool coordinate system. -1 = not set.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.fc_force_mode(
             x, y, z, rx, ry, rz, fx, fy, fz, frx, fry, frz, reference, user, tool
         )
@@ -1034,44 +2345,131 @@ class DobotRobot:
     def fc_set_deviation(
         self, x: int, y: int, z: int, rx: int, ry: int, rz: int, control_type: int = -1
     ) -> None:
+        """Set maximum deviation for force-compliance mode.
+
+        Args:
+            x..rz: Maximum deviation per axis (6 values).
+            control_type: Control type. -1 = not set.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.fc_set_deviation(x, y, z, rx, ry, rz, control_type)
 
     def fc_set_force_limit(
         self, x: int, y: int, z: int, rx: int, ry: int, rz: int
     ) -> None:
+        """Set force limits for force-compliance mode.
+
+        Args:
+            x..rz: Force limit per axis (6 values).
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.fc_set_force_limit(x, y, z, rx, ry, rz)
 
     def fc_set_mass(self, x: int, y: int, z: int, rx: int, ry: int, rz: int) -> None:
+        """Set virtual mass for force-compliance mode.
+
+        Args:
+            x..rz: Virtual mass per axis (6 values).
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.fc_set_mass(x, y, z, rx, ry, rz)
 
     def fc_set_stiffness(
         self, x: int, y: int, z: int, rx: int, ry: int, rz: int
     ) -> None:
+        """Set stiffness for force-compliance mode.
+
+        Args:
+            x..rz: Stiffness per axis (6 values).
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.fc_set_stiffness(x, y, z, rx, ry, rz)
 
     def fc_set_damping(self, x: int, y: int, z: int, rx: int, ry: int, rz: int) -> None:
+        """Set damping for force-compliance mode.
+
+        Args:
+            x..rz: Damping per axis (6 values).
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.fc_set_damping(x, y, z, rx, ry, rz)
 
     def fc_off(self) -> None:
+        """Turn off force-compliance mode.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.fc_off()
 
     def fc_set_force_speed_limit(
         self, x: int, y: int, z: int, rx: int, ry: int, rz: int
     ) -> None:
+        """Set speed limits under force-compliance mode.
+
+        Args:
+            x..rz: Speed limit per axis (6 values).
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.fc_set_force_speed_limit(x, y, z, rx, ry, rz)
 
     def fc_set_force(self, x: int, y: int, z: int, rx: int, ry: int, rz: int) -> None:
+        """Set target force for force-compliance mode.
+
+        Args:
+            x..rz: Target force/torque per axis (6 values).
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.fc_set_force(x, y, z, rx, ry, rz)
 
     def fc_collision_switch(self, enable: int) -> None:
+        """Enable or disable force-compliance collision detection.
+
+        Args:
+            enable: 0 = disable, 1 = enable.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.fc_collision_switch(enable)
 
     def set_fc_collision(self, force: float, torque: float) -> None:
+        """Set force-compliance collision detection thresholds.
+
+        Args:
+            force: Force collision threshold.
+            torque: Torque collision threshold.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.set_fc_collision(force, torque)
 
     # --- Conveyor ---
 
     def cnv_init(self, index: int) -> None:
+        """Initialize the conveyor.
+
+        Args:
+            index: Conveyor index.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.cnv_init(index)
 
     def cnv_mov_l(
@@ -1089,6 +2487,25 @@ class DobotRobot:
         cp: int = -1,
         r: int = -1,
     ) -> int:
+        """Conveyor-synchronized linear motion.
+
+        Args:
+            j1: X or joint-1 value.
+            j2: Y or joint-2 value.
+            j3: Z or joint-3 value.
+            j4: Rx or joint-4 value.
+            j5: Ry or joint-5 value.
+            j6: Rz or joint-6 value.
+            user: User coordinate system index. -1 = not set.
+            tool: Tool coordinate system index. -1 = not set.
+            a: Acceleration. -1 = not set.
+            v: Velocity. -1 = not set.
+            cp: Continuous path setting. -1 = not set.
+            r: Blending radius. -1 = not set.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.cnv_mov_l(j1, j2, j3, j4, j5, j6, user, tool, a, v, cp, r)
 
     def cnv_mov_c(
@@ -1113,6 +2530,32 @@ class DobotRobot:
         r: int = -1,
         mode: int = 1,
     ) -> int:
+        """Conveyor-synchronized circular motion.
+
+        Args:
+            j1a: X or joint-1 of the first via point.
+            j2a: Y or joint-2 of the first via point.
+            j3a: Z or joint-3 of the first via point.
+            j4a: Rx or joint-4 of the first via point.
+            j5a: Ry or joint-5 of the first via point.
+            j6a: Rz or joint-6 of the first via point.
+            j1b: X or joint-1 of the second via point.
+            j2b: Y or joint-2 of the second via point.
+            j3b: Z or joint-3 of the second via point.
+            j4b: Rx or joint-4 of the second via point.
+            j5b: Ry or joint-5 of the second via point.
+            j6b: Rz or joint-6 of the second via point.
+            user: User coordinate system index. -1 = not set.
+            tool: Tool coordinate system index. -1 = not set.
+            a: Acceleration. -1 = not set.
+            v: Velocity. -1 = not set.
+            cp: Continuous path setting. -1 = not set.
+            r: Blending radius. -1 = not set.
+            mode: Circle mode. 1 = default.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.cnv_mov_c(
             j1a,
             j2a,
@@ -1136,23 +2579,63 @@ class DobotRobot:
         )
 
     def get_cnv_object(self, obj_id: int) -> str:
+        """Get conveyor object information.
+
+        Args:
+            obj_id: Object identifier.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.get_cnv_object(obj_id)
 
     def set_cnv_point_offset(self, x_offset: float, y_offset: float) -> None:
+        """Set conveyor point offset.
+
+        Args:
+            x_offset: X-axis offset value.
+            y_offset: Y-axis offset value.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.set_cnv_point_offset(x_offset, y_offset)
 
     def set_cnv_time_compensation(self, time: int) -> None:
+        """Set conveyor time compensation.
+
+        Args:
+            time: Time compensation value in milliseconds.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.set_cnv_time_compensation(time)
 
     def start_sync_cnv(self) -> None:
+        """Start synchronous conveyor tracking.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.start_sync_cnv()
 
     def stop_sync_cnv(self) -> None:
+        """Stop synchronous conveyor tracking.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.stop_sync_cnv()
 
     # --- Weld ---
 
     def arc_track_start(self) -> None:
+        """Start arc tracking.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.arc_track_start()
 
     def arc_track_params(
@@ -1166,6 +2649,21 @@ class DobotRobot:
         left_right_compensation_max: float,
         left_right_compensation_offset: float,
     ) -> None:
+        """Set arc tracking parameters.
+
+        Args:
+            sample_time: Sampling interval.
+            coordinate_type: Coordinate system type.
+            up_down_compensation_min: Minimum up/down compensation.
+            up_down_compensation_max: Maximum up/down compensation.
+            up_down_compensation_offset: Up/down compensation offset.
+            left_right_compensation_min: Minimum left/right compensation.
+            left_right_compensation_max: Maximum left/right compensation.
+            left_right_compensation_offset: Left/right compensation offset.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.arc_track_params(
             sample_time,
             coordinate_type,
@@ -1178,6 +2676,11 @@ class DobotRobot:
         )
 
     def arc_track_end(self) -> None:
+        """End arc tracking.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.arc_track_end()
 
     def set_arc_track_offset(
@@ -1189,6 +2692,19 @@ class DobotRobot:
         offset_ry: float,
         offset_rz: float,
     ) -> None:
+        """Set arc tracking offset.
+
+        Args:
+            offset_x: X-axis offset.
+            offset_y: Y-axis offset.
+            offset_z: Z-axis offset.
+            offset_rx: Rx-axis offset.
+            offset_ry: Ry-axis offset.
+            offset_rz: Rz-axis offset.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.set_arc_track_offset(
             offset_x, offset_y, offset_z, offset_rx, offset_ry, offset_rz
         )
@@ -1204,6 +2720,21 @@ class DobotRobot:
         p1: collections.abc.Sequence[float],
         p2: collections.abc.Sequence[float],
     ) -> int:
+        """Execute a relative-point weld line motion.
+
+        Args:
+            start_x: Start X position.
+            end_x: End X position.
+            y: Y position.
+            z: Z position.
+            work_angle: Work angle.
+            travel_angle: Travel angle.
+            p1: First pose (6 elements: x, y, z, rx, ry, rz).
+            p2: Second pose (6 elements: x, y, z, rx, ry, rz).
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.rel_point_weld_line(
             start_x, end_x, y, z, work_angle, travel_angle, p1, p2
         )
@@ -1220,11 +2751,32 @@ class DobotRobot:
         p2: collections.abc.Sequence[float],
         p3: collections.abc.Sequence[float],
     ) -> int:
+        """Execute a relative-point weld arc motion.
+
+        Args:
+            start_x: Start X position.
+            end_x: End X position.
+            y: Y position.
+            z: Z position.
+            work_angle: Work angle.
+            travel_angle: Travel angle.
+            p1: First pose (6 elements: x, y, z, rx, ry, rz).
+            p2: Second pose (6 elements: x, y, z, rx, ry, rz).
+            p3: Third pose (6 elements: x, y, z, rx, ry, rz).
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.rel_point_weld_arc(
             start_x, end_x, y, z, work_angle, travel_angle, p1, p2, p3
         )
 
     def weave_start(self) -> None:
+        """Start weave motion.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.weave_start()
 
     def weave_params(
@@ -1243,6 +2795,26 @@ class DobotRobot:
         radian: float,
         **kwargs,
     ) -> None:
+        """Set weave parameters.
+
+        Args:
+            weld_type: Weld type identifier.
+            frequency: Weave frequency.
+            left_amplitude: Left-side weave amplitude.
+            right_amplitude: Right-side weave amplitude.
+            direction: Weave direction.
+            stop_mode: Stop mode setting.
+            stop_time1: First stop time.
+            stop_time2: Second stop time.
+            stop_time3: Third stop time.
+            stop_time4: Fourth stop time.
+            radius: Weave radius.
+            radian: Weave radian.
+            **kwargs: Additional key=value parameters appended to the command.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.weave_params(
             weld_type,
             frequency,
@@ -1260,15 +2832,38 @@ class DobotRobot:
         )
 
     def weave_end(self) -> None:
+        """End weave motion.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.weave_end()
 
     def weld_arc_speed_start(self) -> None:
+        """Start weld arc speed mode.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.weld_arc_speed_start()
 
     def weld_arc_speed(self, speed: float) -> None:
+        """Set weld arc speed.
+
+        Args:
+            speed: Arc welding speed value.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.weld_arc_speed(speed)
 
     def weld_arc_speed_end(self) -> None:
+        """End weld arc speed mode.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.weld_arc_speed_end()
 
     def weld_weave_start(
@@ -1286,6 +2881,25 @@ class DobotRobot:
         radius: float,
         radian: float,
     ) -> None:
+        """Start weld weave with parameters.
+
+        Args:
+            weld_type: Weld type identifier.
+            frequency: Weave frequency.
+            left_amplitude: Left-side weave amplitude.
+            right_amplitude: Right-side weave amplitude.
+            direction: Weave direction.
+            stop_mode: Stop mode setting.
+            stop_time1: First stop time.
+            stop_time2: Second stop time.
+            stop_time3: Third stop time.
+            stop_time4: Fourth stop time.
+            radius: Weave radius.
+            radian: Weave radian.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.weld_weave_start(
             weld_type,
             frequency,
@@ -1329,6 +2943,36 @@ class DobotRobot:
         v: int = -1,
         cp: int = -1,
     ) -> None:
+        """Pre-check a circular (MovC) motion for reachability/collision.
+
+        Args:
+            j1a: Joint-1 of the first via point.
+            j2a: Joint-2 of the first via point.
+            j3a: Joint-3 of the first via point.
+            j4a: Joint-4 of the first via point.
+            j5a: Joint-5 of the first via point.
+            j6a: Joint-6 of the first via point.
+            j1b: Joint-1 of the second via point.
+            j2b: Joint-2 of the second via point.
+            j3b: Joint-3 of the second via point.
+            j4b: Joint-4 of the second via point.
+            j5b: Joint-5 of the second via point.
+            j6b: Joint-6 of the second via point.
+            j1c: Joint-1 of the target point.
+            j2c: Joint-2 of the target point.
+            j3c: Joint-3 of the target point.
+            j4c: Joint-4 of the target point.
+            j5c: Joint-5 of the target point.
+            j6c: Joint-6 of the target point.
+            user: User coordinate system index. -1 = not set.
+            tool: Tool coordinate system index. -1 = not set.
+            a: Acceleration. -1 = not set.
+            v: Velocity. -1 = not set.
+            cp: Continuous path setting. -1 = not set.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.check_mov_c(
             j1a,
             j2a,
@@ -1375,6 +3019,30 @@ class DobotRobot:
         v: int = -1,
         cp: int = -1,
     ) -> None:
+        """Pre-check a joint (MovJ) motion for reachability/collision.
+
+        Args:
+            j1a: Joint-1 of the first point.
+            j2a: Joint-2 of the first point.
+            j3a: Joint-3 of the first point.
+            j4a: Joint-4 of the first point.
+            j5a: Joint-5 of the first point.
+            j6a: Joint-6 of the first point.
+            j1b: Joint-1 of the second point.
+            j2b: Joint-2 of the second point.
+            j3b: Joint-3 of the second point.
+            j4b: Joint-4 of the second point.
+            j5b: Joint-5 of the second point.
+            j6b: Joint-6 of the second point.
+            user: User coordinate system index. -1 = not set.
+            tool: Tool coordinate system index. -1 = not set.
+            a: Acceleration. -1 = not set.
+            v: Velocity. -1 = not set.
+            cp: Continuous path setting. -1 = not set.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.check_mov_j(
             j1a,
             j2a,
@@ -1415,6 +3083,30 @@ class DobotRobot:
         v: int = -1,
         cp: int = -1,
     ) -> None:
+        """Pre-check a linear (MovL) motion for reachability/collision.
+
+        Args:
+            j1a: Joint-1 of the first point.
+            j2a: Joint-2 of the first point.
+            j3a: Joint-3 of the first point.
+            j4a: Joint-4 of the first point.
+            j5a: Joint-5 of the first point.
+            j6a: Joint-6 of the first point.
+            j1b: Joint-1 of the second point.
+            j2b: Joint-2 of the second point.
+            j3b: Joint-3 of the second point.
+            j4b: Joint-4 of the second point.
+            j5b: Joint-5 of the second point.
+            j6b: Joint-6 of the second point.
+            user: User coordinate system index. -1 = not set.
+            tool: Tool coordinate system index. -1 = not set.
+            a: Acceleration. -1 = not set.
+            v: Velocity. -1 = not set.
+            cp: Continuous path setting. -1 = not set.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.check_mov_l(
             j1a,
             j2a,
@@ -1461,6 +3153,36 @@ class DobotRobot:
         v: int = -1,
         cp: int = -1,
     ) -> None:
+        """Pre-check an odd-axis circular (MovC) motion.
+
+        Args:
+            j1a: Joint-1 of the first via point.
+            j2a: Joint-2 of the first via point.
+            j3a: Joint-3 of the first via point.
+            j4a: Joint-4 of the first via point.
+            j5a: Joint-5 of the first via point.
+            j6a: Joint-6 of the first via point.
+            j1b: Joint-1 of the second via point.
+            j2b: Joint-2 of the second via point.
+            j3b: Joint-3 of the second via point.
+            j4b: Joint-4 of the second via point.
+            j5b: Joint-5 of the second via point.
+            j6b: Joint-6 of the second via point.
+            j1c: Joint-1 of the target point.
+            j2c: Joint-2 of the target point.
+            j3c: Joint-3 of the target point.
+            j4c: Joint-4 of the target point.
+            j5c: Joint-5 of the target point.
+            j6c: Joint-6 of the target point.
+            user: User coordinate system index. -1 = not set.
+            tool: Tool coordinate system index. -1 = not set.
+            a: Acceleration. -1 = not set.
+            v: Velocity. -1 = not set.
+            cp: Continuous path setting. -1 = not set.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.check_odd_mov_c(
             j1a,
             j2a,
@@ -1507,6 +3229,30 @@ class DobotRobot:
         v: int = -1,
         cp: int = -1,
     ) -> None:
+        """Pre-check an odd-axis joint (MovJ) motion.
+
+        Args:
+            j1a: Joint-1 of the first point.
+            j2a: Joint-2 of the first point.
+            j3a: Joint-3 of the first point.
+            j4a: Joint-4 of the first point.
+            j5a: Joint-5 of the first point.
+            j6a: Joint-6 of the first point.
+            j1b: Joint-1 of the second point.
+            j2b: Joint-2 of the second point.
+            j3b: Joint-3 of the second point.
+            j4b: Joint-4 of the second point.
+            j5b: Joint-5 of the second point.
+            j6b: Joint-6 of the second point.
+            user: User coordinate system index. -1 = not set.
+            tool: Tool coordinate system index. -1 = not set.
+            a: Acceleration. -1 = not set.
+            v: Velocity. -1 = not set.
+            cp: Continuous path setting. -1 = not set.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.check_odd_mov_j(
             j1a,
             j2a,
@@ -1547,6 +3293,30 @@ class DobotRobot:
         v: int = -1,
         cp: int = -1,
     ) -> None:
+        """Pre-check an odd-axis linear (MovL) motion.
+
+        Args:
+            j1a: Joint-1 of the first point.
+            j2a: Joint-2 of the first point.
+            j3a: Joint-3 of the first point.
+            j4a: Joint-4 of the first point.
+            j5a: Joint-5 of the first point.
+            j6a: Joint-6 of the first point.
+            j1b: Joint-1 of the second point.
+            j2b: Joint-2 of the second point.
+            j3b: Joint-3 of the second point.
+            j4b: Joint-4 of the second point.
+            j5b: Joint-5 of the second point.
+            j6b: Joint-6 of the second point.
+            user: User coordinate system index. -1 = not set.
+            tool: Tool coordinate system index. -1 = not set.
+            a: Acceleration. -1 = not set.
+            v: Velocity. -1 = not set.
+            cp: Continuous path setting. -1 = not set.
+
+        Returns:
+            Raw response string from robot.
+        """
         return self.dashboard.check_odd_mov_l(
             j1a,
             j2a,

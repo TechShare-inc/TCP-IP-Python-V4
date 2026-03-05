@@ -136,7 +136,7 @@ def _render_call_arg(param: inspect.Parameter) -> str:
 
 
 def _generate_method(name: str, func: Any) -> list[str]:
-    """Return the two source lines for a forwarding method."""
+    """Return the source lines for a forwarding method, including any docstring."""
     sig = inspect.signature(func)
     params = [p for p in sig.parameters.values() if p.name != "self"]
 
@@ -148,7 +148,22 @@ def _generate_method(name: str, func: Any) -> list[str]:
 
     def_line = f"    def {name}({', '.join(param_strs)}){ret_part}:"
     body_line = f"        return self.dashboard.{name}({', '.join(call_args)})"
-    return [def_line, body_line]
+
+    lines = [def_line]
+
+    doc = inspect.getdoc(func)
+    if doc:
+        doc_lines = doc.splitlines()
+        if len(doc_lines) == 1:
+            lines.append(f'        """{doc_lines[0]}"""')
+        else:
+            lines.append(f'        """{doc_lines[0]}')
+            for dl in doc_lines[1:]:
+                lines.append(f"        {dl}" if dl.strip() else "")
+            lines.append('        """')
+
+    lines.append(body_line)
+    return lines
 
 
 # ---------------------------------------------------------------------------
@@ -169,7 +184,9 @@ def generate_region() -> tuple[str, int]:
     # Build a lookup: mixin class name -> [(method_name, func), ...]
     # Use vars(mixin_cls) to preserve source-file ordering within each mixin.
     mixin_classes: dict[str, type] = {
-        cls.__name__: cls for cls in DobotApiDashboard.__mro__ if cls.__name__ in _MIXIN_ORDER
+        cls.__name__: cls
+        for cls in DobotApiDashboard.__mro__
+        if cls.__name__ in _MIXIN_ORDER
     }
 
     mixin_methods: dict[str, list[tuple[str, Any]]] = {m: [] for m in _MIXIN_ORDER}
@@ -192,7 +209,9 @@ def generate_region() -> tuple[str, int]:
             seen.add(attr_name)
 
     # Catch any public methods not in a known mixin (shouldn't normally happen)
-    for name, method in inspect.getmembers(DobotApiDashboard, predicate=inspect.isfunction):
+    for name, method in inspect.getmembers(
+        DobotApiDashboard, predicate=inspect.isfunction
+    ):
         if name.startswith("_") or name in base_names or name in seen:
             continue
         uncategorized.append((name, method))
@@ -219,12 +238,12 @@ def generate_region() -> tuple[str, int]:
 
     # Scan all generated def lines for typing names that need to be imported
     all_def_lines = " ".join(
-        ml[0]
-        for _, section in method_sections
-        for ml in section  # the def line
+        ml[0] for _, section in method_sections for ml in section  # the def line
     ) + " ".join(ml[0] for ml in other_methods)
     needed_typing: list[str] = sorted(
-        name for name in _TYPING_NAMES if re.search(rf"\b{re.escape(name)}\b", all_def_lines)
+        name
+        for name in _TYPING_NAMES
+        if re.search(rf"\b{re.escape(name)}\b", all_def_lines)
     )
 
     # Assemble the region
