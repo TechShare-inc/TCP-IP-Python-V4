@@ -120,7 +120,8 @@ class RobotErrorMonitor:
         error_info = self.get_error_info(language)
 
         if not error_info or "errMsg" not in error_info:
-            logger.warning("Failed to get error information")
+            # logger.warning("Failed to get error information")
+            logger.debug("No error information found in response: {}", error_info)
             return False
 
         errors: list[dict[str, Any]] = error_info["errMsg"]
