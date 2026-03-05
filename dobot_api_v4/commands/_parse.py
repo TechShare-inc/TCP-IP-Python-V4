@@ -212,6 +212,8 @@ def parse_error_ids(raw: str) -> tuple[int, ...]:
         DobotApiError: If the robot returned a non-zero error code.
     """
     _, payload = parse_response(raw)
-    if not payload.strip():
+    # The robot may wrap the list in brackets, e.g. "[10,20]" or "[]".
+    cleaned = payload.strip().strip("[]")
+    if not cleaned:
         return ()
-    return tuple(int(x.strip()) for x in payload.split(",") if x.strip() and int(x.strip()) != 0)
+    return tuple(int(x.strip()) for x in cleaned.split(",") if x.strip() and int(x.strip()) != 0)
