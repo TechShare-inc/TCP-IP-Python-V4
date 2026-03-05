@@ -1,15 +1,28 @@
 """Shared serialization mixin for protocol command formatting."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
 
 class _SerializationMixin:
     """Mixin providing argument serialization for Dobot protocol commands.
 
     The real ``send_recv_msg`` is inherited from ``DobotApi`` via MRO.
+    This class must appear before ``DobotApi`` in the MRO of the composed
+    class (e.g. ``DobotApiDashboard``) so that ``DobotApi.send_recv_msg``
+    is not shadowed at runtime.
     """
 
-    def send_recv_msg(self, string: str) -> str:
-        """Stub — real implementation from DobotApi via MRO."""
-        raise NotImplementedError
+    if TYPE_CHECKING:  # pragma: no cover
+
+        def send_recv_msg(self, string: str) -> str:
+            """Declared for type-checker and IDE support only.
+
+            At runtime this method is never reached; ``DobotApi.send_recv_msg``
+            is resolved via MRO instead.
+            """
+            ...
 
     def _fmt(self, value: object) -> str:
         """Format one argument into protocol text.
