@@ -73,7 +73,7 @@ def main() -> None:
     demo_auto_detect()
 
     # Uncomment the line below to run the live demo against a real robot:
-    # demo_live_check()
+    demo_live_check()
 
     print("\nI18n alarm demo complete.")
 
