@@ -78,6 +78,8 @@ def main() -> None:
         robot.enable_robot()
         print("Robot enabled.")
 
+        robot.speed_factor(30)  # Set speed to 30% for smoother demonstration
+
         # Read starting joints from the first feedback packet
         data = robot.feedback_data()
         assert data is not None, "Failed to read initial feedback."
