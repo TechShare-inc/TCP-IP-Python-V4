@@ -31,7 +31,7 @@ def demo_api_error(robot: DobotRobot) -> None:
         print(f"  message    : {exc.message}")
         print(f"  raw        : {exc.raw}")
     else:
-        print("  enable_robot() succeeded — robot is now enabled.")
+        print("  enable_robot() succeeded -- robot is now enabled.")
 
 
 def demo_error_ids(robot: DobotRobot) -> None:

@@ -227,7 +227,7 @@ class FeedbackData:
     Reserve/padding fields are excluded.
     """
 
-    # Scalars – unsigned integers
+    # Scalars - unsigned integers
     len: int
     digital_inputs: int
     digital_outputs: int
@@ -236,13 +236,13 @@ class FeedbackData:
     run_time: int
     test_value: int
 
-    # Scalars – floats
+    # Scalars - floats
     speed_scaling: float
     v_robot: float
     i_robot: float
     program_state: float
 
-    # Scalars – unsigned 16-bit
+    # Scalars - unsigned 16-bit
     safety_o_in: int
     safety_o_out: int
 

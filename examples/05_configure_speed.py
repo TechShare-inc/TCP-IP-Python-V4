@@ -21,7 +21,7 @@ from dobot_api_v4 import DobotRobot
 
 ROBOT_IP = "192.168.5.1"
 
-# Conservative defaults — safe for first-time users (all unit: %)
+# Conservative defaults -- safe for first-time users (all unit: %)
 SPEED_FACTOR_SAFE: int = 30
 ACC_SAFE: int = 30
 VEL_SAFE: int = 30
@@ -76,7 +76,7 @@ def wait_for_idle(robot: DobotRobot, timeout: float = 30.0) -> bool:
             elif saw_moving and mode == _MODE_ENABLE:
                 return True
             elif mode == _MODE_ERROR:
-                print("Robot entered ERROR state — aborting.")
+                print("Robot entered ERROR state -- aborting.")
                 return False
         time.sleep(0.05)
     print("Timeout: motion did not complete in time.")
@@ -91,11 +91,11 @@ def swing_j1(robot: DobotRobot, label: str) -> None:
         label: Profile name printed before each move for comparison.
     """
     qid = robot.rel_joint_mov_j(J1_SWING, 0, 0, 0, 0, 0)
-    print(f"  [{label}] RelJointMovJ J1+{J1_SWING}°  →  queue_id={qid}")
+    print(f"  [{label}] RelJointMovJ J1+{J1_SWING} deg  ->  queue_id={qid}")
     assert wait_for_idle(robot), f"[{label}] J1+ move timed out."
 
     qid = robot.rel_joint_mov_j(-J1_SWING, 0, 0, 0, 0, 0)
-    print(f"  [{label}] RelJointMovJ J1-{J1_SWING}°  →  queue_id={qid}")
+    print(f"  [{label}] RelJointMovJ J1-{J1_SWING} deg  ->  queue_id={qid}")
     assert wait_for_idle(robot), f"[{label}] J1- move timed out."
 
 
@@ -106,7 +106,7 @@ def main() -> None:
         if robot.check_errors():
             still_has = robot.clear_robot_error()
             if still_has:
-                print("Could not clear all errors — check robot status.")
+                print("Could not clear all errors -- check robot status.")
                 return
 
         robot.enable_robot()
@@ -124,7 +124,7 @@ def main() -> None:
         apply_speed_profile(robot, speed=SPEED_FACTOR_SAFE, acc=ACC_SAFE, vel=VEL_SAFE)
 
         robot.disable_robot()
-        print("\nRobot disabled — done.")
+        print("\nRobot disabled -- done.")
 
 
 if __name__ == "__main__":

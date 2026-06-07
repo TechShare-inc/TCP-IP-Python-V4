@@ -1,4 +1,4 @@
-"""dobot_api_v4 — Python SDK for Dobot V4 robots."""
+"""dobot_api_v4 -- Python SDK for Dobot V4 robots."""
 
 import os
 import sys

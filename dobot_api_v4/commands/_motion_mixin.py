@@ -79,7 +79,7 @@ class _MotionMixin(_SerializationMixin):
         """Move to target position through joint motion.
 
         Args:
-            a1..f1: Target point (6 values — joint angles or Cartesian pose).
+            a1..f1: Target point (6 values -- joint angles or Cartesian pose).
             coordinate_mode: 0 = pose, 1 = joint.
             user: User coordinate system index. -1 = not set.
             tool: Tool coordinate system index. -1 = not set.
@@ -129,7 +129,7 @@ class _MotionMixin(_SerializationMixin):
         """Move to target position in linear mode.
 
         Args:
-            a1..f1: Target point (6 values — joint angles or Cartesian pose).
+            a1..f1: Target point (6 values -- joint angles or Cartesian pose).
             coordinate_mode: 0 = pose, 1 = joint.
             user: User coordinate system index. -1 = not set.
             tool: Tool coordinate system index. -1 = not set.

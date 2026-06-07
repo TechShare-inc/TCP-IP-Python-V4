@@ -26,7 +26,7 @@ class TestFmt:
     def test_float_formatting(self):
         result = self.s._fmt(3.14)
         assert result.startswith("3.14")
-        # Should use {:f} format — 6 decimal places by default
+        # Should use {:f} format -- 6 decimal places by default
         assert "." in result
 
     def test_string_passthrough(self):

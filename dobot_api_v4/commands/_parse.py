@@ -5,12 +5,12 @@ open, validated, and converted to domain-level Python values.
 
 Public API
 ----------
-- :func:`parse_response` — low-level: raw string → ``(command_id, payload)``
-- :func:`parse_ack`       — validates success; returns ``None``
-- :func:`parse_int`       — extracts a single ``int`` payload
-- :func:`parse_pose`      — extracts a 6-DOF :class:`~dobot_api_v4.dtypes.Pose`
-- :func:`parse_error_ids` — extracts active alarm IDs as ``tuple[int, ...]``
-- :class:`DobotApiError`  — raised on any non-zero error code
+- :func:`parse_response` -- low-level: raw string -> ``(command_id, payload)``
+- :func:`parse_ack`       -- validates success; returns ``None``
+- :func:`parse_int`       -- extracts a single ``int`` payload
+- :func:`parse_pose`      -- extracts a 6-DOF :class:`~dobot_api_v4.dtypes.Pose`
+- :func:`parse_error_ids` -- extracts active alarm IDs as ``tuple[int, ...]``
+- :class:`DobotApiError`  -- raised on any non-zero error code
 """
 
 from __future__ import annotations
@@ -66,9 +66,9 @@ def parse_response(raw: str) -> tuple[int, str]:
 
     Three wire formats are recognised (tried in order):
 
-    1. **V4 brace** — ``"error_code,{payload},CommandName();"``
-    2. **3-field**  — ``"error_code,command_id,payload;"``
-    3. **Legacy brace** — ``"error_code,{payload};"``
+    1. **V4 brace** -- ``"error_code,{payload},CommandName();"``
+    2. **3-field**  -- ``"error_code,command_id,payload;"``
+    3. **Legacy brace** -- ``"error_code,{payload};"``
 
     Args:
         raw: Raw response string from the robot (may include trailing

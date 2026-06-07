@@ -53,7 +53,7 @@ def wait_for_idle(robot: DobotRobot, timeout: float = 30.0) -> bool:
             elif saw_moving and mode == _MODE_ENABLE:
                 return True
             elif mode == _MODE_ERROR:
-                print("Robot entered ERROR state — aborting.")
+                print("Robot entered ERROR state -- aborting.")
                 return False
         time.sleep(0.05)
     print("Timeout: motion did not complete in time.")
@@ -69,7 +69,7 @@ def move_to_pose(robot: DobotRobot, pose: Pose, label: str) -> None:
         label: Human-readable description for console output.
     """
     qid = robot.mov_l(pose.x, pose.y, pose.z, pose.rx, pose.ry, pose.rz, coordinate_mode=0)
-    print(f"MovL {label}  →  queue_id={qid}")
+    print(f"MovL {label}  ->  queue_id={qid}")
     assert wait_for_idle(robot), f"Move to '{label}' timed out."
 
 
@@ -79,7 +79,7 @@ def main() -> None:
         if robot.check_errors():
             still_has = robot.clear_robot_error()
             if still_has:
-                print("Could not clear all errors — check robot status.")
+                print("Could not clear all errors -- check robot status.")
                 return
 
         robot.enable_robot()

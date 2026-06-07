@@ -12,7 +12,7 @@ from dobot_api_v4.commands._parse import (
 )
 from dobot_api_v4.dtypes import Pose
 
-# ── parse_response (low-level) ──────────────────────────────────────────────
+# -- parse_response (low-level) ----------------------------------------------
 
 
 @pytest.mark.unit
@@ -53,7 +53,7 @@ class TestParseResponse:
             parse_response("")
 
 
-# ── parse_ack ────────────────────────────────────────────────────────────────
+# -- parse_ack ----------------------------------------------------------------
 
 
 @pytest.mark.unit
@@ -80,7 +80,7 @@ class TestParseAck:
         assert exc_info.value.error_code == -1
 
 
-# ── parse_int ────────────────────────────────────────────────────────────────
+# -- parse_int ----------------------------------------------------------------
 
 
 @pytest.mark.unit
@@ -106,7 +106,7 @@ class TestParseInt:
         assert parse_int("0,{42},JointMovJ();") == 42
 
 
-# ── parse_pose ───────────────────────────────────────────────────────────────
+# -- parse_pose ---------------------------------------------------------------
 
 
 @pytest.mark.unit
@@ -148,7 +148,7 @@ class TestParsePose:
             parse_pose("0,1,1.0,2.0,3.0;")
 
 
-# ── parse_error_ids ──────────────────────────────────────────────────────────
+# -- parse_error_ids ----------------------------------------------------------
 
 
 @pytest.mark.unit
@@ -171,7 +171,7 @@ class TestParseErrorIds:
         assert parse_error_ids("0,{101,202,303},GetErrorID();") == (101, 202, 303)
 
 
-# ── DobotApiError ────────────────────────────────────────────────────────────
+# -- DobotApiError ------------------------------------------------------------
 
 
 @pytest.mark.unit

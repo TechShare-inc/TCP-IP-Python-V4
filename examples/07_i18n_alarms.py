@@ -2,7 +2,7 @@
 """Multi-language alarm lookup example.
 
 Uses ``AlarmI18n`` to translate robot alarm codes into human-readable
-descriptions across all ten supported languages — entirely offline, with
+descriptions across all ten supported languages -- entirely offline, with
 no robot connection required.  Also demonstrates live error enrichment
 when connected to a real robot.
 
@@ -50,7 +50,7 @@ def demo_auto_detect() -> None:
     for alarm_id in (16, 100, 8752, 12816):
         alarm = i18n.get_alarm(alarm_id)
         desc = alarm["description"][:60]
-        print(f"  ID {alarm_id:5d}  →  {alarm['type']:<10s}  |  {desc}")
+        print(f"  ID {alarm_id:5d}  ->  {alarm['type']:<10s}  |  {desc}")
 
 
 def demo_live_check() -> None:

@@ -21,17 +21,17 @@ class _QueryMixin(_SerializationMixin):
         """Get the current status of the robot.
 
         Robot mode values:
-            1: INIT — Initialized status
-            2: BRAKE_OPEN — Brake switched on
-            3: POWEROFF — Power-off status
-            4: DISABLED — Disabled (no brake switched on)
-            5: ENABLE — Enabled and idle
-            6: BACKDRIVE — Drag mode
-            7: RUNNING — Running status (project, TCP queue)
-            8: SINGLE_MOVE — Single motion status (jog, RunTo)
-            9: ERROR — Uncleared alarms (highest priority)
-            10: PAUSE — Pause status
-            11: COLLISION — Collision status
+            1: INIT -- Initialized status
+            2: BRAKE_OPEN -- Brake switched on
+            3: POWEROFF -- Power-off status
+            4: DISABLED -- Disabled (no brake switched on)
+            5: ENABLE -- Enabled and idle
+            6: BACKDRIVE -- Drag mode
+            7: RUNNING -- Running status (project, TCP queue)
+            8: SINGLE_MOVE -- Single motion status (jog, RunTo)
+            9: ERROR -- Uncleared alarms (highest priority)
+            10: PAUSE -- Pause status
+            11: COLLISION -- Collision status
 
         Returns:
             int: Current robot mode value.
@@ -115,7 +115,7 @@ class _QueryMixin(_SerializationMixin):
         user: int = -1,
         tool: int = -1,
     ) -> Pose:
-        """Forward kinematics — calculate Cartesian pose from joint angles.
+        """Forward kinematics -- calculate Cartesian pose from joint angles.
 
         Args:
             j1: J1-axis position in degrees.
@@ -154,7 +154,7 @@ class _QueryMixin(_SerializationMixin):
         use_joint_near: int = -1,
         joint_near: str = "",
     ) -> Pose:
-        """Inverse kinematics — calculate joint angles from Cartesian pose.
+        """Inverse kinematics -- calculate joint angles from Cartesian pose.
 
         As one Cartesian pose can correspond to multiple joint solutions,
         ``use_joint_near`` and ``joint_near`` can be used to select the

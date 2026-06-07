@@ -120,7 +120,7 @@ class TestModbusMixin:
         assert sent[-1] == "SetOutputInt(0,42)"
 
     def test_set_output_float(self, mock_dashboard):
-        # NOTE: source uses {:d} for value — known bug, only int values work
+        # NOTE: source uses {:d} for value -- known bug, only int values work
         dashboard, sent = mock_dashboard
         dashboard.set_output_float(0, 3)
         assert "SetOutputFloat(0," in sent[-1]

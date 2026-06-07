@@ -4,7 +4,7 @@
 Reads one real-time feedback packet from port 30004 using the
 ``DobotRobot.feedback_data()`` convenience method and prints a selection
 of typed fields.  The feedback connection is created lazily on first
-access — no extra setup is required beyond a ``DobotRobot`` instance.
+access -- no extra setup is required beyond a ``DobotRobot`` instance.
 
 Difficulty: Beginner
 Prerequisites: 01_connect.py
@@ -32,7 +32,7 @@ def print_feedback(data: FeedbackData) -> None:
     print(f"  robot_mode      : {data.robot_mode}")
     print(f"  enable_status   : {data.enable_status}")
     print(f"  speed_scaling   : {data.speed_scaling:.1f} %")
-    print(f"  q_actual (°)    : {joints}")
+    print(f"  q_actual ( deg)    : {joints}")
     print(f"  TCP position    : {tcp}")
     print(f"  error_status    : {data.error_status}")
 
@@ -42,7 +42,7 @@ def main() -> None:
     with DobotRobot(ROBOT_IP) as robot:
         data = robot.feedback_data()
         if data is None:
-            print("No feedback data received — is the robot powered on?")
+            print("No feedback data received -- is the robot powered on?")
             return
         print_feedback(data)
 

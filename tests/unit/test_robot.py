@@ -88,7 +88,7 @@ class TestDobotRobotLifecycle:
 
     def test_close_skips_inactive_feedback(self):
         robot = _make_robot()
-        # _feedback is None — close should not crash
+        # _feedback is None -- close should not crash
         robot.close()
 
     def test_context_manager_calls_close(self):

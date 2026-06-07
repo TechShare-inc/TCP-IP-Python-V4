@@ -41,7 +41,7 @@ def check_and_clear_errors(robot: DobotRobot) -> None:
     has_errors = robot.check_errors()
 
     if not has_errors:
-        print("  No errors found — robot is clean.")
+        print("  No errors found -- robot is clean.")
         return
 
     error_ids = robot.get_error_id()
@@ -51,7 +51,7 @@ def check_and_clear_errors(robot: DobotRobot) -> None:
 
     if still_has:
         raise RuntimeError(
-            "Errors remain after clearing — inspect the robot and resolve "
+            "Errors remain after clearing -- inspect the robot and resolve "
             "hardware issues before retrying."
         )
     print("  All errors cleared successfully.")
@@ -89,7 +89,7 @@ def enable_and_read_status(robot: DobotRobot) -> None:
     if mode == _MODE_ENABLE:
         print("  Robot is ENABLED and ready for motion commands.")
     else:
-        print(f"  Unexpected mode {mode} — expected {_MODE_ENABLE} (ENABLE).")
+        print(f"  Unexpected mode {mode} -- expected {_MODE_ENABLE} (ENABLE).")
 
     print("Disabling robot …")
     robot.disable_robot()
@@ -107,7 +107,7 @@ def main() -> None:
         # Step 3: Power on and wait for hardware to initialise
         power_on_and_wait(robot)
 
-        # Step 4: Enable → read status → disable
+        # Step 4: Enable -> read status -> disable
         enable_and_read_status(robot)
 
     print("\nPower-cycle sequence complete.")

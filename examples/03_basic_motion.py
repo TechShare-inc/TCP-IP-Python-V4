@@ -4,7 +4,7 @@
 Enables the robot, reads the current joint configuration from feedback,
 offsets J1 forward then backward, and returns to the starting pose.  A
 feedback-based helper polls ``robot_mode`` so each command is confirmed
-complete before the next one begins — the same synchronisation pattern
+complete before the next one begins -- the same synchronisation pattern
 used in all subsequent motion examples.
 
 Difficulty: Intermediate
@@ -58,7 +58,7 @@ def wait_for_idle(robot: DobotRobot, timeout: float = 30.0) -> bool:
             elif saw_moving and mode == _MODE_ENABLE:
                 return True
             elif mode == _MODE_ERROR:
-                print("Robot entered ERROR state — aborting.")
+                print("Robot entered ERROR state -- aborting.")
                 return False
         time.sleep(0.05)
     print("Timeout: motion did not complete in time.")
@@ -66,13 +66,13 @@ def wait_for_idle(robot: DobotRobot, timeout: float = 30.0) -> bool:
 
 
 def main() -> None:
-    """Enable, swing J1 ±J1_OFFSET degrees, return home, then disable."""
+    """Enable, swing J1 +/-J1_OFFSET degrees, return home, then disable."""
     with DobotRobot(ROBOT_IP) as robot:
         # Clear lingering errors before enabling
         if robot.check_errors():
             still_has = robot.clear_robot_error()
             if still_has:
-                print("Could not clear all errors — check robot status.")
+                print("Could not clear all errors -- check robot status.")
                 return
 
         robot.enable_robot()
@@ -84,21 +84,21 @@ def main() -> None:
         data = robot.feedback_data()
         assert data is not None, "Failed to read initial feedback."
         j1, j2, j3, j4, j5, j6 = data.q_actual
-        print(f"Start joints (°): {tuple(round(v, 2) for v in (j1, j2, j3, j4, j5, j6))}")
+        print(f"Start joints ( deg): {tuple(round(v, 2) for v in (j1, j2, j3, j4, j5, j6))}")
 
         # Move J1 forward
         qid = robot.mov_j(j1 + J1_OFFSET, j2, j3, j4, j5, j6, coordinate_mode=1)
-        print(f"MovJ J1+{J1_OFFSET}°  →  queue_id={qid}")
+        print(f"MovJ J1+{J1_OFFSET} deg  ->  queue_id={qid}")
         assert wait_for_idle(robot), "J1+ move timed out."
 
         # Move J1 backward
         qid = robot.mov_j(j1 - J1_OFFSET, j2, j3, j4, j5, j6, coordinate_mode=1)
-        print(f"MovJ J1-{J1_OFFSET}°  →  queue_id={qid}")
+        print(f"MovJ J1-{J1_OFFSET} deg  ->  queue_id={qid}")
         assert wait_for_idle(robot), "J1- move timed out."
 
         # Return to the starting configuration
         qid = robot.mov_j(j1, j2, j3, j4, j5, j6, coordinate_mode=1)
-        print(f"MovJ home       →  queue_id={qid}")
+        print(f"MovJ home       ->  queue_id={qid}")
         assert wait_for_idle(robot), "Home move timed out."
 
         robot.disable_robot()

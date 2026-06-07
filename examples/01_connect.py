@@ -3,7 +3,7 @@
 
 Opens a connection to the robot inside a context manager, queries the
 current robot mode and TCP pose, then disconnects cleanly.  No motion is
-commanded — this is the simplest possible interaction with the robot.
+commanded -- this is the simplest possible interaction with the robot.
 
 Difficulty: Beginner
 Prerequisites: dobot_api_v4 installed; robot reachable at ROBOT_IP
@@ -39,7 +39,7 @@ def main() -> None:
         # Robot mode integer codes:
         #   1=INIT  4=DISABLED  5=ENABLE  7=RUNNING  9=ERROR
         mode = robot.robot_mode()
-        print(f"robot_mode   → {mode}")
+        print(f"robot_mode   -> {mode}")
 
         # TCP position in the active user coordinate system
         tcp_pose = robot.get_pose()
